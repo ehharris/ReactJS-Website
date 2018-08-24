@@ -32,6 +32,6 @@
 1. __What will you do if every team member except one agrees on something?__ 
    * Minority rights... Not really. It's entirely up to the team. I'm flexible.
 1. __What will you do if one person seems to be dominating the team process?__ 
-   * Again, talk about it at a team meeting. We shouldn't be hesitant to bring things such as this up because it will probably end up hurting us all in the end.
+   * Again, talk about it at a team meeting. We shouldn't be hesitant to bring things such as this up because it will probably just end up hurting us all.
 1. __What will you do if you feel most of the facilitation responsibilities are falling on you?__ 
    * Talk to my team about it the next time we have a chance.
