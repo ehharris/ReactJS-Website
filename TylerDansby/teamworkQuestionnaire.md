@@ -2,7 +2,7 @@
 
 1. __Is it generally easier to reach you by text, electronic mail, voice mail or something else?  What hours?__ 
    * Text anytime. Cell: (575)-551-2914
-   * Avaliable to work anytime on weekends and after 3 PM on weekdays.
+   * Available to work anytime on weekends and after 3 PM on weekdays.
 1. __What are your expectations about what your team will accomplish this semester?__ 
    * At the very least, everything that is asked of us. I'm hoping that we work well together.
 1. __What are your personal goals for improving your teamwork and communication skills this semester?__ 
