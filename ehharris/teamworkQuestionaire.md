@@ -12,9 +12,9 @@ Teamwork Questionnaire for Eli
     6. Is it acceptable for some team members to do more work on the assignment in order to get an “A”? 
           In a perfect world everyone should be doing the same amount of work.
     7. How much time per week do you anticipate it will take to make the project successful? 
-		      I’m not sure, but I’ll put in as much time as necessary to make it successful.
+    	  I’m not sure, but I’ll put in as much time as necessary to make it successful.
     8. How will you decide who should do what on the project and activities? 
-		      Discuss it with the team member and use our strengths to our advantage.
+          Discuss it with the team member and use our strengths to our advantage.
     9. What will happen if someone doesn’t follow through on a commitment (missing deadline, no show, etc.)? 
           Figure out why we missed it and plan so that doesn’t happen again in the future.
     10. What happens if people have different opinions on the quality of the work? 
