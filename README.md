@@ -1,6 +1,6 @@
 # Welcome to the t10 Repository 
 
-Members: 
+Members:   
   Dansby, Tyler  
   Harris, Eli   
   Kaliher, Nick   
