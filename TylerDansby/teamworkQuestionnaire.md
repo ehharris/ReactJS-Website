@@ -1,4 +1,4 @@
-# Teamwork Questionnaire for Tyler Dansby
+# Teamwork Questionnaire for TylerDansby
 
 1. __Is it generally easier to reach you by text, electronic mail, voice mail or something else?  What hours?__ 
    * Text. Anytime, although I may not respond until later in the day. Cell: (575)-551-2914
@@ -13,7 +13,7 @@
 1. __Is it acceptable for some team members to do more work on the assignment in order to get an “A”?__ 
    * Sure, assuming we don't all get the same grade. If we do though, we'll have to sort that out.
 1. __How much time per week do you anticipate it will take to make the project successful?__ 
-   * Probably at least like 15 hours a week.
+   * Probably at least like 15 hours a week, but that will depend greatly on the project.
 1. __How will you decide who should do what on the project and activities?__ 
    * We'll just talk about it as a group. I don't necessarily think one person should decide all of that.
 1. __What will happen if someone doesn’t follow through on a commitment (missing deadline, no show, etc.)?__ 
