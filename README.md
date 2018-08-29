@@ -17,7 +17,7 @@ Antonio is an undergraduate student on his fourth year and majoring in Applied C
 *Saucy bio*
 
 ### Nick Kaliher
-Nick is a Junior Computer Science major. He is currently a full time student at CSU and plans to graduate in 2020. Nick enjoys playing video games and watching a variety of forms of media. He has an interests in artifical intelligence and wishes to return to CSU after some years in industry to get a masters degree. 
+Nick is a Junior Computer Science major. He is currently a full time student at CSU and plans to graduate in 2020. Nick enjoys playing video games and watching a variety of forms of media. He has an interests in artifical intelligence and wishes to return to CSU after some years in industry to get a masters degree. Outside of class activities include hanging out with friends, rockclimbing, and hiking. 
 
 ### Next Person
 *A slightly less saucy bio*
@@ -41,4 +41,4 @@ It is critical for the team to produce clean and effiecient code in a timely man
 
 
 # Expectations
-*Small paragraphs or short sentences*
+All team members are expected to follow the manifesto and all the values within it; as well as github etiquette and the CSU Conduct Guidlines.
