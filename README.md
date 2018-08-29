@@ -25,8 +25,8 @@
 # Manifesto
 *Introductory Paragraph Here*
 
-### First Value
-*first value paragraph*
+### Clean, Simple, and Efficient Work
+As developers contributing to the same projects, it is essential that our work is not only readable and easy to understand, but also quick and to the point. This includes and is not limited to our code, written reports, and communication logs. Given that each person has their own way of thinking and implementing code, our work must be clean and simple so as to allow other team members to implement and coordinate with their portion of the work with ease. Adhering to this value will save us considerable time and prevent unncessary confusion between team members, potential clients, and anyone implementing our work in future projects.   
 
 ### Second Value
 *second value paragraph*
