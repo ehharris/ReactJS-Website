@@ -10,7 +10,7 @@
  | Nick Kaliher              | nkaliher  | nkaliher        | nickkaliher@gmail.com  | Bic Boi                 |
  
 ### Antonio Segovia Maldonado
-*Spicy paragraph about myself*
+Antonio is an undergraduate student on his fourth year and majoring in Applied Computing Technology. He currently works for the CSU Engineering Network Services (ENS) as a Support Assistant. He is also working on the redesign of the ENS website as a front-end and back-end developer. In his free time, he is an avid and casual cycler and spends time reading fiction or playing video games. He loves to cook; for the most part, he usually spends every evening cooking dinner, especially when it comes to perfecting his own take on bolognese. He owns a cockatiel parrot and a parakeet, who are both temporarily staying with his parents due to a change in new residence and pet restrictions.   
  
 ### Tyler Dansby
 *Saucy bio*
