@@ -17,7 +17,7 @@ Antonio is an undergraduate student on his fourth year and majoring in Applied C
 Tyler is a third year student in Computer Science at Colorado State University, planning to graduate in 2020. He just started a Data Entry job at Anderson Podiatry Center in Fort Collins, primarily scanning documents and using excel and word to keep track of data and send out letters to patients. He is still unsure of what route he wants to take with his degree but is excited about the range of options. He enjoys playing a variety of video games in his freetime, as well as watching movies and TV shows. Having built a desk and a lightsaber replica the past year, both with little to no prior experience in woodworking and soldering/wiring, he almost always finds a creative outlet.
 
 ### Nick Kaliher
-Nick is a Junior Computer Science major. He is currently a full time student at CSU and plans to graduate in 2020. Nick enjoys playing video games and watching a variety of forms of media. He has an interests in artifical intelligence and wishes to return to CSU after some years in industry to get a masters degree. 
+Nick is a Junior Computer Science major. He is currently a full time student at CSU and plans to graduate in 2020. Nick enjoys playing video games and watching a variety of forms of media. He has an interests in artifical intelligence and wishes to return to CSU after some years in industry to get a masters degree. Outside of class activities include hanging out with friends, rockclimbing, and hiking. 
 
 ### Next Person
 *A slightly less saucy bio*
@@ -40,4 +40,4 @@ It is impossible to have synergy in a team without good communication. Not only 
 
 
 # Expectations
-
+All team members are expected to follow the manifesto and all the values within it; as well as github etiquette and the CSU Conduct Guidlines.
