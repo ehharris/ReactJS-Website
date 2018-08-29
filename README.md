@@ -6,13 +6,17 @@
  | Name                      | CSU eName | Github Username | Email Address          | Nickname                |
  | ------------------------- | --------- | --------------- | ---------------------- | ----------------------- |
  | Antonio Segovia Maldonado | anthos    | aanthos         | athovla@gmail.com      | Bubba Fudpucker         |
+ | Tyler Dansby              | tsdansby  | TylerDansby     | tylersd01@gmail.com    | Teeler Dansberry (apparently)|
  | *continue here*           |    *plis* | *overwrite me*  | *or social security #* | *no knighting yourself* |
  
 ### Antonio Segovia Maldonado
 *Spicy paragraph about myself*
  
-### Next Person Here
+### Tyler Dansby
 *Saucy bio*
+
+### Next Person Here
+*Even saucier bio*
 
 
 # Manifesto
