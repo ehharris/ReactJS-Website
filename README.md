@@ -7,7 +7,7 @@
  | ------------------------- | --------- | --------------- | ---------------------- | ----------------------- |
  | Antonio Segovia Maldonado | anthos    | aanthos         | athovla@gmail.com      | Bubba Fudpucker         |
  | Tyler Dansby              | tsdansby  | TylerDansby     | tylersd01@gmail.com    | Teeler Dansberry (apparently)|
- | *continue here*           |    *plis* | *overwrite me*  | *or social security #* | *no knighting yourself* |
+ | Nick Kaliher              | nkaliher  | nkaliher        | nickkaliher@gmail.com  | Bic Boi                 |
  
 ### Antonio Segovia Maldonado
 *Spicy paragraph about myself*
@@ -15,8 +15,11 @@
 ### Tyler Dansby
 *Saucy bio*
 
-### Next Person Here
-*Even saucier bio*
+### Nick Kaliher
+*The sauciest of bios*
+
+### Next Person
+*A slightly less saucy bio*
 
 
 # Manifesto
