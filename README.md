@@ -1,4 +1,5 @@
-# t10 - Team Name
+# t10 - Team Name 
+
 ![Team Picture](/images/picture.png "title text")
 *Add picture following format above & add a caption*
 
@@ -16,7 +17,7 @@ Antonio is an undergraduate student on his fourth year and majoring in Applied C
 *Saucy bio*
 
 ### Nick Kaliher
-*The sauciest of bios*
+Nick is a Junior Computer Science major. He is currently a full time student at CSU and plans to graduate in 2020. Nick enjoys playing video games and watching a variety of forms of media. He has an interests in artifical intelligence and wishes to return to CSU after some years in industry to get a masters degree. 
 
 ### Next Person
 *A slightly less saucy bio*
@@ -28,8 +29,9 @@ Antonio is an undergraduate student on his fourth year and majoring in Applied C
 ### First Value
 *first value paragraph*
 
-### Second Value
-*second value paragraph*
+### Punctuality
+It is critical for the team to produce clean and effiecient code in a timely manner. Not only should punctality be implemented throught the assignmet turn in times, but also through teammate communication. The team should be quick and responsive to the others' questions. 
+
 
 ### Third Value
 *third value paragraph*
