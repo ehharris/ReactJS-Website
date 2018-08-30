@@ -25,7 +25,9 @@ Eli is a Senior Applied Computing Technology major aspires to graduate in the Sp
 
 
 # Manifesto
-*Introductory Paragraph Here*
+
+### Intro 
+Our team will follow some simple guidelines to ensure that we are as productive, effcient and punctional as we can be. In this manifesto we detail how we'll strive towards making our code as clean, simple and efficient as possible. How we'll aim towards being punctual with regards to our assignments. Rules for communicatating important and not-so-imortant things to team members and others. Finally, this manifesto also shows how we'll be sensible with coding, approaching problems and questions about these problems.
 
 ### Clean, Simple, and Efficient Work
 As developers contributing to the same projects, it is essential that our work is not only readable and easy to understand, but also quick and to the point. This includes and is not limited to our code, written reports, and communication logs. Given that each person has their own way of thinking and implementing code, our work must be clean and simple so as to allow other team members to implement and coordinate with their portion of the work with ease. Adhering to this value will save us considerable time and prevent unnecessary confusion between team members, potential clients, and anyone implementing our work in future projects.   
@@ -36,8 +38,8 @@ It is critical for the team to produce clean and effiecient code in a timely man
 ### Communication
 It is impossible to have synergy in a team without good communication. Not only in describing how we add or change parts of the code, but what our intentions and goals are beforehand. Getting a solid idea of who will be focusing on what at which times will greatly reduce stress and wasted time. If a teammate has a problem and needs help, they should feel free to ask the others as they have likely run into a similar issue.
 
-### Fourth Value
-*fourth value paragraph*
+### Sensibility 
+When developing our code, we must practice coding in a way that others can easily understand. Doing this will help the group maintain code that anyone can easily work on to help work on problems quickly and make it easier to evaluate where a proogram goes wrong. This also extends to asking for help on problems that arise. By asking team mates and piazza before using the TA's or even Dave's limited amount of time we can help reserve our most vauble resources before we burn them out with our questions. 
 
 
 # Expectations
