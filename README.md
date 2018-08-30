@@ -1,6 +1,8 @@
-# t10 - Code 404
+# t10 - Error 404: Team Name Not Found
 
 ![Team Picture](/TeamPhoto.jpg "We Are Toucan")
+
+*We Are Toucan*
 
 
 # Member Information
@@ -15,7 +17,7 @@
 Antonio is an undergraduate student on his fourth year and majoring in Applied Computing Technology. He currently works for the CSU Engineering Network Services (ENS) as a Support Assistant. He is also working on the redesign of the ENS website as a front-end and back-end developer. In his free time, he is an avid and casual cycler and spends time reading fiction or playing video games. He loves to cook; for the most part, he usually spends every evening cooking dinner, especially when it comes to perfecting his own take on bolognese. He owns a cockatiel parrot and a parakeet, who are both temporarily staying with his parents due to a change in new residence and pet restrictions.   
  
 ### Tyler Dansby
-Tyler is a third year student in Computer Science at Colorado State University, planning to graduate in 2020. He just started a Data Entry job at Anderson Podiatry Center in Fort Collins, primarily scanning documents and using excel and word to keep track of data and send out letters to patients. He is still unsure of what route he wants to take with his degree but is excited about the range of options. He enjoys playing a variety of video games in his freetime, as well as watching movies and TV shows. Having built a desk and a lightsaber replica the past year, both with little to no prior experience in woodworking and soldering/wiring, he almost always finds a creative outlet.
+Tyler is a third year student in Computer Science at Colorado State University, planning to graduate in 2020. He just started a Data Entry job at Anderson Podiatry Center in Fort Collins, primarily scanning documents and using excel and word to keep track of data and send out letters to patients. He is still unsure of what route he wants to take with his degree but is excited about the range of options. He enjoys playing a variety of video games in his freetime, as well as watching movies and TV shows. Having built a desk and a lightsaber replica over the past year, he usually always finds some type of creative outlet.
 
 ### Nick Kaliher
 Nick is a Junior Computer Science major. He is currently a full time student at CSU and plans to graduate in 2020. Nick enjoys playing video games and watching a variety of forms of media. He has an interests in artifical intelligence and wishes to return to CSU after some years in industry to get a masters degree. Outside of class activities include hanging out with friends, rockclimbing, and hiking. 
@@ -43,8 +45,6 @@ When developing our code, we must practice coding in a way that others can easil
 
 
 # Expectations
-Although everyone has different styles in coding and thinking, team members are expected to follow clean code principles. 
+Although everyone has different styles in coding and thinking, team members are expected to follow clean code principles. For any major changes that will potentially affect the work of another, the editor is expected to at least notify everyone of their change and assign someone to approve their changes in GitHub. 
 
-For any major changes that will potentially affect the work of another, the editor is expected to at least notify everyone of their change and assign someone to approve their changes in GitHub.
-
-In general, all team members are expected to follow the manifesto and all the values within it; as well as github etiquette and the CSU Conduct Guidlines.
+If any problems arise within the group for whatever reason, the team is expected to talk it over to find a solution that works for everyone. In general, all team members are expected to follow the manifesto and all the values within it; as well as GitHub etiquette and the CSU Conduct Guidelines.
