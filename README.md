@@ -27,7 +27,7 @@ Nick is a Junior Computer Science major. He is currently a full time student at 
 *Introductory Paragraph Here*
 
 ### Clean, Simple, and Efficient Work
-As developers contributing to the same projects, it is essential that our work is not only readable and easy to understand, but also quick and to the point. This includes and is not limited to our code, written reports, and communication logs. Given that each person has their own way of thinking and implementing code, our work must be clean and simple so as to allow other team members to implement and coordinate with their portion of the work with ease. Adhering to this value will save us considerable time and prevent unncessary confusion between team members, potential clients, and anyone implementing our work in future projects.   
+As developers contributing to the same projects, it is essential that our work is not only readable and easy to understand, but also quick and to the point. This includes and is not limited to our code, written reports, and communication logs. Given that each person has their own way of thinking and implementing code, our work must be clean and simple so as to allow other team members to implement and coordinate with their portion of the work with ease. Adhering to this value will save us considerable time and prevent unnecessary confusion between team members, potential clients, and anyone implementing our work in future projects.   
 
 ### Punctuality
 It is critical for the team to produce clean and effiecient code in a timely manner. Not only should punctality be implemented throught the assignment turn in times, but also through teammate communication. The team should be quick and responsive to the others' questions. 
@@ -40,4 +40,8 @@ It is impossible to have synergy in a team without good communication. Not only 
 
 
 # Expectations
-All team members are expected to follow the manifesto and all the values within it; as well as github etiquette and the CSU Conduct Guidlines.
+Although everyone has different styles in coding and thinking, team members are expected to follow clean code principles. 
+
+For any major changes that will potentially affect the work of another, the editor is expected to at least notify everyone of their change and assign someone to approve their changes in GitHub.
+
+In general, all team members are expected to follow the manifesto and all the values within it; as well as github etiquette and the CSU Conduct Guidlines.
