@@ -1,6 +1,6 @@
-# t10 - The 0xA Team
+# t10 - Code 404
 
-![Team Picture](/images/picture.png "title text")
+![Team Picture](/TeamPhoto.jpg "We Are Toucan")
 *Add picture following format above & add a caption*
 
 # Member Information
