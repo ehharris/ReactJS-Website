@@ -1,7 +1,7 @@
 # t10 - Code 404
 
 ![Team Picture](/TeamPhoto.jpg "We Are Toucan")
-*Add picture following format above & add a caption*
+
 
 # Member Information
  | Name                      | CSU eName | Github Username | Email Address          | Nickname                |
