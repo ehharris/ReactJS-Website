@@ -1,6 +1,7 @@
 package com.tripco.t10.server;
 
 import com.tripco.t10.planner.Plan;
+import com.tripco.t10.planner.Calculate;
 
 import spark.Request;
 import spark.Response;
@@ -45,6 +46,7 @@ public class MicroServer {
     // client is sending data, so a HTTP POST is used instead of a GET
     get("/config", this::config);
     post("/plan", this::plan);
+    post("/distance", this::distance);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
   }
@@ -131,5 +133,12 @@ public class MicroServer {
     response.header("Access-Control-Allow-Origin", "*");
 
     return name;
+  }
+
+  private String distance(Request request, Response response) {
+    response.type("text/plain");
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return new Calculate(request).getDistance();
   }
 }
