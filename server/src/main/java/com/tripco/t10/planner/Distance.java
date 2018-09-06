@@ -18,7 +18,11 @@ public class Distance {
     private String units;
     public int distance;
 
-    public int calculateDistance(Place origin, Place destination){
+    public void distanceBetween() {
+        // this.distance = calculateDistance();
+    }
+
+    private int calculateDistance(Place origin, Place destination){
 
         double x1 = Math.toRadians(origin.latitude);
         double x2 = Math.toRadians(destination.latitude);

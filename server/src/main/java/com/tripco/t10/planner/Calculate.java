@@ -24,6 +24,10 @@ public class Calculate {
         Gson gson = new Gson();
         distance = gson.fromJson(requestBody, Distance.class);
 
+        // gives the distance object values
+        distance.distanceBetween();
+
+        // log something
         System.out.print(distance);
 
 
