@@ -18,7 +18,11 @@ public class Distance {
     private String units;
     public int distance;
 
-    public int calculateDistance(long x2, long x1, long y){
+    public int calculateDistance(Place origin, Place destination){
+
+        double x1 = Math.toRadians(origin.latitude);
+        double x2 = Math.toRadians(destination.latitude);
+        double y = Math.abs(Math.toRadians(destination.longitude) - Math.toRadians(origin.longitude));
 
         distance = (int)Math.round(Math.atan((Math.sqrt( Math.pow (Math.cos(x2) * Math.sin(y),2)) + Math.pow(( Math.cos(x1) * Math.sin(x2) - Math.sin(x1)* Math.cos(x2) * Math.cos(y) ),2)) / (Math.sin(x1) * Math.sin(x2) + Math.cos(x1) * Math.sin(x2) * Math.cos(y))));
         return distance;
