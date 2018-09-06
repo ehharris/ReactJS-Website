@@ -135,7 +135,9 @@ public class MicroServer {
     return name;
   }
 
+  //TODO: add description of distance class
   private String distance(Request request, Response response) {
+
     response.type("text/plain");
     response.header("Access-Control-Allow-Origin", "*");
 

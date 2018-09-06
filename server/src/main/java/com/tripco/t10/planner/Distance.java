@@ -1,11 +1,5 @@
 package com.tripco.t10.planner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.tripco.t10.server.HTTP;
-import spark.Request;
-import java.util.ArrayList;
 import java.lang.Math;
 
 
@@ -16,21 +10,23 @@ public class Distance {
     private Place origin;
     private Place destination;
     private String units;
-    public int distance;
+    private int distance;
 
-    public void distanceBetween() {
-        // this.distance = calculateDistance();
+    //TODO: possible to do conversion from mi - km here
+    //Constructor makes the distance object values
+
+    public int getDistance(){
+        return this.distance;
     }
 
-    private int calculateDistance(Place origin, Place destination){
+    public void calculateDistance(){
 
-        double x1 = Math.toRadians(origin.latitude);
-        double x2 = Math.toRadians(destination.latitude);
-        double y = Math.abs(Math.toRadians(destination.longitude) - Math.toRadians(origin.longitude));
-
-        distance = (int)Math.round(Math.atan((Math.sqrt( Math.pow (Math.cos(x2) * Math.sin(y),2)) + Math.pow(( Math.cos(x1) * Math.sin(x2) - Math.sin(x1)* Math.cos(x2) * Math.cos(y) ),2)) / (Math.sin(x1) * Math.sin(x2) + Math.cos(x1) * Math.sin(x2) * Math.cos(y))));
-        return distance;
-
+        double x1, x2, y;
+        x1 = Math.toRadians(this.origin.latitude);
+        x2 = Math.toRadians(this.destination.latitude);
+        y = Math.abs(Math.toRadians(this.destination.longitude) - Math.toRadians(this.origin.longitude));
+        //TODO: Fix and make more readable
+        this.distance = (int)Math.round(Math.atan((Math.sqrt( Math.pow (Math.cos(x2) * Math.sin(y),2)) + Math.pow(( Math.cos(x1) * Math.sin(x2) - Math.sin(x1)* Math.cos(x2) * Math.cos(y) ),2)) / (Math.sin(x1) * Math.sin(x2) + Math.cos(x1) * Math.sin(x2) * Math.cos(y))));
     }
 
 

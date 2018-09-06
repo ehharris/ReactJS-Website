@@ -20,17 +20,14 @@ public class Calculate {
         JsonParser jsonParser = new JsonParser();
         JsonElement requestBody = jsonParser.parse(request.body());
 
-        // convert the body of the request to a Java class.
+        // convert the body of the request to a Distance object.
         Gson gson = new Gson();
         distance = gson.fromJson(requestBody, Distance.class);
 
-        // gives the distance object values
-        distance.distanceBetween();
+        distance.calculateDistance();
 
         // log something
-        System.out.print(distance);
-
-
+        System.out.print(distance.getDistance());
     }
 
     public String getDistance() {
