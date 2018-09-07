@@ -33,11 +33,12 @@ All we had planned out was to meet at somepoint before Thursday and figure it ou
 * RESTful Service for distance.
 
 #### Incomplete epics in Sprint Backlog 
-* N/A
+* Server v1.0 finished and deployed, but it ran into a configuration error at the last minute
 
 #### What went well
 * Finished it in a reasonable time.
 * Got along well with each other; little to no conflict.
+* Coordination in Github
 
 #### Problems encountered and resolutions
 * Understanding server-client communication.
@@ -49,8 +50,14 @@ All we had planned out was to meet at somepoint before Thursday and figure it ou
 #### What went well
 Teamwork, non-conflictive, and finishing the task. How we split up the tasks and code worked out well, and used each team members strengths to make it go as smooth as possible. 
 
+Teamwork and coordination in Github. Every team member made sure to issue a task whenever they made changes to the code, merged their commits to a separate branch other than the master branch, and had another team member approve the pull request into the master branch.
+
 #### Potential improvements
 Communication and punctuality. With how late we recieved the sprint 1 specifications, it made it hard to find meeting times that worked for everyone. We need to fix this next time and have better time management and punctuality so we are not working on the assignment only a day or two before its due. We need to check Slack often for potential updates in the absence of notifications.
 
+Familiarity with IntelliJ IDEA. As we began developing the project for sprint 1, we spent a large amount of time trying to figure out how this program functioned and how it interacted with Github. We also spent too much time troubleshooting the program, which could have been used to work on sprint 1. In some cases, a few of us needed to reinstall the whole program, which takes a long time.
+
 #### What we will change next time
 Considering these projects will only get bigger and more complicated, more planning and more meetups will be necessary. The process taken by our team for Sprint 1 will not work out for future Sprints. A more descriptive/complex distribution of workload rather than just a task or two per person.  
+
+It will be necessary that we fully understand the functions of IntelliJ before we begin more complex projects. In order to improve on this, we will read the IntelliJ documentation, read tutorials, and continue practicing on this program as we continue through the semester.
