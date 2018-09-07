@@ -57,7 +57,11 @@ Communication and punctuality. With how late we recieved the sprint 1 specificat
 
 Familiarity with IntelliJ IDEA. As we began developing the project for sprint 1, we spent a large amount of time trying to figure out how this program functioned and how it interacted with Github. We also spent too much time troubleshooting the program, which could have been used to work on sprint 1. In some cases, a few of us needed to reinstall the whole program, which takes a long time.
 
+Usage of Github and IntelliJ. A lot of our issues with Github came from not understanding how to properly use IntelliJ. Now that we're familiar with IntelliJ our consistiency with proper Github use should improve drastically. 
+
 #### What we will change next time
 Considering these projects will only get bigger and more complicated, more planning and more meetups will be necessary. The process taken by our team for Sprint 1 will not work out for future Sprints. A more descriptive/complex distribution of workload rather than just a task or two per person.  
 
 It will be necessary that we fully understand the functions of IntelliJ before we begin more complex projects. In order to improve on this, we will read the IntelliJ documentation, read tutorials, and continue practicing on this program as we continue through the semester.
+
+Improving how we will tackle projects with Github/Zenhub will greatly increase our visibility on what needs to get done and when it will need to be done by. We will be creating more and smaller 'issues' and tasks within Zenhub so we can be more productive and prepare for having much larger sized projects in the future.
