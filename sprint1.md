@@ -15,33 +15,33 @@
 ## Policies
 
 * All commits include a task/issue number.
-* No commits to master
+* No commits to master.
 
 ## Plan
 
 Epics planned for this release.
 
-* Responsive Client for Distance Calculator 
-* RESTful Service for distance 
+* Responsive Client for Distance Calculator.
+* RESTful Service for distance.
 
 All we had planned out was to meet at somepoint before Thursday and figure it out together, only a bit of work was done outside this half-day session. Much more planning will be needed in the future for bigger projects. 
 
 ## Review
 
 #### Completed epics in Sprint Backlog 
-* Responsive Client for Distance Calculator 
-* RESTful Service for distance 
+* Responsive Client for Distance Calculator.
+* RESTful Service for distance.
 
 #### Incomplete epics in Sprint Backlog 
 * N/A
 
 #### What went well
-* We finished it in a resonable time 
-* Got along well with eachother, little to no conflict. 
+* We finished it in a resonable time.
+* Got along well with eachother, little to no conflict.
 
 #### Problems encountered and resolutions
-* Understanding server-client communication 
-* UNderstanding where to get input from server and JSON objects 
+* Understanding server-client communication.
+* UNderstanding where to get input from server and JSON objects.
 
 ## Retrospective
 
