@@ -25,9 +25,6 @@ public class Calculate {
         distance = gson.fromJson(requestBody, Distance.class);
 
         distance.calculateDistance();
-
-        // log something
-        System.out.print(distance.getDistance());
     }
 
     public String getDistance() {
