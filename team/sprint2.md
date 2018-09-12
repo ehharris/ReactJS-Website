@@ -1,4 +1,4 @@
-# Sprint 2 - *your team number* - *your team name*
+# Sprint 2 - t10 - Error 404: Team Name Not Found
 
 ## Goal
 
