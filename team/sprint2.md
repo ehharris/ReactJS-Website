@@ -35,7 +35,7 @@
 
 *An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
 
-* ## Tripco: All clients and servers must interoperate!: 
+* ## Tripco: All clients and servers must interoperate!
     * This requires an adherence to the TFFI specification.
     * Each client must include a configuration option to change to server:port used for RESTful services.
 * ## TripCo: The solution must be responsive for mobile devices.
