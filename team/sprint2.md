@@ -33,7 +33,7 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
+For Sprint 2 we expect to complete all of the epics in our backlog as well as maintain clean and efficient code in the process. Working on the project in small increments each day will help us achieve this goal and do it in a timely manner. As always, this will require good communication between all team members to decide the best times to meet during this Sprint.
 
 * ## Tripco: All clients and servers must interoperate!
     * This requires an adherence to the TFFI specification.
