@@ -3,7 +3,7 @@
 ## Goal
 
 ### A mobile, responsive map and itinerary!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: Nick Kaliher
 
 ## Definition of Done
 
