@@ -40,7 +40,7 @@
     * Each client must include a configuration option to change to server:port used for RESTful services.
 * ## TripCo: The solution must be responsive for mobile devices.
     * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
-    * This is an ongoing issue that you might want to reflect in your README and sprint#.md's 
+    * This is an ongoing issue that may need to be reflected in the README and sprint2.md. 
 * ## User: I want to supply my own units for the distances.
     * An arbitrary unit of measure should be able to be defined to use in the itinerary.
 * ## TripCo: All code shall be clean!
