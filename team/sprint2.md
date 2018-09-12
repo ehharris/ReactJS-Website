@@ -3,7 +3,7 @@
 ## Goal
 
 ### A mobile, responsive map and itinerary!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: Nick Kaliher
 
 ## Definition of Done
 
@@ -35,8 +35,24 @@
 
 *An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
 
-* *## epic title: description*
-*
+* ## Tripco: All clients and servers must interoperate!
+    * This requires an adherence to the TFFI specification.
+    * Each client must include a configuration option to change to server:port used for RESTful services.
+* ## TripCo: The solution must be responsive for mobile devices.
+    * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
+    * This is an ongoing issue that may need to be reflected in the README and sprint2.md. 
+* ## User: I want to supply my own units for the distances.
+    * An arbitrary unit of measure should be able to be defined to use in the itinerary.
+* ## TripCo: All code shall be clean!
+    * Adhere to the Google style guide for Java and JavaScript.
+    * Write maintainable code.
+    * Read the book.
+    * Amends to the sprint2.md and README.md will be necessary to stay adaptive. 
+* ## User:I want a map and itinerary for my trip
+    * Trips in the state of Colorado are tested on another tool.
+    * The tool produces a file that conforms to the TFFI trip object.
+    * The trip is always a round trip.
+    * Show a map and itinerary for the trip in the file that can be viewed on a phone.
 
 *Include a discussion of planning decisions.*
 
