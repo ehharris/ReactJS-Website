@@ -36,24 +36,24 @@
 *An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
 
 * ## Tripco: All clients and servers must interoperate!: 
-    *This requires an adherence to the TFFI specification.
-    *Each client must include a configuration option to change to server:port used for RESTful services.
+    * This requires an adherence to the TFFI specification.
+    * Each client must include a configuration option to change to server:port used for RESTful services.
 * ## TripCo: The solution must be responsive for mobile devices.
-    *Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
-    *This is an ongoing issue that you might want to reflect in your README and sprint#.md's 
+    * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
+    * This is an ongoing issue that you might want to reflect in your README and sprint#.md's 
 * ## User: I want to supply my own units for the distances.
-    *I should be able to define an arbitrary unit of measure to use in the itinerary.
+    * I should be able to define an arbitrary unit of measure to use in the itinerary.
 * ## TripCo: All code shall be clean!
-    *Adhere to the Google style guide for Java and JavaScript.
-    *Write maintainable code.
-    *Time to read the book if you haven't started.
-    *More to come!
-    *You may amend your sprint#.md and README.md with policies as needed to reflect specifics you would like to focus on for the sprint and the future.
+    * Adhere to the Google style guide for Java and JavaScript.
+    * Write maintainable code.
+    * Time to read the book if you haven't started.
+    * More to come!
+    * You may amend your sprint#.md and README.md with policies as needed to reflect specifics you would like to focus on for the sprint and the future.
 * ## User:I want a map and itinerary for my trip
-    *I plan trips in the state of Colorado in another tool.
-    *The tool produces a file that conforms to the TFFI trip object.
-    *The trip is always a round trip.
-    *Show me a map and itinerary for the trip in the file that I can view on my phone.
+    * I plan trips in the state of Colorado in another tool.
+    * The tool produces a file that conforms to the TFFI trip object.
+    * The trip is always a round trip.
+    * Show me a map and itinerary for the trip in the file that I can view on my phone.
 
 *Include a discussion of planning decisions.*
 
