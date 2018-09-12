@@ -42,18 +42,17 @@
     * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
     * This is an ongoing issue that you might want to reflect in your README and sprint#.md's 
 * ## User: I want to supply my own units for the distances.
-    * I should be able to define an arbitrary unit of measure to use in the itinerary.
+    * An arbitrary unit of measure should be able to be defined to use in the itinerary.
 * ## TripCo: All code shall be clean!
     * Adhere to the Google style guide for Java and JavaScript.
     * Write maintainable code.
-    * Time to read the book if you haven't started.
-    * More to come!
-    * You may amend your sprint#.md and README.md with policies as needed to reflect specifics you would like to focus on for the sprint and the future.
+    * Read the book.
+    * Amends to the sprint2.md and README.md will be necessary to stay adaptive. 
 * ## User:I want a map and itinerary for my trip
-    * I plan trips in the state of Colorado in another tool.
+    * Trips in the state of Colorado are tested on another tool.
     * The tool produces a file that conforms to the TFFI trip object.
     * The trip is always a round trip.
-    * Show me a map and itinerary for the trip in the file that I can view on my phone.
+    * Show a map and itinerary for the trip in the file that can be viewed on a phone.
 
 *Include a discussion of planning decisions.*
 
