@@ -54,7 +54,7 @@ For Sprint 2 we expect to complete all of the epics in our backlog as well as ma
     * The trip is always a round trip.
     * Show a map and itinerary for the trip in the file that can be viewed on a phone.
     
-
+During the discussion of our plan, we agreed to divide the workload under each epic into tasks that we believed would take under one hour each to complete. If we find that one task will take longer than we expected, we will divide the task further. Additionally, we will add or adjust tasks as needed while the project progresses. We will maintain good communication and regularly check in with each other on our progress regularly.
 
 ## Metrics
 
