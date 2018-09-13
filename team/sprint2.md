@@ -53,19 +53,16 @@ For Sprint 2 we expect to complete all of the epics in our backlog as well as ma
     * The tool produces a file that conforms to the TFFI trip object.
     * The trip is always a round trip.
     * Show a map and itinerary for the trip in the file that can be viewed on a phone.
-
-*Include a discussion of planning decisions.*
+    
 
 
 ## Metrics
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *value* | *value* |
-| Tasks |  *value*   | *value* | 
-| Story Points |  *value*  | *value* | 
-
-*Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
+| Epics | 5 | 0 |
+| Tasks |   7   | 1 | 
+| Story Points |  20  | 1 | 
 
 
 ## Scrums
