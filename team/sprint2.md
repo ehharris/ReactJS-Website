@@ -60,9 +60,9 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | 5 | 0 |
-| Tasks |   7   | 1 | 
-| Story Points |  20  | 1 | 
+| Epics | 5 | *value* |
+| Tasks |   7   | *value* | 
+| Story Points |  20  | *value* | 
 
 
 ## Scrums
