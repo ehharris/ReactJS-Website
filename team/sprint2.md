@@ -62,7 +62,7 @@ During the discussion of our plan, we agreed to divide the workload under each e
 | --- | ---: | ---: |
 | Epics | 5 | *value* |
 | Tasks |   7   | *value* | 
-| Story Points |  20  | *value* | 
+| Story Points |  18  | *value* | 
 
 
 ## Scrums
@@ -70,6 +70,7 @@ During the discussion of our plan, we agreed to divide the workload under each e
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
+| 9/14/18 | none | #93 | none |
 
 *Add a new row for each scrum session.*
 
