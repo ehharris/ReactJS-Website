@@ -10,7 +10,6 @@ import spark.Request;
 public class Calculate {
 
     private Distance distance;
-
     public Calculate (Request request){
 
         // first print the request
@@ -24,7 +23,8 @@ public class Calculate {
         Gson gson = new Gson();
         distance = gson.fromJson(requestBody, Distance.class);
 
-        distance.calculateDistance();
+        distance.setDistance(distance.calculateDistance(distance.getOrigin().latitude, distance.getDestination().latitude, distance.getOrigin().longitude, distance.getDestination().longitude, distance.getUnits(),0));
+
     }
 
     public String getDistance() {
