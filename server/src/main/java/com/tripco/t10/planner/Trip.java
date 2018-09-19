@@ -62,7 +62,14 @@ public class Trip extends Vincenty {
 	  dist.add(calculateDistance(x1, x2, y1, y2, this.options.units, this.options.unitRadius));
 	}
 
+	//Calculate round trip distance.
+	double x1 = this.places.get(this.places.size()-1).latitude;
+	double x2 = this.places.get(0).latitude;
+	double y1 = this.places.get(this.places.size()-1).longitude;
+	double y2 = this.places.get(0).longitude;
 
+	dist.add(calculateDistance(x1, x2, y1, y2, this.options.units, this.options.unitRadius));
+	  
 	return dist;
 
   }
