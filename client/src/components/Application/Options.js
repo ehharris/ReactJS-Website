@@ -13,7 +13,8 @@ class Options extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-        port: ''
+        port: '',
+        data: null
     };
   }
 
@@ -30,15 +31,13 @@ class Options extends Component{
     fetch(this.state.port, {
         method: 'POST',
         body: JSON.stringify(this.state),
-        cache: 'no-cache',
-        credentials: 'same-origin',
         headers: {
             'content-type': 'application/json'
         },
-        mode: 'cors',
-        redirect: 'follow',
-        referrer: 'no-referrer',
-    });
+        mode: "no-cors"
+    })
+        .then(response => response.json())
+        .then(data => this.setState({data}));
   }
 
   //TODO add test case (.then function)
