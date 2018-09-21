@@ -58,27 +58,27 @@ class Options extends Component{
     /*
      * Loads the potential button values for server:port config
      */
-    const server_config_buttons = this.props.config.ports.map((port) =>
-      <Button
-        key={'server_port_button' + port}
-        className='btn-outline-dark unit-button'
-        active={this.props.options.port === port}
-        value={port}
-        onClick={(event) => this.props.updateOptions('port', event.target.value)}
-        onChange={this.handleChange}
-        >
-          {port.charAt(0).toUpperCase() + port.slice(1)}
-      </Button>
-    );
+    // const server_config_buttons = this.props.config.ports.map((port) =>
+    //   <Button
+    //     key={'server_port_button' + port}
+    //     className='btn-outline-dark unit-button'
+    //     active={this.props.options.port === port}
+    //     value={port}
+    //     onClick={(event) => this.props.updateOptions('port', event.target.value)}
+    //     onChange={this.handleChange}
+    //     >
+    //       {port.charAt(0).toUpperCase() + port.slice(1)}
+    //   </Button>
+    // );
 
     return(
       <Card>
-        <CardBody>
-          <p>Select the options you wish to use.</p>
-          <ButtonGroup>
-            {buttons}
-          </ButtonGroup>
-        </CardBody>
+        {/*<CardBody>*/}
+          {/*<p>Select the options you wish to use.</p>*/}
+          {/*<ButtonGroup>*/}
+            {/*{buttons}*/}
+          {/*</ButtonGroup>*/}
+        {/*</CardBody>*/}
 
         {/* Adds a text area section for inputting server:port */}
         <form onSubmit={this.handleSubmit}>
