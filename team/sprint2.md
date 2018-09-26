@@ -73,8 +73,8 @@ During the discussion of our plan, we agreed to divide the workload under each e
 | 9/17/18 | N/A | #85 #93 #84 | N/A |
 | 9/19/18 | #51 #75 #100 | #101 #85 #93 #84 #95 | N/A |
 | 9/21/18 | #51 #75 #100 #93 #89 #85 #101 #97 | #84 #114 | N/A |
+| 9/24/18 | #51 #75 #100 #93 #89 #85 #101 #97 | #84 #114 | Couldn't meet today |
 
-*Add a new row for each scrum session.*
 
 ## Review
 
