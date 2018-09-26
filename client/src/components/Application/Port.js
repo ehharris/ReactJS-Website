@@ -14,7 +14,7 @@ class Port extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.state = {
             port: '',
-            data: null
+            data: ''
         };
     }
 
@@ -28,21 +28,22 @@ class Port extends Component{
         // below used for testing
         console.log(this.state.port);
 
-        fetch(this.state.port, {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'content-type': 'application/json'
-            },
-            mode: "no-cors"
+        fetch('http://' + this.state.port, {
+            method: 'GET'
         })
-            .then(response => response.json())
-            .then(data => this.setState({data}));
+            .then(response => response.text())
+            .then(resData => this.setState({data: resData}));
+            //.then(resData => console.log(resData));
+            //.then(response => this.setState({data: response.text()}));
+
+            //.then(response => this.setState({data: event.target.value}));
+        console.log(this.state.data);
     }
 
     //TODO add test case (.then function)
 
     render() {
+        console.log("Data Received:" + this.state.data);
         return(
             <Card>
                 {/* Adds a text area section for inputting server:port */}
@@ -50,6 +51,7 @@ class Port extends Component{
                     <textarea value={this.state.port} onChange={this.handleChange} />
                     <Button type="submit">Submit</Button>
                 </form>
+                {this.state.data}
             </Card>
         )
     }
