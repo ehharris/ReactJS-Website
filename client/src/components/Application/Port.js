@@ -2,56 +2,116 @@ import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
 
-/* Options allows the user to change the parameters for planning
- * and rendering the trip map and itinerary.
- * The options reside in the parent object so they may be shared with the Trip object.
- * Allows the user to set the options used by the application via a set of buttons.
+/* Allows the user to change the parameters for server
+ * and port configuration and desired microservice.
+ * Allows the user to set the options used by the application via a set of inputs and buttons.
  */
 class Port extends Component{
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.changeServer = this.changeServer.bind(this);
+        this.changePort = this.changePort.bind(this);
+        this.changeService = this.changeService.bind(this);
+        this.changeName = this.changeName.bind(this);
         this.state = {
+            server: '',
             port: '',
+            service: '',
+            name: 'stranger',
             data: ''
         };
     }
 
-    handleChange(event) {
+    changeServer(event) {
+        this.setState({server: event.target.value});
+    }
+
+    changePort(event) {
         this.setState({port: event.target.value});
     }
+
+    changeService(event) {
+        this.setState({service: event.target.value});
+    }
+
+    changeName(event) {
+        this.setState({name: event.target.value});
+    }
+
 
     handleSubmit(event) {
         event.preventDefault();
         // const data = new FormData(event.target);
         // below used for testing
+        console.log("HandleSubmit Data: ");
+        console.log(this.state.server);
         console.log(this.state.port);
+        console.log(this.state.service);
 
-        fetch('http://' + this.state.port, {
-            method: 'GET'
-        })
-            .then(response => response.text())
-            .then(resData => this.setState({data: resData}));
+        if (this.state.service === "/about" || this.state.service === "/team") {
+            fetch('http://' + this.state.server + ":" + this.state.port + this.state.service, {
+                method: 'GET'
+            })
+                .then(response => response.text())
+                .then(resData => this.setState({data: resData}));
             //.then(resData => console.log(resData));
             //.then(response => this.setState({data: response.text()}));
 
             //.then(response => this.setState({data: event.target.value}));
-        console.log(this.state.data);
+            console.log("Data Received in Fetch:" + this.state.data);
+            console.log("Success! You made it!")
+        }
+
+        if(this.state.service === "/echo" || this.state.service === "/config") {
+            fetch('http://' + this.state.server + ":" + this.state.port + this.state.service, {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(resData => this.setState({data: JSON.stringify(resData)}));
+        }
+
+        if(this.state.service === "/hello") {
+            fetch('http://' + this.state.server + ":" + this.state.port + this.state.service + "/" + this.state.name, {
+                method: 'GET'
+            })
+                .then(response => response.text())
+                .then(resData => this.setState({data: resData}));
+        }
+
+
+        console.log("Data Received: " + this.state.data);
     }
 
-    //TODO add test case (.then function)
-
     render() {
-        console.log("Data Received:" + this.state.data);
+
         return(
             <Card>
-                {/* Adds a text area section for inputting server:port */}
+                <CardBody>
                 <form onSubmit={this.handleSubmit}>
-                    <textarea value={this.state.port} onChange={this.handleChange} />
-                    <Button type="submit">Submit</Button>
+                    <div>Change Server: </div>
+                    <input name="Change Server" type="text" value={this.state.server} onChange={this.changeServer} />
+                    {this.state.server}
+                    <br /><br />
+                    <div>Change Port: </div>
+                    <input name="Change Port" type="text" value={this.state.port} onChange={this.changePort} />
+                    {this.state.port}
+                    <br />
+                    <div>Enter Name: </div>
+                    <input name="Enter Name" type="text" value={this.state.name} onChange={this.changeName} />
+                    <br/>
+                    <div>Select Microservice: </div>
+                    <button value="/about" className="btn-outline-dark unit-button" onClick={this.changeService}>/about</button>
+                    <button value="/echo" className="btn-outline-dark unit-button" onClick={this.changeService}>/echo</button>
+                    <button value="/team" className="btn-outline-dark unit-button" onClick={this.changeService}>/team</button>
+                    <button value="/config" className="btn-outline-dark unit-button" onClick={this.changeService}>/config</button>
+                    <button value="/hello" className="btn-outline-dark unit-button" onClick={this.changeService}>/hello</button>
+                    <br/>
+                    {this.state.service}
+                    {/*<Button type="submit">Submit</Button>*/}
                 </form>
-                {this.state.data}
+                    {this.state.data}
+                </CardBody>
             </Card>
         )
     }

@@ -11,8 +11,6 @@ public class Config {
   private String type = "config";
 
   private List<String> units = Arrays.asList("miles", "kilometers", "nautical miles");
-  //temporary array
-  private List<String> ports = Arrays.asList("31410", "31407", "31409");
 
   static String getConfig() {
     Config conf = new Config();
