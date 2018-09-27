@@ -21,16 +21,31 @@ public class TestPlace {
   @Before
   public void initialize() {
     place = new Place();
-    place.id = "dnvr";
+    place.id="dnvr";
     place.name="Denver";
+    place.latitude=13.0129;
+    place.longitude=29.1138;
   }
 
   @Test 
   public void testPlace() {
-    String id = "dnvr";
-    String name = "Denver";
+    String id="dnvr";
+    String name="Denver";
     assertEquals(place.id, id);
     assertEquals(place.name,name);
   }
 
+  @Test
+  public void testLat() {
+    double test=13.0129;
+      assertTrue(place.latitude==test);
+  }
+
+  @Test
+  public void testLong() {
+      double test=29.1138;
+      assertTrue(place.longitude==test);
+  }
+  
 }
+
