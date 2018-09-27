@@ -4,6 +4,7 @@ import Info from './Info'
 import Options from './Options';
 import Map from './Map';
 import Port from './Port';
+import File from './File';
 
 import { get_config } from '../../api/api';
 
@@ -29,6 +30,7 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
   }
 
   componentWillMount() {
@@ -56,6 +58,22 @@ class Application extends Component {
     trip.options[option] = value;
     this.setState(trip);
   }
+  
+  //TODO File Upload unfinished
+  //Taken from Piazza - Caleb Carlson - https://piazza.com/class/jkocdn0g2lm2f7?cid=180
+  uploadFile(event){
+      let file = event.target.files[0]; // first file in the FileList
+      if (file) {
+          var reader = new FileReader();
+          reader.onload = function(event) {
+                // The file's text will be printed here
+                // event.target.result is the file in string representation,
+                // it is up to you to handle the rest
+              console.log(event.target.result);
+          };
+          reader.readAsText(file);
+      }
+  }
 
   render() {
     if(!this.state.config) { return <div/> }
@@ -66,6 +84,7 @@ class Application extends Component {
         <Map/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Port/>
+        <File/>
       </Container>
     )
   }
