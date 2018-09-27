@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import Map from './Map';
+import Port from './Port';
 
 import { get_config } from '../../api/api';
 
@@ -64,6 +65,7 @@ class Application extends Component {
         <Info/>
         <Map/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+        <Port/>
       </Container>
     )
   }
