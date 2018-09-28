@@ -90,24 +90,28 @@ Our current code has the updated TFFI spec, which allows for oteroperability and
 #### Incomplete epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
-We were unable to complete the itinerary, and the legs of the trip are not drawn on the map. 
+We were unable to complete the itinerary, and the legs of the trip are not drawn on the map. Some of these sprints were mostly completed, but not enough to actually say so. 
 
-* *## epic title: explanation*
-*
+* TripCo: The solution must be responsive for mobile devices.
+* Tripco: All clients and servers must interoperate!
+* User: I want a map and itinerary for my trip
+* TripCo: All code shall be clean!
 
 #### What went well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+Teamwork went very well for this sprint. We all helped each other when necessary, and the tasks were initally divided up to each persons strength. We also adapted very well to new things we learned during the sprint.
 
-* *something*
-*
+* Teamwork
+* Adaptability
+* Communication was good.
 
 #### Problems encountered and resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+Our main issues were with getting started most of the time. With little to nothing to go off of, it would take us a while sometimes to even begin to understand the concepts. This wasted valuable time in the end, and our uncompleted epics reflects this.
 
-* *something*
-*
+* Understanding the big picture and how everything will work together to achieve that.
+* Wasting time on less important tasks.
+* Simply not devoting enough time to the project.
 
 ## Retrospective
 
