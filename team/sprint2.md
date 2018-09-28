@@ -148,5 +148,6 @@ Planning. Looking through our burndown report, our progress was not as consisten
 
 #### What we will change next sprint 
 
-*Articulate at the end of the sprint.  Focus on one of things you need to work on.*
+For the next sprint, we will begin planning the tasks sooner and begin working on the project at least towards the end of the first week. This will give us time to properly create tasks and goals, and it will also ensure that we are more organized and able to work through each task at a steady pace.
 
+As we begin implementing more features and adding more to this project, we will eventually run across more and more bugs and errors. As it will be essential to test increasingly thoroughly as we develop this project, it will also be important to track these bugs through issues and make sure they are taken care of in the current sprint. If there is not enough time, then we will carry the bug issues on to the next sprint.
