@@ -61,8 +61,8 @@ During the discussion of our plan, we agreed to divide the workload under each e
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | 5 | 4 |
-| Tasks |   19   | 12 | 
-| Story Points |  37  | 23 | 
+| Tasks |   19   | 15 | 
+| Story Points |  37  | 29 | 
 
 
 ## Scrums
@@ -132,7 +132,7 @@ Our main issues were with getting started most of the time. With little to nothi
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+This sprint was kind of rough for us. We had a couple mismatches as to what we thought was important to include in the sprint and a general lack of understanding with ReactJS hindered our abilities to complete everything we wanted to get done in this sprint. However, we commuicated all of the issues we were having amoungst each other really well, everyone was very helpful towards each other, and we spent a lot of time working on the project. We asked questions to the TA's/Piazza throughout the sprint that the answers were helpful, but near the end of the sprint we realized that we hadn't asked the right questions. In the future we plan on detailing our tasks better to get a better grasp on what we need to do, asking more informative questions, and relaying struggles we're having to the whole team throughtout the sprint so everyone is aware of the current status of each task/epic. 
 
 #### What we changed this sprint
 
