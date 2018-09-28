@@ -84,14 +84,27 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
-* 
+* ## TripCo: All code shall be clean!
+    * Adhere to the Google style guide for Java and JavaScript.
+    * Write maintainable code.
+    * Read the book.
+    * Amends to the sprint2.md and README.md will be necessary to stay adaptive.
+* ## User: I want to supply my own units for the distances.
+    * An arbitrary unit of measure should be able to be defined to use in the itinerary.  
+* ## TripCo: The solution must be responsive for mobile devices.
+    * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
+    * This is an ongoing issue that may need to be reflected in the README and sprint2.md. 
+    
 
 #### Incomplete epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
+* ## User:I want a map and itinerary for my trip
+    * Trips in the state of Colorado are tested on another tool.
+    * The tool produces a file that conforms to the TFFI trip object.
+    * The trip is always a round trip.
+    * Show a map and itinerary for the trip in the file that can be viewed on a phone.
 *
 
 #### What went well
@@ -105,8 +118,9 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* Specific Coding Issues
+   * Implementing SVG in reactJS 
+   * Connecting file uploader to backend for calculations 
 
 ## Retrospective
 
