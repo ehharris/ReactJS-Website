@@ -139,7 +139,7 @@ Teamwork. Although we may have not all been assigned to a specific task, we stil
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+Planning. Looking through our burndown report, our progress was not as consistent as the estimation. Although we did split the epics into much smaller tasks well and completed them steadily, there was a delay in the beginning of the sprint in getting our tasks done. We could also improve in splitting the epics into even smaller pieces.
 
 #### What we will change next sprint 
 
