@@ -84,6 +84,9 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 *Describe the solution based on the completed epics and list the epics below.*
 
+* ## Tripco: All clients and servers must interoperate!
+    * This requires an adherence to the TFFI specification.
+    * Each client must include a configuration option to change to server:port used for RESTful services.
 * ## TripCo: All code shall be clean!
     * Adhere to the Google style guide for Java and JavaScript.
     * Write maintainable code.
@@ -132,7 +135,7 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+Teamwork. Although we may have not all been assigned to a specific task, we still took the time to help one another on each of our own tasks. Whenever someone was stuck, another team member would always be willing to assist or guide them back on the right track. The tasks for the project were split up evenly and fairly. We ensured each team member was given an appropriate task to fully utilize their strengths. 
 
 #### What we need to work on
 
