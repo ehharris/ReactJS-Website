@@ -60,9 +60,9 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | 5 | *value* |
-| Tasks |   7   | *value* | 
-| Story Points |  18  | *value* | 
+| Epics | 5 | 1 |
+| Tasks |   18   | 9 | 
+| Story Points |  37  | 20 | 
 
 
 ## Scrums
@@ -78,11 +78,12 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+Overall, this sprint was a good learning experience. There was a lot of new things to get accustomed to, such as TravisCl and CodeClimate, as well as this being the first real sprint. We did much better as a team than the first sprint, but still have lots of room for improvement. Unforunately, we just weren't able to complete as much as we had hoped due to 
 
 #### Completed epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
+Our current code has the updated TFFI spec, which allows for oteroperability and calculating distances for trips to function as they should. It also has a map of Colorado and an area to upload files; however, these aren't fully functional yet.
 
 * ## Tripco: All clients and servers must interoperate!
     * This requires an adherence to the TFFI specification.
@@ -97,30 +98,34 @@ During the discussion of our plan, we agreed to divide the workload under each e
 * ## TripCo: The solution must be responsive for mobile devices.
     * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
     * This is an ongoing issue that may need to be reflected in the README and sprint2.md. 
-    
+
 
 #### Incomplete epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
+We were unable to complete the itinerary, and the legs of the trip are not drawn on the map. Some of these sprints were mostly completed, but not enough to actually say so. 
 
-* ## User:I want a map and itinerary for my trip
-    * Trips in the state of Colorado are tested on another tool.
-    * The tool produces a file that conforms to the TFFI trip object.
-    * The trip is always a round trip.
-    * Show a map and itinerary for the trip in the file that can be viewed on a phone.
-*
+* TripCo: The solution must be responsive for mobile devices.
+* Tripco: All clients and servers must interoperate!
+* User: I want a map and itinerary for my trip
+* TripCo: All code shall be clean!
+
 
 #### What went well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+Teamwork went very well for this sprint. We all helped each other when necessary, and the tasks were initally divided up to each persons strength. We also adapted very well to new things we learned during the sprint.
 
-* *something*
-*
+* Teamwork
+* Adaptability
+* Communication was good.
 
 #### Problems encountered and resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+Our main issues were with getting started most of the time. With little to nothing to go off of, it would take us a while sometimes to even begin to understand the concepts. This wasted valuable time in the end, and our uncompleted epics reflects this.
 
+* Understanding the big picture and how everything will work together to achieve that.
+* Wasting time on less important tasks.
+* Simply not devoting enough time to the project.
 * Specific Coding Issues
    * Implementing SVG in reactJS 
    * Connecting file uploader to backend for calculations 
