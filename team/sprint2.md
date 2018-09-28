@@ -60,9 +60,9 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | 5 | *value* |
-| Tasks |   7   | *value* | 
-| Story Points |  18  | *value* | 
+| Epics | 5 | 1 |
+| Tasks |   18   | 9 | 
+| Story Points |  37  | 20 | 
 
 
 ## Scrums
@@ -78,18 +78,19 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+Overall, this sprint was a good learning experience. There was a lot of new things to get accustomed to, such as TravisCl and CodeClimate, as well as this being the first real sprint. We did much better as a team than the first sprint, but still have lots of room for improvement. Unforunately, we just weren't able to complete as much as we had hoped due to 
 
 #### Completed epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
+Our current code has the updated TFFI spec, which allows for oteroperability and calculating distances for trips to function as they should. It also has a map of Colorado and an area to upload files; however, these aren't fully functional yet.
 
-* *## epic title: comments*
-* 
+* User: I want to supply my own units for distances
 
 #### Incomplete epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
+We were unable to complete the itinerary, and the legs of the trip are not drawn on the map. 
 
 * *## epic title: explanation*
 *
