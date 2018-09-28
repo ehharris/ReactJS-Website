@@ -7,6 +7,7 @@ import Port from './Port';
 import File from './File';
 
 import { get_config } from '../../api/api';
+import Itinerary from "./Itinerary";
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -22,8 +23,18 @@ class Application extends Component {
         options : {
           unit: "miles"
         },
-        places: [],
-        distances: [],
+        places: [{
+            "id": "dnvr",
+            "name": "Denver",
+            "latitude": 39.7392,
+            "longitude": -104.9903
+        }, {
+            "id": "bldr",
+            "name": "Boulder",
+            "latitude": 40.015,
+            "longitude": -105.2706
+        }],
+        distances: [24,25],
         map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
       }
     };
@@ -82,6 +93,8 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Map/>
+          <p className="Table-header">Itinerary</p>
+          <Itinerary data={this.state.trip}/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Port/>
         <File/>
