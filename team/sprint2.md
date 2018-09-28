@@ -85,7 +85,20 @@ Overall, this sprint was a good learning experience. There was a lot of new thin
 *Describe the solution based on the completed epics and list the epics below.*
 Our current code has the updated TFFI spec, which allows for oteroperability and calculating distances for trips to function as they should. It also has a map of Colorado and an area to upload files; however, these aren't fully functional yet.
 
-* User: I want to supply my own units for distances
+* ## Tripco: All clients and servers must interoperate!
+    * This requires an adherence to the TFFI specification.
+    * Each client must include a configuration option to change to server:port used for RESTful services.
+* ## TripCo: All code shall be clean!
+    * Adhere to the Google style guide for Java and JavaScript.
+    * Write maintainable code.
+    * Read the book.
+    * Amends to the sprint2.md and README.md will be necessary to stay adaptive.
+* ## User: I want to supply my own units for the distances.
+    * An arbitrary unit of measure should be able to be defined to use in the itinerary.  
+* ## TripCo: The solution must be responsive for mobile devices.
+    * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop    environment. Not the other way around.
+    * This is an ongoing issue that may need to be reflected in the README and sprint2.md. 
+
 
 #### Incomplete epics in Sprint Backlog 
 
@@ -96,6 +109,7 @@ We were unable to complete the itinerary, and the legs of the trip are not drawn
 * Tripco: All clients and servers must interoperate!
 * User: I want a map and itinerary for my trip
 * TripCo: All code shall be clean!
+
 
 #### What went well
 
@@ -112,6 +126,9 @@ Our main issues were with getting started most of the time. With little to nothi
 * Understanding the big picture and how everything will work together to achieve that.
 * Wasting time on less important tasks.
 * Simply not devoting enough time to the project.
+* Specific Coding Issues
+   * Implementing SVG in reactJS 
+   * Connecting file uploader to backend for calculations 
 
 ## Retrospective
 
@@ -123,7 +140,7 @@ Our main issues were with getting started most of the time. With little to nothi
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+Teamwork. Although we may have not all been assigned to a specific task, we still took the time to help one another on each of our own tasks. Whenever someone was stuck, another team member would always be willing to assist or guide them back on the right track. The tasks for the project were split up evenly and fairly. We ensured each team member was given an appropriate task to fully utilize their strengths. 
 
 #### What we need to work on
 
