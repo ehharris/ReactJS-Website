@@ -14,12 +14,14 @@ class Port extends Component{
         this.changePort = this.changePort.bind(this);
         this.changeService = this.changeService.bind(this);
         this.changeName = this.changeName.bind(this);
+        this.changeRequestBodyText = this.changeRequestBodyText.bind(this);
         this.state = {
             server: '',
             port: '',
             service: '',
             name: 'stranger',
-            data: ''
+            data: '',
+            requestBody: ''
         };
     }
 
@@ -37,6 +39,10 @@ class Port extends Component{
 
     changeName(event) {
         this.setState({name: event.target.value});
+    }
+
+    changeRequestBodyText(event) {
+        this.setState({requestBody: event.target.value});
     }
 
 
@@ -79,6 +85,15 @@ class Port extends Component{
                 .then(resData => this.setState({data: resData}));
         }
 
+        if(this.state.service === "/plan" || this.state.service === "/distance") {
+            fetch('http://' + this.state.server + ":" + this.state.port + this.state.service, {
+                method: 'POST',
+                body: this.state.requestBody
+            })
+                .then(response => response.json())
+                .then(resData => this.setState({data: JSON.stringify(resData)}));
+        }
+
 
         console.log("Data Received: " + this.state.data);
     }
@@ -100,12 +115,17 @@ class Port extends Component{
                     <div>Enter Name: </div>
                     <input name="Enter Name" type="text" value={this.state.name} onChange={this.changeName} />
                     <br/>
+                    <div>Upload File or Enter Text: </div>
+                    <input name="Enter Text" type="text" value={this.state.requestBody} onChange={this.changeRequestBodyText} />
+                    <br/>
                     <div>Select Microservice: </div>
                     <button value="/about" className="btn-outline-dark unit-button" onClick={this.changeService}>/about</button>
                     <button value="/echo" className="btn-outline-dark unit-button" onClick={this.changeService}>/echo</button>
                     <button value="/team" className="btn-outline-dark unit-button" onClick={this.changeService}>/team</button>
                     <button value="/config" className="btn-outline-dark unit-button" onClick={this.changeService}>/config</button>
                     <button value="/hello" className="btn-outline-dark unit-button" onClick={this.changeService}>/hello</button>
+                    <button value="/plan" className="btn-outline-dark unit-button" onClick={this.changeService}>/plan</button>
+                    <button value="/distance" className="btn-outline-dark unit-button" onClick={this.changeService}>/distance</button>
                     <br/>
                     {this.state.service}
                     {/*<Button type="submit">Submit</Button>*/}
