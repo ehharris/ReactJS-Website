@@ -60,9 +60,9 @@ During the discussion of our plan, we agreed to divide the workload under each e
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | 5 | 1 |
-| Tasks |   18   | 9 | 
-| Story Points |  37  | 20 | 
+| Epics | 5 | 4 |
+| Tasks |   19   | 12 | 
+| Story Points |  37  | 23 | 
 
 
 ## Scrums
@@ -136,7 +136,9 @@ Our main issues were with getting started most of the time. With little to nothi
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+When we began the second sprint, we were very familiar with how IntelliJ worked. We saved more time than we did in the previous sprint because we knew our way around IntelliJ and did not have to spend so much time trying to troubleshoot the program itself. This also allowed us to coordinate well between our tasks and correctly use the git functionality in IntelliJ from the beginning.
+
+During this sprint, we had meetings and communicated more often than in the previous sprint. This allowed for better coordination and teamwork since we were all able to plan with more depth than before and work together when necessary on tasks. Compared to the previous sprint, we were also checking Slack and responding more often in the second sprint.
 
 #### What we did well
 
