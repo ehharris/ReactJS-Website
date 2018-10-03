@@ -39,14 +39,17 @@
 For sprint 3 we plan to improve on what we added in sprint 2 such as implementing a map that shows where your trip takes you, an itinereary that shows destinations and distances inbetween, implementing our file upload button, and we also plan to introduce some new things like adding user specific attributes to the trip allowing users to only see certain parts of their trip at a time, adding more tests to our code to assure a smooth user experience,
 
 ![User Interface Sketch](/team/user_interface_plan_sketch.jpg "Sprint 3 User Interface Plan Sketch")
+
 This is a plan for our user interface.  
 The plan for the user interface is to organize the form fields in an appealing manner. Compared to our previous sprint deployment, we plan to add the "User Defined" option under Select Units. If we have time, the server-port configuration will be reduced to only one line with two inputs. We will also add the file upload button, and right under it, there will be the options to select or enter attribute/value pairs for the itinerary. The itinerary should change depending on which attribute/value pairs are chosen. From there, the submit button from the previous deployment will be replaced with a "Plan!" button. There will be a button to shorten the trip distances and another that shortens it even further. Then, we plan to have the map and itinerary dynamically update as the user updates it.
 
 ![Component Diagram Sketch](/team/sprint3_component_hierarchy.png "Sprint 3 Component Hierarchy Sketch")
+
 This is a sketch of our Component Hieracrchy. 
 Not much has been added to this for this sprint except for an optimization component. This component will work with the trip component to optimize the trip distances to either a short, shorter, or shortest trip and then display the content on the map/itinerary when it's done.
 
 ![Server Hierarchy Sketch](/team/sprint3_server_hierarchy.png "Sprint 3 User Server Hierarchy Sketch")
+
 This is a sketch of the Server Hierarchy for Sprint 3. 
 Like the component diagram, only one thing has changed for this sprint. The "Search" function will search for destinations from a database and reccomend certain destinations for the client to add.
 
