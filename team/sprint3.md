@@ -39,8 +39,10 @@
 *An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
 For sprint 3 we plan to improve on what we added in sprint 2 such as implementing a map that shows where your trip takes you, an itinereary that shows destinations and distances inbetween, implementing our file upload button, and we also plan to introduce some new things like adding user specific attributes to the trip allowing users to only see certain parts of their trip at a time, adding more tests to our code to assure a smooth user experience,
 
-![UI Diagram](/user_interface_plan_sketch.jpg)
-This is a plan for our user interface. We plan to have the map and itinerary dynamically update as the user updates it.
+![User Interface Sketch](/team/user_interface_plan_sketch.jpg "Sprint 3 User Interface Plan Sketch")
+This is a plan for our user interface.  
+The plan for the user interface is to organize the form fields in an appealing manner. Compared to our previous sprint deployment, we plan to add the "User Defined" option under Select Units. If we have time, the server-port configuration will be reduced to only one line with two inputs. We will also add the file upload button, and right under it, there will be the options to select or enter attribute/value pairs for the itinerary. The itinerary should change depending on which attribute/value pairs are chosen. From there, the submit button from the previous deployment will be replaced with a "Plan!" button. There will be a button to shorten the trip distances and another that shortens it even further. Then, we plan to have the map and itinerary dynamically update as the user updates it.
+
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph or each.
 
 Epics planned for this sprint.
