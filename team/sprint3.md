@@ -36,7 +36,6 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
 For sprint 3 we plan to improve on what we added in sprint 2 such as implementing a map that shows where your trip takes you, an itinereary that shows destinations and distances inbetween, implementing our file upload button, and we also plan to introduce some new things like adding user specific attributes to the trip allowing users to only see certain parts of their trip at a time, adding more tests to our code to assure a smooth user experience,
 
 ![UI Diagram](/user_interface_plan_sketch.jpg)
@@ -48,7 +47,9 @@ Epics planned for this sprint.
 * User: I want a map and itinerary for my trip
 * User: I want to choose what I see on my map and itinerary : Make certain destinations disappear and reappear based on user input
 * TripCo: All code must be tested : Add more tests to code
-* 
+* User: I want to make and save changes to the trip
+* User: I want my trips to be shorter
+* User: I'd like even shorter trips
 
 
 ## Metrics
