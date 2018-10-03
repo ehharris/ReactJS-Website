@@ -57,7 +57,7 @@ Epics planned for this sprint.
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *value* | *value* |
+| Epics | #20, #27, #28, #34, #22, #24, #33, #48, #42 | *value* |
 | Tasks |  *value*   | *value* | 
 | Story Points |  *value*  | *value* | 
 
