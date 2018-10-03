@@ -3,7 +3,7 @@
 ## Goal
 
 ### Build shorter trips!
-### Sprint Leader: *Tyler Dansberry*
+### Sprint Leader: *Tyler Dansby*
 
 ## Definition of Done
 
@@ -58,9 +58,9 @@ Epics planned for this sprint.
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | #20, #27, #28, #34, #22, #24, #33, #48, #42 | *value* |
-| Tasks |  *value*   | *value* | 
-| Story Points |  *value*  | *value* | 
+| Epics | 7 | *value* |
+| Tasks |  10   | *value* | 
+| Story Points |  27  | *value* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
