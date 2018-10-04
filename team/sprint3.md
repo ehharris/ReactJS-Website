@@ -36,7 +36,7 @@
 
 ## Plan
 
-For sprint 3 we plan to improve on what we added in sprint 2 such as implementing a map that shows where your trip takes you, an itinereary that shows destinations and distances inbetween, implementing our file upload button, and we also plan to introduce some new things like adding user specific attributes to the trip allowing users to only see certain parts of their trip at a time, adding more tests to our code to assure a smooth user experience,
+For sprint 3 we plan to improve on and finish what we added in sprint 2, such as implementing a map that shows where your trip takes you, an itinerary that shows destinations and distances for all legs of a trip, and implementing our file upload button. We also plan to introduce some new things like adding user specific attributes to the trip allowing users to only see certain parts of their trip at a time and adding more tests to our code to assure a smooth user experience.
 
 ![User Interface Sketch](/team/user_interface_plan_sketch.jpg "Sprint 3 User Interface Plan Sketch")
 
@@ -59,11 +59,12 @@ Like the component diagram, only one thing has changed for this sprint. The "Sea
 Epics planned for this sprint.
 
 * User: I want a map and itinerary for my trip
-* User: I want to choose what I see on my map and itinerary : Make certain destinations disappear and reappear based on user input
-* TripCo: All code must be tested : Add more tests to code
-* User: I want to make and save changes to the trip
 * User: I want my trips to be shorter
 * User: I'd like even shorter trips
+* User: I want to choose what information is displayed in the itinerary and map.
+* User: I want to design a trip from scratch so I can stop using the other tool.
+* User: I want to make and save changes to the trip.
+* TripCo: All code must be tested.
 
 
 ## Metrics
@@ -71,10 +72,10 @@ Epics planned for this sprint.
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | 7 | *value* |
-| Tasks |  10   | *value* | 
-| Story Points |  27  | *value* | 
+| Tasks |  23   | *value* | 
+| Story Points |  41  | *value* | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+With sprint 3, we are focusing on improving our incremental uploads and in turn, our burndown chart. To do this, we have split up the epics initially into as many tasks as we could, resulting in double the amount of planned story points as sprint 2. This will help us keep track of where we are on a day-to-day basis, rather than eyeballing based on one task per epic, as some of our epics were in sprint 2.
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
