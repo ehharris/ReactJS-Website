@@ -69,7 +69,7 @@ class Application extends Component {
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Optimization/>
         <Port/>
-        <File/>
+        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
         <Map/>
       </Container>
     )
