@@ -1,74 +1,57 @@
 import React, {Component} from 'react'
-import {
-    Container, Col, Form,
-    FormGroup, Label, Input,
-    Button, CardBody, ButtonGroup, Card,
-} from 'reactstrap';2
-import App from './Application'
+import {Input, Button, CardBody, ButtonToolbar, Card,} from 'reactstrap';
+import {request} from "../../api/api";
+
 
 class File extends Component{
     constructor(props) {
         super(props);
-        this.changefileName=this.changefileName.bind(this);
-        this.state = {
-            config: null,
-            trip: {
-                type: "trip",
-                title: "",
-                options : {
-                    unit: "miles"
-                },
-                places: [],
-                distances: [],
-                map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
-            }
-        };
-
+        this.uploadFile = this.uploadFile.bind(this);
+        this.plan = this.plan.bind(this);
+        this.state = {file: null}
     }
 
-    //Method taken from piazza - Caleb Carlson
-    changefileName(event){
+    //Function taken from Piazza. Post - "GUIDE: How to read a file from file input" by Caleb Carlson.
+    uploadFile(event){
         let file = event.target.files[0]; // first file in the FileList
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function(event) {
-                
-                let newfile = JSON.parse(event.target.result);
-                
-                return function(e){
-                    this.setState({trip:newfile});
-                }
-
-            };
+        this.setState({file: file})
+        if(file){
+            var reader = new FileReader();
+            reader.onload = function(event){
+                console.log(event.target.result);
+                //Update state with parsed info using updateBasedOnResponse function
+                let parseResult = JSON.parse(event.target.result);
+                this.props.updateBasedOnResponse(parseResult);
+            }.bind(this)
             reader.readAsText(file);
         }
+    }
 
-
-}
-
+    plan(){
+        let responsePlan = request(this.props.trip, 'plan').then(
+            res => {this.props.updateBasedOnResponse(res);}
+        );
+    }
 
     render() {
-
-
 
         return(
             <Card>
                 <CardBody>
-                    <Form>
-                        <FormGroup>
-                            <Label for="exampleFile">File</Label>
-                            <Input type="file" name="file" id="exampleFile" onChange={this.changefileName}/>
-                            {/*<Button*/}
-                                {/*onClick={(event) => this.props.uploadFile(event)}*/}
-                            {/*>*/}
-                                {/*Submit*/}
-                            {/*</Button>*/}
-                        </FormGroup>
-
-                    </Form>
+                    <p>Upload a file to start planning your trip!</p>
+                    <ButtonToolbar>
+                        <Input type="file" title="input" accept=".json" onChange={this.uploadFile}/>
+                    </ButtonToolbar>
+                    &nbsp;
+                    <ButtonToolbar>
+                        <Button onClick={this.plan} type="button" className='btn-outline-dark unit-button'>
+                            Plan
+                        </Button>
+                    </ButtonToolbar>
                 </CardBody>
             </Card>
         )
+
     }
 }
 
