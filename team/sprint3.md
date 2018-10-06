@@ -85,6 +85,7 @@ With sprint 3, we are focusing on improving our incremental uploads and in turn,
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | 10-03-18 | N/A | #90, #88, #133, #166 | N/A | 
+| 10-05-18 | #172 #173 | #90, #88, #133, #166 #162 | N/A | 
 
 *Add a new row for the scrum session after each lecture. *
 
