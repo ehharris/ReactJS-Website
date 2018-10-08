@@ -80,7 +80,7 @@ class Navigation extends Component {
         {sidebar}
         <Navbar className="nav_bar">
             <NavbarBrand className="nav_title" href="/">
-              t10 TripCo
+              t10 Error 404: Team Name Not Found 
             </NavbarBrand>
             <div>
               {navItems.reverse()}
