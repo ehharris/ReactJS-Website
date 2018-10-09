@@ -14,7 +14,7 @@ public class Option {
   public int unitRadius;
 
   /**
-   * Constructor for testing purposes
+   * Constructor for testing purposes.
    */
   public Option(String units, int unitRadius){
     this.units = units;
