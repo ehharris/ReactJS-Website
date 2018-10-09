@@ -18,6 +18,7 @@ public class TestTrip {
   Trip trip;
 
   // Setup to be done before every test in TestPlan
+  // Creates test trip
   @Before
   public void initialize() {
     ArrayList<Place> listOfPlaces = new ArrayList<>();
@@ -41,14 +42,12 @@ public class TestTrip {
   }
 
   @Test
-  public void testDistances() {
-
-
+  public void testLegDistances() {
     trip.plan();
 
     ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
     Collections.addAll(expectedDistances, 24,41,59);
-    // Call the equals() method of the first object on the second object.
+
     assertEquals(expectedDistances, trip.distances);
   }
 
