@@ -22,10 +22,12 @@ public class Trip extends Vincenty {
   public String map;
 
     /**
-     * Constructor for testing purposes
+     * Constructor for testing purposes.
      *
      */
-  public Trip(int version, String type, String title, ArrayList<Place> places, Option options, ArrayList<Integer> distances, String map){
+  public Trip(int version, String type, String title, ArrayList<Place> places, 
+	      Option options, ArrayList<Integer> distances, String map){
+	  
       this.version = version;
       this.type = type;
       this.title = title;
