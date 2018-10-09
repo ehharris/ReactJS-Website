@@ -11,7 +11,7 @@ public class Place {
   public double longitude;
 
     /**
-     *  Constructor for testing purposes
+     *  Constructor for testing purposes.
      */
   public Place(String id, String name, double latitude, double longitude){
      this.id = id;
