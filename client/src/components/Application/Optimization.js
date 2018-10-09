@@ -24,7 +24,13 @@ class Optimization extends Component{
                         >None</Button>
                         <Button
                             className='btn-outline-dark unit-button'
-                        >Shortest Plan!</Button>
+                        >Short Trip</Button>
+                        <Button
+                            className='btn-outline-dark unit-button'
+                        >Shorter Trip</Button>
+                        <Button
+                            className='btn-outline-dark unit-button'
+                        >Shortest Trip</Button>
                     </ButtonGroup>
                 </CardBody>
             </Card>
