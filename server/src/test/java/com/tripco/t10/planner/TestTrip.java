@@ -44,7 +44,6 @@ public class TestTrip {
 
   @Test
   public void testTrue() {
-    // assertTrue checks if a statement is true
     assertTrue(true == true);
   }
 
