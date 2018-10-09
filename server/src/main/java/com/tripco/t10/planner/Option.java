@@ -13,4 +13,9 @@ public class Option {
   public String unitName;
   public int unitRadius;
 
+  public Option(String units, int unitRadius){
+    this.units = units;
+    this.unitRadius = unitRadius;
+  }
+
 }

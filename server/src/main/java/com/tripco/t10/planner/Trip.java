@@ -21,6 +21,17 @@ public class Trip extends Vincenty {
   public ArrayList<Integer> distances;
   public String map;
 
+
+  public Trip(int version, String type, String title, ArrayList<Place> places, Option options){
+      this.version = version;
+      this.type = type;
+      this.title = title;
+      this.places = places;
+      this.options = options;
+//      this.distances = distances;
+//      this.map = map;
+  }
+
   /** The top level method that does planning.
    * At this point it just adds the map and distances for the places in order.
    * It might need to reorder the places in the future.

@@ -20,11 +20,11 @@ public class TestPlace {
   // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
-    place = new Place();
-    place.id="dnvr";
-    place.name="Denver";
-    place.latitude=13.0129;
-    place.longitude=29.1138;
+    place = new Place("dnvr","Denver",13.0129,29.1138);
+//    place.id="dnvr";
+//    place.name="Denver";
+//    place.latitude=13.0129;
+//    place.longitude=29.1138;
   }
 
   @Test 
