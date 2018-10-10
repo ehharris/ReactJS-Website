@@ -21,7 +21,7 @@ class Application extends Component {
         type: "trip",
         title: "",
         options : {
-          unit: "miles"
+          units: "miles"
         },
         places: [],
         distances: [],
@@ -55,7 +55,7 @@ class Application extends Component {
 
   updateOptions(option, value){
     let trip = this.state.trip;
-    trip.options['units'] = value;
+    trip.options[option] = value;
     this.setState(trip);
   }
   

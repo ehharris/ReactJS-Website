@@ -8,100 +8,34 @@ import { ButtonGroup, Button } from 'reactstrap'
  * Allows the user to set the options used by the application via a set of buttons.
  */
 class Options extends Component{
-  constructor(props) {
-    super(props);
-      this.state={
-          button1:{
-              active:true
-          },
-          button2:{
-              active:false
-          },
-          button3:{
-              active:false
-          }
-      }
-  }
-
-
-    button1Active(){
-        this.setState({
-            button1:{
-                active:true
-            },
-            button2:{
-                active:false
-            },
-            button3:{
-                active:false
-            },
-        });
+    constructor(props) {
+        super(props);
     }
 
-    button2Active(){
-        this.setState({
-            button1:{
-                active:false
-            },
-            button2:{
-                active:true
-            },
-            button3:{
-                active:false
-            },
-        });
+    render() {
+        const buttons = this.props.config.units.map((unit) =>
+            <Button
+                key={'distance_button_' + unit}
+                className='btn-outline-dark unit-button'
+                active={this.props.options.units === unit}
+                value={unit}
+                onClick={(event) => this.props.updateOptions('units', event.target.value)}
+            >
+                {unit.charAt(0).toUpperCase() + unit.slice(1)}
+            </Button>
+        );
+
+        return(
+            <Card>
+                <CardBody>
+                    <p>Select the options you wish to use.</p>
+                    <ButtonGroup>
+                        {buttons}
+                    </ButtonGroup>
+                </CardBody>
+            </Card>
+        )
     }
-
-    button3Active(){
-        this.setState({
-            button1:{
-                active:false
-            },
-            button2:{
-                active:false
-            },
-            button3:{
-                active:true
-            },
-        });
-    }
-
-  render() {
-
-    return(
-      <Card>
-        <CardBody>
-          <p>Select the options you wish to use.</p>
-          <ButtonGroup>
-              <Button
-                  key={'button1'}
-                  className='btn-outline-dark unit-button'
-                  active={this.state.button1.active}
-                  onClick={(event) => {this.props.updateOptions('distance', 'miles');this.button1Active()}}
-              >
-                  Miles
-              </Button>
-              <Button
-                  key={'button2'}
-                  className='btn-outline-dark unit-button'
-                  active={this.state.button2.active}
-                  onClick={(event) => {this.props.updateOptions('distance', 'kilometers');this.button2Active()}}
-              >
-                  Kilometers
-              </Button>
-              <Button
-                  key={'button3'}
-                  className='btn-outline-dark unit-button'
-                  active={this.state.button3.active}
-                  onClick={(event) => {this.props.updateOptions('distance', 'nautical miles');this.button3Active()}}
-              >
-                  Nautical Miles
-              </Button>
-          </ButtonGroup>
-        </CardBody>
-      </Card>
-    )
-  }
 }
 
 export default Options;
