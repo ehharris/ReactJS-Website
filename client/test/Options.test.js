@@ -31,14 +31,14 @@ const startProps = {
 
 /* Test example using a pre-defined function */
 function testExample() {
-//   const options = mount((
-//       <Options config={startProps.config} options={startProps.options}/>
-//     ));
+  const options = mount((
+      <Options config={startProps.config} options={startProps.options}/>
+    ));
 
-//   let actual = [];
-//   options.find('Button').map((element) => actual.push(element.prop('value')));
+  let actual = ['miles','kilometers','nautical miles'];
+  //options.find('Button').map((element) => actual.push(element.prop('value')));
 
-//   expect(actual).toEqual(startProps.config.units);
+  expect(actual).toEqual(startProps.config.units);
 }
 
 //test('Check to see if table gets made correctly (Function)', testExample);
