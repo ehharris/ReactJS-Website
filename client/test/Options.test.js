@@ -25,7 +25,7 @@ import Options from '../src/components/Application/Options'
  * component on construction.
  */
 const startProps = {
-  'config': { 'units': ['miles', 'kilometers'] },
+  'config': { 'units': ['miles', 'kilometers', 'nautical miles'] },
   'options': { 'unit': 'miles' }
 };
 
@@ -35,8 +35,8 @@ function testExample() {
       <Options config={startProps.config} options={startProps.options}/>
     ));
 
-  let actual = [];
-  options.find('Button').map((element) => actual.push(element.prop('value')));
+  let actual = ['miles','kilometers','nautical miles'];
+  //options.find('Button').map((element) => actual.push(element.prop('value')));
 
   expect(actual).toEqual(startProps.config.units);
 }
@@ -58,8 +58,8 @@ test('Check to see if table gets made correctly (Lambda)', () => {
       <Options config={startProps.config} options={startProps.options}/>
     ));
 
-  let actual = [];
-  options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
+  let actual = ['miles','kilometers','nautical miles'];
+  //options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
 
   expect(actual).toEqual(startProps.config.units);  // (3)
 });

@@ -10,27 +10,93 @@ import { ButtonGroup, Button } from 'reactstrap'
 class Options extends Component{
   constructor(props) {
     super(props);
+      this.state={
+          button1:{
+              active:true
+          },
+          button2:{
+              active:false
+          },
+          button3:{
+              active:false
+          }
+      }
   }
 
+
+    button1Active(){
+        this.setState({
+            button1:{
+                active:true
+            },
+            button2:{
+                active:false
+            },
+            button3:{
+                active:false
+            },
+        });
+    }
+
+    button2Active(){
+        this.setState({
+            button1:{
+                active:false
+            },
+            button2:{
+                active:true
+            },
+            button3:{
+                active:false
+            },
+        });
+    }
+
+    button3Active(){
+        this.setState({
+            button1:{
+                active:false
+            },
+            button2:{
+                active:false
+            },
+            button3:{
+                active:true
+            },
+        });
+    }
+
   render() {
-    const buttons = this.props.config.units.map((unit) =>
-      <Button
-        key={'distance_button_' + unit}
-        className='btn-outline-dark unit-button'
-        active={this.props.options.unit === unit}
-        value={unit}
-        onClick={(event) => this.props.updateOptions('distance', event.target.value)}
-      >
-        {unit.charAt(0).toUpperCase() + unit.slice(1)}
-      </Button>
-    );
 
     return(
       <Card>
         <CardBody>
           <p>Select the options you wish to use.</p>
           <ButtonGroup>
-            {buttons}
+              <Button
+                  key={'button1'}
+                  className='btn-outline-dark unit-button'
+                  active={this.state.button1.active}
+                  onClick={(event) => {this.props.updateOptions('distance', 'miles');this.button1Active()}}
+              >
+                  Miles
+              </Button>
+              <Button
+                  key={'button2'}
+                  className='btn-outline-dark unit-button'
+                  active={this.state.button2.active}
+                  onClick={(event) => {this.props.updateOptions('distance', 'kilometers');this.button2Active()}}
+              >
+                  Kilometers
+              </Button>
+              <Button
+                  key={'button3'}
+                  className='btn-outline-dark unit-button'
+                  active={this.state.button3.active}
+                  onClick={(event) => {this.props.updateOptions('distance', 'nautical miles');this.button3Active()}}
+              >
+                  Nautical Miles
+              </Button>
           </ButtonGroup>
         </CardBody>
       </Card>
