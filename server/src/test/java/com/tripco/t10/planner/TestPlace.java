@@ -5,9 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 import static org.junit.Assert.*;
 
 /*
@@ -17,7 +14,6 @@ import static org.junit.Assert.*;
 public class TestPlace {
   Place place;
 
-  // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
     place = new Place("dnvr","Denver",13.0129,29.1138);
@@ -25,23 +21,16 @@ public class TestPlace {
 
   @Test 
   public void testPlace() {
-    String id="dnvr";
-    String name="Denver";
+    String id = "dnvr";
+    String name = "Denver";
+    double testLatitude = 13.0129;
+    double testLongitude = 29.1138;
+
     assertEquals(place.id, id);
     assertEquals(place.name,name);
+    assertTrue(place.latitude == testLatitude);
+    assertTrue(place.longitude == testLongitude);
   }
 
-  @Test
-  public void testLat() {
-    double test=13.0129;
-      assertTrue(place.latitude==test);
-  }
-
-  @Test
-  public void testLong() {
-      double test=29.1138;
-      assertTrue(place.longitude==test);
-  }
-  
 }
 
