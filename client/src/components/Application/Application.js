@@ -55,7 +55,7 @@ class Application extends Component {
 
   updateOptions(option, value){
     let trip = this.state.trip;
-    trip.options[option] = value;
+    trip.options['units'] = value;
     this.setState(trip);
   }
   
