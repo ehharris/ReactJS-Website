@@ -18,4 +18,17 @@ public class Distance extends Vincenty {
     public String getUnits() { return this.units; }
     public void setDistance(int input){ this.distance = input; }
 
+    /*
+    Constructor for Distance Object
+     */
+    public Distance(String type, int version, Place origin,
+                    Place destination, String units, int distance){
+
+        this.type = type;
+        this.version = version;
+        this.origin = origin;
+        this.destination = destination;
+        this.units = units;
+        this.distance = distance;
+    }
 }
