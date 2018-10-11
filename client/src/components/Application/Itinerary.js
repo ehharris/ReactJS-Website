@@ -22,17 +22,15 @@ export default class Itinerary extends Component {
             names: [],
             dist: []
         }
+        this.props.data.distances.forEach(function (distances) {
+            this.state.dist.push(distances);
+        });
+
+
+        this.props.data.places.forEach(function (places) {
+            this.state.names.push(places.name);
+        });
     }
-
-    this.props.data.distances.forEach(function(distances) {
-        this.state.dist.push(distances);
-    });
-
-
-    this.props.data.places.forEach(function(places) {
-        this.state.names.push(places.name);
-    });
-
     render() {
 
         var rows = [];

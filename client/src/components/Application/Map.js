@@ -3,13 +3,6 @@ import {Card, CardBody} from 'reactstrap'
 //import daMap from './Resources/CObackground.svg'
 
 export default class Map extends Component {
-
-
-
-
-
-
-
     render() {
         return (
             <div>
