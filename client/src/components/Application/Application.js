@@ -5,7 +5,6 @@ import Options from './Options';
 import Map from './Map';
 import Port from './Port';
 import File from './File';
-import Optimization from './Optimization';
 
 import { get_config } from '../../api/api';
 
@@ -22,6 +21,7 @@ class Application extends Component {
         title: "",
         options : {
           units: "miles"
+          optimization: "none"
         },
         places: [],
         distances: [],
@@ -66,10 +66,9 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-        <Optimization/>
-        <Port/>
         <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+        <Port/>
         <Map/>
       </Container>
     )
