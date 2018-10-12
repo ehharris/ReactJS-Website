@@ -5,12 +5,9 @@ import Options from './Options';
 import Map from './Map';
 import Port from './Port';
 import File from './File';
+import ItineraryTable from './Itinerary.jsx';
 
 import { get_config } from '../../api/api';
-
-//import Itinerary from "./Itinerary";
-import ItineraryTable from './Itinerary.jsx';
-import testingData from './Resources/testing.json';
 
 
 
