@@ -5,13 +5,11 @@ package com.tripco.t10.planner;
  * At this point we are only using the values provided.
  */
 public class Option {
-
-  public String distance;
-  public String optimization;
   
   public String units;
   public String unitName;
   public int unitRadius;
+  public String optimization;
 
   /**
    * Constructor for testing purposes.

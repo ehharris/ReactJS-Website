@@ -21,7 +21,8 @@ class Application extends Component {
         type: "trip",
         title: "",
         options : {
-          unit: "miles"
+          units: "miles"
+          optimization: "none"
         },
         places: [{
             "id": "dnvr",
@@ -92,12 +93,12 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-        <Map/>
-          <p className="Table-header">Itinerary</p>
-          <Itinerary data={this.state.trip}/>
+        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Port/>
-        <File/>
+        <p className="Table-header">Itinerary</p>
+        <Itinerary data={this.state.trip}/>
+        <Map/>
       </Container>
     )
   }

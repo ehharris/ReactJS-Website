@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
@@ -13,7 +14,7 @@ class Options extends Component{
     }
 
     render() {
-        const buttons = this.props.config.units.map((unit) =>
+        const buttons0 = this.props.config.units.map((unit) =>
             <Button
                 key={'distance_button_' + unit}
                 className='btn-outline-dark unit-button'
@@ -25,13 +26,31 @@ class Options extends Component{
             </Button>
         );
 
+        const buttons1 = this.props.config.optimization.map((label) =>
+            <Button
+                key={'optimization_button_' + label.label}
+                className='btn-outline-dark unit-button'
+                active={this.props.options.optimization === label.label}
+                value={label.label}
+                onClick={(event) => this.props.updateOptions('optimization', event.target.value)}
+            >
+                {label.label.charAt(0).toUpperCase() + label.label.slice(1)}
+            </Button>
+        );
+
         return(
             <Card>
                 <CardBody>
                     <p>Select the options you wish to use.</p>
-                    <ButtonGroup>
-                        {buttons}
-                    </ButtonGroup>
+                    <p>Units</p>
+                      <ButtonGroup>
+                        {buttons0}
+                      </ButtonGroup>
+                    <p>{"\n"}</p>
+                    <p>Optimization</p>
+                      <ButtonGroup>
+                        {buttons1}
+                      </ButtonGroup>
                 </CardBody>
             </Card>
         )
