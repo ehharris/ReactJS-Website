@@ -24,26 +24,8 @@ class Application extends Component {
         options : {
           unit: ""
         },
-        places: [
-            {
-                "id": "dnvr",
-                "name": "Denver",
-                "latitude": 39.7392,
-                "longitude": -104.9903
-            }, {
-                "id": "bldr",
-                "name": "Boulder",
-                "latitude": 40.015,
-                "longitude": -105.2706
-            }, {
-                "id": "foco",
-                "name": "Fort Collins",
-                "latitude": 40.5853,
-                "longitude": -105.0844
-            },
-
-        ],
-        distances: [24,25,27],
+        places: [{}],
+        distances: [],
         map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
       }
     };
@@ -97,7 +79,6 @@ class Application extends Component {
 
   render() {
     if(!this.state.config) { return <div/> }
-    console.log(this.state.trip);
     return(
       <Container id="Application">
         <Info/>

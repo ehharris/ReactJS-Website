@@ -25,26 +25,9 @@ class ItineraryTable extends Component {
 
     }
     render() {
-        //this.state.data.place.names = ["test"];
         if (typeof this.state.set === 'undefined') {
             this.buildDistance();
        }
-       // this.buildDistance();
-        //console.log(this.props.data.distances);
-        //console.log(this.state.data);
-
-        //console.log (this.state.data);
-       // this.state.places.map(place => this.state.data.push({
-            //names : place.name,
-         //   distance : this.state.trip.distances
-
-        //}));
-
-
-        //this.state.data.trip.distance = [0];
-       // this.state.trip.distances.map(distance => this.state.data.trip.distance.push(distance));
-       // this.setState({places : this.props.data});
-      // console.log(this.state.data);
         return (
             <Card>
                 <CardBody>
@@ -58,8 +41,7 @@ class ItineraryTable extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {
-                            this.state.trip.places.map((key,index,array)=> (
+                        {this.state.trip.places.map((key,index,array)=> (
                                 <tr>
                                     <td key='#' > {index + 1} </td>
                                     <td key={key.name}>
@@ -69,14 +51,12 @@ class ItineraryTable extends Component {
                                         {this.state.trip.distances[index]}
                                     </td>
                                 </tr>
-                            ))
-                        }
+                            ))}
                         </tbody>
                     </table>
                 </CardBody>
             </Card>
         )
     }
-
 }
 export default ItineraryTable;
