@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.tripco.t10.server.HTTP;
 import spark.Request;
-import java.util.ArrayList;
 
 public class Search {
 
