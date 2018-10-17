@@ -10,7 +10,6 @@ import ItineraryTable from './Itinerary.jsx';
 import { get_config } from '../../api/api';
 
 
-
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
@@ -26,8 +25,7 @@ class Application extends Component {
           unit: "",
           optimization: ""
         },
-        places: [{}
-        ],
+        places: [],
         distances: [],
         map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
       }
@@ -65,11 +63,10 @@ class Application extends Component {
 
   render() {
     if(!this.state.config) { return <div/> }
-
     return(
       <Container id="Application">
         <Info/>
-        <Map/>
+        <Map map={this.state.trip.map}/>
         <ItineraryTable data={this.state.trip}/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Port/>
