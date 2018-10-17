@@ -16,6 +16,7 @@ public class MapBuilder {
     {
         this.map = "<title>Map Layer</title>\n";
     }
+    
     /** Creates lines on the map.
      *
      * @param places List of places to map
