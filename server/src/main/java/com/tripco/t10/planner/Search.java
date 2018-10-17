@@ -14,7 +14,6 @@ public class Search {
 
     /** Handles database search request, creating new db object from search request.
      * Does the conversion from Json to a Java class before searching the database.
-     * @param request
      */
     public Search(Request request) {
         // first print the request
@@ -35,11 +34,9 @@ public class Search {
 
     /** Handles the response for the Database object.
      * Does the conversion from a Java class to a Json string.
-     * @return
      */
     public String getSearch() {
         Gson gson = new Gson();
         return gson.toJson(db);
     }
-
 }

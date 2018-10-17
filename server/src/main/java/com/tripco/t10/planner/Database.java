@@ -48,6 +48,22 @@ public class Database {
         this.places.add(place);
     }
 
+    /** Builds the query for use in searchQuery().
+     *
+     */
+    public String buildQuery() {
+        String query = "";
+        query += "SELECT * FROM airports WHERE name LIKE '%";
+        query += this.match;
+        query += "%'";
+
+        if(this.limit > 0) {
+            query += " Limit " +  this.limit;
+        }
+
+        return query;
+    }
+
     /** Finds places from database depending on match value.
      *
      */
@@ -58,12 +74,7 @@ public class Database {
         String user = "cs314-db";
         String pass = "eiK5liet1uej";
 
-        //this.type = "search";
-        String value = "";
-        String query = "SELECT * FROM airports WHERE name LIKE '%" + this.match + "%'";
-        if(this.limit > 0) {
-            query += " Limit " +  this.limit;
-        }
+        String query = buildQuery();
 
         try {
             // create mysql database connection
@@ -74,8 +85,6 @@ public class Database {
             // execute the query, and get a java resultset
             ResultSet rsQuery = stQuery.executeQuery(query);
 
-            //rsQuery.next();
-            //value += rsQuery.getString(1);
             while (rsQuery.next()) {
                 String id = rsQuery.getString("id");
                 String name = rsQuery.getString("name");
