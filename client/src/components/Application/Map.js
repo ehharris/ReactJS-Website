@@ -17,10 +17,8 @@ export default class Map extends Component {
             <div>
                 <Card>
                     <CardBody>
-
                         <p className="lead">"A Map of the Whole Wide Colorado"</p>
                         <img src={require('./Resources/CObackground.svg')}/>
-
                     </CardBody>
                 </Card>
             </div>
