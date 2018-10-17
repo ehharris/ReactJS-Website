@@ -2,6 +2,7 @@ package com.tripco.t10.server;
 
 import com.tripco.t10.planner.Plan;
 import com.tripco.t10.planner.Calculate;
+import com.tripco.t10.planner.Search;
 
 import spark.Request;
 import spark.Response;
@@ -47,6 +48,7 @@ public class MicroServer {
     get("/config", this::config);
     post("/plan", this::plan);
     post("/distance", this::distance);
+    post("/search", this::search);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
   }
@@ -135,12 +137,30 @@ public class MicroServer {
     return name;
   }
 
-  //TODO: add description of distance class
+  /** A REST API that returns the calculated distances from select locations.
+   *
+   * @param request
+   * @param response
+   * @return
+   */
   private String distance(Request request, Response response) {
 
     response.type("text/plain");
     response.header("Access-Control-Allow-Origin", "*");
 
     return new Calculate(request).getDistance();
+  }
+
+  /** A REST API that returns search results from database.
+   *
+   * @param request
+   * @param response
+   * @return
+   */
+  private String search(Request request, Response response) {
+    response.type("text/plain");
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return new Search(request).getSearch();
   }
 }
