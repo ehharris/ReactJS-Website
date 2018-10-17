@@ -3,7 +3,16 @@ import {Card, CardBody} from 'reactstrap'
 //import daMap from './Resources/CObackground.svg'
 
 export default class Map extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            map : ''
+        };
+        this.state.map = this.props.map;
+    }
+
     render() {
+
         return (
             <div>
                 <Card>
