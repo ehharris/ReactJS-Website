@@ -20,7 +20,7 @@ public class MapBuilder {
      *
      * @param places List of places to map
      */
-    public void buildMap(ArrayList places)
+    public String buildMap(ArrayList places)
     {
 
         String svg = "";
@@ -35,6 +35,6 @@ public class MapBuilder {
         } catch (IOException e) {
             System.out.println("Error: Unable to generate map SVG. " + e);
         }
-        //return svg;
+        return svg;
     }
 }
