@@ -9,15 +9,46 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Database {
-    private String type;
     private int version;
+    private String type;
     private String match;
     private int limit;
     private ArrayList<Place> places;
 
-//    public void searchResults() { this.places = searchQuery(); }
+    /** Default Constructor.
+     * Necessary when one variable is missing (such as places) in POST JSON request.
+     */
+    public Database() {
+        this.version = 0;
+        this.type = "";
+        this.match = "";
+        this.limit = 0;
+        this.places = new ArrayList<Place>();
+    }
 
-    /** Finds places depending on match value.
+    /** setMyUrl method checks to see if the server is running on localhost or black-bottle.
+     * Changes the database URL as needed in order to connect to faure.
+     */
+    public String setMyUrl() {
+        String isDevelopment = System.getenv("CS314_ENV");
+        // Note that if the environment variable isn't defined, System.getenv will return null
+        if(isDevelopment != null && isDevelopment.equals("development")) {
+            return "jdbc:mysql://127.0.0.1:56247/cs314";
+        }
+        else {
+            return "jdbc:mysql://faure.cs.colostate.edu/cs314";
+        }
+    }
+
+    /** Used to test /search when offline.
+     *
+     */
+    public void test() {
+        Place place = new Place("3333", "denver", 12.00, 13.00);
+        this.places.add(place);
+    }
+
+    /** Finds places from database depending on match value.
      *
      */
     public void searchQuery() {
@@ -30,6 +61,9 @@ public class Database {
         //this.type = "search";
         String value = "";
         String query = "SELECT * FROM airports WHERE name LIKE '%" + this.match + "%'";
+        if(this.limit > 0) {
+            query += " Limit " +  this.limit;
+        }
 
         try {
             // create mysql database connection
@@ -110,18 +144,4 @@ public class Database {
 //        System.out.printf(" ]\n}\n");
 //    }
 
-    /**
-     * setMyUrl method checks to see if the server is running on localhost or black-bottle.
-     * Changes the database URL as needed in order to connect to faure.
-     */
-    public String setMyUrl() {
-        String isDevelopment = System.getenv("CS314_ENV");
-        // Note that if the environment variable isn't defined, System.getenv will return null
-        if(isDevelopment != null && isDevelopment.equals("development")) {
-            return "jdbc:mysql://127.0.0.1:31410/cs314";
-        }
-        else {
-            return "jdbc:mysql://faure.cs.colostate.edu/cs314";
-        }
-    }
 }

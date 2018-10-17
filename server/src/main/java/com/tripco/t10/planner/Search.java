@@ -12,6 +12,10 @@ public class Search {
     // Starts off with a clean database object
     private Database db;
 
+    /** Handles database search request, creating new db object from search request.
+     * Does the conversion from Json to a Java class before searching the database.
+     * @param request
+     */
     public Search(Request request) {
         // first print the request
         System.out.println(HTTP.echoRequest(request));
@@ -27,12 +31,12 @@ public class Search {
 
         // sets the places variable in the database object depending on keyword search
         db.searchQuery();
-
-        // log something
-        System.out.println();
-
     }
 
+    /** Handles the response for the Database object.
+     * Does the conversion from a Java class to a Json string.
+     * @return
+     */
     public String getSearch() {
         Gson gson = new Gson();
         return gson.toJson(db);

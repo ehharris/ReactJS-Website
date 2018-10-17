@@ -3,6 +3,7 @@ package com.tripco.t10.server;
 import com.tripco.t10.planner.Plan;
 import com.tripco.t10.planner.Calculate;
 import com.tripco.t10.planner.Search;
+import com.tripco.t10.planner.Database;
 
 import spark.Request;
 import spark.Response;
@@ -48,6 +49,7 @@ public class MicroServer {
     get("/config", this::config);
     post("/plan", this::plan);
     post("/distance", this::distance);
+    post("/search", this::search);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
   }
