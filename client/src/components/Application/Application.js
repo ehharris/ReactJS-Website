@@ -6,6 +6,7 @@ import Map from './Map';
 import Port from './Port';
 import File from './File';
 import ItineraryTable from './Itinerary.jsx';
+import Search from './Search';
 
 import { get_config } from '../../api/api';
 
@@ -70,6 +71,7 @@ class Application extends Component {
         <ItineraryTable data={this.state.trip}/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Port/>
+        <Search/>
         <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
       </Container>
     )

@@ -19,8 +19,8 @@ public class Database {
      * Necessary when one variable is missing (such as places) in POST JSON request.
      */
     public Database() {
-        this.version = 0;
-        this.type = "";
+        this.version = 3;
+        this.type = "search";
         this.match = "";
         this.limit = 0;
         this.places = new ArrayList<Place>();
