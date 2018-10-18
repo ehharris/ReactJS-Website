@@ -70,9 +70,11 @@ public class Trip extends Vincenty {
             for(nextCity = 0; nextCity < places.size(); nextCity++){
                 if(!visited.contains(this.places.get(nextCity))){
 
-                    int distance = calculateDistance(this.places.get(startCity).latitude, this.places.get(nextCity).latitude,
-                            this.places.get(startCity).longitude, this.places.get(nextCity).longitude,
-                            this.options.units, this.options.unitRadius);
+                    int distance = calculateDistance(this.places.get(startCity).latitude, 
+						     this.places.get(nextCity).latitude, 
+						     this.places.get(startCity).longitude, 
+						     this.places.get(nextCity).longitude, 
+						     this.options.units, this.options.unitRadius);
 
                     if(distance < shortestDistance && distance != 0){
                         //Set new shortest distance and nearestNeighbor
