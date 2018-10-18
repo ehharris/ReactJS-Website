@@ -26,7 +26,7 @@ class Application extends Component {
           unit: "",
           optimization: ""
         },
-        places: [],
+        places: [{}],
         distances: [],
         map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
       }
@@ -53,8 +53,18 @@ class Application extends Component {
   }
 
   updateBasedOnResponse(value) {
-    this.setState({'trip': value});
+      fetch('http://' + location.hostname + ":31410/plan", {
+          method: 'POST',
+          body: JSON.stringify(value),
+          headers: {
+              'Content-Type': 'applications/json',
+              'Accept': 'applications/json'
+          }
+      })
+          .then(response => response.json())
+          .then(resData => this.setState({trip: resData}));
   }
+
 
   updateOptions(option, value){
     let trip = this.state.trip;
@@ -67,7 +77,7 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-        <Map map={this.state.trip.map}/>
+        <Map trip={this.state.trip}/>
         <ItineraryTable data={this.state.trip}/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Port/>

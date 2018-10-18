@@ -473,17 +473,12 @@
 
 	</svg>
 	</g>
+
 	<g id ="s9">
 		<svg id ="s5" width="1066.6073" height="783.0824"
 			 xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg">
-
-			<title>Map Layer</title>
-			<!--&lt;!&ndash;&ndash;&gt;<polygon points="35,35 1029,35 1029,745 37,745"-->
-					 <!--fill="none" stroke-width="3" stroke="brown" id="s8"/>-->
-
-			<!--<line x1="556" y1="72" x2="35" y2="35" style="stroke:rgb(255,0,0);stroke-width:2"/>-->
-
-		</svg>
+				<title>Map Layer</title>
+			</svg>
 	</g>
 </g>
 </svg>
