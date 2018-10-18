@@ -10,24 +10,27 @@ class ItineraryTable extends Component {
             places : [],
             data : [],
         };
-        this.state.trip = this.props.data;
+        //this.state.trip = this.props.data;
     }
 
     //builds distances uses by itinerary
-    buildDistance(){
+    buildDistance() {
+
+        this.state.trip = this.props.data;
+        if (this.state.trip.distances !== 'undefined') {
+
         this.state.trip.distances.map((key, index, array) => {
-            index>0?this.state.trip.distances[index]+=this.state.trip.distances[index -1]:this.state.trip.distances[0]
+            index > 0 ? this.state.trip.distances[index] += this.state.trip.distances[index - 1] : this.state.trip.distances[0]
         });
-        this.state.set = 'true';
+        }
+        //this.state.set = 'true';
 
             //this.state.data.push(this.props.data.distances[i]);
 
 
     }
     render() {
-        if (typeof this.state.set === 'undefined') {
-            this.buildDistance();
-       }
+        this.buildDistance();
         return (
             <Card>
                 <CardBody>

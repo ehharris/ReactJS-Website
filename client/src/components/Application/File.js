@@ -14,7 +14,7 @@ class File extends Component{
     //Function taken from Piazza. Post - "GUIDE: How to read a file from file input" by Caleb Carlson.
     uploadFile(event){
         let file = event.target.files[0]; // first file in the FileList
-        this.setState({file: file})
+        this.setState({file: file});
         if(file){
             var reader = new FileReader();
             reader.onload = function(event){
@@ -22,7 +22,7 @@ class File extends Component{
                 //Update state with parsed info using updateBasedOnResponse function
                 let parseResult = JSON.parse(event.target.result);
                 this.props.updateBasedOnResponse(parseResult);
-            }.bind(this)
+            }.bind(this);
             reader.readAsText(file);
         }
     }

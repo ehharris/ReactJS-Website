@@ -80,6 +80,7 @@ class Port extends Component{
 
             if (this.state.service === "/plan" || this.state.service === "/distance") {
                 if (this.state.requestBody !== "") {
+                    console.log(this.state.requestBody);
                     fetch('http://' + this.state.server + ":" + this.state.port + this.state.service, {
                         method: 'POST',
                         body: this.state.requestBody

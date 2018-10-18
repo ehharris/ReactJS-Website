@@ -1,5 +1,6 @@
 package com.tripco.t10.server;
 
+import com.tripco.t10.planner.Mapper;
 import com.tripco.t10.planner.Plan;
 import com.tripco.t10.planner.Calculate;
 import com.tripco.t10.planner.Search;
@@ -46,6 +47,7 @@ public class MicroServer {
     get("/team", this::team);
     // client is sending data, so a HTTP POST is used instead of a GET
     get("/config", this::config);
+    post("/map", this::mapBuilder);
     post("/plan", this::plan);
     post("/distance", this::distance);
     post("/search", this::search);
@@ -162,5 +164,12 @@ public class MicroServer {
     response.header("Access-Control-Allow-Origin", "*");
 
     return new Search(request).getSearch();
+  }
+
+  private String mapBuilder(Request request, Response response){
+    response.type("text/plain");
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return new Mapper(request).getMap();
   }
 }
