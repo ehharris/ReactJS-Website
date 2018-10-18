@@ -16,7 +16,7 @@ public class TestOption {
 
     @Before
     public void testInstantiate(){
-        option = new Option("miles",3959);
+        option = new Option("miles",3959, "none");
     }
 
     @Test

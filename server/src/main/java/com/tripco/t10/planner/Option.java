@@ -14,9 +14,10 @@ public class Option {
   /**
    * Constructor for testing purposes.
    */
-  public Option(String units, int unitRadius){
+  public Option(String units, int unitRadius, String optimization){
     this.units = units;
     this.unitRadius = unitRadius;
+    this.optimization = optimization;
   }
 
 }
