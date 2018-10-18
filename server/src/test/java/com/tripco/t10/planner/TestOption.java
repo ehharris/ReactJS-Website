@@ -16,17 +16,29 @@ public class TestOption {
 
     @Before
     public void testInstantiate(){
-        option = new Option("miles",3959, "none");
+        option = new Option("user defined",3959, "none", "miles");
     }
 
     @Test
     public void testUnits(){
-        String miles = "miles";
+        String miles = "user defined";
         assertEquals(option.units, miles);
     }
     @Test
     public void testUnitRadius(){
         double unitRadius = 3959;
         assertTrue(option.unitRadius == unitRadius);
+    }
+
+    @Test
+    public void testOptimization(){
+        String optimization = "none";
+        assertEquals(option.optimization, optimization);
+    }
+
+    @Test
+    public void testUnitName(){
+        String unitName = "miles";
+        assertEquals(option.unitName, unitName);
     }
 }
