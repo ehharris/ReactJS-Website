@@ -17,14 +17,15 @@ import static org.junit.Assert.*;
 public class TestTrip {
   Trip trip;
 
+  Place testDenver = new Place("dnvr", "Denver", 39.7392, -104.9903);
+  Place testBoulder = new Place("bldr", "Boulder", 40.01499, -105.27055);
+  Place testFortCollins = new Place("foco", "Fort Collins", 40.585258, -105.084419);
+
   // Setup to be done before every test in TestPlan
   // Creates test trip
   @Before
   public void initialize() {
     ArrayList<Place> listOfPlaces = new ArrayList<>();
-    Place testDenver = new Place("dnvr", "Denver", 39.7392, -104.9903);
-    Place testBoulder = new Place("bldr", "Boulder", 40.01499, -105.27055);
-    Place testFortCollins = new Place("foco", "Fort Collins", 40.585258, -105.084419);
 
     listOfPlaces.add(testDenver);
     listOfPlaces.add(testBoulder);
@@ -61,10 +62,6 @@ public class TestTrip {
   @Test
   public void testShortOptimization(){
     ArrayList<Place> testShort = new ArrayList<>();
-
-    Place testDenver = new Place("dnvr", "Denver", 39.7392, -104.9903);
-    Place testBoulder = new Place("bldr", "Boulder", 40.01499, -105.27055);
-    Place testFortCollins = new Place("foco", "Fort Collins", 40.585258, -105.084419);
 
     testShort.add(testFortCollins);
     testShort.add(testBoulder);
