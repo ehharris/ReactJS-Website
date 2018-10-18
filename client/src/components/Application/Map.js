@@ -3,15 +3,22 @@ import {Card, CardBody} from 'reactstrap'
 //import daMap from './Resources/CObackground.svg'
 
 export default class Map extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            map : ''
+        };
+        this.state.map = this.props.map;
+    }
+
     render() {
+
         return (
             <div>
                 <Card>
                     <CardBody>
-
                         <p className="lead">"A Map of the Whole Wide Colorado"</p>
                         <img src={require('./Resources/CObackground.svg')}/>
-
                     </CardBody>
                 </Card>
             </div>
