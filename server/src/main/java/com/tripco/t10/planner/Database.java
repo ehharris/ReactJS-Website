@@ -19,11 +19,29 @@ public class Database {
      * Necessary when one variable is missing (such as places) in POST JSON request.
      */
     public Database() {
-        this.version = 3;
-        this.type = "search";
+        this.version = 0;
+        this.type = "";
         this.match = "";
         this.limit = 0;
         this.places = new ArrayList<Place>();
+    }
+
+    /** Constructor used for test cases.
+     *
+     */
+    public Database(int version, String type, String match, int limit, ArrayList<Place> places) {
+        this.version = version;
+        this.type = type;
+        this.match = match;
+        this.limit = limit;
+        this.places = places;
+    }
+
+    /** Getter method used for test cases.
+     *
+     */
+    public ArrayList<Place> getPlaces() {
+        return this.places;
     }
 
     /** setMyUrl method checks to see if the server is running on localhost or black-bottle.
@@ -40,14 +58,6 @@ public class Database {
         }
     }
 
-    /** Used to test /search when offline.
-     *
-     */
-    public void test() {
-        Place place = new Place("3333", "denver", 12.00, 13.00);
-        this.places.add(place);
-    }
-
     /** Builds the query for use in searchQuery().
      *
      */
@@ -55,10 +65,10 @@ public class Database {
         String query = "";
         query += "SELECT * FROM airports WHERE name LIKE '%";
         query += this.match;
-        query += "%'";
+        query += "%' ORDER BY name";
 
         if(this.limit > 0) {
-            query += " Limit " +  this.limit;
+            query += " LIMIT " +  this.limit;
         }
 
         return query;
@@ -99,58 +109,4 @@ public class Database {
             System.err.println("Exception: " + e.getMessage());
         }
     }
-
-//    // db configuration information
-//    private static final String myDriver = "com.mysql.jdbc.Driver";
-//    private static String myUrl = "";
-//    //private final static String myUrl = "jdbc:mysql://localhost:31410";
-//    private static final String user="cs314-db";
-//    private static final String pass="eiK5liet1uej";
-//    // fill in SQL queries to count the number of records and to retrieve the data
-//    private static final String count = "SELECT count(*) FROM airports";
-//    private static final String search = "SELECT * FROM airports";
-//    // Arguments contain the username and password for the database
-//
-//    /**
-//     * The main method is where a connection to the database is made to print out the contents.
-//     */
-//    public static void main(String[] args) {
-//        myUrl = "jdbc:mysql://127.0.0.1:31410/cs314";
-//        try {
-//            Class.forName(myDriver);
-//            // connect to the database and query
-//            try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
-//                 Statement stCount = conn.createStatement();
-//                 Statement stQuery = conn.createStatement();
-//                 ResultSet rsCount = stCount.executeQuery(count);
-//                 ResultSet rsQuery = stQuery.executeQuery(search);
-//            ) {
-//                printJson(rsCount, rsQuery);
-//            }
-//        } catch (Exception e) {
-//            System.err.println("Exception: " + e.getMessage());
-//        }
-//    }
-//
-//    private static void printJson(ResultSet count, ResultSet query) throws SQLException {
-//        System.out.printf("\n{\n");
-//        System.out.printf("\"type\": \"find\",\n");
-//        System.out.printf("\"title\": \"%s\",\n",search);
-//        System.out.printf("\"places\": [\n");
-//        // determine the number of results that match the query
-//        count.next();
-//        int results = count.getInt(1);
-//        // iterate through query results and print out the airport codes
-//        while (query.next()) {
-//            System.out.printf(" \"%s\"", query.getString(3));
-//            if (--results == 0) {
-//                System.out.printf("\n");
-//            }
-//            else {
-//                System.out.printf(",\n");
-//            }
-//        }
-//        System.out.printf(" ]\n}\n");
-//    }
-
 }
