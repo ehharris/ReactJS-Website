@@ -30,7 +30,7 @@ public class TestTrip {
     listOfPlaces.add(testBoulder);
     listOfPlaces.add(testFortCollins);
 
-    Option testOption = new Option("miles", 3959);
+    Option testOption = new Option("miles", 3959, "none");
 
     ArrayList<Integer> distances = new ArrayList<>();
     distances.add(0);
