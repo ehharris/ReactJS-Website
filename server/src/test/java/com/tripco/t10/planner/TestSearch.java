@@ -18,6 +18,7 @@ public class TestSearch {
     private Database db;
     Gson dbGson = new Gson();
 
+    // initialize the Database db for testing
     @Before
     public void initialize() {
         ArrayList<Place> places = new ArrayList<Place>();
@@ -25,6 +26,7 @@ public class TestSearch {
 
     }
 
+    // Test for getSearch() in Search.java
     @Test
     public void testGetSearch() {
         Gson gson = new Gson();
