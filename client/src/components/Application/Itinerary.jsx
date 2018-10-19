@@ -5,10 +5,14 @@ import {Card, CardBody} from "reactstrap";
 class ItineraryTable extends Component {
     constructor(props) {
         super(props);
+        this.setOptionLatitude = this.setOptionLatitude.bind(this);
+        this.setOptionLongitude = this.setOptionLongitude.bind(this);
         this.state = {
             trip : [],
             places : [],
             data : [],
+            optionLatitude: false,
+            optionLongitude: false
         };
         //this.state.trip = this.props.data;
     }
@@ -29,8 +33,21 @@ class ItineraryTable extends Component {
 
 
     }
+
+    setOptionLatitude(event) {
+        this.setState({optionLatitude: true});
+    }
+
+    setOptionLongitude(event) {
+        this.setState({optionLongitude: true});
+    }
+
     render() {
         this.buildDistance();
+
+        const latitudeStyle = this.state.optionLatitude ? {} : {display: 'none'};
+        const longitudeStyle = this.state.optionLongitude ? {} : {display: 'none'};
+
         return (
             <Card>
                 <CardBody>
@@ -41,6 +58,8 @@ class ItineraryTable extends Component {
                             <th>#</th>
                             <th>Places</th>
                             <th>Distance From Start</th>
+                            <th style={latitudeStyle}>Latitude</th>
+                            <th style={longitudeStyle}>Longitude</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,10 +72,22 @@ class ItineraryTable extends Component {
                                     <td key={this.state.trip.distances[index]}>
                                         {this.state.trip.distances[index]}
                                     </td>
+                                        <td key={key.latitude} style={latitudeStyle}>
+                                            {key.latitude}
+                                    </td>
+                                    <td key={key.longitude} style={longitudeStyle}>
+                                        {key.longitude}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+
+                    <div>Select additional options for itinerary: </div>
+                    <br />
+                    <button value="latitude" className="btn-outline-dark unit-button" onClick={this.setOptionLatitude}>Show Latitude</button>
+                    <button value="longitude" className="btn-outline-dark unit-button" onClick={this.setOptionLongitude}>Show Longitude</button>
+                    {/*<button value="clear" className="btn-outline-dark unit-button" onClick={this.resetOptions}>Reset Options</button>*/}
                 </CardBody>
             </Card>
         )
