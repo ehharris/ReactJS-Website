@@ -5,10 +5,14 @@ import {Card, CardBody} from "reactstrap";
 class ItineraryTable extends Component {
     constructor(props) {
         super(props);
+        this.setOptionLatitude = this.setOptionLatitude.bind(this);
+        this.setOptionLongitude = this.setOptionLongitude.bind(this);
         this.state = {
             trip : [],
             places : [],
             data : [],
+            optionLatitude: 'false',
+            optionLongitude: 'false'
         };
         //this.state.trip = this.props.data;
     }
@@ -29,8 +33,47 @@ class ItineraryTable extends Component {
 
 
     }
+
+    setOptionLatitude(event) {
+        this.setState({optionLatitude: 'true'});
+    }
+
+    setOptionLongitude(event) {
+        this.setState({optionLongitude: 'true'});
+    }
+
+    resetOptions(event) {
+        this.setState({optionLatitude: 'false'});
+        this.setState({optionLongitude: 'false'});
+    }
+
     render() {
         this.buildDistance();
+
+        let latitudeHeader;
+        let latitudeData;
+        if(this.state.optionLatitude === 'true') {
+            latitudeHeader = <th>Latitude</th>;
+            if(this.state.places.length > 0) {
+                latitudeData =
+                    <td key={this.state.places[index].latitude}>
+                        {this.state.places[index].latitude}
+                    </td>;
+            }
+        }
+
+        let longitudeHeader;
+        let longitudeData;
+        if(this.state.optionLongitude === 'true') {
+            longitudeHeader = <th>Longitude</th>;
+            if(this.state.places.length > 0) {
+                longitudeData =
+                    <td key={this.state.places[index].longitude}>
+                        {this.state.places[index].longitude}
+                    </td>;
+            }
+        }
+
         return (
             <Card>
                 <CardBody>
@@ -41,6 +84,8 @@ class ItineraryTable extends Component {
                             <th>#</th>
                             <th>Places</th>
                             <th>Distance From Start</th>
+                            {latitudeHeader}
+                            {longitudeHeader}
                         </tr>
                         </thead>
                         <tbody>
@@ -53,10 +98,18 @@ class ItineraryTable extends Component {
                                     <td key={this.state.trip.distances[index]}>
                                         {this.state.trip.distances[index]}
                                     </td>
+                                    {latitudeData}
+                                    {longitudeData}
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+
+                    <div>Select additional options for itinerary: </div>
+                    <br />
+                    <button value="latitude" className="btn-outline-dark unit-button" onClick={this.setOptionLatitude}>Show Latitude</button>
+                    <button value="longitude" className="btn-outline-dark unit-button" onClick={this.setOptionLongitude}>Show Longitude</button>
+                    {/*<button value="clear" className="btn-outline-dark unit-button" onClick={this.resetOptions}>Reset Options</button>*/}
                 </CardBody>
             </Card>
         )
