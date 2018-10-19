@@ -7,6 +7,7 @@ import Port from './Port';
 import File from './File';
 import ItineraryTable from './Itinerary.jsx';
 import Search from './Search';
+import Calculator from './Calculator';
 
 import { get_config } from '../../api/api';
 
@@ -53,17 +54,16 @@ class Application extends Component {
   }
 
   updateBasedOnResponse(value) {
-      // fetch('http://' + location.hostname + ":31410/plan", {
-      //     method: 'POST',
-      //     body: JSON.stringify(value),
-      //     headers: {
-      //         'Content-Type': 'applications/json',
-      //         'Accept': 'applications/json'
-      //     }
-      // })
-      //     .then(response => response.json())
-      //     .then(resData => this.setState({trip: resData}));
-    this.setState({'trip': value});
+      fetch('http://' + location.hostname + ":31410/plan", {
+          method: 'POST',
+          body: JSON.stringify(value),
+          headers: {
+              'Content-Type': 'applications/json',
+              'Accept': 'applications/json'
+          }
+      })
+          .then(response => response.json())
+          .then(resData => this.setState({trip: resData}));
   }
 
 
@@ -78,12 +78,13 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
+        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Map trip={this.state.trip}/>
         <ItineraryTable data={this.state.trip}/>
-        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+        <Calculator/>
         <Port/>
         <Search/>
-        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
       </Container>
     )
   }

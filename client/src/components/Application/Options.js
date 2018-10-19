@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
-import { ButtonGroup, Button } from 'reactstrap'
+import { ButtonGroup, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -47,6 +47,27 @@ class Options extends Component{
                         {buttons0}
                       </ButtonGroup>
                     <p>{"\n"}</p>
+                      <Form inline>
+                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                          <Label for="unitName" className="mr-sm-2">Unit name</Label>
+                          <Input
+                            type="unitName"
+                            name="unit name"
+                            id="unitName"
+                            onChange={(event) => this.props.updateOptions('unitName', event.target.value)}
+                          />
+                        </FormGroup>
+                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                          <Label for="unitRadius" className="mr-sm-2">Unit radius</Label>
+                          <Input
+                            type="unitRadius"
+                            name="unit radius"
+                            id="exampleEmail"
+                            onChange={(event) => this.props.updateOptions('unitRadius', event.target.value)}
+                          />
+                        </FormGroup>
+                      </Form>
+                      <p>{"\n"}</p>
                     <p>Optimization</p>
                       <ButtonGroup>
                         {buttons1}
