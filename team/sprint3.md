@@ -134,15 +134,16 @@ We weren't able to change the trip and save changes. Also, choosing what is disp
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*8
+After meeting with Dave Matthews concerning our less than average score on github and zenhub etiquette we took significant efforts to fix our score. We focused more on incremental development and how we uploaded. We focused on creating smaller tasks, assigning them properly, and putting them in progress before working on them/uploading them. We also put more effort into testing, although not perfect, was significantly imoroved from the last sprint.
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*8
+Our burndown chart this sprint was significantly better than our last one and showed good incremental progress even though we had some big leaps towards the end. Our teammate interaction and communcation was positive and went well like previous sprints. We also assigned tasks well based on our own skills and abilities. As a team, we helped eachother often when needed and met up to work together. 
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*8
+It would benefit the group greatly if we all worked more in the first two weeks. Keeping up with the idea of test driven development and clean code would benefit our teams grade and work experience. We also need to prevent these "big bangs" at the end of the sprints to better benefit our code climate and test integreation. 
+
 
 #### What we will change next sprint 
 
