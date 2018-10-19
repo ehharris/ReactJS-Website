@@ -83,8 +83,8 @@ class Application extends Component {
         <Map trip={this.state.trip}/>
         <ItineraryTable data={this.state.trip}/>
         <Calculator/>
-        <Port/>
         <Search/>
+        <Port/>
       </Container>
     )
   }
