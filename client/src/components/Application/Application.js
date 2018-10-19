@@ -7,9 +7,9 @@ import Port from './Port';
 import File from './File';
 import ItineraryTable from './Itinerary.jsx';
 import Search from './Search';
+import Calculator from './Calculator';
 
 import { get_config } from '../../api/api';
-
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -77,12 +77,13 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
+        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Map trip={this.state.trip}/>
         <ItineraryTable data={this.state.trip}/>
-        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-        <Port/>
+        <Calculator/>
         <Search/>
-        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+        <Port/>
       </Container>
     )
   }

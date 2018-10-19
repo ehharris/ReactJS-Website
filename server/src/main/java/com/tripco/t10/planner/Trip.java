@@ -91,8 +91,8 @@ public class Trip extends Vincenty {
 
         }
 
-//        for(int i = 0; i < visited.size(); i++){
-//            System.out.println("VISITED ARRAY:" + i + " - " + visited.get(i).name);
+//        for(int i = 0; i < this.places.size(); i++){
+//            System.out.println("PLACES ARRAY:" + i + " - " + this.places.get(i).name);
 //        }
 
         Collections.copy(this.places, visited);
