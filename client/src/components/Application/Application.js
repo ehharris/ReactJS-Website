@@ -11,7 +11,6 @@ import Calculator from './Calculator';
 
 import { get_config } from '../../api/api';
 
-
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
