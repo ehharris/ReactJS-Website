@@ -96,6 +96,7 @@ We did better on this sprint, but still have much room for improvement. We creat
 ## Review
 
 *An introductory paragraph describing the overall results of the sprint.*
+Overall, we learned some valuable lessons this sprint. We improved a lot with our burndown chart, but the amount of tasks and story points that rolled over from sprint 3 prove too much for us to finish. We had good communication, and got help when needed, but we simply didn't work enough during this sprint. 
 
 #### Completed Epics in Sprint Backlog 
 
