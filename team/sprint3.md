@@ -95,8 +95,7 @@ We did better on this sprint, but still have much room for improvement. We creat
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
-Overall, we learned some valuable lessons this sprint. We improved a lot with our burndown chart, but the amount of tasks and story points that rolled over from sprint 3 prove too much for us to finish. We had good communication, and got help when needed, but we simply didn't work enough during this sprint. 
+Overall, we learned some valuable lessons this sprint. We improved a lot with our burndown chart, but the amount of tasks and story points that rolled over from sprint 3 proved too much for us to finish. We had good communication, and got help when needed, but we simply didn't put in enough work during this sprint. 
 
 #### Completed Epics in Sprint Backlog 
 
@@ -107,7 +106,7 @@ We weren't able to complete many of the Sprint 3 epics, but we did finish up Spr
 
 #### Incomplete Epics in Sprint Backlog 
 
-We weren't able to change the trip and save changes. Also, the options to be displayed in the itinerary (except for latitude and longitude) and finishing up testing were incomplete.
+Unfortunately, we weren't able to implement the ability to change the trip, save changes to it, and many of the itinerary related sprint 3 tasks.
 
 * User: I'd like even shorter trips
 * User: I want to choose what information is displayed in the itinerary and map.
