@@ -106,7 +106,7 @@ We weren't able to complete many of the Sprint 3 epics, but we did finish up Spr
 
 #### Incomplete Epics in Sprint Backlog 
 
-We weren't able to change the trip and save changes. Also, choosing what is displayed in the itinerary,  and finishing up testing.
+We weren't able to change the trip and save changes. Also, the options to be displayed in the itinerary (except for latitude and longitude) and finishing up testing were incomplete.
 
 * User: I'd like even shorter trips
 * User: I want to choose what information is displayed in the itinerary and map.
@@ -123,10 +123,12 @@ We weren't able to change the trip and save changes. Also, choosing what is disp
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+In general, the two largest issues we faced as a team were time management and deployments. We were behind during this sprint due to leftover Sprint 2 epics, which took the large amount of time to complete. We also did not deploy after large edits and added functionality to the website.
 
-* *something*
-*
+* Final server deployment was incomplete as the Travis CI queue was clogged towards the beginning of the last hour of the sprint deadline. 
+* A few functions failed towards the end due to lack of time and testing.
+* A few classes are missing test classes.
+
 
 ## Retrospective
 
@@ -144,7 +146,8 @@ Our burndown chart this sprint was significantly better than our last one and sh
 
 It would benefit the group greatly if we all worked more in the first two weeks. Keeping up with the idea of test driven development and clean code would benefit our teams grade and work experience. We also need to prevent these "big bangs" at the end of the sprints to better benefit our code climate and test integreation. 
 
+We need to begin deploying a build everytime we complete an epic or large function that would have been demoed at the end of the sprint. We also need to create test classes for every new class we create and begin creating test cases for the client-side code. We will also need to focus on our time management heavily since we still have several sprint three epics to complete.
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+For the next sprint, we will meet for longer on the first day to plan everything out accordingly and discuss what each epic entails in depth. This should improve our time management skills since we will have a clearer idea as to what needs to be done and how long it will take. 
