@@ -116,10 +116,10 @@ We weren't able to change the trip and save changes. Also, the options to be dis
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+We had good communication regarding when things would be done. We let each other know of issues we were having and sought help from friends and TA's when we needed to. 
 
-* *something*
-*
+* Itinerary now displays correctly and we added options to include the longitude and latitude when seeing destinations
+* Database search is now functional 
 
 #### Problems Encountered and Resolutions
 
@@ -132,7 +132,7 @@ In general, the two largest issues we faced as a team were time management and d
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+This sprint was somewhat of a learning experience for us. We underestimated the amount of work we needed to get done for this sprint but we completed what was missing from sprint 2 and added some of the epics from sprint 3. This sprint has made us come to understand that we need to get better at our time management skills and at estimating how long each task will take. In the future we will be giving much more attention to planning and have a greater commitment to working on this more incrementally.  
 
 #### What we changed this sprint
 
