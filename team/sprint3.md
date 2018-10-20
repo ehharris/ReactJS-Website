@@ -71,13 +71,13 @@ Epics planned for this sprint.
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | 7 | *value* |
-| Tasks |  23   | *value* | 
-| Story Points |  41  | *value* | 
+| Epics | 7 | 2 |
+| Tasks |  23   | 24 | 
+| Story Points |  41  | 39 | 
 
 With sprint 3, we are focusing on improving our incremental uploads and in turn, our burndown chart. To do this, we have split up the epics initially into as many tasks as we could, resulting in double the amount of planned story points as sprint 2. This will help us keep track of where we are on a day-to-day basis, rather than eyeballing based on one task per epic, as some of our epics were in sprint 2.
 
-*Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
+We did better on this sprint, but still have much room for improvement. We created a lot of tasks as the sprint went on which is why our planned and completed tasks do not allign very well. 
 
 
 ## Scrums
@@ -99,17 +99,20 @@ With sprint 3, we are focusing on improving our incremental uploads and in turn,
 
 #### Completed Epics in Sprint Backlog 
 
-*Describe the solution based on the completed epics and list the epics below.*
+We weren't able to complete many of the Sprint 3 epics, but we did finish up Sprint 2 and made progress with all other epics. Our main focus was finishing up the map and itinerary.
 
-* *## epic title: comments*
-* 
+* User: I want a map and itinerary for my trip
+* User: I want my trips to be shorter.
 
 #### Incomplete Epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
+We weren't able to change the trip and save changes. Also, choosing what is displayed in the itinerary,  and finishing up testing.
 
-* *## epic title: explanation*
-*
+* User: I'd like even shorter trips
+* User: I want to choose what information is displayed in the itinerary and map.
+* User: I want to design a trip from scratch so I can stop using the other tool.
+* User: I want to make and save changes to the trip. 
+* TripCo: All code must be tested.
 
 #### What Went Well
 
@@ -140,6 +143,7 @@ Our burndown chart this sprint was significantly better than our last one and sh
 #### What we need to work on
 
 It would benefit the group greatly if we all worked more in the first two weeks. Keeping up with the idea of test driven development and clean code would benefit our teams grade and work experience. We also need to prevent these "big bangs" at the end of the sprints to better benefit our code climate and test integreation. 
+
 
 #### What we will change next sprint 
 
