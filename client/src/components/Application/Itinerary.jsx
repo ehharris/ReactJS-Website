@@ -19,18 +19,17 @@ class ItineraryTable extends Component {
 
     //builds distances uses by itinerary
     buildDistance() {
+        let data = [0];
 
-        this.state.trip = this.props.data;
-        if (this.state.trip.distances !== 'undefined') {
-
-        this.state.trip.distances.map((key, index, array) => {
-            index > 0 ? this.state.trip.distances[index] += this.state.trip.distances[index - 1] : this.state.trip.distances[0]
+        this.props.trip.distances.map((key, index, array) => {
+            if (index > 0) {
+                data[index] = this.props.trip.distances[index - 1] + data[index-1];
+            }
         });
-        }
+        return data;
         //this.state.set = 'true';
 
             //this.state.data.push(this.props.data.distances[i]);
-
 
     }
 
@@ -43,7 +42,8 @@ class ItineraryTable extends Component {
     }
 
     render() {
-        this.buildDistance();
+
+        let data = this.buildDistance();
 
         const latitudeStyle = this.state.optionLatitude ? {} : {display: 'none'};
         const longitudeStyle = this.state.optionLongitude ? {} : {display: 'none'};
@@ -63,14 +63,14 @@ class ItineraryTable extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.state.trip.places.map((key,index,array)=> (
+                        {this.props.trip.places.map((key,index,array)=> (
                                 <tr>
                                     <td key='#' > {index + 1} </td>
                                     <td key={key.name}>
                                         {key.name}
                                     </td>
-                                    <td key={this.state.trip.distances[index]}>
-                                        {this.state.trip.distances[index]}
+                                    <td key={data[index]}>
+                                        {data[index]}
                                     </td>
                                         <td key={key.latitude} style={latitudeStyle}>
                                             {key.latitude}
