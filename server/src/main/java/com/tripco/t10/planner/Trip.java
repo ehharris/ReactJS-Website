@@ -44,8 +44,14 @@ public class Trip extends Vincenty {
    * It might need to reorder the places in the future.
    */
   public void plan() {
-      if(this.options.optimization.equals("short")) {
-          shortOptimization();
+
+      //Make sure optimization attribute was acknowledged.
+      if(!(this.options.optimization == null)) {
+          if(this.options.optimization.equals("short")) {
+              shortOptimization();
+          }
+      } else {
+          this.options.optimization = "none";
       }
       this.map = svg();
       this.distances = legDistances();
