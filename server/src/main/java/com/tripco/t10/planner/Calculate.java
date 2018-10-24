@@ -23,7 +23,12 @@ public class Calculate {
         Gson gson = new Gson();
         distance = gson.fromJson(requestBody, Distance.class);
 
-        distance.setDistance(distance.calculateDistance(distance.getOrigin().latitude, distance.getDestination().latitude, distance.getOrigin().longitude, distance.getDestination().longitude, distance.getUnits(),0));
+        double[] coordinates = {distance.getOrigin().latitude,
+                                distance.getDestination().latitude,
+                                distance.getOrigin().longitude,
+                                distance.getDestination().longitude,};
+
+        distance.setDistance(distance.calculateDistance(coordinates, distance.getUnits(),0));
 
     }
 

@@ -1,8 +1,7 @@
 package com.tripco.t10.planner;
 
 /**
- * Describes the places to visit in a trip in TFFI format.
- * There may be other attributes of a place, but these are required to plan a trip.
+ * Contains the id, name, latitude, longitude for a trip in TFFI format.
  */
 public class Place {
   public String id;
