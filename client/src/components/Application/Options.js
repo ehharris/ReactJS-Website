@@ -39,8 +39,7 @@ class Options extends Component{
 
         const userDefinedOptions =
             <Form inline>
-              <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                {/*<Label for="unitName" className="mr-sm-2">Unit name</Label>*/}
+              <FormGroup>
                 <Input
                   type="unitName"
                   name="unit name"
@@ -50,8 +49,7 @@ class Options extends Component{
                 />
               </FormGroup>
               <p>{"\n"}</p>
-              <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                {/*<Label for="unitRadius" className="mr-sm-2">Unit radius</Label>*/}
+              <FormGroup>
                 <Input
                   type="unitRadius"
                   name="unit radius"
