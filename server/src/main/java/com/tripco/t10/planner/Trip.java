@@ -56,25 +56,30 @@ public class Trip extends Vincenty {
      * @return
      */
     private void shortOptimization() {
+        ArrayList<Place> shortOptOrder = new ArrayList<>();
+        shortOptOrder.add(this.places.get(0));
 
-        int startCity = 0;
-        int nextCity;
+        shortOptOrder = nearestNeighbor(shortOptOrder, 0, -1);
+        Collections.copy(this.places, shortOptOrder);
+
+    }
+
+    /**
+     * Algorithm for nearest neighbor
+     * @return
+     */
+    private ArrayList<Place> nearestNeighbor(ArrayList<Place> visited, int startCity, int bestNextCity){
         int shortestDistance = 100000000;
-        int bestNextCity = -1;
-        ArrayList<Place> visited = new ArrayList<>();
-
-        visited.add(this.places.get(startCity));
 
         //Repeat all steps until places have been rearranged.
         while(visited.size() != this.places.size() ){
-            for(nextCity = 0; nextCity < places.size(); nextCity++){
+            for(int nextCity = 0; nextCity < places.size(); nextCity++){
                 if(!visited.contains(this.places.get(nextCity))){
 
                     double[] coordinates = {this.places.get(startCity).latitude,
                             this.places.get(nextCity).latitude,this.places.get(startCity).longitude,
                             this.places.get(nextCity).longitude};
-                    int distance = calculateDistance(coordinates,
-						     this.options.units, this.options.unitRadius);
+                    int distance = calculateDistance(coordinates, this.options.units, this.options.unitRadius);
 
                     if(distance < shortestDistance && distance != 0){
                         //Set new shortest distance and nearestNeighbor
@@ -91,8 +96,7 @@ public class Trip extends Vincenty {
 
         }
 
-        Collections.copy(this.places, visited);
-
+        return visited;
     }
 
   /**
