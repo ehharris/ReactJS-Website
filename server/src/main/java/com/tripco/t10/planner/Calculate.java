@@ -6,9 +6,21 @@ import com.google.gson.JsonParser;
 import com.tripco.t10.server.HTTP;
 import spark.Request;
 
-public class Calculate {
+import java.util.ArrayList;
 
+/*
+ * This class converts from Gson to Json and sets distance.
+ */
+public class Calculate {
     private Distance distance;
+    private ArrayList<Place> places;
+
+    public Calculate(ArrayList<Place> places){
+        this.places = places;
+    }
+    /*
+     * This method does the conversion.
+     */
     public Calculate (Request request){
 
         // first print the request
@@ -31,6 +43,10 @@ public class Calculate {
 
     }
 
+    /*
+     * This method gets the distance.
+     * Then converts to json.
+     */
     public String getDistance() {
         Gson gson = new Gson();
         return gson.toJson(distance);
