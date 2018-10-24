@@ -87,7 +87,7 @@ class Application extends Component {
           <Col>
             <Card>
               <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-              <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+              <Optimization update={this.updateOptions} config={this.state.config} options={this.state.trip.options}/>
             </Card>
           </Col>
         </Row>
