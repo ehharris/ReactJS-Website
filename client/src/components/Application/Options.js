@@ -37,35 +37,26 @@ class Options extends Component{
             </Button>
         );
 
-        const optimizations = this.props.config.optimization.map((label) =>
-            <Button
-                key={'optimization_button_' + label.label}
-                className='btn-outline-dark unit-button'
-                active={this.props.options.optimization === label.label}
-                value={label.label}
-                onClick={(event) => {this.props.updateOptions('optimization', event.target.value)}}
-            >
-                {label.label.charAt(0).toUpperCase() + label.label.slice(1)}
-            </Button>
-        );
-
         const userDefinedOptions =
             <Form inline>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="unitName" className="mr-sm-2">Unit name</Label>
+                {/*<Label for="unitName" className="mr-sm-2">Unit name</Label>*/}
                 <Input
                   type="unitName"
                   name="unit name"
                   id="unitName"
+                  placeholder="Unit Name"
                   onChange={(event) => this.props.updateOptions('unitName', event.target.value)}
                 />
               </FormGroup>
+              <p>{"\n"}</p>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="unitRadius" className="mr-sm-2">Unit radius</Label>
+                {/*<Label for="unitRadius" className="mr-sm-2">Unit radius</Label>*/}
                 <Input
                   type="unitRadius"
                   name="unit radius"
                   id="exampleEmail"
+                  placeholder="Radius of Earth"
                   onChange={(event) => this.props.updateOptions('unitRadius', event.target.value)}
                 />
               </FormGroup>
@@ -73,7 +64,6 @@ class Options extends Component{
 
 
         return(
-            <Card>
                 <CardBody>
                     <p>Select the options you wish to use.</p>
                     <p>Units</p>
@@ -84,13 +74,7 @@ class Options extends Component{
                       <Collapse isOpen={this.state.collapse}>
                         {userDefinedOptions}
                       </Collapse>
-                      <p>{"\n"}</p>
-                    <p>Optimization</p>
-                      <ButtonGroup>
-                        {optimizations}
-                      </ButtonGroup>
                 </CardBody>
-            </Card>
         )
     }
 }
