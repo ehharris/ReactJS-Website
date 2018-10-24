@@ -41,12 +41,15 @@
 For Sprint 4, our main goal is to complete the sprint 3 epics that we were unable to finish. We hope to complete all of these within the first half of this sprint. After that, we expect to finish as many of the required sprint 4 epics as possible. We recognize the amount of work rolling over from the previous sprint and are trying to be realistic with what we can fully accomplish with this one. More specifically, we want to improve our testing, itinerary, map, and overall user experience of the website.
 
 ![User Interface Sketch](/team/user_interface_plan_sketch.jpg "Sprint 4 User Interface Plan Sketch")
+
 Our user interface plan is similar to how we planned it in Sprint 3.
 
 ![Component Hierarchy](/team/Sprint4_Component_Hierarchy.png "Sprint 4 Component Hierarchy Sketch")
+
 For components we've added display options to Itinerary and have also eliminated the need to pass values into the map component.
 
 ![Server Hierarchy](/team/Sprint4_Server_Hierarchy.png "Sprint 4 Server Hierarchy Sketch")
+
 We've updated the hierarcy with the calls to '/map', otherwise the backend will be similar to Sprint 3
 
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
