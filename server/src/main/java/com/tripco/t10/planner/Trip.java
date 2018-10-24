@@ -65,7 +65,7 @@ public class Trip extends Vincenty {
     }
 
     /**
-     * Algorithm for nearest neighbor
+     * Algorithm for nearest neighbor.
      * @return
      */
     private ArrayList<Place> nearestNeighbor(ArrayList<Place> visited, int startCity, int bestNextCity){
