@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row, Col, Card } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import Map from './Map';
@@ -8,6 +8,8 @@ import File from './File';
 import ItineraryTable from './Itinerary.jsx';
 import Search from './Search';
 import Calculator from './Calculator';
+import Optimization from './Optimization';
+
 
 import { get_config } from '../../api/api';
 
@@ -77,8 +79,19 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
-        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+
+        <Row>
+          <Col>
+            <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+          </Col>
+          <Col>
+            <Card>
+              <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+              <Optimization update={this.updateOptions} config={this.state.config} options={this.state.trip.options}/>
+            </Card>
+          </Col>
+        </Row>
+
         <Map trip={this.state.trip}/>
         <ItineraryTable trip={this.state.trip}/>
         <Calculator/>
