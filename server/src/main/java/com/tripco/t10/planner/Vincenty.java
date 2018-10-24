@@ -1,6 +1,8 @@
 package com.tripco.t10.planner;
 
-//Use Vincenty Formula to Calculate Distance 
+/**
+ * Calculates distance using vincenty formula.
+ */
 public class Vincenty{
   public int calculateDistance(double[] coordinates, String units, int unitRadius){
   
