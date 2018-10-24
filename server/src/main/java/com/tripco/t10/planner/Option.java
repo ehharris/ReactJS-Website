@@ -1,11 +1,9 @@
 package com.tripco.t10.planner;
 
 /**
- * Describes the options to apply when planning a trip in TFFI format.
- * At this point we are only using the values provided.
+ * Contains the id, name, latitude, longitude for a trip in TFFI format.
  */
 public class Option {
-  
   public String units;
   public String unitName;
   public int unitRadius;
