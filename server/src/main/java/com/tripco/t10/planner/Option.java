@@ -1,8 +1,7 @@
 package com.tripco.t10.planner;
 
 /**
- * Describes the options to apply when planning a trip in TFFI format.
- * At this point we are only using the values provided.
+ *  Options to apply when planning a trip in TFFI format.
  */
 public class Option {
   

@@ -1,13 +1,7 @@
 package com.tripco.t10.planner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.tripco.t10.server.HTTP;
 import java.util.ArrayList;
 import java.util.Collections;
-import spark.Request;
-
 
 /**
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
@@ -62,25 +56,30 @@ public class Trip extends Vincenty {
      * @return
      */
     private void shortOptimization() {
+        ArrayList<Place> shortOptOrder = new ArrayList<>();
+        shortOptOrder.add(this.places.get(0));
 
-        int startCity = 0;
-        int nextCity;
+        shortOptOrder = nearestNeighbor(shortOptOrder, 0, -1);
+        Collections.copy(this.places, shortOptOrder);
+
+    }
+
+    /**
+     * Algorithm for nearest neighbor.
+     * @return
+     */
+    private ArrayList<Place> nearestNeighbor(ArrayList<Place> visited, int startCity, int bestNextCity){
         int shortestDistance = 100000000;
-        int bestNextCity = -1;
-        ArrayList<Place> visited = new ArrayList<>();
-
-        visited.add(this.places.get(startCity));
 
         //Repeat all steps until places have been rearranged.
         while(visited.size() != this.places.size() ){
-            for(nextCity = 0; nextCity < places.size(); nextCity++){
+            for(int nextCity = 0; nextCity < places.size(); nextCity++){
                 if(!visited.contains(this.places.get(nextCity))){
 
-                    int distance = calculateDistance(this.places.get(startCity).latitude, 
-						     this.places.get(nextCity).latitude, 
-						     this.places.get(startCity).longitude, 
-						     this.places.get(nextCity).longitude, 
-						     this.options.units, this.options.unitRadius);
+                    double[] coordinates = {this.places.get(startCity).latitude,
+                            this.places.get(nextCity).latitude,this.places.get(startCity).longitude,
+                            this.places.get(nextCity).longitude};
+                    int distance = calculateDistance(coordinates, this.options.units, this.options.unitRadius);
 
                     if(distance < shortestDistance && distance != 0){
                         //Set new shortest distance and nearestNeighbor
@@ -97,12 +96,7 @@ public class Trip extends Vincenty {
 
         }
 
-//        for(int i = 0; i < this.places.size(); i++){
-//            System.out.println("PLACES ARRAY:" + i + " - " + this.places.get(i).name);
-//        }
-
-        Collections.copy(this.places, visited);
-
+        return visited;
     }
 
   /**
@@ -121,26 +115,26 @@ public class Trip extends Vincenty {
    */
   private ArrayList<Integer> legDistances() {
 
-	ArrayList<Integer> dist = new ArrayList<Integer>();
+	ArrayList<Integer> dist = new ArrayList<>();
 
 	//Calculate distance between each element.
 	for(int i = 0; i < this.places.size()-1; i++){
 
-	  double x1 = this.places.get(i).latitude;
-	  double x2 = this.places.get(i + 1).latitude;
-	  double y1 = this.places.get(i).longitude;
-	  double y2 = this.places.get(i + 1).longitude;
+	  double[] coordinates = {this.places.get(i).latitude,
+              this.places.get(i + 1).latitude,
+              this.places.get(i).longitude,
+              this.places.get(i + 1).longitude};
 
-	  dist.add(calculateDistance(x1, x2, y1, y2, this.options.units, this.options.unitRadius));
+	  dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
 	}
 
 	//Calculate round trip distance.
-	double x1 = this.places.get(this.places.size()-1).latitude;
-	double x2 = this.places.get(0).latitude;
-	double y1 = this.places.get(this.places.size()-1).longitude;
-	double y2 = this.places.get(0).longitude;
+	double[] coordinates = {this.places.get(this.places.size()-1).latitude,
+                            this.places.get(0).latitude,
+                            this.places.get(this.places.size()-1).longitude,
+                            this.places.get(0).longitude};
 
-	dist.add(calculateDistance(x1, x2, y1, y2, this.options.units, this.options.unitRadius));
+	dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
 	  
 	return dist;
 
