@@ -52,8 +52,6 @@ For components we've added display options to Itinerary and have also eliminated
 
 We've updated the hierarcy with the calls to '/map', otherwise the backend will be similar to Sprint 3
 
-*Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
-
 Epics planned for this sprint.
 
 * User: I want to view my trip in other tools.
@@ -70,11 +68,11 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *total* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Epics | 9 | *total* |
+| Tasks |  31   | *total* | 
+| Story Points |  42  | *total* | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+Our team plans to add more tasks as the sprint goes along. Previously we had about 10-20 extra story points added after the plan and we ended up completing more story points then planned as well. 
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
