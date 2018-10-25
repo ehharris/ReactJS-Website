@@ -12,7 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /*
-  This class contains tests for the Trip class.
+ * This class contains tests for the Calculate class.
  */
 @RunWith(JUnit4.class)
 public class TestCalculate {
@@ -27,7 +27,7 @@ public class TestCalculate {
     }
 
     @Test
-    public void testGetSearch() {
+    public void testGetDistance() {
         Gson gson = new Gson();
         ArrayList<Place> places = new ArrayList<Place>();
         Calculate calculateTest = new Calculate(places);

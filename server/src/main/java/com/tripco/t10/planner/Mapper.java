@@ -11,6 +11,12 @@ public class Mapper {
     private Trip trip;
 
     /**
+     * Constructor for testing.
+     */
+    public Mapper(Trip trip){
+        this.trip = trip;
+    }
+    /**
      * Handles trip planning request, creating a new trip object from the trip request.
      * Does the conversion from Json to a Java class before planning the trip.
      *
