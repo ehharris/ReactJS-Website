@@ -56,9 +56,15 @@ We've updated the hierarcy with the calls to '/map', otherwise the backend will 
 
 Epics planned for this sprint.
 
-* *## epic title: description*
-*
-
+* User: I want to view my trip in other tools.
+* User: I want to plan trips worldwide.
+* User: I want trip planning to be fast.
+* User: I want trip planning to be fast.
+* User: I want to design a trip from scratch so I can stop using the other tool.
+* User: I want to make and save changes to the trip.
+* User: I'd like even shorter trips Epic
+* User: I want to choose what information is displayed in the itinerary and map.
+* TripCo: All code must be tested
 
 ## Metrics
 
