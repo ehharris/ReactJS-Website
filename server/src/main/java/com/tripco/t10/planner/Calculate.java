@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.tripco.t10.server.HTTP;
+import java.util.ArrayList;
 import spark.Request;
 
-import java.util.ArrayList;
 
 /*
  * This class converts from Gson to Json and sets distance.
