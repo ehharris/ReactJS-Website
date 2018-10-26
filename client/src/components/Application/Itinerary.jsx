@@ -7,6 +7,7 @@ class ItineraryTable extends Component {
         super(props);
         this.setOptionLatitude = this.setOptionLatitude.bind(this);
         this.setOptionLongitude = this.setOptionLongitude.bind(this);
+        this.resetOptions = this.resetOptions.bind(this);
         this.state = {
             trip : [],
             places : [],
@@ -41,8 +42,12 @@ class ItineraryTable extends Component {
         this.setState({optionLongitude: true});
     }
 
-    render() {
+    resetOptions(event) {
+        this.setState({optionLongitude: false});
+        this.setState({optionLatitude: false});
+    }
 
+    render() {
         let data = this.buildDistance();
 
         const latitudeStyle = this.state.optionLatitude ? {} : {display: 'none'};
@@ -64,7 +69,7 @@ class ItineraryTable extends Component {
                         </thead>
                         <tbody>
                         {this.props.trip.places.map((key,index,array)=> (
-                                <tr>
+                                <tr key={index}>
                                     <td key='#' > {index + 1} </td>
                                     <td key={key.name}>
                                         {key.name}
@@ -87,7 +92,7 @@ class ItineraryTable extends Component {
                     <br />
                     <button value="latitude" className="btn-outline-dark unit-button" onClick={this.setOptionLatitude}>Show Latitude</button>
                     <button value="longitude" className="btn-outline-dark unit-button" onClick={this.setOptionLongitude}>Show Longitude</button>
-                    {/*<button value="clear" className="btn-outline-dark unit-button" onClick={this.resetOptions}>Reset Options</button>*/}
+                    <button value="clear" className="btn-outline-dark unit-button" onClick={this.resetOptions}>Reset Options</button>
                 </CardBody>
             </Card>
         )

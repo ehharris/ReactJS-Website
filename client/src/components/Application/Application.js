@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Container, Row, Col, Card } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
-import Map from './Map';
+import Map from './Map.jsx';
 import Port from './Port';
 import File from './File';
 import ItineraryTable from './Itinerary.jsx';
