@@ -4,8 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+ * Builds the map.
+ */
 public class MapBuilder {
-
     public Trip trip;
     public ArrayList<Place> places;
     public String mapHead;
@@ -15,7 +17,6 @@ public class MapBuilder {
     /** Creates a Map.
      *
      */
-
     public MapBuilder()
     {
 
@@ -24,7 +25,6 @@ public class MapBuilder {
     /** End of svg map.
      *
      */
-
     public String end(){
         return "</svg>\n"+"</g>\n"+"</g>\n"+"</svg>";
     }
@@ -33,7 +33,6 @@ public class MapBuilder {
      *
      * @param trip Trip object
      */
-
     public MapBuilder(Trip trip)
     {
         this.trip = trip;

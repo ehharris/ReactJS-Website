@@ -24,21 +24,20 @@ class Calculator extends Component{
     };
 
     this.plan = this.plan.bind(this);
-    this.updateDestination = this.updateDestination.bind(this);
-    this.updateOrigin = this.updateOrigin.bind(this);
+    this.updateLatLong = this.updateLatLong.bind(this);
   }
 
-  updateOrigin(option, value) {
-    let distance = this.state.distance.origin;
-    distance[option] = value;
-    this.setState(distance);
+  updateLatLong(option1, option2, value) {
+    let start = this.state.distance[option1];
+    start[option2] = value;
+    this.setState(start);
   }
 
-  updateDestination(option, value){
-    let distance = this.state.distance.destination;
-    distance[option] = value;
-    this.setState(distance);
-  }
+  // updateDestination(option, value){
+  //   let distance = this.state.distance.destination;
+  //   distance[option] = value;
+  //   this.setState(distance);
+  // }
 
   plan(){
     let responsePlan = request(this.state.distance, 'distance').then(
@@ -63,7 +62,7 @@ class Calculator extends Component{
                   name="unit name"
                   id="unitName"
                   placeholder="0"
-                  onChange={(event) => this.updateOrigin('latitude', event.target.value)}
+                  onChange={(event) => this.updateLatLong('origin', 'latitude', event.target.value)}
                 />
               </FormGroup>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
@@ -73,7 +72,7 @@ class Calculator extends Component{
                   name="unit radius"
                   id="exampleEmail"
                   placeholder="0"
-                  onChange={(event) => this.updateOrigin('longitude', event.target.value)}
+                  onChange={(event) => this.updateLatLong('origin', 'longitude', event.target.value)}
                 />
               </FormGroup>
             </Form>
@@ -86,7 +85,7 @@ class Calculator extends Component{
                 name="unit name"
                 id="unitName"
                 placeholder="0"
-                onChange={(event) => this.updateDestination('latitude', event.target.value)}
+                onChange={(event) => this.updateLatLong('destination', 'latitude', event.target.value)}
               />
             </FormGroup>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
@@ -96,7 +95,7 @@ class Calculator extends Component{
                 name="unit radius"
                 id="exampleEmail"
                 placeholder="0"
-                onChange={(event) => this.updateDestination('longitude', event.target.value)}
+                onChange={(event) => this.updateLatLong('destination', 'longitude', event.target.value)}
               />
             </FormGroup>
           </Form>
