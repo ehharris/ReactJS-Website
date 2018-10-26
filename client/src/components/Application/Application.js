@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Container } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
-import Map from './Map';
+import Map from './Map.jsx';
 import Port from './Port';
 import File from './File';
 import ItineraryTable from './Itinerary.jsx';
@@ -80,7 +80,7 @@ class Application extends Component {
         <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <Map trip={this.state.trip}/>
-        <ItineraryTable data={this.state.trip}/>
+        <ItineraryTable trip={this.state.trip}/>
         <Calculator/>
         <Search/>
         <Port/>

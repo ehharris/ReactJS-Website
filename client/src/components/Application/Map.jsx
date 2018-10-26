@@ -16,8 +16,8 @@ export default class Map extends Component {
         fetch('http://' + location.hostname + ":31410/map", {
             method: 'POST',
             body: JSON.stringify({
-                    places: this.state.trip.places,
-                }),
+                places: this.state.trip.places,
+            }),
             headers: {
                 'Content-Type': 'applications/json',
                 'Accept': 'applications/json'
@@ -27,8 +27,8 @@ export default class Map extends Component {
             .then(resData => this.setState({map: JSON.stringify(resData)}));
     }
     render() {
-       //console.log(this.state.trip);
-       this.buildThatMap();
+        //console.log(this.state.trip);
+        this.buildThatMap();
         return (
             <div>
                 <Card>
