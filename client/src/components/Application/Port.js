@@ -12,18 +12,13 @@ class Port extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeServer = this.changeServer.bind(this);
         this.changePort = this.changePort.bind(this);
-        this.changeService = this.changeService.bind(this);
-        this.changeName = this.changeName.bind(this);
-        this.changeRequestBodyText = this.changeRequestBodyText.bind(this);
         this.state = {
             server: '',
-            port: '',
-            service: '',
-            name: '',
-            data: '',
-            requestBody: ''
+            port: ''
         };
     }
+
+
 
     changeServer(event) {
         this.setState({server: event.target.value});
@@ -33,73 +28,30 @@ class Port extends Component{
         this.setState({port: event.target.value});
     }
 
-    changeService(event) {
-        this.setState({service: event.target.value});
-    }
-
-    changeName(event) {
-        this.setState({name: event.target.value});
-    }
-
-    changeRequestBodyText(event) {
-        this.setState({requestBody: event.target.value});
-    }
-
-
     handleSubmit(event) {
         event.preventDefault();
-        if(this.state.server !== "" && this.state.port !== "") {
-            if (this.state.service === "/about" || this.state.service === "/team") {
-                fetch('http://' + this.state.server + ":" + this.state.port + this.state.service, {
-                    method: 'GET'
-                })
-                    .then(response => response.text())
-                    .then(resData => this.setState({data: resData}));
-            }
 
-            if (this.state.service === "/echo" || this.state.service === "/config") {
-                fetch('http://' + this.state.server + ":" + this.state.port + this.state.service, {
-                    method: 'GET'
-                })
-                    .then(response => response.json())
-                    .then(resData => this.setState({data: JSON.stringify(resData)}));
-            }
+        this.props.updateServer(this.state.server);
+        this.props.updatePort(this.state.port);
+        console.log(this.props.server);
 
-            if (this.state.service === "/hello") {
-                if (this.state.name !== "") {
-                    fetch('http://' + this.state.server + ":" + this.state.port + this.state.service + "/" + this.state.name, {
+            if(this.props.server !== "" && this.state.port !== "") {
+                    fetch('http://' + this.props.server + ":" + this.props.port + "/about", {
                         method: 'GET'
                     })
                         .then(response => response.text())
                         .then(resData => this.setState({data: resData}));
-                }
-                else {
-                    this.setState({data: "Please enter a name for the /hello microservice"});
-                }
             }
 
-            if (this.state.service === "/plan" || this.state.service === "/distance") {
-                if (this.state.requestBody !== "") {
-                    console.log(this.state.requestBody);
-                    fetch('http://' + this.state.server + ":" + this.state.port + this.state.service, {
-                        method: 'POST',
-                        body: this.state.requestBody
-                    })
-                        .then(response => response.json())
-                        .then(resData => this.setState({data: JSON.stringify(resData)}));
-                }
-                else {
-                    this.setState({data: "Please input JSON when using /plan or /distance microservice"});
-                }
-            }
-        }
-        else {
-            this.setState({data: "Please input server and/or port"});
-        }
+
+    }
+
+
+    changeService(event) {
+        this.setState({service: event.target.value});
     }
 
     render() {
-
         return(
             <Card>
                 <CardBody>
@@ -110,21 +62,7 @@ class Port extends Component{
                     <div>Change Port: </div>
                     <input name="Change Port" type="text" value={this.state.port} onChange={this.changePort} />
                     <br />
-                    <div>Enter Name for /hello: </div>
-                    <input name="Enter Name" type="text" value={this.state.name} onChange={this.changeName} />
-                    <br/>
-                    <div>Enter Text for /plan or /distance: </div>
-                    <input name="Enter Text" type="text" value={this.state.requestBody} onChange={this.changeRequestBodyText} />
-                    <br/>
-                    <div>Select Microservice: </div>
-                    <button value="/about" className="btn-outline-dark unit-button" onClick={this.changeService}>/about</button>
-                    <button value="/echo" className="btn-outline-dark unit-button" onClick={this.changeService}>/echo</button>
-                    <button value="/team" className="btn-outline-dark unit-button" onClick={this.changeService}>/team</button>
-                    <button value="/config" className="btn-outline-dark unit-button" onClick={this.changeService}>/config</button>
-                    <button value="/hello" className="btn-outline-dark unit-button" onClick={this.changeService}>/hello</button>
-                    <button value="/plan" className="btn-outline-dark unit-button" onClick={this.changeService}>/plan</button>
-                    <button value="/distance" className="btn-outline-dark unit-button" onClick={this.changeService}>/distance</button>
-                    <br/>
+                    <button value="submit">Change Server and Port</button>
 
                 </form>
                     <div>Data Received: </div><br />

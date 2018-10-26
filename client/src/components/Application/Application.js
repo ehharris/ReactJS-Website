@@ -21,6 +21,8 @@ class Application extends Component {
     super(props);
     this.state = {
       config: null,
+      server: '',
+      port: '',
       trip: {
         type: "trip",
         title: "",
@@ -36,6 +38,8 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
+    this.updateServer = this.updateServer.bind(this);
+    this.updatePort = this.updatePort.bind(this);
   }
 
   componentWillMount() {
@@ -74,6 +78,14 @@ class Application extends Component {
     this.setState(trip);
   }
 
+  updateServer(value) {
+      this.setState({server: value});
+  }
+
+  updatePort(value) {
+      this.setState({port: value});
+  }
+
   render() {
     if(!this.state.config) { return <div/> }
     return(
@@ -96,7 +108,7 @@ class Application extends Component {
         <ItineraryTable trip={this.state.trip}/>
         <Calculator/>
         <Search/>
-        <Port/>
+        <Port server={this.state.server} port={this.state.port} updateServer={this.updateServer} updatePort={this.updatePort}/>
       </Container>
     )
   }
