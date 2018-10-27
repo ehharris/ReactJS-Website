@@ -21,8 +21,8 @@ class Application extends Component {
     super(props);
     this.state = {
       config: null,
-      server: '',
-      port: '',
+      server: location.hostname,
+      port: '31410',
       trip: {
         type: "trip",
         title: "",
@@ -59,7 +59,7 @@ class Application extends Component {
   }
 
   updateBasedOnResponse(value) {
-      fetch('http://' + location.hostname + ":31410/plan", {
+      fetch('http://' + this.state.server + ":" + this.state.port + "/plan", {
           method: 'POST',
           body: JSON.stringify(value),
           headers: {
@@ -107,7 +107,7 @@ class Application extends Component {
         <Map trip={this.state.trip}/>
         <ItineraryTable trip={this.state.trip}/>
         <Calculator/>
-        <Search/>
+        <Search server={this.state.server} port={this.state.port}/>
         <Port server={this.state.server} port={this.state.port} updateServer={this.updateServer} updatePort={this.updatePort}/>
       </Container>
     )

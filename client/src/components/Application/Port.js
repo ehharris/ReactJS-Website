@@ -33,22 +33,6 @@ class Port extends Component{
 
         this.props.updateServer(this.state.server);
         this.props.updatePort(this.state.port);
-        console.log(this.props.server);
-
-            if(this.props.server !== "" && this.state.port !== "") {
-                    fetch('http://' + this.props.server + ":" + this.props.port + "/about", {
-                        method: 'GET'
-                    })
-                        .then(response => response.text())
-                        .then(resData => this.setState({data: resData}));
-            }
-
-
-    }
-
-
-    changeService(event) {
-        this.setState({service: event.target.value});
     }
 
     render() {
@@ -63,10 +47,10 @@ class Port extends Component{
                     <input name="Change Port" type="text" value={this.state.port} onChange={this.changePort} />
                     <br />
                     <button value="submit">Change Server and Port</button>
+                    <br />
+                    Current server and port: {this.props.server}:{this.props.port}
 
                 </form>
-                    <div>Data Received: </div><br />
-                    {this.state.data}
                 </CardBody>
             </Card>
         )

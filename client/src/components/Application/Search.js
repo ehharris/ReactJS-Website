@@ -27,7 +27,7 @@ class Search extends Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        fetch('http://' + location.hostname + ":" + "31410" + "/search", {
+        fetch('http://' + this.props.server + ":" + this.props.port + "/search", {
             method: 'POST',
             body: JSON.stringify({
                 "version": 3,
