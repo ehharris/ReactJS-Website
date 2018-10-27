@@ -24,10 +24,14 @@ class Add extends Component{
   createPlace(){
     if((this.state.place.id !== '') && (this.state.place.name !== '') &&
       (this.state.place.latitude !== '') && (this.state.place.longitude !== '')){
-      let places = this.props.places;
-      places.push(this.state.place);
-      this.props.updatePlaces(places);
-      this.message();
+
+      if(!isNaN(this.state.place.longitude) && !isNaN(this.state.place.longitude)){
+
+        let places = this.props.places;
+        places.push(this.state.place);
+        this.props.updatePlaces(places);
+        this.message();
+      }
     }
   }
 
