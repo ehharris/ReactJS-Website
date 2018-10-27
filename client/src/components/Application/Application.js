@@ -9,6 +9,7 @@ import ItineraryTable from './Itinerary.jsx';
 import Search from './Search';
 import Calculator from './Calculator';
 import Optimization from './Optimization';
+import Add from './Add';
 
 
 import { get_config } from '../../api/api';
@@ -40,6 +41,7 @@ class Application extends Component {
     this.updateOptions = this.updateOptions.bind(this);
     this.updateServer = this.updateServer.bind(this);
     this.updatePort = this.updatePort.bind(this);
+    this.updatePlaces = this.updatePlaces.bind(this);
   }
 
   componentWillMount() {
@@ -78,6 +80,11 @@ class Application extends Component {
     this.setState(trip);
   }
 
+  updatePlaces(places){
+    this.setState({'places': places});
+    this.updateBasedOnResponse(this.state.trip);
+  }
+
   updateServer(value) {
       this.setState({server: value});
   }
@@ -91,19 +98,18 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-
         <Row>
           <Col>
             <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+            <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
           </Col>
           <Col>
             <Card>
               <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-              <Optimization update={this.updateOptions} config={this.state.config} options={this.state.trip.options}/>
+              <Optimization updateOptions={this.updateOptions} config={this.state.config} options={this.state.trip.options}/>
             </Card>
           </Col>
         </Row>
-
         <Map trip={this.state.trip}/>
         <ItineraryTable trip={this.state.trip}/>
         <Calculator/>

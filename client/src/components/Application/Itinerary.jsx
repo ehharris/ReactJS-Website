@@ -56,7 +56,7 @@ class ItineraryTable extends Component {
         return (
             <Card>
                 <CardBody>
-                    <p className="lead">"Your Itinerary"</p>
+                    <p className="lead">{this.props.trip.title}</p>
                     <table>
                         <thead>
                         <tr>
