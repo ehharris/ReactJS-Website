@@ -11,7 +11,7 @@ import Calculator from './Calculator';
 import Optimization from './Optimization';
 import Add from './Add';
 
-
+import { request } from '../../api/api';
 import { get_config } from '../../api/api';
 
 /* Renders the application.
