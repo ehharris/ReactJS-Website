@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
 
+import { request } from '../../api/api';
+
 /* Allows the user to search from database.
  * Allows the user to search from database used by the application via inputs.
  */
@@ -27,21 +29,25 @@ class Search extends Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        fetch('http://' + this.props.server + ":" + this.props.port + "/search", {
-            method: 'POST',
-            body: JSON.stringify({
-                "version": 3,
-                "type": "search",
-                "match": this.state.search,
-                "limit": this.state.limit
-            }),
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then(resData => this.setState({results: JSON.stringify(resData)}));
+
+        request({ "version": 3, "type": "search", "match": this.state.search, "limit": this.state.limit }, "search", this.props.port, this.props.server).then((resData) => this.setState({results: JSON.stringify(resData)}));
+
+
+        // fetch('http://' + this.props.server + ":" + this.props.port + "/search", {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         "version": 3,
+        //         "type": "search",
+        //         "match": this.state.search,
+        //         "limit": this.state.limit
+        //     }),
+        //     headers : {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(resData => this.setState({results: JSON.stringify(resData)}));
     }
 
     render() {
