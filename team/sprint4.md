@@ -81,9 +81,10 @@ Our team plans to add more tasks as the sprint goes along. Previously we had abo
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* | *none* | 
-
-*Add a new row for the scrum session after each lecture. *
+| 10/22/18 | *none* | #72 #158 #252 | Not able to meet | 
+| 10/24/18 | #72 #158 #252 | #276 #278 | *none* | 
+| 10/26/18 | #72 #158 #252 #276 #278 | #173 | *none* | 
+| 10/29/18 | #72 #158 #252 #276 #278 #173 | #266 #273 #178 | Not able to meet |
 
 ## Review
 
