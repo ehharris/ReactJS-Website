@@ -8,8 +8,9 @@ class ItineraryTable extends Component {
         this.setOptionLatitude = this.setOptionLatitude.bind(this);
         this.setOptionLongitude = this.setOptionLongitude.bind(this);
         this.resetOptions = this.resetOptions.bind(this);
+        this.reverseTrip = this.reverseTrip.bind(this);
         this.state = {
-            trip : [],
+            trip : {},
             places : [],
             data : [],
             optionLatitude: false,
@@ -30,7 +31,7 @@ class ItineraryTable extends Component {
         return data;
         //this.state.set = 'true';
 
-            //this.state.data.push(this.props.data.distances[i]);
+        //this.state.data.push(this.props.data.distances[i]);
 
     }
 
@@ -45,6 +46,12 @@ class ItineraryTable extends Component {
     resetOptions(event) {
         this.setState({optionLongitude: false});
         this.setState({optionLatitude: false});
+    }
+
+    reverseTrip(event) {
+        let data = this.props.trip;
+        data.places = data.places.reverse();
+        this.props.updateBasedOnResponse(data);
     }
 
     render() {
@@ -69,22 +76,22 @@ class ItineraryTable extends Component {
                         </thead>
                         <tbody>
                         {this.props.trip.places.map((key,index,array)=> (
-                                <tr key={index}>
-                                    <td key='#' > {index + 1} </td>
-                                    <td key={key.name}>
-                                        {key.name}
-                                    </td>
-                                    <td key={data[index]}>
-                                        {data[index]}
-                                    </td>
-                                        <td key={key.latitude} style={latitudeStyle}>
-                                            {key.latitude}
-                                    </td>
-                                    <td key={key.longitude} style={longitudeStyle}>
-                                        {key.longitude}
-                                    </td>
-                                </tr>
-                            ))}
+                            <tr key={index}>
+                                <td key='#' > {index + 1} </td>
+                                <td key={key.name}>
+                                    {key.name}
+                                </td>
+                                <td key={data[index]}>
+                                    {data[index]}
+                                </td>
+                                <td key={key.latitude} style={latitudeStyle}>
+                                    {key.latitude}
+                                </td>
+                                <td key={key.longitude} style={longitudeStyle}>
+                                    {key.longitude}
+                                </td>
+                            </tr>
+                        ))}
                         </tbody>
                     </table>
 
@@ -93,6 +100,7 @@ class ItineraryTable extends Component {
                     <button value="latitude" className="btn-outline-dark unit-button" onClick={this.setOptionLatitude}>Show Latitude</button>
                     <button value="longitude" className="btn-outline-dark unit-button" onClick={this.setOptionLongitude}>Show Longitude</button>
                     <button value="clear" className="btn-outline-dark unit-button" onClick={this.resetOptions}>Reset Options</button>
+                    <button value="reverse" className="btn-outline-dark unit-button" onClick={this.reverseTrip}>Reverse Trip</button>
                 </CardBody>
             </Card>
         )
