@@ -61,16 +61,18 @@ class Application extends Component {
     }
 
     updateBasedOnResponse(value) {
-        fetch('http://' + this.state.server + ":" + this.state.port + "/plan", {
-            method: 'POST',
-            body: JSON.stringify(value),
-            headers: {
-                'Content-Type': 'applications/json',
-                'Accept': 'applications/json'
-            }
-        })
-            .then(response => response.json())
-            .then(resData => this.setState({trip: resData}));
+        request(value, "plan", this.state.port, this.state.server).then((resData) => this.setState({trip: resData}));
+    //
+    //     fetch('http://' + this.state.server + ":" + this.state.port + "/plan", {
+    //         method: 'POST',
+    //         body: JSON.stringify(value),
+    //         headers: {
+    //             'Content-Type': 'applications/json',
+    //             'Accept': 'applications/json'
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(resData => this.setState({trip: resData}));
     }
 
 
