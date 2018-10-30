@@ -9,6 +9,7 @@ class ItineraryTable extends Component {
         this.setOptionLongitude = this.setOptionLongitude.bind(this);
         this.resetOptions = this.resetOptions.bind(this);
         this.reverseTrip = this.reverseTrip.bind(this);
+        this.changeStart = this.changeStart.bind(this);
         this.state = {
             trip : {},
             places : [],
@@ -54,6 +55,20 @@ class ItineraryTable extends Component {
         this.props.updateBasedOnResponse(data);
     }
 
+    changeStart(index) {
+        console.log(index);
+        let data = this.props.trip;
+        let length = data.places.length;
+        for(let i = 0; i < index; i++){
+            let temp = data.places[0];
+            for (let j = 0; j < length - 1; j++){
+                data.places[j] = data.places[j+1];
+            }
+            data.places[length-1] = temp;
+        }
+        this.props.updateBasedOnResponse(data);
+    }
+
     render() {
         let data = this.buildDistance();
 
@@ -89,6 +104,9 @@ class ItineraryTable extends Component {
                                 </td>
                                 <td key={key.longitude} style={longitudeStyle}>
                                     {key.longitude}
+                                </td>
+                                <td key={index+1}>
+                                    <button value="start" className="btn-outline-dark unit-button" onClick={() => this.changeStart(index)}>Change to Start Here</button>
                                 </td>
                             </tr>
                         ))}
