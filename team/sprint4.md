@@ -85,6 +85,7 @@ Our team plans to add more tasks as the sprint goes along. Previously we had abo
 | 10/24/18 | #72 #158 #252 | #276 #278 | *none* | 
 | 10/26/18 | #72 #158 #252 #276 #278 | #173 | *none* | 
 | 10/29/18 | #72 #158 #252 #276 #278 #173 | #266 #273 #178 | Not able to meet |
+| 10/31/18 | #72 #158 #252 #276 #278 #173 #283 #175 #266 #181 | #266 #273 #178 | *none* |
 
 ## Review
 
