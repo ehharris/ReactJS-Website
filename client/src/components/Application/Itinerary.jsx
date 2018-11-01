@@ -25,7 +25,7 @@ class ItineraryTable extends Component {
     buildDistance() {
         let data = [0];
 
-        this.props.trip.distances.map((key, index, array) => {
+        this.props.trip.distances.map((key, index) => {
             if (index > 0) {
                 data[index] = this.props.trip.distances[index - 1] + data[index-1];
             }
@@ -70,9 +70,11 @@ class ItineraryTable extends Component {
     }
 
     removePlace(index){
-        let data = this.props.trip;
-        data.places.splice(index,1);
-        this.props.updateBasedOnResponse(data);
+        if (this.props.trip.places.length > 1) {
+            let data = this.props.trip;
+            data.places.splice(index, 1);
+            this.props.updateBasedOnResponse(data);
+        }
     }
 
     render() {
@@ -96,9 +98,10 @@ class ItineraryTable extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.props.trip.places.map((key,index,array)=> (
+                        {this.props.trip.places.map((key,index)=> (
                             <tr key={index}>
-                                <td key='#' > {index + 1} </td>
+                                <td key={'#' + index}>
+                                    {index + 1} </td>
                                 <td key={key.name}>
                                     {key.name}
                                 </td>
@@ -114,7 +117,7 @@ class ItineraryTable extends Component {
                                 <td key={index+1}>
                                     <button value="start" className="btn-outline-dark unit-button" onClick={() => this.changeStart(index)}>Change to Start Here</button>
                                 </td>
-                                <td key = "remove">
+                                <td key = {"remove" + index}>
                                     <button value="bye" onClick={() => this.removePlace(index)}>&times;</button>
                                 </td>
                             </tr>
