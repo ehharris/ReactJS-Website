@@ -1,17 +1,12 @@
 package com.tripco.t10.planner;
 
-import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
+
 
 public class MapBuilder {
 
-    public Trip trip;
-    public String[] lines;
-    public String mapHead;
-    public StringBuffer mapBod;
+    private Trip trip;
+    private String[] lines;
     public String map;
 
     /** Creates a Map.
@@ -29,16 +24,16 @@ public class MapBuilder {
         return "</svg>\n"+"</g>\n"+"</g>\n"+"</svg>";
     }
 
-    public double conLat(double lat){
+    private double conLat(double lat){
         return (((41 - lat)/4) * 710);
     }
 
-    public double conLong(double longitude){
+    private double conLong(double longitude){
         double a = (-(-109 - longitude)/7) * 994;
         return a;
     }
 
-    public void addline(String str, int index){
+    private void addline(String str, int index){
         lines[index] = str;
     }
 
@@ -50,8 +45,6 @@ public class MapBuilder {
     public MapBuilder(Trip trip)
     {
         this.trip = trip;
-        this.mapHead ="<title>Map Layer</title>\n";
-        //this.places = trip.places;
         this.lines = new String[trip.places.size()];
 
         if(trip.places.size() > 1) {
