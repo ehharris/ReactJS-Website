@@ -1,6 +1,7 @@
 package com.tripco.t10.planner;
 
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class MapBuilder {
@@ -29,11 +30,24 @@ public class MapBuilder {
     }
 
     private double conLong(double longitude){
-        double a = (-(-109 - longitude)/7) * 994;
-        return a;
+        return ((-(-109 - longitude)/7) * 994);
+
     }
 
-    private void addline(String str, int index){
+    private void addline(int index){
+        double begLat = conLat(this.trip.places.get(index).getLatitude());
+        double begLong = conLong(this.trip.places.get(index).getLongitude());
+        double endLat = conLat(this.trip.places.get(index + 1).getLatitude());
+        double endLong = conLong(this.trip.places.get(index + 1).getLongitude());
+        String str = ("<line x1='"
+                + Math.round(begLong)
+                + "' y1='"
+                + Math.round(begLat)
+                + "' x2='"
+                + Math.round(endLong)
+                + "' y2='"
+                + Math.round(endLat)
+                + "' style='stroke:blue; stroke-width:2' />\n");
         lines[index] = str;
     }
 
@@ -50,28 +64,23 @@ public class MapBuilder {
         if(trip.places.size() > 1) {
             //creates map lines
             for (int i = 0; i < trip.places.size() - 1; i++) {
-                double bLat = conLat(this.trip.places.get(i).getLatitude());
-                double bLong = conLong(trip.places.get(i).getLongitude());
-                double eLat = conLat(trip.places.get(i + 1).getLatitude());
-                double eLong = conLong(trip.places.get(i + 1).getLongitude());
-                String str = ("<line x1='" + Math.round(bLong) +
-                        "' y1='" + Math.round(bLat) +
-                        "' x2='" + Math.round(eLong) +
-                        "' y2='" + Math.round(eLat) +
-                        "' style='stroke:blue; stroke-width:2' />\n");
-                addline(str, i);
+                addline(i);
             }
             //add line to beginning place
-            double bLat = conLat(trip.places.get(0).getLatitude());
-            double bLong = conLong(trip.places.get(0).getLongitude());
-            double eLat = conLat(trip.places.get(trip.places.size() - 1).getLatitude());
-            double eLong = conLong(trip.places.get(trip.places.size() - 1).getLongitude());
-            String str = ("<line x1='" + Math.round(bLong) +
-                    "' y1='" + Math.round(bLat) +
-                    "' x2='" + Math.round(eLong) +
-                    "' y2='" + Math.round(eLat) +
-                    "' style='stroke:blue; stroke-width:2' />\n");
-            addline(str, lines.length - 1);
+            double begLat = conLat(trip.places.get(0).getLatitude());
+            double begLong = conLong(trip.places.get(0).getLongitude());
+            double endLat = conLat(trip.places.get(trip.places.size() - 1).getLatitude());
+            double endLong = conLong(trip.places.get(trip.places.size() - 1).getLongitude());
+            String str = ("<line x1='"
+                    + Math.round(begLong)
+                    + "' y1='"
+                    + Math.round(begLat)
+                    + "' x2='"
+                    + Math.round(endLong)
+                    + "' y2='"
+                    + Math.round(endLat)
+                    + "' style='stroke:blue; stroke-width:2' />\n");
+            lines[lines.length - 1] = str;
         }
         try {
             File file = new File("./Resources/CObackground.svg");
