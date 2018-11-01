@@ -104,7 +104,7 @@ public class Trip extends Vincenty {
    * @return
    */
   private String svg() {
-   MapBuilder map = new MapBuilder();
+   MapBuilder map = new MapBuilder(this);
    return map.map;
 }
 

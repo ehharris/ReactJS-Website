@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg width="1066.6073"
 	 height="783.0824"
 	 xmlns="http://www.w3.org/2000/svg">
@@ -278,12 +276,7 @@
    id="path105" />
 
 			<path
-   d="M 35.62085,587.43896 C 46.19263,587.49365 56.7478,587.72998 67.32031,587.52978 C 67.52051,586.61523 67.72729,585.70117 67.8977,584.78076 C 74.64526,584.49805 81.45532,584.70898 88.20703,584.69433 C 98.82593,584.67138 109.44409,584.59863 120.06323,584.583 C 129.01587,584.56933 137.98047,584.42382 146.93237,584.57958 C 146.60229,586.99022 149.30371,587.47118 150.18237,589.083 C 150.7998,590.21484 150.76733,591.55175 151.18042,592.75439 C 151.64282,594.10156 152.7168,594.95898 153.32764,596.15869 C 153.86597,597.21582 153.44165,597.60156 154.95728,597.56787 C 155.5896,597.55371 156.28614,597.56348 156.90943,597.44336 C 158.36841,597.1626 158.81226,596.0127 159.7605,595.77344 C 161.01343,595.45752 162.03247,596.00244 163.38794,595.45264 C 164.09619,595.16504 164.94629,594.63526 165.50464,594.12159 C 166.14038,593.53663 166.719,592.09571 167.86402,592.54493 C 168.40845,592.92432 169.28492,594.20899 169.65015,594.75538 C 170.66065,595.45509 173.10083,593.52003 174.08496,593.61671 C 174.50537,594.01612 175.25268,594.3462 175.8352,594.30275 C 176.47143,594.12843 176.63037,593.11916 177.45385,592.82277 C 179.27856,592.16506 181.30712,592.20998 183.2207,592.06105 C 185.69238,591.86867 186.22729,594.47414 187.43725,596.0713 L 187.93579,596.22169 C 189.2937,595.84767 190.9646,595.45607 192.30908,596.05372 C 193.18188,596.44142 194.56225,597.58936 195.08349,598.40821 C 195.40356,598.91114 195.51464,599.69971 195.86303,600.15967 C 196.50781,601.01172 197.93115,601.34863 198.78979,601.94971 C 199.1809,602.22364 199.52392,603.60547 199.90649,604.09668 C 200.40429,604.73584 201.27148,603.6958 203.00634,606.36572"
-   style="fill:none;fill-rule:evenodd;stroke:#646464;stroke-width:1.27559996;stroke-linejoin:round;stroke-miterlimit:3.8636899"
-   id="path107" />
-
-			<path
-   d="M 242.13379,571.46729 C 242.05835,571.56592 237.32739,573.37598 237.00806,573.47852 C 236.95337,573.4961 235.23951,573.50831 235.10523,573.51026 C 233.33521,575.48633 235.06959,578.57374 234.48658,580.58741 C 234.30152,581.22755 233.68678,581.66846 233.21803,582.08057 C 231.64699,583.46241 230.62941,583.68409 228.59449,583.89893 C 227.67017,583.99659 227.21241,584.57325 226.71973,585.37696 C 225.76758,585.78614 225.42212,584.95264 224.80591,584.68751 C 224.3374,584.48634 223.71362,584.48976 223.22852,584.313 C 222.41993,584.01857 221.59961,583.58497 220.81104,583.23243"
+   d="M 35.62085,587.43896 C 46.19263,587.49365 56.7478,587.72998 67.32031,587.52978 C 67.52051,586.61523 67.72729,585.70117 67.8977,584.78076 C 74.64526,584.49805 81.45532,584.70898 88.20703,584.69433 C 98.82593,584.67138 109.44409,584.59863 120.06323,584.583 C 129.01587,584.56933 137.98047,584.42382 146.93237,584.57958 C 146.60229,586.99022 149.30371,587.47118 150.18237,589.083 C 150.7998,590.21484 150.76733,591.55175 151.18042,592.75439 C 151.64282,594.10156 152.7168,594.95898 153.32764,596.15869 C 153.86597,597.21582 153.44165,597.60156 154.95728,597.56787 C 155.5896,597.55371 156.28614,597.56348 156.90943,597.44336 C 158.36841,597.1626 158.81226,596.0127 159.7605,595.77344 C 161.01343,595.45752 162.03247,596.00244 163.38794,595.45264 C 164.09619,595.16504 164.94629,594.63526 165.50464,594.12159 C 166.14038,593.53663 166.719,592.09571 167.86402,592.54493 C 168.40845,592.92432 169.28492,594.20899 169.65015,594.75538 C 170.66065,595.45509 173.10083,593.52003 174.08496,593.61671 C 174.50537,594.01612 175.25268,594.3462 175.8352,594.30275 C 176.47143,594.12843 176.63037,593.11916 177.45385,592.82277 C 179.27856,592.16506 181.30712,592.20998 183.2207,592.06105 C 185.69238,591.86867 186.22729,594.47414 187.43725,596.0713 L 187.93579,596.22169 C 189.2937,595. 852,584.313 C 222.41993,584.01857 221.59961,583.58497 220.81104,583.23243"
    style="fill:none;fill-rule:evenodd;stroke:#646464;stroke-width:1.27559996;stroke-linejoin:round;stroke-miterlimit:3.8636899"
    id="path109" />
 
@@ -475,10 +468,73 @@
 	</g>
 
 	<g id ="s9">
-		<svg id ="s5" width="1066.6073" height="783.0824"
-			 xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg">
+		<svg id ="s5" width="1066.6673" height="783.0824" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg">
 				<title>Map Layer</title>
-			</svg>
-	</g>
+<line x1='663' y1='201' x2='456' y2='609' style='stroke:blue; stroke-width:2' />
+<line x1='456' y1='609' x2='663' y2='241' style='stroke:blue; stroke-width:2' />
+<line x1='663' y1='241' x2='277' y2='674' style='stroke:blue; stroke-width:2' />
+<line x1='277' y1='674' x2='917' y2='657' style='stroke:blue; stroke-width:2' />
+<line x1='917' y1='657' x2='841' y2='545' style='stroke:blue; stroke-width:2' />
+<line x1='841' y1='545' x2='511' y2='162' style='stroke:blue; stroke-width:2' />
+<line x1='511' y1='162' x2='561' y2='186' style='stroke:blue; stroke-width:2' />
+<line x1='561' y1='186' x2='381' y2='401' style='stroke:blue; stroke-width:2' />
+<line x1='381' y1='401' x2='909' y2='383' style='stroke:blue; stroke-width:2' />
+<line x1='909' y1='383' x2='473' y2='233' style='stroke:blue; stroke-width:2' />
+<line x1='473' y1='233' x2='400' y2='673' style='stroke:blue; stroke-width:2' />
+<line x1='400' y1='673' x2='507' y2='660' style='stroke:blue; stroke-width:2' />
+<line x1='507' y1='660' x2='740' y2='476' style='stroke:blue; stroke-width:2' />
+<line x1='740' y1='476' x2='515' y2='515' style='stroke:blue; stroke-width:2' />
+<line x1='515' y1='515' x2='162' y2='380' style='stroke:blue; stroke-width:2' />
+<line x1='162' y1='380' x2='585' y2='220' style='stroke:blue; stroke-width:2' />
+<line x1='585' y1='220' x2='67' y2='577' style='stroke:blue; stroke-width:2' />
+<line x1='67' y1='577' x2='578' y2='296' style='stroke:blue; stroke-width:2' />
+<line x1='578' y1='296' x2='328' y2='243' style='stroke:blue; stroke-width:2' />
+<line x1='328' y1='243' x2='693' y2='300' style='stroke:blue; stroke-width:2' />
+<line x1='693' y1='300' x2='635' y2='385' style='stroke:blue; stroke-width:2' />
+<line x1='635' y1='385' x2='508' y2='451' style='stroke:blue; stroke-width:2' />
+<line x1='508' y1='451' x2='155' y2='248' style='stroke:blue; stroke-width:2' />
+<line x1='155' y1='248' x2='493' y2='202' style='stroke:blue; stroke-width:2' />
+<line x1='493' y1='202' x2='412' y2='156' style='stroke:blue; stroke-width:2' />
+<line x1='412' y1='156' x2='273' y2='414' style='stroke:blue; stroke-width:2' />
+<line x1='273' y1='414' x2='230' y2='566' style='stroke:blue; stroke-width:2' />
+<line x1='230' y1='566' x2='574' y2='588' style='stroke:blue; stroke-width:2' />
+<line x1='574' y1='588' x2='379' y2='60' style='stroke:blue; stroke-width:2' />
+<line x1='379' y1='60' x2='533' y2='250' style='stroke:blue; stroke-width:2' />
+<line x1='533' y1='250' x2='886' y2='463' style='stroke:blue; stroke-width:2' />
+<line x1='886' y1='463' x2='909' y2='300' style='stroke:blue; stroke-width:2' />
+<line x1='909' y1='300' x2='376' y2='319' style='stroke:blue; stroke-width:2' />
+<line x1='376' y1='319' x2='165' y2='659' style='stroke:blue; stroke-width:2' />
+<line x1='165' y1='659' x2='500' y2='60' style='stroke:blue; stroke-width:2' />
+<line x1='500' y1='60' x2='704' y2='653' style='stroke:blue; stroke-width:2' />
+<line x1='704' y1='653' x2='780' y2='357' style='stroke:blue; stroke-width:2' />
+<line x1='780' y1='357' x2='839' y2='48' style='stroke:blue; stroke-width:2' />
+<line x1='839' y1='48' x2='77' y2='351' style='stroke:blue; stroke-width:2' />
+<line x1='77' y1='351' x2='294' y2='595' style='stroke:blue; stroke-width:2' />
+<line x1='294' y1='595' x2='114' y2='76' style='stroke:blue; stroke-width:2' />
+<line x1='114' y1='76' x2='57' y2='650' style='stroke:blue; stroke-width:2' />
+<line x1='57' y1='650' x2='105' y2='460' style='stroke:blue; stroke-width:2' />
+<line x1='105' y1='460' x2='737' y2='131' style='stroke:blue; stroke-width:2' />
+<line x1='737' y1='131' x2='750' y2='554' style='stroke:blue; stroke-width:2' />
+<line x1='750' y1='554' x2='175' y2='506' style='stroke:blue; stroke-width:2' />
+<line x1='175' y1='506' x2='466' y2='334' style='stroke:blue; stroke-width:2' />
+<line x1='466' y1='334' x2='944' y2='73' style='stroke:blue; stroke-width:2' />
+<line x1='944' y1='73' x2='295' y2='316' style='stroke:blue; stroke-width:2' />
+<line x1='295' y1='316' x2='939' y2='540' style='stroke:blue; stroke-width:2' />
+<line x1='939' y1='540' x2='640' y2='502' style='stroke:blue; stroke-width:2' />
+<line x1='640' y1='502' x2='114' y2='183' style='stroke:blue; stroke-width:2' />
+<line x1='114' y1='183' x2='362' y2='623' style='stroke:blue; stroke-width:2' />
+<line x1='362' y1='623' x2='285' y2='92' style='stroke:blue; stroke-width:2' />
+<line x1='285' y1='92' x2='391' y2='527' style='stroke:blue; stroke-width:2' />
+<line x1='391' y1='527' x2='189' y2='572' style='stroke:blue; stroke-width:2' />
+<line x1='189' y1='572' x2='81' y2='531' style='stroke:blue; stroke-width:2' />
+<line x1='81' y1='531' x2='943' y2='23' style='stroke:blue; stroke-width:2' />
+<line x1='943' y1='23' x2='406' y2='245' style='stroke:blue; stroke-width:2' />
+<line x1='406' y1='245' x2='542' y2='378' style='stroke:blue; stroke-width:2' />
+<line x1='542' y1='378' x2='822' y2='183' style='stroke:blue; stroke-width:2' />
+<line x1='822' y1='183' x2='656' y2='78' style='stroke:blue; stroke-width:2' />
+<line x1='656' y1='78' x2='934' y2='178' style='stroke:blue; stroke-width:2' />
+<line x1='663' y1='201' x2='934' y2='178' style='stroke:blue; stroke-width:2' />
+</svg>
+</g>
 </g>
 </svg>

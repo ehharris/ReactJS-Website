@@ -19,4 +19,11 @@ public class Place {
      this.longitude = longitude;
   }
 
+  public double getLongitude(){
+      return this.longitude;
+  }
+
+    public double getLatitude() {
+        return latitude;
+    }
 }

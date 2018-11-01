@@ -1,15 +1,15 @@
 package com.tripco.t10.planner;
 
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
-/*
- * Builds the map.
- */
 public class MapBuilder {
+
     public Trip trip;
-    public ArrayList<Place> places;
+    public String[] lines;
     public String mapHead;
     public StringBuffer mapBod;
     public String map;
@@ -17,17 +17,31 @@ public class MapBuilder {
     /** Creates a Map.
      *
      */
-    public MapBuilder()
-    {
 
+    public MapBuilder() {
     }
 
     /** End of svg map.
      *
      */
+
     public String end(){
         return "</svg>\n"+"</g>\n"+"</g>\n"+"</svg>";
     }
+
+    public double conLat(double lat){
+        return (((41 - lat)/4) * 710);
+    }
+
+    public double conLong(double longitude){
+        double a = (-(-109 - longitude)/7) * 994;
+        return a;
+    }
+
+    public void addline(String str, int index){
+        lines[index] = str;
+    }
+
 
     /** Creates lines on the map.
      *
@@ -37,37 +51,66 @@ public class MapBuilder {
     {
         this.trip = trip;
         this.mapHead ="<title>Map Layer</title>\n";
-        this.places = trip.places;
+        //this.places = trip.places;
+        this.lines = new String[trip.places.size()];
 
-        try
-        {
-            FileInputStream in = new FileInputStream("./Resources/CObackground.svg");
+        if(trip.places.size() > 1) {
+            //creates map lines
+            for (int i = 0; i < trip.places.size() - 1; i++) {
+                double bLat = conLat(this.trip.places.get(i).getLatitude());
+                double bLong = conLong(trip.places.get(i).getLongitude());
+                double eLat = conLat(trip.places.get(i + 1).getLatitude());
+                double eLong = conLong(trip.places.get(i + 1).getLongitude());
+                String str = ("<line x1='" + Math.round(bLong) +
+                        "' y1='" + Math.round(bLat) +
+                        "' x2='" + Math.round(eLong) +
+                        "' y2='" + Math.round(eLat) +
+                        "' style='stroke:blue; stroke-width:2' />\n");
+                addline(str, i);
+            }
+            //add line to beginning place
+            double bLat = conLat(trip.places.get(0).getLatitude());
+            double bLong = conLong(trip.places.get(0).getLongitude());
+            double eLat = conLat(trip.places.get(trip.places.size() - 1).getLatitude());
+            double eLong = conLong(trip.places.get(trip.places.size() - 1).getLongitude());
+            String str = ("<line x1='" + Math.round(bLong) +
+                    "' y1='" + Math.round(bLat) +
+                    "' x2='" + Math.round(eLong) +
+                    "' y2='" + Math.round(eLat) +
+                    "' style='stroke:blue; stroke-width:2' />\n");
+            addline(str, lines.length - 1);
+        }
+        try {
+            File file = new File("./Resources/CObackground.svg");
+            FileInputStream in = new FileInputStream(file);
             //svg = new Scanner(file).useDelimiter("<title>Map Layer</title>").next();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            String line;
-//            while (line != null){
-//                this.mapBod.append(line);
-//                if(line.equals(this.mapHead)){
-//                    this.mapBod.append(this.mapHead);
-//                    line = null;
-//                }
-//                else {
-//                    line = reader.readLine();
-//                }
-//
-//            }
-            //System.out.println(svg);
-            //FileWriter fileWriter = new FileWriter(svg);
+            StringBuilder line = new StringBuilder();
+            for (int i = 0; i < 472; i++) {
+                line.append(reader.readLine());
+                line.append('\n');
+            }
+
+//            FileWriter fileWriter = new FileWriter(file);
 //            System.out.println(svg);
             //svg += "<line x1='0' y1='0'x2='200' y2='200' style='stroke:rgb(255,0,0);stroke-width:2' />\n" ;
-
-            //fileWriter.write(svg); //+ this.end());
+            if (lines[0] != null) {
+                for (int i = 0; i < lines.length; i++) {
+                    line.append(lines[i]);
+                }
+            }
+            line.append(this.end()); //+ this.end());
 //            fileWriter.flush();
 //            fileWriter.close();
+            this.map = line.toString();
+
         } catch (IOException e) {
             System.out.println("Error in MapBuilder : " + e);
         }
-        this.map = "test";
+
+        //this.map = "test";
 
     }
+
+
 }
