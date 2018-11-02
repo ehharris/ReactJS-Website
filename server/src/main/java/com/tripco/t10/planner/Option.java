@@ -9,15 +9,18 @@ public class Option {
   public String unitName;
   public int unitRadius;
   public String optimization;
+  public String map;
 
   /**
    * Constructor for testing purposes.
    */
-  public Option(String units, int unitRadius, String optimization, String unitName){
+  public Option(String units, int unitRadius, String optimization, String unitName, String map){
     this.units = units;
     this.unitName = unitName;
     this.unitRadius = unitRadius;
     this.optimization = optimization;
+    this.map = map;
   }
+
 
 }
