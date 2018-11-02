@@ -2,12 +2,13 @@ package com.tripco.t10.server;
 
 import com.google.gson.Gson;
 import com.tripco.t10.planner.Optimization;
-
+import com.tripco.t10.planner.Filters;
 import java.util.Arrays;
 import java.util.List;
 
 public class Config {
 
+  //TFFI
   private short version = 3;
   private String type = "config";
 
@@ -17,6 +18,16 @@ public class Config {
       new Optimization("none","The trip is not optimized."),
       new Optimization("short","Nearest neighbor."),
       new Optimization("shorter","2-opt."));
+
+  private List<String> attributes = Arrays.asList("name", "id",
+      "latitude", "longitude");
+
+  private Filters filters = new Filters("type", new String[]{"miles", "kilometers",
+      "nautical miles", "user defined"});
+
+  private List<String> map = Arrays.asList("svg", "kml");
+
+
 
 
   static String getConfig() {
