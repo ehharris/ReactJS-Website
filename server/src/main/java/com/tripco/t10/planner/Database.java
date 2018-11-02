@@ -12,28 +12,32 @@ public class Database {
     private int version;
     private String type;
     private String match;
+    private Filters filters;
     private int limit;
+    private int found;
     private ArrayList<Place> places;
 
     /** Default Constructor.
      * Necessary when one variable is missing (such as places) in POST JSON request.
      */
     public Database() {
-        this.version = 0;
-        this.type = "";
+        this.version = 4;
+        this.type = "search";
         this.match = "";
         this.limit = 0;
+        this.found = 0;
         this.places = new ArrayList<Place>();
     }
 
     /** Constructor used for test cases.
      *
      */
-    public Database(int version, String type, String match, int limit, ArrayList<Place> places) {
+    public Database(int version, String type, String match, int limit, int found, ArrayList<Place> places) {
         this.version = version;
         this.type = type;
         this.match = match;
         this.limit = limit;
+        this.found = found;
         this.places = places;
     }
 
@@ -63,14 +67,44 @@ public class Database {
      */
     public String buildQuery() {
         String query = "";
-        query += "SELECT * FROM airports WHERE name LIKE '%";
-        query += this.match;
-        query += "%' ORDER BY name";
+        query += "SELECT world_airports.name, world_airports.municipality, region.name, country.name, continents.name " +
+                "FROM continents " +
+                "INNER JOIN country ON continents.id = country.continent " +
+                "INNER JOIN region ON country.id = region.iso_country " +
+                "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
+                "WHERE country.name LIKE \"%" + this.match + "%\" " +
+                "OR region.name LIKE \"%" + this.match + "%\" " +
+                "OR world_airports.name LIKE \"%" + this.match + "%\" " +
+                "OR world_airports.municipality LIKE \"%" + this.match + "%\" ";
 
-        if(this.limit > 0) {
-            query += " LIMIT " +  this.limit;
+        //String query = "SELECT world_airports.name, world_airports.municipality, region.name, country.name, continents.name FROM continents INNER JOIN country ON continents.id = country.continent INNER JOIN region ON country.id = region.iso_country INNER JOIN world_airports ON region.id = world_airports.iso_region WHERE (country.name LIKE \"%" + this.match + "%\" OR region.name LIKE \"%" + this.match + "%\" OR world_airports.name LIKE \"%" + this.match + "%\" OR world_airports.municipality LIKE \"%" + this.match + "%\") AND country.name IN (\"United States\") LIMIT 100;";
+
+        if(filters.name == "country") {
+            for(int i = 0; i < filters.values.length; i++) {
+                query += " AND country.name IN (\"" + filters.values[i] + "\") ";
+            }
         }
 
+        if(filters.name == "continents") {
+            for(int i = 0; i < filters.values.length; i++) {
+                query += " AND continents.name IN (" + filters.values[i] + ") ";
+            }
+        }
+
+        if(filters.name == "region") {
+            for(int i = 0; i < filters.values.length; i++) {
+                query += " AND region.name IN (" + filters.values[i] + ") ";
+            }
+        }
+
+        if(filters.name == "world_airports") {
+            for(int i = 0; i < filters.values.length; i++) {
+                query += " AND world_airports.name IN (" + filters.values[i] + ") ";
+            }
+        }
+
+        query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC";
+        query += "LIMIT 100;";
         return query;
     }
 
@@ -102,6 +136,7 @@ public class Database {
                 double longitude = Double.parseDouble(rsQuery.getString("longitude"));
                 Place place = new Place(id, name, latitude, longitude);
                 this.places.add(place);
+                this.found += 1;
             }
             stQuery.close();
         }
