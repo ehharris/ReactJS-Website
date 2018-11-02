@@ -59,8 +59,9 @@ class Add extends Component{
 
   render() {
     const forms = this.state.input.map((element) =>
-      <Form>
+      <Form key={element}>
         <Input
+          key={element}
           value={this.state.place[element]} placeholder={element}
           onChange={(event) => this.update(element, event.target.value)}
         />

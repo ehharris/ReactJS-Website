@@ -12,7 +12,7 @@ class Optimization extends Component{
     super(props);
   }
 
-
+  
   render() {
 
     const optimizations = this.props.config.optimization.map((label) =>
