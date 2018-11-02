@@ -16,7 +16,7 @@ public class TestOption {
 
     @Before
     public void testInstantiate(){
-        option = new Option("user defined",3959, "none", "miles");
+        option = new Option("user defined",3959, "none", "miles", "svg");
     }
 
     @Test
@@ -40,5 +40,11 @@ public class TestOption {
     public void testUnitName(){
         String unitName = "miles";
         assertEquals(option.unitName, unitName);
+    }
+
+    @Test
+    public void testMap(){
+        String unitName = "svg";
+        assertEquals(option.map, unitName);
     }
 }
