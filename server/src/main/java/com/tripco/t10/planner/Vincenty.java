@@ -1,9 +1,12 @@
 package com.tripco.t10.planner;
 
 /**
- * Calculates distance using vincenty formula.
+ * Called from child classes to calculate distance.
  */
 public class Vincenty{
+    /**
+     * Calculates distance using vincenty formula.
+     */
   public int calculateDistance(double[] coordinates, String units, Double unitRadius){
   
     //Convert to Radians 
