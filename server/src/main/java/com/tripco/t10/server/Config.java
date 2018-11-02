@@ -3,7 +3,6 @@ package com.tripco.t10.server;
 import com.google.gson.Gson;
 import com.tripco.t10.planner.Filters;
 import com.tripco.t10.planner.Optimization;
-import com.tripco.t10.planner.Filters;
 import java.util.Arrays;
 import java.util.List;
 
