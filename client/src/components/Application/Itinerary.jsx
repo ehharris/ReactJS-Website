@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Card, CardBody} from "reactstrap";
+import {Card, CardBody, Form, FormGroup, Button, Input, Label, Table} from "reactstrap";
 
 
 class ItineraryTable extends Component {
@@ -12,9 +12,6 @@ class ItineraryTable extends Component {
         this.changeStart = this.changeStart.bind(this);
         this.removePlace = this.removePlace.bind(this);
         this.state = {
-            trip : {},
-            places : [],
-            data : [],
             optionLatitude: false,
             optionLongitude: false
         };
@@ -38,11 +35,11 @@ class ItineraryTable extends Component {
     }
 
     setOptionLatitude(event) {
-        this.setState({optionLatitude: true});
+        this.setState({optionLatitude: !this.state.optionLatitude});
     }
 
     setOptionLongitude(event) {
-        this.setState({optionLongitude: true});
+        this.setState({optionLongitude: !this.state.optionLongitude});
     }
 
     resetOptions(event) {
@@ -87,14 +84,16 @@ class ItineraryTable extends Component {
             <Card>
                 <CardBody>
                     <p className="lead">{this.props.trip.title}</p>
-                    <table>
+                    <Table striped>
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Places</th>
-                            <th>Distance From Start</th>
+                            <th>Place</th>
+                            <th>Total Distance</th>
                             <th style={latitudeStyle}>Latitude</th>
                             <th style={longitudeStyle}>Longitude</th>
+                            <th>Change Start City</th>
+                            <th>Remove City</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -115,22 +114,30 @@ class ItineraryTable extends Component {
                                     {key.longitude}
                                 </td>
                                 <td key={index+1}>
-                                    <button value="start" className="btn-outline-dark unit-button" onClick={() => this.changeStart(index)}>Change to Start Here</button>
+                                    <Button value="start" onClick={() => this.changeStart(index)}>Start Here</Button>
                                 </td>
                                 <td key = {"remove" + index}>
-                                    <button value="bye" onClick={() => this.removePlace(index)}>&times;</button>
+                                    <Button value="bye" onClick={() => this.removePlace(index)}>&times;</Button>
                                 </td>
                             </tr>
                         ))}
                         </tbody>
-                    </table>
+                    </Table>
 
                     <div>Select additional options for itinerary: </div>
-                    <br />
-                    <button value="latitude" className="btn-outline-dark unit-button" onClick={this.setOptionLatitude}>Show Latitude</button>
-                    <button value="longitude" className="btn-outline-dark unit-button" onClick={this.setOptionLongitude}>Show Longitude</button>
-                    <button value="clear" className="btn-outline-dark unit-button" onClick={this.resetOptions}>Reset Options</button>
-                    <button value="reverse" className="btn-outline-dark unit-button" onClick={this.reverseTrip}>Reverse Trip</button>
+                    <Form>
+                        <FormGroup check inline>
+                            <Label check>
+                                <Input type="checkbox" onClick={this.setOptionLatitude}/> Latitude
+                            </Label>
+                        </FormGroup>
+                        <FormGroup check inline>
+                            <Label check>
+                                <Input type="checkbox" onClick={this.setOptionLongitude}/> Longitude
+                            </Label>
+                        </FormGroup>
+                    </Form>
+                    <Button value="reverse" className="btn-outline-dark unit-button" onClick={this.reverseTrip}>Reverse Trip</Button>
                 </CardBody>
             </Card>
         )
