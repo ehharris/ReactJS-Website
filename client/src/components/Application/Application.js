@@ -28,10 +28,10 @@ class Application extends Component {
                 type: "trip",
                 title: "",
                 options : {
-                    unit: "",
-                    optimization: ""
+                    units: "miles",
+                    optimization: "none"
                 },
-                places: [{}],
+                places: [],
                 distances: [],
                 map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
             }
@@ -40,7 +40,6 @@ class Application extends Component {
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
         this.updateServer = this.updateServer.bind(this);
-        this.updatePort = this.updatePort.bind(this);
         this.updatePlaces = this.updatePlaces.bind(this);
     }
 
@@ -62,7 +61,7 @@ class Application extends Component {
 
     updateBasedOnResponse(value) {
         request(value, "plan", this.state.port, this.state.server)
-          .then((resData) => this.setState({trip: resData}));
+            .then((resData) => this.setState({trip: resData}));
     }
 
 
@@ -74,15 +73,14 @@ class Application extends Component {
 
     updatePlaces(places){
         this.setState({'places': places});
-        this.updateBasedOnResponse(this.state.trip);
+        if (this.state.trip.places.length >= 2) {
+            this.updateBasedOnResponse(this.state.trip);
+        }
     }
 
-    updateServer(value) {
-        this.setState({server: value});
-    }
-
-    updatePort(value) {
-        this.setState({port: value});
+    updateServer(value1, value2) {
+        this.setState({server: value1});
+        this.setState({port: value2});
     }
 
     render() {
@@ -93,6 +91,7 @@ class Application extends Component {
                 <Row>
                     <Col>
                         <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+                        <Port updateServer={this.updateServer}/>
                         <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
                     </Col>
                     <Col>
@@ -102,13 +101,12 @@ class Application extends Component {
                             <Optimization updateOptions={this.updateOptions} config={this.state.config}
                                           options={this.state.trip.options}/>
                         </Card>
+                        <Calculator/>
                     </Col>
                 </Row>
                 <Map trip={this.state.trip}/>
                 <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
-                <Calculator/>
                 <Search server={this.state.server} port={this.state.port}/>
-                <Port server={this.state.server} port={this.state.port} updateServer={this.updateServer} updatePort={this.updatePort}/>
             </Container>
         )
     }

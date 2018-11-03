@@ -38,21 +38,23 @@ public class Trip extends Vincenty {
    * It might need to reorder the places in the future.
    */
   public void plan() {
-
-      //Make sure optimization attribute was acknowledged.
-      if(!(this.options.optimization == null)) {
-          if(this.options.optimization.equals("short")) {
-              shortOptimization();
+      if(this.options != null) {
+        if (this.options.units == null) {
+          this.options.units = "miles";
+        }
+        //Make sure optimization attribute was acknowledged.
+        if (!(this.options.optimization == null)) {
+          if (this.options.optimization.equals("short")) {
+            shortOptimization();
           }
-      } else {
+        } else {
           this.options.optimization = "none";
-      }
-
-      //Return svg if nothing was specified.
-      if(this.options.map == null) {
+        }
+        //Return svg if nothing was specified.
+        if (this.options.map == null) {
           this.options.map = "svg";
+        }
       }
-
       //TODO: Make call to new map function which then does svg or kml depending on options.
       this.map = svg();
       this.distances = legDistances();

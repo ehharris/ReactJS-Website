@@ -1,21 +1,21 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap'
+import { Card, CardHeader, CardBody, Form, Input } from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
 
 /* Allows the user to change the parameters for server
  * and port configuration and desired microservice.
  * Allows the user to set the options used by the application via a set of inputs and buttons.
  */
-class Port extends Component{
+class Port extends Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            server: location.hostname,
+            port: '31410'
+        };
+        this.update = this.update.bind(this);
         this.changeServer = this.changeServer.bind(this);
         this.changePort = this.changePort.bind(this);
-        this.state = {
-            server: '',
-            port: ''
-        };
     }
 
 
@@ -28,29 +28,21 @@ class Port extends Component{
         this.setState({port: event.target.value});
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-
-        this.props.updateServer(this.state.server);
-        this.props.updatePort(this.state.port);
+    update(){
+        this.props.updateServer(this.state.server, this.state.port);
     }
 
     render() {
         return(
             <Card>
                 <CardBody>
-                <form onSubmit={this.handleSubmit}>
-                    <div>Change Server: </div>
-                    <input name="Change Server" type="text" value={this.state.server} onChange={this.changeServer} />
-                    <br />
-                    <div>Change Port: </div>
-                    <input name="Change Port" type="text" value={this.state.port} onChange={this.changePort} />
-                    <br />
-                    <button value="submit">Change Server and Port</button>
-                    <br />
-                    Current server and port: {this.props.server}:{this.props.port}
-
-                </form>
+                    <ButtonGroup>
+                        <Input onChange={this.changeServer} name="Change Server" type="text" value={this.state.server}/>
+                        <Input onChange={this.changePort} name="Change Port" type="text" value={this.state.port}/>
+                        <Button onClick={this.update} type="button" className='btn-outline-dark unit-button'>
+                            Change Server
+                        </Button>
+                    </ButtonGroup>
                 </CardBody>
             </Card>
         )
