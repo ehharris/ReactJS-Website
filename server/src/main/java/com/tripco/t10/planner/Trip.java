@@ -53,14 +53,8 @@ public class Trip extends Vincenty {
           this.options.map = "svg";
       }
 
-      //Change between svg and kml map here.
-      if(this.options.map == "svg"){
-          this.map = svg();
-      }
-      if(this.options.map == "kml"){
-          //TODO: Make call to kml function
-      }
-
+      //TODO: Make call to new map function which then does svg or kml depending on options.
+      this.map = svg();
       this.distances = legDistances();
   }
 
