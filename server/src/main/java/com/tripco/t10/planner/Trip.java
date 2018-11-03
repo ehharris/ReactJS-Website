@@ -47,6 +47,13 @@ public class Trip extends Vincenty {
       } else {
           this.options.optimization = "none";
       }
+
+      //Return svg if nothing was specified.
+      if(this.options.map == null) {
+          this.options.map = "svg";
+      }
+
+      //TODO: Make call to new map function which then does svg or kml depending on options.
       this.map = svg();
       this.distances = legDistances();
   }

@@ -39,7 +39,7 @@ public class TestMapBuilder {
         listOfPlaces.add(testBoulder);
         listOfPlaces.add(testFortCollins);
 
-        Option testOption = new Option("user defined", 3959, "short", "miles", "svg");
+        Option testOption = new Option("user defined", 3959.0, "short", "miles", "svg");
 
         ArrayList<Integer> distances = new ArrayList<>();
         distances.add(0);
