@@ -39,7 +39,7 @@ public class Calculate {
                                 distance.getOrigin().longitude,
                                 distance.getDestination().longitude,};
 
-        distance.setDistance(distance.calculateDistance(coordinates, distance.getUnits(),0));
+        distance.setDistance(distance.calculateDistance(coordinates, distance.getUnits(),0.0));
 
     }
 

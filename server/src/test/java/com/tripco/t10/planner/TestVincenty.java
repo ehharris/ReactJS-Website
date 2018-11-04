@@ -28,14 +28,14 @@ public class TestVincenty {
     //Test vincenty calculator for miles (Denver to Boulder)
     @Test
     public void testVincentyMiles() {
-        int milesResult = v.calculateDistance(coordinates,"miles", 3959);
+        int milesResult = v.calculateDistance(coordinates,"miles", 3959.0);
         assertEquals(24, milesResult);
 
     }
     //Test vincenty calculator for kilometers (Denver to Boulder)
     @Test
     public void testVincentyKilometers() {
-        int kilometersResult = v.calculateDistance(coordinates, "kilometers", 6371);
+        int kilometersResult = v.calculateDistance(coordinates, "kilometers", 6371.0);
         assertEquals(39, kilometersResult);
 
     }
@@ -43,7 +43,7 @@ public class TestVincenty {
     //Test vincenty calculator for nautical miles (Denver to Boulder)
     @Test
     public void testVincentyNautical() {
-        int nauticalResult = v.calculateDistance(coordinates, "nautical miles", 3440);
+        int nauticalResult = v.calculateDistance(coordinates, "nautical miles", 3440.0);
         assertEquals(21, nauticalResult);
 
     }
@@ -51,7 +51,7 @@ public class TestVincenty {
     //Test vincenty calculator for user defined (Denver to Boulder)
     @Test
     public void testVincentyUserDefined() {
-        int metersResult = v.calculateDistance(coordinates, "user defined", 6371000);
+        int metersResult = v.calculateDistance(coordinates, "user defined", 6371000.0);
         assertEquals(38889, metersResult);
 
     }

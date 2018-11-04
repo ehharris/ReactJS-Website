@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Input, Button, CardBody, ButtonToolbar, Card, ButtonGroup } from 'reactstrap';
+import {Input, Button, CardBody, ButtonToolbar, Card, ButtonGroup, Label, FormGroup } from 'reactstrap';
 import {request} from "../../api/api";
 
 
@@ -32,9 +32,9 @@ class File extends Component{
     }
 
     plan(){
-        let responsePlan = request(this.props.trip, 'plan').then(
-            res => {this.props.updateBasedOnResponse(res);}
-        );
+        if(this.props.trip.places.length >= 2){
+            this.props.updateBasedOnResponse(this.props.trip);
+        }
     }
 
     //Download function help using code from this site:

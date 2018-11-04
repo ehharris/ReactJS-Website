@@ -1,10 +1,13 @@
 package com.tripco.t10.planner;
 
 /**
- * Calculates distance using vincenty formula.
+ * Called from child classes to calculate distance.
  */
 public class Vincenty{
-  public int calculateDistance(double[] coordinates, String units, int unitRadius){
+    /**
+     * Calculates distance using vincenty formula.
+     */
+  public int calculateDistance(double[] coordinates, String units, Double unitRadius){
   
     //Convert to Radians 
     double x1 = Math.toRadians(coordinates[0]);
@@ -26,8 +29,9 @@ public class Vincenty{
         e = 6371 * scalar;
     } else if(units.equals("nautical miles")){
         e = 3440 * scalar;
-    } else
-        e =  unitRadius * scalar;
+    } else {
+        e = unitRadius * scalar;
+    }
 
     return (int)Math.round(e);
 

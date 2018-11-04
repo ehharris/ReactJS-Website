@@ -16,7 +16,7 @@ public class TestOption {
 
     @Before
     public void testInstantiate(){
-        option = new Option("user defined",3959, "none", "miles", "svg");
+        option = new Option("user defined",3959.0, "none", "miles", "svg");
     }
 
     @Test

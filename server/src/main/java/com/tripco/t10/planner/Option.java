@@ -7,14 +7,14 @@ public class Option {
   
   public String units;
   public String unitName;
-  public int unitRadius;
+  public Double unitRadius;
   public String optimization;
   public String map;
 
   /**
    * Constructor for testing purposes.
    */
-  public Option(String units, int unitRadius, String optimization, String unitName, String map){
+  public Option(String units, Double unitRadius, String optimization, String unitName, String map){
     this.units = units;
     this.unitName = unitName;
     this.unitRadius = unitRadius;
