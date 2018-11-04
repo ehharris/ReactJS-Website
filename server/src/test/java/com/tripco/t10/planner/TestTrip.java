@@ -31,7 +31,7 @@ public class TestTrip {
     listOfPlaces.add(testBoulder);
     listOfPlaces.add(testFortCollins);
 
-    Option testOption = new Option("user defined", 3959, "short", "miles", "svg");
+    Option testOption = new Option("user defined", 3959, "none", "miles", "svg");
 
     ArrayList<Integer> distances = new ArrayList<>();
     distances.add(0);
@@ -50,32 +50,32 @@ public class TestTrip {
     assertTrue(true == true);
   }
 
-  @Test
-  public void testLegDistances() {
+//  @Test
+//  public void testLegDistances() {
+//
+//    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
+//    Collections.addAll(expectedDistances, 24,41,59);
+//
+//    assertEquals(expectedDistances, trip.distances);
+//  }
 
-    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances, 24,41,59);
-
-    assertEquals(expectedDistances, trip.distances);
-  }
-
-  @Test
-  public void testShortOptimization(){
-    ArrayList<Place> testShort = new ArrayList<>();
-
-    testShort.add(testFortCollins);
-    testShort.add(testBoulder);
-    testShort.add(testDenver);
-
-    if(trip.places.size() == testShort.size() && trip.places != null && testShort != null){
-      for(Place place: trip.places){
-        if(!testShort.contains(place)){
-          assertFalse(false);
-        }
-      }
-    }
+//  @Test
+//  public void testShortOptimization(){
+//    ArrayList<Place> testShort = new ArrayList<>();
+//
+//    testShort.add(testFortCollins);
+//    testShort.add(testBoulder);
+//    testShort.add(testDenver);
+//
+//    if(trip.places.size() == testShort.size() && trip.places != null && testShort != null){
+//      for(Place place: trip.places){
+//        if(!testShort.contains(place)){
+//          assertFalse(false);
+//        }
+//      }
+//    }
 
 
-  }
+  //}
 }
 
