@@ -20,22 +20,22 @@ public class Vincenty{
                     - Math.sin(x1)* Math.cos(x2) * Math.cos(y) ),2)), (Math.sin(x1)
                     * Math.sin(x2) + Math.cos(x1) * Math.cos(x2) * Math.cos(y)));
 
-    double e = 0;
+    double result = 0;
 
     //Calculate Based on Units.
     if(units.equals("miles")){
-        e = 3959 * scalar;
+        result = 3959 * scalar;
     } else if(units.equals("kilometers")){
-        e = 6371 * scalar;
+        result = 6371 * scalar;
     } else if(units.equals("nautical miles")){
-        e = 3440 * scalar;
+        result = 3440 * scalar;
     } else if(unitRadius != null){
-        e = unitRadius * scalar;
+        result = unitRadius * scalar;
     } else {
       System.out.println("ERROR: Invalid");
     }
 
-    return (int)Math.round(e);
+    return (int)Math.round(result);
 
   }
 
