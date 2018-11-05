@@ -7,7 +7,6 @@ class ItineraryTable extends Component {
         super(props);
         this.setOptionLatitude = this.setOptionLatitude.bind(this);
         this.setOptionLongitude = this.setOptionLongitude.bind(this);
-        this.resetOptions = this.resetOptions.bind(this);
         this.reverseTrip = this.reverseTrip.bind(this);
         this.changeStart = this.changeStart.bind(this);
         this.removePlace = this.removePlace.bind(this);
@@ -40,11 +39,6 @@ class ItineraryTable extends Component {
 
     setOptionLongitude(event) {
         this.setState({optionLongitude: !this.state.optionLongitude});
-    }
-
-    resetOptions(event) {
-        this.setState({optionLongitude: false});
-        this.setState({optionLatitude: false});
     }
 
     reverseTrip(event) {

@@ -20,7 +20,7 @@ public class Vincenty{
                     - Math.sin(x1)* Math.cos(x2) * Math.cos(y) ),2)), (Math.sin(x1)
                     * Math.sin(x2) + Math.cos(x1) * Math.cos(x2) * Math.cos(y)));
 
-    double e;
+    double e = 0;
 
     //Calculate Based on Units.
     if(units.equals("miles")){
@@ -29,8 +29,10 @@ public class Vincenty{
         e = 6371 * scalar;
     } else if(units.equals("nautical miles")){
         e = 3440 * scalar;
-    } else {
+    } else if(unitRadius != null){
         e = unitRadius * scalar;
+    } else {
+      System.out.println("ERROR: Invalid");
     }
 
     return (int)Math.round(e);

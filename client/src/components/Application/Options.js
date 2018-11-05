@@ -42,7 +42,7 @@ class Options extends Component{
               <FormGroup>
                 <Input
                   type="unitName"
-                  name="unit name"
+                  name="unitName"
                   id="unitName"
                   placeholder="Unit Name"
                   onChange={(event) => this.props.updateOptions('unitName', event.target.value)}
@@ -52,7 +52,7 @@ class Options extends Component{
               <FormGroup>
                 <Input
                   type="unitRadius"
-                  name="unit radius"
+                  name="unitRadius"
                   id="exampleEmail"
                   placeholder="Radius of Earth"
                   onChange={(event) => this.props.updateOptions('unitRadius', event.target.value)}

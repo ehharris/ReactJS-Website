@@ -10,20 +10,23 @@ import { ButtonGroup, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 class Optimization extends Component{
   constructor(props) {
     super(props);
+    this.state = {
+        'optimization': ['none', 'short', 'shorter'],
+    };
   }
 
   
   render() {
 
-    const optimizations = this.props.config.optimization.map((label) =>
+    const optimizations = this.state.optimization.map((label) =>
       <Button
-        key={'optimization_button_' + label.label}
+        key={'optimization_button_' + label}
         className='btn-outline-dark unit-button'
-        active={this.props.options.optimization === label.label}
-        value={label.label}
+        active={this.props.options.optimization === label}
+        value={label}
         onClick={(event) => {this.props.updateOptions('optimization', event.target.value)}}
       >
-        {label.label.charAt(0).toUpperCase() + label.label.slice(1)}
+          {label.charAt(0).toUpperCase() + label.slice(1)}
       </Button>
     );
 
