@@ -72,38 +72,38 @@ public class Database {
                 "INNER JOIN country ON continents.id = country.continent " +
                 "INNER JOIN region ON country.id = region.iso_country " +
                 "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
-                "WHERE country.name LIKE \"%" + this.match + "%\" " +
-                "OR region.name LIKE \"%" + this.match + "%\" " +
-                "OR world_airports.name LIKE \"%" + this.match + "%\" " +
-                "OR world_airports.municipality LIKE \"%" + this.match + "%\" ";
+                "WHERE country.name LIKE '%" + this.match + "%' " +
+                "OR region.name LIKE '%" + this.match + "%' " +
+                "OR world_airports.name LIKE '%" + this.match + "%' " +
+                "OR world_airports.municipality LIKE '%" + this.match + "%' ";
 
         //String query = "SELECT world_airports.name, world_airports.municipality, region.name, country.name, continents.name FROM continents INNER JOIN country ON continents.id = country.continent INNER JOIN region ON country.id = region.iso_country INNER JOIN world_airports ON region.id = world_airports.iso_region WHERE (country.name LIKE \"%" + this.match + "%\" OR region.name LIKE \"%" + this.match + "%\" OR world_airports.name LIKE \"%" + this.match + "%\" OR world_airports.municipality LIKE \"%" + this.match + "%\") AND country.name IN (\"United States\") LIMIT 100;";
 
         if(filters.name == "country") {
             for(int i = 0; i < filters.values.length; i++) {
-                query += " AND country.name IN (\"" + filters.values[i] + "\") ";
+                query += " AND country.name IN ('" + filters.values[i] + "') ";
             }
         }
 
         if(filters.name == "continents") {
             for(int i = 0; i < filters.values.length; i++) {
-                query += " AND continents.name IN (" + filters.values[i] + ") ";
+                query += " AND continents.name IN ('" + filters.values[i] + "') ";
             }
         }
 
         if(filters.name == "region") {
             for(int i = 0; i < filters.values.length; i++) {
-                query += " AND region.name IN (" + filters.values[i] + ") ";
+                query += " AND region.name IN ('" + filters.values[i] + "') ";
             }
         }
 
         if(filters.name == "world_airports") {
             for(int i = 0; i < filters.values.length; i++) {
-                query += " AND world_airports.name IN (" + filters.values[i] + ") ";
+                query += " AND world_airports.name IN ('" + filters.values[i] + "') ";
             }
         }
 
-        query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC";
+        //query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
         query += "LIMIT 100;";
         return query;
     }
