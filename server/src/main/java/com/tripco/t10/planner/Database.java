@@ -67,7 +67,7 @@ public class Database {
      */
     public String buildQuery() {
         String query = "";
-        query += "SELECT world_airports.name, world_airports.municipality, region.name, country.name, continents.name " +
+        query += "SELECT world_airports.name, world_airports.latitude, world_airports.longitude, world_airports.municipality, region.name, country.name, continents.name " +
                 "FROM continents " +
                 "INNER JOIN country ON continents.id = country.continent " +
                 "INNER JOIN region ON country.id = region.iso_country " +
@@ -131,7 +131,7 @@ public class Database {
 
             while (rsQuery.next()) {
                 String id = rsQuery.getString("id");
-                String name = rsQuery.getString("name");
+                String name = rsQuery.getString(2);
                 double latitude = Double.parseDouble(rsQuery.getString("latitude"));
                 double longitude = Double.parseDouble(rsQuery.getString("longitude"));
                 Place place = new Place(id, name, latitude, longitude);
