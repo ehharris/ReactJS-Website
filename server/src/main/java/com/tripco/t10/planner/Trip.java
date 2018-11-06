@@ -8,7 +8,6 @@ import java.util.Collections;
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
  *
  */
-@SuppressWarnings("unchecked")
 public class Trip extends Vincenty {
     // The variables in this class should reflect TFFI.
     public int version;
@@ -47,10 +46,6 @@ public class Trip extends Vincenty {
             int[][] allDistances = createAllDistancesArray();
             if(this.options.optimization.equals("short")){
                 nearestNeighbor(route,visited,allDistances);
-            }
-            else if (this.options.optimization.equals("shorter")){
-                shorterOptimization(visited, allDistances);
-
             }
 
         } else {
@@ -114,103 +109,6 @@ public class Trip extends Vincenty {
         }
         System.out.println(calcTripDistance(currentBestRoute,allDistances));
         Collections.copy(this.places, optimalNearestNeighbor);
-    }
-
-
-    /**
-     * Helper method for 2opt.
-     */
-    void twoOptReverse(int[] route, int i1, int k){
-        while(i1 < k){
-            int temp = route[i1];
-            route[i1] = route[k];
-            route[k] = temp;
-            i1++; k--;
-
-        }
-
-    }
-
-    /**
-     * Algorithm for 2opt.
-     */
-    void shorterOptimization(boolean[] visited, int[][] allDistances){
-        int currentTotalDistance[] = new int[places.size()];
-        int currentBestRoute[] = new int[places.size()];
-        int overallBestRouteDistance = 2000000000;
-
-        int[] route = new int[places.size()+1];
-
-
-        for(int startCity = 0; startCity < places.size(); startCity++) {
-            createVisited(visited);
-
-            route[0] = startCity;
-            route[places.size()] = startCity;
-            visited[startCity] = true;
-
-            int routeCounter = 1;
-            int currentCity = startCity;
-            while(routeCounter < places.size()) {
-
-                int min = 2000000000;
-                int tempIndex = 0;
-                for(int i = 0; i < allDistances[currentCity].length;i++){
-                    if(allDistances[currentCity][i] <= min && !visited[i]){
-                        min = allDistances[currentCity][i];
-                        tempIndex = i;
-
-                    }
-                }
-                currentCity = tempIndex;
-                visited[currentCity] = true;
-
-                route[routeCounter] = currentCity;
-
-                routeCounter++;
-
-            }
-
-            boolean improvement = true;
-            int count =0;
-            while(improvement){
-                improvement = false;
-                for(int i = 0; i <= route.length - 3; i++){
-                    for(int k = i+2; k < route.length -1; k++){
-
-                        int x1 = allDistances[route[i]][route[i+1]];
-                        int x2 = allDistances[route[k]][route[k+1]];
-                        int x3 = allDistances[route[i]][route[k]];
-                        int x4 = allDistances[route[i+1]][route[k+1]];
-
-                        int conditional = - x1 - x2 + x3 + x4;
-                        if(conditional < 0){
-                            twoOptReverse(route,i+1,k);
-                            improvement = true;
-                        }
-                    }
-                    count++;
-
-                }
-
-            }
-
-            currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
-
-            if(currentTotalDistance[startCity] < overallBestRouteDistance){
-                currentBestRoute = route.clone();
-                overallBestRouteDistance = currentTotalDistance[startCity];
-            }
-
-        }
-
-        ArrayList<Place> optimalNearestNeighbor = new ArrayList<>();
-        for(int i = 0; i < places.size(); i++){
-            optimalNearestNeighbor.add(places.get(currentBestRoute[i]));
-        }
-        System.out.println(calcTripDistance(currentBestRoute,allDistances));
-        Collections.copy(this.places, optimalNearestNeighbor);
-
     }
 
     /**
