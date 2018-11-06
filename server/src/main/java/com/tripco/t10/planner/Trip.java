@@ -60,63 +60,6 @@ public class Trip extends Vincenty {
         this.distances = legDistances();
     }
 
-//    /**
-//     * Algorithm for nearest neighbor.
-//     */
-//    void nearestNeighbor(boolean[] visited, int[][] allDistances){
-//        int currentTotalDistance[] = new int[places.size()];
-//        int currentBestRoute[] = new int[places.size()];
-//        int overallBestRouteDistance = 2000000000;
-//
-//        int[] route = new int[places.size()+1];
-//
-//        for(int startCity = 0; startCity < places.size(); startCity++) {
-//            createVisited(visited);
-//
-//            route[0] = startCity;
-//            route[places.size()] = startCity;
-//            visited[startCity] = true;
-//
-//            int routeCounter = 1;
-//            int currentCity = startCity;
-//            while(routeCounter < places.size() ) {
-//
-//                int min = 2000000000;
-//                int tempIndex = 0;
-//                for(int i = 0; i < allDistances[currentCity].length;i++){
-//                    if(allDistances[currentCity][i] <= min && !visited[i]){
-//                        min = allDistances[currentCity][i];
-//                        tempIndex = i;
-//
-//                    }
-//                }
-//                currentCity = tempIndex;
-//                visited[currentCity] = true;
-//
-//                route[routeCounter] = currentCity;
-//
-//                routeCounter++;
-//
-//            }
-//
-//            currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
-//
-//            if(currentTotalDistance[startCity] < overallBestRouteDistance){
-//                currentBestRoute = Arrays.copyOf(route,places.size());
-//                //currentBestRoute = route.clone();
-//                overallBestRouteDistance = currentTotalDistance[startCity];
-//            }
-//
-//        }
-//
-//        ArrayList<Place> optimalNearestNeighbor = new ArrayList<>();
-//        for(int i = 0; i < places.size(); i++){
-//            optimalNearestNeighbor.add(places.get(currentBestRoute[i]));
-//        }
-//        System.out.println("BESTIES: "+overallBestRouteDistance);
-//        Collections.copy(this.places, optimalNearestNeighbor);
-//    }
-
     /**
      * Algorithm for nearest neighbor.
      */
@@ -132,7 +75,7 @@ public class Trip extends Vincenty {
             routeSwap(route, startCity,0);
             route[places.size()] = startCity;
 
-            visited[route[startCity]] = true;
+            visited[startCity] = true;
 
             int routeCounter = 1;
 
