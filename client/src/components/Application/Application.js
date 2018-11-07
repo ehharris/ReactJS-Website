@@ -106,7 +106,7 @@ class Application extends Component {
                 </Row>
                 <Map trip={this.state.trip}/>
                 <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
-                <Search server={this.state.server} port={this.state.port}/>
+                <Search server={this.state.server} port={this.state.port} trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
             </Container>
         )
     }
