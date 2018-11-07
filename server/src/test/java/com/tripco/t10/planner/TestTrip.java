@@ -44,11 +44,6 @@ public class TestTrip {
   }
 
   @Test
-  public void testTrue(){
-    assertTrue(true==true);
-  }
-
-  @Test
   public void testLegDistances(){
     ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
     Collections.addAll(expectedDistances,24,41,59);
@@ -57,7 +52,13 @@ public class TestTrip {
   }
 
   @Test
-  public void testShortOptimization(){
+  public void testSVG(){
+    String testMap = "\"<svg width=\\\"1920\\\" height=\\\"960\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:svg=\\\"http://www.w3.org/2000/svg\\\"><!-- Created with SVG-edit - http://svg-edit.googlecode.com/ --> <g> <g id=\\\"svg_4\\\"> <svg id=\\\"svg_1\\\" height=\\\"960\\\" width=\\\"1920\\\" xmlns:svg=\\\"http://www.w3.org/2000/svg\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\"> <g id=\\\"svg_2\\\"> <title>Layer 1</title> <rect fill=\\\"rgb(119, 204, 119)\\\" stroke=\\\"black\\\" x=\\\"0\\\" y=\\\"0\\\" width=\\\"1920\\\" height=\\\"960\\\" id=\\\"svg_3\\\"/> </g> </svg> </g> <g id=\\\"svg_9\\\"> <svg id=\\\"svg_5\\\" height=\\\"480\\\" width=\\\"960\\\" y=\\\"240\\\" x=\\\"480\\\" xmlns:svg=\\\"http://www.w3.org/2000/svg\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\"> <g id=\\\"svg_6\\\"> <title>Layer 2</title> <polygon points=\\\"0,0 960,0 960,480 0,480\\\" stroke-width=\\\"12\\\" stroke=\\\"brown\\\" fill=\\\"none\\\" id=\\\"svg_8\\\"/> <polyline points=\\\"0,0 960,480 480,0 0,480 960,0 480,480 0,0\\\" fill=\\\"none\\\" stroke-width=\\\"4\\\" stroke=\\\"blue\\\" id=\\\"svg_7\\\"/> </g> </svg> </g> </g> </svg>\";\n" + "  }";
+    assertEquals(trip.svg(),null);
+  }
+
+  @Test
+  public void testNearestNeighbor(){
     ArrayList<Place> testShort = new ArrayList<>();
 
     testShort.add(testFortCollins);
@@ -75,6 +76,36 @@ public class TestTrip {
         }
       }
     }
+
+  }
+
+  @Test
+  public void testTwoOpt(){
+    ArrayList<Place> testShorter = new ArrayList<>();
+
+    testShorter.add(testFortCollins);
+    testShorter.add(testBoulder);
+    testShorter.add(testDenver);
+
+    boolean[] visited = new boolean[this.trip.places.size()];
+    trip.shorterOptimization(trip.createVisited(visited),trip.createAllDistancesArray());
+
+    if(trip.places.size() == testShorter.size() && trip.places != null){
+      for(Place place: trip.places){
+        if(!testShorter.contains(place)){
+          assertFalse(false);
+        }
+      }
+    }
+  }
+
+  @Test
+  public void testTwoOptReverse(){
+    int[] route = new int[]{1,2,3};
+    int[] testRoute = new int[]{2,1,3};
+
+    trip.twoOptReverse(route,0,1);
+    assertArrayEquals(route,testRoute);
 
   }
 
@@ -117,7 +148,6 @@ public class TestTrip {
 
   @Test
   public void testCreateAllDistances(){
-
     int [][] allDistances =  trip.createAllDistancesArray();
 
     int[] testAllDistances1 = {0,24,59};
