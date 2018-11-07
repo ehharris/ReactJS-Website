@@ -8,7 +8,6 @@ import java.util.Collections;
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
  *
  */
-@SuppressWarnings("unchecked")
 public class Trip extends Vincenty {
     // The variables in this class should reflect TFFI.
     public int version;
@@ -47,10 +46,6 @@ public class Trip extends Vincenty {
 
             if(this.options.optimization.equals("short")){
                 nearestNeighbor(route,visited,allDistances);
-            }
-            else if (this.options.optimization.equals("shorter")){
-                shorterOptimization(visited, allDistances);
-
             }
 
         } else {
