@@ -20,7 +20,6 @@ public class Trip extends Vincenty {
 
     /**
      * Constructor for testing purposes.
-     *
      */
     public Trip(int version, String type, String title, ArrayList<Place> places,
                 Option options, ArrayList<Integer> distances, String map){
@@ -44,6 +43,7 @@ public class Trip extends Vincenty {
             boolean[] visited = new boolean[places.size()];
             int[] route = new int[places.size()+1];
             int[][] allDistances = createAllDistancesArray();
+
             if(this.options.optimization.equals("short")){
                 nearestNeighbor(route,visited,allDistances);
             }
@@ -73,7 +73,6 @@ public class Trip extends Vincenty {
             visited[startCity] = true;
 
             int routeCounter = 1;
-
             while(routeCounter < places.size() ) {
 
                 int bestNextDistance = 2000000000;
@@ -90,7 +89,6 @@ public class Trip extends Vincenty {
                 visited[route[tempIndex]] = true;
                 routeSwap(route, tempIndex,routeCounter);
                 routeCounter++;
-
 
             }
 
@@ -112,12 +110,136 @@ public class Trip extends Vincenty {
     }
 
     /**
+     * Helper method for 2opt.
+     */
+    void twoOptReverse(int[] route, int i1, int k){
+        while(i1 < k){
+            int temp = route[i1];
+            route[i1] = route[k];
+            route[k] = temp;
+            i1++; k--;
+
+        }
+
+    }
+
+    /**
+     * Algorithm for 2opt.
+     */
+    void shorterOptimization(boolean[] visited, int[][] allDistances){
+        int currentTotalDistance[] = new int[places.size()];
+        int currentBestRoute[] = new int[places.size()];
+        int overallBestRouteDistance = 2000000000;
+
+        int[] route = new int[places.size()+1];
+
+
+        for(int startCity = 0; startCity < places.size(); startCity++) {
+            createVisited(visited);
+
+            route[0] = startCity;
+            route[places.size()] = startCity;
+            visited[startCity] = true;
+
+            int routeCounter = 1;
+            int currentCity = startCity;
+            while(routeCounter < places.size()) {
+
+                int min = 2000000000;
+                int tempIndex = 0;
+                for(int i = 0; i < allDistances[currentCity].length;i++){
+                    if(allDistances[currentCity][i] <= min && !visited[i]){
+                        min = allDistances[currentCity][i];
+                        tempIndex = i;
+
+                    }
+                }
+                currentCity = tempIndex;
+                visited[currentCity] = true;
+
+                route[routeCounter] = currentCity;
+
+                routeCounter++;
+
+            }
+
+            boolean improvement = true;
+            while(improvement){
+                improvement = false;
+                for(int i = 0; i <= route.length - 3; i++){
+                    for(int k = i+2; k < route.length -1; k++){
+
+                        int x1 = allDistances[route[i]][route[i+1]];
+                        int x2 = allDistances[route[k]][route[k+1]];
+                        int x3 = allDistances[route[i]][route[k]];
+                        int x4 = allDistances[route[i+1]][route[k+1]];
+
+                        int conditional = - x1 - x2 + x3 + x4;
+                        if(conditional < 0){
+                            twoOptReverse(route,i+1,k);
+                            improvement = true;
+                        }
+                    }
+                }
+
+            }
+
+            currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
+
+            if(currentTotalDistance[startCity] < overallBestRouteDistance){
+                currentBestRoute = route.clone();
+                overallBestRouteDistance = currentTotalDistance[startCity];
+            }
+
+        }
+
+        ArrayList<Place> optimalNearestNeighbor = new ArrayList<>();
+        for(int i = 0; i < places.size(); i++){
+            optimalNearestNeighbor.add(places.get(currentBestRoute[i]));
+        }
+        System.out.println(calcTripDistance(currentBestRoute,allDistances));
+        Collections.copy(this.places, optimalNearestNeighbor);
+
+    }
+
+    /**
      * Returns an SVG containing the background and the legs of the trip.
      * @return
      */
     String svg() {
         MapBuilder map = new MapBuilder(this);
         return map.map;
+    }
+
+    /**
+     * Returns the distances between consecutive places,
+     * including the return to the starting point to make a round trip.
+     */
+    ArrayList<Integer> legDistances() {
+
+        ArrayList<Integer> dist = new ArrayList<>();
+
+        //Calculate distance between each element.
+        for(int i = 0; i < this.places.size()-1; i++){
+
+            double[] coordinates = {this.places.get(i).latitude,
+                this.places.get(i + 1).latitude,
+                this.places.get(i).longitude,
+                this.places.get(i + 1).longitude};
+
+            dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
+        }
+
+        //Calculate round trip distance.
+        double[] coordinates = {this.places.get(this.places.size()-1).latitude,
+            this.places.get(0).latitude,
+            this.places.get(this.places.size()-1).longitude,
+            this.places.get(0).longitude};
+
+        dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
+
+        return dist;
+
     }
 
     /**
@@ -185,36 +307,6 @@ public class Trip extends Vincenty {
         return allDistances;
     }
 
-    /**
-     * Returns the distances between consecutive places,
-     * including the return to the starting point to make a round trip.
-     */
-    ArrayList<Integer> legDistances() {
-
-        ArrayList<Integer> dist = new ArrayList<>();
-
-        //Calculate distance between each element.
-        for(int i = 0; i < this.places.size()-1; i++){
-
-            double[] coordinates = {this.places.get(i).latitude,
-                this.places.get(i + 1).latitude,
-                this.places.get(i).longitude,
-                this.places.get(i + 1).longitude};
-
-            dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
-        }
-
-        //Calculate round trip distance.
-        double[] coordinates = {this.places.get(this.places.size()-1).latitude,
-            this.places.get(0).latitude,
-            this.places.get(this.places.size()-1).longitude,
-            this.places.get(0).longitude};
-
-        dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
-
-        return dist;
-
-    }
 
 }
 
