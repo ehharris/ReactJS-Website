@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody, Form, Input } from 'reactstrap'
+import {Card, CardBody, Input, InputGroup, Form, Label} from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
 
 /* Allows the user to change the parameters for server
@@ -36,13 +36,14 @@ class Port extends Component {
         return(
             <Card>
                 <CardBody>
-                    <ButtonGroup>
-                        <Input onChange={this.changeServer} name="Change Server" type="text" value={this.state.server}/>
-                        <Input onChange={this.changePort} name="Change Port" type="text" value={this.state.port}/>
-                        <Button onClick={this.update} type="button" className='btn-outline-dark unit-button'>
-                            Change Server
-                        </Button>
-                    </ButtonGroup>
+                    <Form inline xs="6" sm="6" md="6" lg="6">
+                        <Input onChange={this.changeServer} name="Change Server" type="text" value={this.state.server} className="server"/>
+                        <Label className="labelport">:</Label>
+                        <Input onChange={this.changePort} name="Change Port" type="text" value={this.state.port} className="port"/>
+                    </Form>
+                    <Button onClick={this.update} type="button" className='btn-outline-dark unit-button'>
+                        Change Server and Port
+                    </Button>
                 </CardBody>
             </Card>
         )

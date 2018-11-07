@@ -11,3 +11,5 @@
  */
 
 module.exports = 'Stub for static assets';
+
+

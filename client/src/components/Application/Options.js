@@ -48,7 +48,6 @@ class Options extends Component{
                   onChange={(event) => this.props.updateOptions('unitName', event.target.value)}
                 />
               </FormGroup>
-              <p>{"\n"}</p>
               <FormGroup>
                 <Input
                   type="unitRadius"
@@ -62,7 +61,7 @@ class Options extends Component{
 
 
         return(
-                <CardBody>
+                <div>
                     <p>Select the options you wish to use.</p>
                     <p>Units</p>
                       <ButtonGroup>
@@ -72,7 +71,7 @@ class Options extends Component{
                       <Collapse isOpen={this.state.collapse}>
                         {userDefinedOptions}
                       </Collapse>
-                </CardBody>
+                </div>
         )
     }
 }
