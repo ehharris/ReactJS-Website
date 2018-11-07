@@ -68,7 +68,7 @@ public class Database {
      */
     public String buildQuery() {
 
-        String query = "SELECT world_airports.id, world_airports.name, world_airports.latitude, world_airports.longitude, world_airports.municipality, region.name, country.name, continents.name " +
+        String query = "SELECT world_airports.id, world_airports.name, world_airports.latitude, world_airports.longitude, world_airports.municipality, region.name, country.name, continents.name, world_airports.type " +
                 "FROM continents " +
                 "INNER JOIN country ON continents.id = country.continent " +
                 "INNER JOIN region ON country.id = region.iso_country " +
@@ -87,6 +87,11 @@ public class Database {
                     if(filters[i].name.equals("world airport")) {
                         query += "world_airports.name IN ('" + filters[i].values[j] + "') ";
                     }
+
+                    if(filters[i].name.equals("type")) {
+                        query += "world_airports.type IN ('" + filters[i].values[j] + "') ";
+                    }
+
 
                     if(filters[i].name.equals("municipality")) {
                         query += "world_airports.municipality IN ('" + filters[i].values[j] + "') ";
@@ -111,8 +116,8 @@ public class Database {
         }
 
         //query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
-        System.out.println("Test Query: " + query);
-        System.out.println("Test String: " + filters[0].name);
+//        System.out.println("Test Query: " + query);
+//        System.out.println("Test String: " + filters[0].name);
         return query;
     }
 

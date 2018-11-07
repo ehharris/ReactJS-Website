@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody, Button } from 'reactstrap';
+import { Card, CardHeader, CardBody, Button, Dropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap';
 import { request } from '../../api/api';
+import { get_config } from '../../api/api';
 
 /* Allows the user to search from database.
  * Allows the user to search from database used by the application via inputs.
@@ -9,9 +10,9 @@ class Search extends Component{
     constructor(props) {
         super(props);
         this.updateSearch = this.updateSearch.bind(this);
-        this.updateLimit = this.updateLimit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updatePlace = this.updatePlace.bind(this);
+        //this.buildFilters = this.buildFilters.bind(this);
         // this.sendToParent = this.sendToParent.bind(this);
         this.state = {
             search: '',
@@ -22,22 +23,24 @@ class Search extends Component{
                 name: '',
                 latitude: 0,
                 longitude: 0,
-            }
+            },
+            filters: []
         };
+    }
+
+    componentDidMount() {
+        get_config(this.props.port).then((resData) => this.setState({filters: resData}));
+        console.log(this.state.filters);
     }
 
     updateSearch(event) {
         this.setState({search: event.target.value});
     }
 
-    updateLimit(event) {
-        this.setState({limit: event.target.value});
-    }
-
     handleSubmit(event) {
         event.preventDefault();
 
-        request({ "version": 3, "type": "search", "match": this.state.search, "limit": this.state.limit }, "search", this.props.port, this.props.server).then((resData) => this.setState({results: resData}));
+        request({ "version": 4, "type": "search", "match": this.state.search, "limit": this.state.limit }, "search", this.props.port, this.props.server).then((resData) => this.setState({results: resData}));
 
         // fetch('http://' + this.props.server + ":" + this.props.port + "/search", {
         //     method: 'POST',
@@ -136,7 +139,8 @@ class Search extends Component{
         let nameData = this.buildNameResults();
         let latitudeData = this.buildLatitudeResults();
         let longitudeData = this.buildLongitudeResults();
-
+        //this.buildFilters();
+        console.log(this.state.filters);
         let resultsNotEmpty = false;
         if(this.state.results.places) {
             resultsNotEmpty = true;
@@ -148,8 +152,18 @@ class Search extends Component{
                     <form onSubmit={this.handleSubmit}>
                         <div> Search trip destinations: </div>
                         <input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
-                        <div> Enter number to limit search results or leave empty to display all results: </div>
-                        <input name="Limit Field" type="text" value={this.state.limit} onChange={this.updateLimit} />
+
+                        <div>Choose filters: </div>
+                        {/*<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>*/}
+                            {/*<DropdownToggle caret>*/}
+                                {/*Continents*/}
+                            {/*</DropdownToggle>*/}
+                            {/*<DropdownMenu>*/}
+                                {/*<DropdownItem>Item</DropdownItem>*/}
+                            {/*</DropdownMenu>*/}
+                        {/*</Dropdown>*/}
+
+
                         <button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</button>
                     </form>
 
