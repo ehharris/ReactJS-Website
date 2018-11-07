@@ -21,7 +21,6 @@ public class Trip extends Vincenty {
 
     /**
      * Constructor for testing purposes.
-     *
      */
     public Trip(int version, String type, String title, ArrayList<Place> places,
                 Option options, ArrayList<Integer> distances, String map){
@@ -45,6 +44,7 @@ public class Trip extends Vincenty {
             boolean[] visited = new boolean[places.size()];
             int[] route = new int[places.size()+1];
             int[][] allDistances = createAllDistancesArray();
+
             if(this.options.optimization.equals("short")){
                 nearestNeighbor(route,visited,allDistances);
             }
@@ -78,7 +78,6 @@ public class Trip extends Vincenty {
             visited[startCity] = true;
 
             int routeCounter = 1;
-
             while(routeCounter < places.size() ) {
 
                 int bestNextDistance = 2000000000;
@@ -95,7 +94,6 @@ public class Trip extends Vincenty {
                 visited[route[tempIndex]] = true;
                 routeSwap(route, tempIndex,routeCounter);
                 routeCounter++;
-
 
             }
 
@@ -115,7 +113,6 @@ public class Trip extends Vincenty {
         System.out.println(calcTripDistance(currentBestRoute,allDistances));
         Collections.copy(this.places, optimalNearestNeighbor);
     }
-
 
     /**
      * Helper method for 2opt.
@@ -172,7 +169,6 @@ public class Trip extends Vincenty {
             }
 
             boolean improvement = true;
-            int count =0;
             while(improvement){
                 improvement = false;
                 for(int i = 0; i <= route.length - 3; i++){
@@ -189,8 +185,6 @@ public class Trip extends Vincenty {
                             improvement = true;
                         }
                     }
-                    count++;
-
                 }
 
             }
@@ -220,6 +214,37 @@ public class Trip extends Vincenty {
     String svg() {
         MapBuilder map = new MapBuilder(this);
         return map.map;
+    }
+
+    /**
+     * Returns the distances between consecutive places,
+     * including the return to the starting point to make a round trip.
+     */
+    ArrayList<Integer> legDistances() {
+
+        ArrayList<Integer> dist = new ArrayList<>();
+
+        //Calculate distance between each element.
+        for(int i = 0; i < this.places.size()-1; i++){
+
+            double[] coordinates = {this.places.get(i).latitude,
+                this.places.get(i + 1).latitude,
+                this.places.get(i).longitude,
+                this.places.get(i + 1).longitude};
+
+            dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
+        }
+
+        //Calculate round trip distance.
+        double[] coordinates = {this.places.get(this.places.size()-1).latitude,
+            this.places.get(0).latitude,
+            this.places.get(this.places.size()-1).longitude,
+            this.places.get(0).longitude};
+
+        dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
+
+        return dist;
+
     }
 
     /**
@@ -287,36 +312,6 @@ public class Trip extends Vincenty {
         return allDistances;
     }
 
-    /**
-     * Returns the distances between consecutive places,
-     * including the return to the starting point to make a round trip.
-     */
-    ArrayList<Integer> legDistances() {
-
-        ArrayList<Integer> dist = new ArrayList<>();
-
-        //Calculate distance between each element.
-        for(int i = 0; i < this.places.size()-1; i++){
-
-            double[] coordinates = {this.places.get(i).latitude,
-                this.places.get(i + 1).latitude,
-                this.places.get(i).longitude,
-                this.places.get(i + 1).longitude};
-
-            dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
-        }
-
-        //Calculate round trip distance.
-        double[] coordinates = {this.places.get(this.places.size()-1).latitude,
-            this.places.get(0).latitude,
-            this.places.get(this.places.size()-1).longitude,
-            this.places.get(0).longitude};
-
-        dist.add(calculateDistance(coordinates, this.options.units, this.options.unitRadius));
-
-        return dist;
-
-    }
 
 }
 
