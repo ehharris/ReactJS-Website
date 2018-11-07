@@ -1,6 +1,7 @@
 package com.tripco.t10.planner;
 
 import java.lang.Class;
+import java.lang.String;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,28 +13,32 @@ public class Database {
     private int version;
     private String type;
     private String match;
+    private Filters[] filters;
     private int limit;
+    private int found;
     private ArrayList<Place> places;
 
     /** Default Constructor.
      * Necessary when one variable is missing (such as places) in POST JSON request.
      */
     public Database() {
-        this.version = 0;
-        this.type = "";
+        this.version = 4;
+        this.type = "search";
         this.match = "";
         this.limit = 0;
+        this.found = 0;
         this.places = new ArrayList<Place>();
     }
 
     /** Constructor used for test cases.
      *
      */
-    public Database(int version, String type, String match, int limit, ArrayList<Place> places) {
+    public Database(int version, String type, String match, int limit, int found, ArrayList<Place> places) {
         this.version = version;
         this.type = type;
         this.match = match;
         this.limit = limit;
+        this.found = found;
         this.places = places;
     }
 
@@ -62,15 +67,52 @@ public class Database {
      *
      */
     public String buildQuery() {
-        String query = "";
-        query += "SELECT * FROM airports WHERE name LIKE '%";
-        query += this.match;
-        query += "%' ORDER BY name";
 
-        if(this.limit > 0) {
-            query += " LIMIT " +  this.limit;
+        String query = "SELECT world_airports.id, world_airports.name, world_airports.latitude, world_airports.longitude, world_airports.municipality, region.name, country.name, continents.name " +
+                "FROM continents " +
+                "INNER JOIN country ON continents.id = country.continent " +
+                "INNER JOIN region ON country.id = region.iso_country " +
+                "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
+                "WHERE (country.name LIKE '%" + this.match + "%' OR region.name LIKE '%" + this.match + "%' OR world_airports.name LIKE '%" + this.match + "%'  OR world_airports.municipality LIKE '%" + this.match + "%') ";
+
+        if(filters.length > 0) {
+            query += "AND ( ";
+
+            for(int i = 0; i < filters.length; i++) {
+                for(int j = 0; j < filters[i].values.length; j++ ) {
+                    if(filters[i].name.equals("country")) {
+                        query += "country.name IN ('" + filters[i].values[j] + "') ";
+                    }
+
+                    if(filters[i].name.equals("world airport")) {
+                        query += "world_airports.name IN ('" + filters[i].values[j] + "') ";
+                    }
+
+                    if(filters[i].name.equals("municipality")) {
+                        query += "world_airports.municipality IN ('" + filters[i].values[j] + "') ";
+                    }
+
+                    if(filters[i].name.equals("region")) {
+                        query += "region.name IN ('" + filters[i].values[j] + "') ";
+                    }
+
+                    if(filters[i].name.equals("continents")) {
+                        query += "continents.name IN ('" + filters[i].values[j] + "') ";
+                    }
+
+                    if(j != ( filters[i].values.length - 1 ) || (j == (filters[i].values.length - 1) && i != (filters.length - 1))) {
+                        query += "AND ";
+                    }
+                }
+            }
+
+            query += " ) LIMIT 100";
+//            query += "AND country.name IN ('" + filters[0].values[0] + "') LIMIT 100";
         }
 
+        //query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
+        System.out.println("Test Query: " + query);
+        System.out.println("Test String: " + filters[0].name);
         return query;
     }
 
@@ -97,11 +139,12 @@ public class Database {
 
             while (rsQuery.next()) {
                 String id = rsQuery.getString("id");
-                String name = rsQuery.getString("name");
+                String name = rsQuery.getString(2);
                 double latitude = Double.parseDouble(rsQuery.getString("latitude"));
                 double longitude = Double.parseDouble(rsQuery.getString("longitude"));
                 Place place = new Place(id, name, latitude, longitude);
                 this.places.add(place);
+                this.found += 1;
             }
             stQuery.close();
         }
