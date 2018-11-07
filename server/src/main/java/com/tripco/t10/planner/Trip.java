@@ -46,6 +46,9 @@ public class Trip extends Vincenty {
 
             if(this.options.optimization.equals("short")){
                 nearestNeighbor(route,visited,allDistances);
+            } 
+            if(this.options.optimization.equals("shorter")){
+                shorterOptimization(visited, allDistances);
             }
 
         } else {
