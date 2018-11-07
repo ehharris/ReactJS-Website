@@ -1,0 +1,89 @@
+th {
+    background: #343A40;
+    color: white;
+}
+
+tbody {
+    display:block;
+    height: 602px;
+    table-layout:fixed;
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
+thead, tbody tr {
+    display:table;
+    width: calc( 100% - 1em );
+    table-layout:fixed;
+}
+
+.server {
+    border: 1px solid #343A40;
+    min-width: calc( 100% - 15em );
+}
+
+.port {
+    border: 1px solid #343A40;
+    max-width: calc( 100% - 20em );
+}
+
+.labelport {
+    padding: 5px 10px;
+    font-size: 10pt;
+    font-weight: 200;
+    text-align-all: center;
+    color: white;
+    background-color: #343A40;
+    width: 15px;
+    height: 30px;
+}
+
+.labelpop {
+    background: lightgreen;
+    border-radius: 5px;
+    text-shadow: 1px 1px limegreen;
+    border: 1px solid limegreen;
+    height: 42px;
+    max-width: max-content;
+    text-align-all: center;
+}
+.mapborder {
+    border: 4px solid #343A40;
+}
+
+.inputborder {
+    border: 1px solid #343A40;
+}
+
+.inputborderadd {
+    border: 1px solid #343A40;
+}
+
+.labelpre {
+    padding: 5px 10px;
+    font-size: 10pt;
+    font-weight: 200;
+    text-align-all: center;
+    color: white;
+    background-color: #343A40;
+    min-width: 110px;
+    height: 30px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.itinButton {
+    padding: 5px 10px;
+    font-size: 10pt;
+    font-weight: 200;
+    text-align-all: center;
+    color: white;
+    background-color: #343A40;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.tabs {
+    cursor: pointer;
+    font-size: 13pt;
+}

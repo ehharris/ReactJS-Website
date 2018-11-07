@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Row, Col, Card } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabPane, TabContent} from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import Map from './Map.jsx';
@@ -22,6 +22,7 @@ class Application extends Component {
         super(props);
         this.state = {
             config: null,
+            activeTab: '1',
             server: location.hostname,
             port: '31410',
             trip: {
@@ -41,6 +42,7 @@ class Application extends Component {
         this.updateOptions = this.updateOptions.bind(this);
         this.updateServer = this.updateServer.bind(this);
         this.updatePlaces = this.updatePlaces.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
     componentWillMount() {
@@ -53,6 +55,14 @@ class Application extends Component {
         );
     }
 
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
+    }
+
     updateTrip(field, value){
         let trip = this.state.trip;
         trip[field] = value;
@@ -63,7 +73,6 @@ class Application extends Component {
         request(value, "plan", this.state.port, this.state.server)
             .then((resData) => this.setState({trip: resData}));
     }
-
 
     updateOptions(option, value){
         let trip = this.state.trip;
@@ -83,30 +92,80 @@ class Application extends Component {
         this.setState({port: value2});
     }
 
+    renderTabs(){
+        if(this.state.trip.places.length >= 2){
+            return(
+
+              <div>
+                <Nav tabs className="cooltabs">
+                  <NavItem>
+                    <NavLink
+                      active={this.state.activeTab === '1'}
+                      className="tabs"
+                      onClick={() => { this.toggle('1'); }}
+                    >
+                      Map
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      active={this.state.activeTab === '2'}
+                      className="tabs"
+                      onClick={() => { this.toggle('2'); }}
+                    >
+                      Itinerary
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+                <TabContent activeTab={this.state.activeTab}>
+                  <TabPane tabId="1">
+                    <Card>
+                      <CardBody>
+                        <Map trip={this.state.trip}/>
+                      </CardBody>
+                    </Card>
+                  </TabPane>
+                  <TabPane tabId="2">
+                    <Card>
+                      <CardBody>
+                        <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
+                      </CardBody>
+                    </Card>
+                  </TabPane>
+                </TabContent>
+              </div>
+
+            );
+
+        }
+
+    }
+
     render() {
         if(!this.state.config) { return <div/> }
         return(
             <Container id="Application">
                 <Info/>
-                <Row>
+                {this.renderTabs()}
+                <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+                <Row noGutters={true}>
                     <Col>
-                        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
-                        <Port updateServer={this.updateServer}/>
                         <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
+                        <Port updateServer={this.updateServer}/>
+                        <Search server={this.state.server} port={this.state.port}/>
                     </Col>
                     <Col>
                         <Card>
-                            <Options options={this.state.trip.options} config={this.state.config}
-                                     updateOptions={this.updateOptions}/>
-                            <Optimization updateOptions={this.updateOptions} config={this.state.config}
-                                          options={this.state.trip.options}/>
+                            <CardBody>
+                                <Options options={this.state.trip.options} config={this.state.config}
+                                         updateOptions={this.updateOptions}/>
+                                <Optimization updateOptions={this.updateOptions} config={this.state.config}
+                                              options={this.state.trip.options}/>
+                            </CardBody>
                         </Card>
                         <Calculator/>
                     </Col>
                 </Row>
-                <Map trip={this.state.trip}/>
-                <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
-                <Search server={this.state.server} port={this.state.port}/>
             </Container>
         )
     }
