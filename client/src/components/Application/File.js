@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {Input, Button, CardBody, ButtonToolbar, Card, ButtonGroup, Label, FormGroup } from 'reactstrap';
-import {request} from "../../api/api";
+import {Input, Button, CardBody, ButtonToolbar, Card, ButtonGroup} from 'reactstrap';
 
 
 class File extends Component{
@@ -58,7 +57,7 @@ class File extends Component{
                 <CardBody>
                     <p>Upload a file to start planning your trip!</p>
                     <ButtonToolbar>
-                        <Input type="file" title="input" accept=".json" onChange={this.uploadFile}/>
+                        <Input type="file" title="input" accept=".json" onChange={this.uploadFile} className="inputfile"/>
                     </ButtonToolbar>
                     &nbsp;
                     <ButtonToolbar>

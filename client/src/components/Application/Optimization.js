@@ -31,12 +31,12 @@ class Optimization extends Component{
     );
 
     return(
-        <CardBody>
+        <div>
           <p>Optimization</p>
           <ButtonGroup>
             {optimizations}
           </ButtonGroup>
-        </CardBody>
+        </div>
     )
   }
 }

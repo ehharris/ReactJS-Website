@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Input, Button, CardBody, Fade, Card, Form, FormGroup, ButtonGroup } from 'reactstrap';
+import {Input, Button, CardBody, Fade, Card, Form, Label} from 'reactstrap';
 
 
 class Add extends Component{
@@ -53,32 +53,32 @@ class Add extends Component{
       },
       message: false,
     })
-  }, 2000);
+  }, 1500);
   }
 
 
   render() {
     const forms = this.state.input.map((element) =>
-      <Form key={element}>
-        <Input
-          key={element}
-          value={this.state.place[element]} placeholder={element}
-          onChange={(event) => this.update(element, event.target.value)}
-        />
+      <Form inline key={element+1}>
+        <Label key={element+2} className="labelpre">
+          {element.charAt(0).toUpperCase() + element.slice(1)}</Label>
+        <Input className="inputborderadd" key={element+3}
+          value={this.state.place[element]}
+          onChange={(event) => this.update(element, event.target.value)}/>
       </Form>
   );
     return(
       <Card>
         <CardBody>
-        <p>Add a new place to your trip!</p>
-          {forms}
-          <Button onClick={this.createPlace} type="button"
-            className='btn-outline-dark unit-button'>
-              Add
-          </Button>
-          <Fade in={this.state.message}>
-            {this.state.place.name} was successfully added to your trip!
-          </Fade>
+        <p>Add a new place to your trip!</p>{forms}
+          <Form inline>
+            <Button onClick={this.createPlace} type="button"
+              className='btn-outline-dark unit-button'> Add </Button>
+            <Fade in={this.state.message}>
+              <Label className="labelpop">{this.state.place.name} was successfully added to your trip!
+              </Label>
+            </Fade>
+          </Form>
       </CardBody>
     </Card>
   )
