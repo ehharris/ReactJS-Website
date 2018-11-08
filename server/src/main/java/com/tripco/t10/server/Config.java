@@ -22,8 +22,11 @@ public class Config {
 
   private List<String> attributes = Arrays.asList("name", "id", "latitude","longitude");
 
-  private Filters filters = new Filters("type",
-                            (new String[]{"balloonport", "heliport", "airport", "seaplane base"}) );
+  private Filters[] filters = {
+    new Filters("type", (new String[]{"heliport", "small_airport", "seaplane_base", "closed", "balloonport", "medium_airport", "large_airport"})),
+    new Filters("country", (new String[]{"Canada", "United States"})),
+    new Filters("continents", (new String[]{"Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"}))
+  };
 
   private List<String> maps = Arrays.asList("svg", "kml");
 
