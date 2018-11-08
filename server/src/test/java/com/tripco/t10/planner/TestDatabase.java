@@ -23,7 +23,7 @@ public class TestDatabase {
     public void intialize() {
         ArrayList<Place> places = new ArrayList<Place>();
         Filters[] filters = {new Filters("country", (new String[]{"United States"}))};
-        db = new Database(3, "search", "denver", filters, 1, 0, places);
+        db = new Database(4, "search", "denver", filters, 1, 0, places);
 
         myUrlOffCampus = "jdbc:mysql://127.0.0.1:56247/cs314";
         myUrlOnCampus = "jdbc:mysql://faure.cs.colostate.edu/cs314";
