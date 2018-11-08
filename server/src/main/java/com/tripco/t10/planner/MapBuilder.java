@@ -9,7 +9,6 @@ public class MapBuilder {
     private Trip trip;
     private String[] lines;
     private String[] circles;
-    private int circleCount;
     private int size;
     public String map;
 
@@ -26,7 +25,7 @@ public class MapBuilder {
         return "</svg>\n"+"</g>\n"+"</g>\n"+"</svg>";
     }
 
-    /** Converts Latitude to SVG
+    /** Converts Latitude to SVG.
      *
      */
     private double conLat(double latitude){
@@ -38,7 +37,7 @@ public class MapBuilder {
         }
     }
 
-    /** Converts Longitude to SVG
+    /** Converts Longitude to SVG.
      *
      */
     private double conLong(double longitude){
@@ -50,7 +49,7 @@ public class MapBuilder {
         }
     }
 
-    /** Creates the lines on the map
+    /** Creates the lines on the map.
      *
      */
     private void addLines() {
@@ -94,24 +93,24 @@ public class MapBuilder {
         }
         //One place
         else if(this.size == 1){
-            double Lat = conLat(this.trip.places.get(0).getLatitude());
-            double Long = conLong(this.trip.places.get(0).getLongitude());
-            addCircle(Lat, Long, 0);
+            double latitude = conLat(this.trip.places.get(0).getLatitude());
+            double longitude = conLong(this.trip.places.get(0).getLongitude());
+            addCircle(latitude, longitude, 0);
         }
 
     }
 
     /** Creates circles on the map.
      *
-     * @param Lat Converted Latitude
-     * @param Long Converted Longitude
+     * @param latitude Converted Latitude
+     * @param longitude Converted Longitude
      * @param index The index of circles
      */
-    private void addCircle(double Lat, double Long, int index){
+    private void addCircle(double latitude, double longitude, int index){
         String circle = ("<circle cx='"
-                + Math.round(Long)
+                + Math.round(longitude)
                 + "' cy='"
-                + Math.round(Lat)
+                + Math.round(latitude)
                 + "' r='3' fill='#32CD32' />\n");
         this.circles[index] = circle;
     }
@@ -127,7 +126,6 @@ public class MapBuilder {
         this.size = trip.places.size();
         this.lines = new String[this.size];
         this.circles = new String[this.size];
-        this.circleCount = 0;
 
         //Functions to create lines/circles
         addLines();
@@ -144,16 +142,10 @@ public class MapBuilder {
                 line.append('\n');
             }
 
-            //Add lines
+            //Add Circles and lines
             for(int i = 0; i < this.lines.length; i++) {
                 if (lines[i] != null) {
                     line.append(lines[i]);
-                }
-            }
-
-            //Add circles
-            for(int i = 0; i < this.circles.length; i++){
-                if (circles[i] != null) {
                     line.append(circles[i]);
                 }
             }
