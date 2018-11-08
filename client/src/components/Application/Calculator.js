@@ -8,6 +8,8 @@ class Calculator extends Component{
     super(props);
     this.state = {
       show: false,
+      gen1: ["origin", "destination"],
+      gen2: ["latitude", "longitude"],
       distance: {
         type: "distance",
         version: "4",
@@ -41,54 +43,33 @@ class Calculator extends Component{
   }
 
   render() {
-
+    const calculator = this.state.gen1.map((type) =>
+      <Form inline key={type+1}>
+        <Label className="labelpre" key={type+2}>{type.charAt(0).toUpperCase() + type.slice(1)}</Label>
+        <InputGroup key={type+3}>
+          {this.state.gen2.map((type2) =>
+            <Input key={type+type2} className="inputborder"
+              placeholder="Latitude" value={type}
+              onChange={(event) => this.updateLatLong(type, type2, event.target.value)}/>)}
+        </InputGroup>
+      </Form>);
     return(
       <Card>
         <CardBody>
-          <p>Calculate the distance between two places!</p>
-          <Form inline>
-            <Label className="labelpre">Origin</Label>
-            <InputGroup>
-              <Input
-                className="inputborder"
-                placeholder="Latitude"
-                onChange={(event) => this.updateLatLong('origin', 'latitude', event.target.value)}
-              />
-              <Input
-                className="inputborder"
-                placeholder="Longitude"
-                onChange={(event) => this.updateLatLong('origin', 'longitude', event.target.value)}
-              />
-            </InputGroup>
-          </Form>
-          <Form inline>
-            <Label className="labelpre">Destination</Label>
-            <InputGroup>
-              <Input
-                className="inputborder"
-                placeholder="Latitude"
-                onChange={(event) => this.updateLatLong('destination', 'latitude', event.target.value)}
-              />
-              <Input
-                className="inputborder"
-                placeholder="Longitude"
-                onChange={(event) => this.updateLatLong('destination', 'longitude', event.target.value)}
-              />
-            </InputGroup>
-          </Form>
+          {calculator}
           <Form inline>
             <Button onClick={this.calculate} type="button" className='btn-outline-dark unit-button'>
-              Calculate
-            </Button>
+              Calculate</Button>
             <Fade in={this.state.show}>
-              <Label sm={{ size: 2, offset: 4 }} className="labelpop">{this.state.distance.distance} {this.state.distance.units}</Label>
-            </Fade>
+              <Label sm={{ size: 2, offset: 4 }} className="labelpop">
+                {this.state.distance.distance} {this.state.distance.units}</Label></Fade>
           </Form>
         </CardBody>
       </Card>
     )
-
   }
+
+
 }
 
 export default Calculator;
