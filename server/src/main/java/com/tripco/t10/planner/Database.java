@@ -25,7 +25,7 @@ public class Database {
         this.version = 4;
         this.type = "search";
         this.match = "";
-        this.filters = null;
+        this.filters = new Filters[0];
         this.limit = 0;
         this.found = 0;
         this.places = new ArrayList<Place>();
