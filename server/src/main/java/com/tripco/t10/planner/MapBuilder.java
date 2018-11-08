@@ -8,47 +8,112 @@ public class MapBuilder {
 
     private Trip trip;
     private String[] lines;
+    private String[] circles;
+    private int circleCount;
+    private int size;
     public String map;
 
     /** Creates a Map.
      *
      */
-
     public MapBuilder() {
     }
 
     /** End of svg map.
      *
      */
-
-    public String end(){
+    public String end() {
         return "</svg>\n"+"</g>\n"+"</g>\n"+"</svg>";
     }
 
-    private double conLat(double lat){
-        return (((41 - lat)/4) * 710);
+    /** Converts Latitude to SVG
+     *
+     */
+    private double conLat(double latitude){
+        if(latitude < 0){
+            return ((400 * (90 + Math.abs(latitude)))/180);
+        }
+        else {
+            return ((400 * (90 - Math.abs(latitude)))/180);
+        }
     }
 
+    /** Converts Longitude to SVG
+     *
+     */
     private double conLong(double longitude){
-        return ((-(-109 - longitude)/7) * 994);
+        if (longitude < 0){
+            return ((800 * (180 - Math.abs(longitude)))/360);
+        }
+        else {
+            return ((800 * (180 + Math.abs(longitude)))/360);
+        }
+    }
+
+    /** Creates the lines on the map
+     *
+     */
+    private void addLines() {
+
+        //Multiple places
+        if (this.size > 1) {
+            int first;
+            int last;
+            for (int index = 0; index < this.size; index++) {
+
+                //Makes trip "round trip"
+                if (index == (this.size - 1)) {
+                    first = 0;
+                    last = index;
+                } else {
+                    first = index;
+                    last = index + 1;
+                }
+
+                //Convert Lat/Long to svg
+                double begLat = conLat(this.trip.places.get(first).getLatitude());
+                double begLong = conLong(this.trip.places.get(first).getLongitude());
+                double endLat = conLat(this.trip.places.get(last).getLatitude());
+                double endLong = conLong(this.trip.places.get(last).getLongitude());
+
+                //Make a line
+                String str = ("<line x1='"
+                        + Math.round(begLong)
+                        + "' y1='"
+                        + Math.round(begLat)
+                        + "' x2='"
+                        + Math.round(endLong)
+                        + "' y2='"
+                        + Math.round(endLat)
+                        + "' style='stroke:black; stroke-width:1' />\n");
+                lines[index] = str;
+
+                //Add Circles
+                addCircle(begLat, begLong, index);
+            }
+        }
+        //One place
+        else if(this.size == 1){
+            double Lat = conLat(this.trip.places.get(0).getLatitude());
+            double Long = conLong(this.trip.places.get(0).getLongitude());
+            addCircle(Lat, Long, 0);
+        }
 
     }
 
-    private void addline(int index){
-        double begLat = conLat(this.trip.places.get(index).getLatitude());
-        double begLong = conLong(this.trip.places.get(index).getLongitude());
-        double endLat = conLat(this.trip.places.get(index + 1).getLatitude());
-        double endLong = conLong(this.trip.places.get(index + 1).getLongitude());
-        String str = ("<line x1='"
-                + Math.round(begLong)
-                + "' y1='"
-                + Math.round(begLat)
-                + "' x2='"
-                + Math.round(endLong)
-                + "' y2='"
-                + Math.round(endLat)
-                + "' style='stroke:blue; stroke-width:2' />\n");
-        lines[index] = str;
+    /** Creates circles on the map.
+     *
+     * @param Lat Converted Latitude
+     * @param Long Converted Longitude
+     * @param index The index of circles
+     */
+    private void addCircle(double Lat, double Long, int index){
+        String circle = ("<circle cx='"
+                + Math.round(Long)
+                + "' cy='"
+                + Math.round(Lat)
+                + "' r='3' fill='#32CD32' />\n");
+        this.circles[index] = circle;
     }
 
 
@@ -56,63 +121,49 @@ public class MapBuilder {
      *
      * @param trip Trip object
      */
-    public MapBuilder(Trip trip)
-    {
+    public MapBuilder(Trip trip) {
+        //Instantiate Variables
         this.trip = trip;
-        this.lines = new String[trip.places.size()];
+        this.size = trip.places.size();
+        this.lines = new String[this.size];
+        this.circles = new String[this.size];
+        this.circleCount = 0;
 
-        if(trip.places.size() > 1) {
-            //creates map lines
-            for (int i = 0; i < trip.places.size() - 1; i++) {
-                addline(i);
-            }
-            //add line to beginning place
-            double begLat = conLat(trip.places.get(0).getLatitude());
-            double begLong = conLong(trip.places.get(0).getLongitude());
-            double endLat = conLat(trip.places.get(trip.places.size() - 1).getLatitude());
-            double endLong = conLong(trip.places.get(trip.places.size() - 1).getLongitude());
-            String str = ("<line x1='"
-                    + Math.round(begLong)
-                    + "' y1='"
-                    + Math.round(begLat)
-                    + "' x2='"
-                    + Math.round(endLong)
-                    + "' y2='"
-                    + Math.round(endLat)
-                    + "' style='stroke:blue; stroke-width:2' />\n");
-            lines[lines.length - 1] = str;
-        }
+        //Functions to create lines/circles
+        addLines();
+
+        //Write to map
         try {
-            File file = new File("./Resources/CObackground.svg");
+            File file = new File("./Resources/World_map_with_nations.svg");
             FileInputStream in = new FileInputStream(file);
             //svg = new Scanner(file).useDelimiter("<title>Map Layer</title>").next();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             StringBuilder line = new StringBuilder();
-            for (int i = 0; i < 472; i++) {
+            for (int i = 0; i < 421; i++) {
                 line.append(reader.readLine());
                 line.append('\n');
             }
 
-//            FileWriter fileWriter = new FileWriter(file);
-//            System.out.println(svg);
-            //svg += "<line x1='0' y1='0'x2='200' y2='200' style='stroke:rgb(255,0,0);stroke-width:2' />\n" ;
-            if (lines[0] != null) {
-                for (int i = 0; i < lines.length; i++) {
+            //Add lines
+            for(int i = 0; i < this.lines.length; i++) {
+                if (lines[i] != null) {
                     line.append(lines[i]);
                 }
             }
-            line.append(this.end()); //+ this.end());
-//            fileWriter.flush();
-//            fileWriter.close();
+
+            //Add circles
+            for(int i = 0; i < this.circles.length; i++){
+                if (circles[i] != null) {
+                    line.append(circles[i]);
+                }
+            }
+
+            //Finish it up
+            line.append(this.end());
             this.map = line.toString();
 
         } catch (IOException e) {
-            System.out.println("Error in MapBuilder : " + e);
+            //System.out.println("Error in MapBuilder : " + e);
         }
-
-        //this.map = "test";
-
     }
-
-
 }
