@@ -54,7 +54,7 @@ class Application extends Component {
             }
         );
     }
-
+  
     toggle(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
@@ -87,9 +87,15 @@ class Application extends Component {
         }
     }
 
-    updateServer(value1, value2) {
-        this.setState({server: value1});
-        this.setState({port: value2});
+    updateServer(newHost, newPort) {
+        this.setState({server: newHost});
+        this.setState({port: newPort});
+
+        get_config(newPort, newHost).then((newConfig) => (
+            this.setState({config: newConfig})
+        ));
+
+        //console.log(this.state.config);
     }
 
     renderTabs(){

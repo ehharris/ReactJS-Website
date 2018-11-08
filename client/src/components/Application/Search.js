@@ -28,10 +28,10 @@ class Search extends Component{
         };
     }
 
-    componentDidMount() {
-        get_config(this.props.port).then((resData) => this.setState({filters: resData}));
-        console.log(this.state.filters);
-    }
+    // componentDidMount() {
+    //     get_config(this.props.port).then((resData) => this.setState({filters: resData}));
+    //     console.log(this.state.filters);
+    // }
 
     updateSearch(event) {
         this.setState({search: event.target.value});
