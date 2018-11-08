@@ -25,6 +25,7 @@ public class Database {
         this.version = 4;
         this.type = "search";
         this.match = "";
+        this.filters = null;
         this.limit = 0;
         this.found = 0;
         this.places = new ArrayList<Place>();
@@ -33,10 +34,11 @@ public class Database {
     /** Constructor used for test cases.
      *
      */
-    public Database(int version, String type, String match, int limit, int found, ArrayList<Place> places) {
+    public Database(int version, String type, String match, Filters[] filters, int limit, int found, ArrayList<Place> places) {
         this.version = version;
         this.type = type;
         this.match = match;
+        this.filters = filters;
         this.limit = limit;
         this.found = found;
         this.places = places;
@@ -111,7 +113,10 @@ public class Database {
                 }
             }
 
-            query += " ) LIMIT 100";
+            query += " ) ";
+            if(this.limit > 0) {
+                query += "LIMIT " + this.limit;
+            }
 //            query += "AND country.name IN ('" + filters[0].values[0] + "') LIMIT 100";
         }
 
