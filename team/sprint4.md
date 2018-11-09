@@ -67,7 +67,7 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | 9 | *total* |
+| Epics | 7 | *total* |
 | Tasks |  31   | *total* | 
 | Story Points |  42  | *total* | 
 
@@ -86,39 +86,44 @@ Our team plans to add more tasks as the sprint goes along. Previously we had abo
 | 10/29/18 | #72 #158 #252 #276 #278 #173 | #266 #273 #178 | Not able to meet |
 | 10/31/18 | #72 #158 #252 #276 #278 #173 #283 #175 #266 #181 | #266 #273 #178 | *none* |
 | 11/2/18 | #72 #158 #252 #276 #278 #173 #283 #175 #266 #181 #266 #273 #178 | #268 #261 | *none* |
+| 11/5/18 | #72 #158 #252 #276 #278 #173 #283 #175 #266 #181 #266 #273 #178 #268 #261 #301 #303 | #165 #253 #306 | *none* |
+| 11/7/18 | #72 #158 #252 #276 #278 #173 #283 #175 #266 #181 #266 #273 #178 #268 #261 #301 #303 #165 #253 #306 | #271 #234 #314 #318 #320 #325 | *none* |
 
 
 ## Review
 
-This sprint went relatively well on our tasks completed and burndown chart. We have shown progress over the past sprints and our percentage of tasks completed as well as our incremental deveopment skills have all improved. We still were not on the line with our burndown nor one hundred percent in our completetion; but with the plans made for improvemnt, our team is bound for an even better sprint next time around. 
+This sprint went relatively well on our tasks completed and burndown chart. We have shown progress over the past sprints and our percentage of tasks completed as well as our incremental deveopment skills have all improved. We still were not on the line with our burndown nor one hundred percent in our completion; but with the plans made for improvement, our team is bound for an even better sprint next time around. 
 
 #### Completed Epics in Sprint Backlog 
 
-*Describe the solution based on the completed epics and list the epics below.*
+The main things that we were able to fully implement this sprint was the new svg world map, an improved nearest neighbor algorithm as well as an efficient 2-opt, an overhaul on the UI of our entire website, and the search/add functionality.
 
-* *## epic title: comments*
-* 
+* User: I'd like even shorter trips
+* User: I want to design a trip from scratch so I can stop using the other tool.
+* TripCo: All code must be tested.
 
 #### Incomplete Epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
+Unfortunately, we weren't able to implement the filters for searching, the kml map, and the additional itinerary options from the database.
 
-* *## epic title: explanation*
-*
+* User: I want to make and save changes to the trip.
+* User: I want to choose what information is displayed in the itinerary and map.
+* User: I want to plan trips worldwide.
+* User: I want to view my trip in other tools.
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
-
-* *something*
-*
+* Planning stage
+* Burndown chart
+* Overall teamwork and communication
+* Incremental development and pulls.
+* Test coverage.
+* Fixing CodeClimate issues
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
-
-* *something*
-*
+* Issues with nearest neighbor and 2-opt. This took many hours and lots of help from Andy and Dave Matthews to fix. Minor changes to indicies fixed the main issue in the end.
+* Issues with getting accurate latitude and longitude on the world map. Required us to all help out to quickly solve the issue, which ended up being a problem with the formula that converted latitude and longitude to pixels.
 
 ## Retrospective
 
@@ -126,7 +131,7 @@ Our team had a bit of a struggle in the start of this sprint, but through commun
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+We did a much better job of managing our time this sprint. This was a goal from the previous sprint after struggling the last day of that sprint. Coming together as a team and getting a better understanding of how long each task would take really improved our burndown chart. We managed to not add any major code sections the last day of this sprint and instead focused on our CodeClimate smells and duplication, as well as our test coverage.
 
 #### What we did well
 
