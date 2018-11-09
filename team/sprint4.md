@@ -124,6 +124,7 @@ Unfortunately, we weren't able to implement the filters for searching, the kml m
 
 * Issues with nearest neighbor and 2-opt. This took many hours and lots of help from Andy and Dave Matthews to fix. Minor changes to indicies fixed the main issue in the end.
 * Issues with getting accurate latitude and longitude on the world map. Required us to all help out to quickly solve the issue, which ended up being a problem with the formula that converted latitude and longitude to pixels.
+* Our search function had a lot of bugs on the client-side. It took a lot of time to fix those issues, and so instead of attempting to finish it completely, we decided to polish and test what we had.
 
 ## Retrospective
 
@@ -132,6 +133,7 @@ Our team had a bit of a struggle in the start of this sprint, but through commun
 #### What we changed this sprint
 
 We did a much better job of managing our time this sprint. This was a goal from the previous sprint after struggling the last day of that sprint. Coming together as a team and getting a better understanding of how long each task would take really improved our burndown chart. We managed to not add any major code sections the last day of this sprint and instead focused on our CodeClimate smells and duplication, as well as our test coverage.
+We also improved on working as a team on tasks as opposed to taking a "Divide and Conquer" approach, especially when we worked on large and complicated parts of the code.
 
 #### What we did well
 
@@ -143,4 +145,4 @@ There is still a need for more incremental development throughout the team. Our 
 
 #### What we will change next sprint 
 
-With what we learned with our interpersonal conflicts and communication improvements, our next sprint is bound to be our best. We will communicate our own actions better and work towards better team collaberation. We will srtive to upload more incrementally and improve our burndown chart. We will work more on the user expereience as we have started to do this sprint. 
+With what we learned with our interpersonal conflicts and communication improvements, our next sprint is bound to be our best. We will communicate our own actions better and work towards better team collaboration. We will strive to upload more incrementally and improve our burndown chart. We will also make sure to produce polished features on the site as opposed to pushing incomplete features. We will work more on the user expereience as we have started to do this sprint.
