@@ -57,7 +57,6 @@ Epics planned for this sprint.
 * User: I want to view my trip in other tools.
 * User: I want to plan trips worldwide.
 * User: I want trip planning to be fast.
-* User: I want trip planning to be fast.
 * User: I want to design a trip from scratch so I can stop using the other tool.
 * User: I want to make and save changes to the trip.
 * User: I'd like even shorter trips Epic
@@ -91,7 +90,7 @@ Our team plans to add more tasks as the sprint goes along. Previously we had abo
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+This sprint went relatively well on our tasks completed and burndown chart. We have shown progress over the past sprints and our percentage of tasks completed as well as our incremental deveopment skills have all improved. We still were not on the line with our burndown nor one hundred percent in our completetion; but with the plans made for improvemnt, our team is bound for an even better sprint next time around. 
 
 #### Completed Epics in Sprint Backlog 
 
@@ -123,7 +122,7 @@ Our team plans to add more tasks as the sprint goes along. Previously we had abo
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+Our team had a bit of a struggle in the start of this sprint, but through communication and changes within our team, we came out looking better. Lack of communication was an issue in the beginning, but after meeting and expressing our own ideas, we came to a resolution which bettered the team overall. 
 
 #### What we changed this sprint
 
@@ -131,12 +130,12 @@ Our team plans to add more tasks as the sprint goes along. Previously we had abo
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+Although our had a rough patch, we came out the conflict better as a team. We each worked and did our part. Our team properly assigned each task and each member was sufficiently challenged and work kept equal throughout. We helped eachother a lot the last week to wrap up any issues we were having. Everything just seemed to come together towards the end, even though not everything was finished there was many improvements- not only to the site and backend, but also to the team's morale. 
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+There is still a need for more incremental development throughout the team. Our burndown chart was possibly the best its ever been but it was still lacking in areas. Putting more consistent work into this class instead of cram sessions sould be benefiical not just for our grade but for our teamwork and communication as well. Working more on code climate and styling before uploading would also greatly increase our code climate score and improve our code base. 
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+With what we learned with our interpersonal conflicts and communication improvements, our next sprint is bound to be our best. We will communicate our own actions better and work towards better team collaberation. We will srtive to upload more incrementally and improve our burndown chart. We will work more on the user expereience as we have started to do this sprint. 
