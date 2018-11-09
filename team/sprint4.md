@@ -67,9 +67,9 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | 7 | *total* |
-| Tasks |  31   | *total* | 
-| Story Points |  42  | *total* | 
+| Epics | 7 | 2 |
+| Tasks |  31   | 31 | 
+| Story Points |  42  | 37 | 
 
 Our team plans to add more tasks as the sprint goes along. Previously we had about 10-20 extra story points added after the plan and we ended up completing more story points then planned as well. 
 
