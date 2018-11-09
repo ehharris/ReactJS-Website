@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Container, Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabPane, TabContent} from 'reactstrap';
-import Info from './Info'
 import Options from './Options';
 import Map from './Map.jsx';
 import Port from './Port';
@@ -95,13 +94,11 @@ class Application extends Component {
             this.setState({config: newConfig})
         ));
 
-        //console.log(this.state.config);
     }
 
     renderTabs(){
         if(this.state.trip.places.length >= 2){
             return(
-
               <div>
                 <Nav tabs className="cooltabs">
                   <NavItem>
@@ -151,7 +148,6 @@ class Application extends Component {
         if(!this.state.config) { return <div/> }
         return(
             <Container id="Application">
-                <Info/>
                 {this.renderTabs()}
                 <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
                 <Row noGutters={true}>

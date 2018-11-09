@@ -24,54 +24,50 @@ class Options extends Component{
 
     }
 
+    renderUnits(){
+      return(
+        this.props.config.units.map((unit) =>
+          <Button
+            key={'distance_button_' + unit}
+            className='btn-outline-dark unit-button'
+            active={this.props.options.units === unit}
+            value={unit}
+            onClick={(event) => {this.props.updateOptions('units', event.target.value); this.toggle(event.target.value)}}
+          >
+            {unit.charAt(0).toUpperCase() + unit.slice(1)}
+          </Button>
+        )
+    );
+    }
+
+    renderDefined(){
+      let arr = ['unitName','unitRadius'];
+      return(
+        <Form inline>
+          {arr.map((value) =>
+            <FormGroup key={value+1}>
+              <Input key={value+2} name={value} placeholder={value.substr(4,value.length)}
+                     onChange={(event) => this.props.updateOptions(value, event.target.value)}
+              />
+            </FormGroup>
+          )}
+        </Form>
+      )
+    }
+
     render() {
-        const units = this.props.config.units.map((unit) =>
-            <Button
-                key={'distance_button_' + unit}
-                className='btn-outline-dark unit-button'
-                active={this.props.options.units === unit}
-                value={unit}
-                onClick={(event) => {this.props.updateOptions('units', event.target.value); this.toggle(event.target.value)}}
-            >
-                {unit.charAt(0).toUpperCase() + unit.slice(1)}
-            </Button>
-        );
-
-        const userDefinedOptions =
-            <Form inline>
-              <FormGroup>
-                <Input
-                  type="unitName"
-                  name="unitName"
-                  id="unitName"
-                  placeholder="Unit Name"
-                  onChange={(event) => this.props.updateOptions('unitName', event.target.value)}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Input
-                  type="unitRadius"
-                  name="unitRadius"
-                  id="exampleEmail"
-                  placeholder="Radius of Earth"
-                  onChange={(event) => this.props.updateOptions('unitRadius', event.target.value)}
-                />
-              </FormGroup>
-            </Form>
-
-
         return(
-                <div>
-                    <p>Select the options you wish to use.</p>
-                    <p>Units</p>
-                      <ButtonGroup>
-                        {units}
-                      </ButtonGroup>
-                    <p>{"\n"}</p>
-                      <Collapse isOpen={this.state.collapse}>
-                        {userDefinedOptions}
-                      </Collapse>
-                </div>
+            <div>
+                <p>Select the options you wish to use.</p>
+                <p>Units</p>
+                  <ButtonGroup>
+                    {this.renderUnits()}
+                  </ButtonGroup>
+                <p>{"\n"}</p>
+                  <Collapse isOpen={this.state.collapse}>
+                    {this.renderDefined()}
+                  </Collapse>
+            </div>
         )
     }
 }
