@@ -37,3 +37,33 @@ function testFade() {
 }
 
 test('Check to see if table gets made correctly (Function)', testFade);
+
+function testChange() {
+
+  const wrapper = mount(<Add />);
+  wrapper.find('Input').first().simulate('change', {target: {value: 10}});
+
+  expect(wrapper.state('place')).toEqual({id: 10,
+    name: '',
+    latitude: '',
+    longitude: '',});
+
+}
+
+test('Check to see if table gets made correctly (Function)', testChange);
+
+function testClick() {
+
+  const wrapper = mount(<Add />);
+  wrapper.find('Button').first().simulate('click', {target: {value: 10}});
+
+  expect(wrapper.state('place')).toEqual({id: '',
+    name: '',
+    latitude: '',
+    longitude: '',});
+
+  expect(wrapper.state('message')).toEqual(false);
+
+}
+
+test('Check to see if table gets made correctly (Function)', testClick);

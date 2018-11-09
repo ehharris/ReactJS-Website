@@ -83,7 +83,6 @@ class Add extends Component{
     </Card>
   )
   }
-
 }
 
 export default Add;
