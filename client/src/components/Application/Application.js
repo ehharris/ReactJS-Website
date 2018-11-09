@@ -21,7 +21,7 @@ class Application extends Component {
         super(props);
         this.state = {
             config: null,
-            activeTab: '1',
+            activeTab: 'Map',
             server: location.hostname,
             port: '31410',
             trip: {
@@ -99,24 +99,20 @@ class Application extends Component {
     //Render
     renderNav(){
         if(this.state.trip.places.length >= 2){
+          let arr0 = ['Map','Itinerary']
             return(
               <div>
                 <Nav tabs className="cooltabs">
-                  <NavItem>
-                    <NavLink active={this.state.activeTab === '1'}
-                      className="tabs"
-                      onClick={() => { this.toggle('1'); }}>
-                      Map
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      active={this.state.activeTab === '2'}
-                      className="tabs"
-                      onClick={() => { this.toggle('2'); }}>
-                      Itinerary
-                    </NavLink>
-                  </NavItem>
+                  {arr0.map((value) =>
+                      <NavItem key={value+1}>
+                        <NavLink key={value+2} active={this.state.activeTab === value}
+                          className="tabs"
+                          onClick={() => { this.toggle(value); }}>
+                          {value}
+                        </NavLink>
+                      </NavItem>
+                    )
+                  }
                 </Nav>
               </div>
             );
@@ -128,14 +124,14 @@ class Application extends Component {
         return (
           <div>
             <TabContent activeTab={this.state.activeTab}>
-              <TabPane tabId="1">
+              <TabPane tabId="Map">
                 <Card>
                   <CardBody>
                     <Map trip={this.state.trip}/>
                   </CardBody>
                 </Card>
               </TabPane>
-              <TabPane tabId="2">
+              <TabPane tabId="Itinerary">
                 <Card>
                   <CardBody>
                     <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
