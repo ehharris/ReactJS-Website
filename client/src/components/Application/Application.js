@@ -166,7 +166,7 @@ class Application extends Component {
                     <Col>
                         <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
                         <Port updateServer={this.updateServer}/>
-                        <Search server={this.state.server} port={this.state.port} trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
+                        <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
                     </Col>
                     <Col>
                         <Card>
