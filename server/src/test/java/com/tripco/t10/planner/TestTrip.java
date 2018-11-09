@@ -67,7 +67,7 @@ public class TestTrip {
 
     boolean[] visited = new boolean[this.trip.places.size()];
     int[] tripIndices = new int[this.trip.places.size() + 1];
-    trip.nearestNeighbor(tripIndices,visited, trip.createAllDistancesArray());
+    trip.optimization(tripIndices,visited, trip.createAllDistancesArray());
 
     if(trip.places.size() == testShort.size() && trip.places != null){
       for(Place place: trip.places){
@@ -87,8 +87,8 @@ public class TestTrip {
     testShorter.add(testBoulder);
     testShorter.add(testDenver);
 
-    boolean[] visited = new boolean[this.trip.places.size()];
-    trip.shorterOptimization(trip.createVisited(visited),trip.createAllDistancesArray());
+    int[] tripIndices = new int[this.trip.places.size() + 1];
+    trip.twoOpt(tripIndices,trip.createAllDistancesArray());
 
     if(trip.places.size() == testShorter.size() && trip.places != null){
       for(Place place: trip.places){

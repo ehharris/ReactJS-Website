@@ -44,13 +44,9 @@ public class Trip extends Vincenty {
             int[] route = new int[places.size()+1];
             int[][] allDistances = createAllDistancesArray();
 
-            if(this.options.optimization.equals("short")){
-                nearestNeighbor(route,visited,allDistances);
-            } 
-            if(this.options.optimization.equals("shorter")){
-                shorterOptimization(visited, allDistances);
+            if(!this.options.optimization.equals("none")){
+                optimization(route, visited, allDistances);
             }
-
         } else {
             this.options.optimization = "none";
         }
@@ -59,9 +55,9 @@ public class Trip extends Vincenty {
     }
 
     /**
-     * Algorithm for nearest neighbor.
+     * Method for all optimizations.
      */
-    void nearestNeighbor(int[] route, boolean[] visited, int[][] allDistances){
+    void optimization(int[] route, boolean[] visited, int[][] allDistances){
         int currentTotalDistance[] = new int[places.size()];
         int currentBestRoute[] = new int[places.size() + 1];
         int overallBestRouteDistance = 2000000000;
@@ -95,6 +91,10 @@ public class Trip extends Vincenty {
 
             }
 
+            if(this.options.optimization.equals("shorter")){
+                twoOpt(route,allDistances);
+            }
+
             currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
 
             if(currentTotalDistance[startCity] < overallBestRouteDistance){
@@ -108,7 +108,6 @@ public class Trip extends Vincenty {
         for(int i = 0; i < places.size(); i++){
             optimalNearestNeighbor.add(places.get(currentBestRoute[i]));
         }
-        System.out.println(calcTripDistance(currentBestRoute,allDistances));
         Collections.copy(this.places, optimalNearestNeighbor);
     }
 
@@ -121,88 +120,32 @@ public class Trip extends Vincenty {
             route[i1] = route[k];
             route[k] = temp;
             i1++; k--;
-
         }
-
     }
 
     /**
      * Algorithm for 2opt.
      */
-    void shorterOptimization(boolean[] visited, int[][] allDistances){
-        int currentTotalDistance[] = new int[places.size()];
-        int currentBestRoute[] = new int[places.size()];
-        int overallBestRouteDistance = 2000000000;
+    void twoOpt(int[] route, int[][] allDistances) {
+        boolean improvement = true;
+        while (improvement) {
+            improvement = false;
+            for (int i = 0; i <= route.length - 3; i++) {
+                for (int k = i + 2; k < route.length - 1; k++) {
 
-        int[] route = new int[places.size()+1];
+                    int x1 = allDistances[route[i]][route[i + 1]];
+                    int x2 = allDistances[route[k]][route[k + 1]];
+                    int x3 = allDistances[route[i]][route[k]];
+                    int x4 = allDistances[route[i + 1]][route[k + 1]];
 
-
-        for(int startCity = 0; startCity < places.size(); startCity++) {
-            createVisited(visited);
-
-            route[0] = startCity;
-            route[places.size()] = startCity;
-            visited[startCity] = true;
-
-            int routeCounter = 1;
-            int currentCity = startCity;
-            while(routeCounter < places.size()) {
-
-                int min = 2000000000;
-                int tempIndex = 0;
-                for(int i = 0; i < allDistances[currentCity].length;i++){
-                    if(allDistances[currentCity][i] <= min && !visited[i]){
-                        min = allDistances[currentCity][i];
-                        tempIndex = i;
-
+                    int conditional = -x1 - x2 + x3 + x4;
+                    if (conditional < 0) {
+                        twoOptReverse(route, i + 1, k);
+                        improvement = true;
                     }
                 }
-                currentCity = tempIndex;
-                visited[currentCity] = true;
-
-                route[routeCounter] = currentCity;
-
-                routeCounter++;
-
             }
-
-            boolean improvement = true;
-            while(improvement){
-                improvement = false;
-                for(int i = 0; i <= route.length - 3; i++){
-                    for(int k = i+2; k < route.length -1; k++){
-
-                        int x1 = allDistances[route[i]][route[i+1]];
-                        int x2 = allDistances[route[k]][route[k+1]];
-                        int x3 = allDistances[route[i]][route[k]];
-                        int x4 = allDistances[route[i+1]][route[k+1]];
-
-                        int conditional = - x1 - x2 + x3 + x4;
-                        if(conditional < 0){
-                            twoOptReverse(route,i+1,k);
-                            improvement = true;
-                        }
-                    }
-                }
-
-            }
-
-            currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
-
-            if(currentTotalDistance[startCity] < overallBestRouteDistance){
-                currentBestRoute = route.clone();
-                overallBestRouteDistance = currentTotalDistance[startCity];
-            }
-
         }
-
-        ArrayList<Place> optimalNearestNeighbor = new ArrayList<>();
-        for(int i = 0; i < places.size(); i++){
-            optimalNearestNeighbor.add(places.get(currentBestRoute[i]));
-        }
-        System.out.println(calcTripDistance(currentBestRoute,allDistances));
-        Collections.copy(this.places, optimalNearestNeighbor);
-
     }
 
     /**
