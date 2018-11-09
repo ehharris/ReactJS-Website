@@ -5,7 +5,7 @@ th {
 
 tbody {
     display:block;
-    height: 602px;
+    height: 350px;
     table-layout:fixed;
     overflow: -moz-scrollbars-vertical;
     overflow-y: scroll;
