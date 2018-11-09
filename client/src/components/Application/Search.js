@@ -36,18 +36,6 @@ class Search extends Component{
         request({ "version": 4, "type": "search", "match": this.state.search  }, "search", this.props.port, this.props.server).then((resData) => this.setState({results: resData}));
     }
 
-    // buildIdResults() {
-    //     let idData = [];
-    //     if(this.state.results.places) {
-    //         this.state.results.places.map((key, index, array) => {
-    //             if(index > 0) {
-    //                 idData[index] = this.state.results.places[index].id;
-    //             }
-    //         });
-    //     }
-    //     return idData;
-    // }
-
     buildNameResults() {
         let nameData = [];
         if(this.state.results.places) {
@@ -84,31 +72,16 @@ class Search extends Component{
     //     return longitudeData;
     // }
 
-    //add method that sends to props
-
+    //add method that sends to parent
     updatePlace(event) {
         let index = event.target.value;
         let place = this.state.results.places[index];
-        let trip = this.props.trip;
+        console.log(place);
 
-        if(trip.places){
-            trip.places = [place];
-            console.log("If");
-            console.log(trip.places);
-        }
-        else {
-            trip.places.push(place);
-            console.log("else");
-            console.log(trip.places);
-        }
+        let places = this.props.places;
+        places.push(place);
+        this.props.updatePlaces(places);
 
-        this.props.updateBasedOnResponse(trip);
-
-        // this.setState({place: {id: this.state.results.places[index].id,
-        //                         name: this.state.results.places[index].name,
-        //                         latitude: this.state.results.places[index].latitude,
-        //                         longitude: this.state.results.places[index].longitude}});
-        // this.sendToParent();
     }
 
     render() {
