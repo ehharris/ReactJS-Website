@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody, Button, Dropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap';
+import { Card, CardHeader, CardBody, Button, Dropdown, DropdownMenu, DropdownToggle, DropdownItem, Form, Input, Table } from 'reactstrap';
 import { request } from '../../api/api';
 import { get_config } from '../../api/api';
 
@@ -16,7 +16,6 @@ class Search extends Component{
         // this.sendToParent = this.sendToParent.bind(this);
         this.state = {
             search: '',
-            limit: '',
             results: [],
             place: {
                 id: '',
@@ -28,48 +27,26 @@ class Search extends Component{
         };
     }
 
-    // componentDidMount() {
-    //     get_config(this.props.port).then((resData) => this.setState({filters: resData}));
-    //     console.log(this.state.filters);
-    // }
-
     updateSearch(event) {
         this.setState({search: event.target.value});
     }
 
     handleSubmit(event) {
         event.preventDefault();
-
-        request({ "version": 4, "type": "search", "match": this.state.search, "limit": this.state.limit }, "search", this.props.port, this.props.server).then((resData) => this.setState({results: resData}));
-
-        // fetch('http://' + this.props.server + ":" + this.props.port + "/search", {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         "version": 3,
-        //         "type": "search",
-        //         "match": this.state.search,
-        //         "limit": this.state.limit
-        //     }),
-        //     headers : {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     }
-        // })
-        //     .then(response => response.json())
-        //     .then(resData => this.setState({results: JSON.stringify(resData)}));
+        request({ "version": 4, "type": "search", "match": this.state.search  }, "search", this.props.port, this.props.server).then((resData) => this.setState({results: resData}));
     }
 
-    buildIdResults() {
-        let idData = [];
-        if(this.state.results.places) {
-            this.state.results.places.map((key, index, array) => {
-                if(index > 0) {
-                    idData[index] = this.state.results.places[index].id;
-                }
-            });
-        }
-        return idData;
-    }
+    // buildIdResults() {
+    //     let idData = [];
+    //     if(this.state.results.places) {
+    //         this.state.results.places.map((key, index, array) => {
+    //             if(index > 0) {
+    //                 idData[index] = this.state.results.places[index].id;
+    //             }
+    //         });
+    //     }
+    //     return idData;
+    // }
 
     buildNameResults() {
         let nameData = [];
@@ -82,30 +59,30 @@ class Search extends Component{
         }
         return nameData;
     }
-
-    buildLatitudeResults() {
-        let latitudeData = [];
-        if(this.state.results.places) {
-            this.state.results.places.map((key, index, array) => {
-                if(index > 0) {
-                    latitudeData[index] = this.state.results.places[index].latitude;
-                }
-            });
-        }
-        return latitudeData;
-    }
-
-    buildLongitudeResults() {
-        let longitudeData = [];
-        if(this.state.results.places) {
-            this.state.results.places.map((key, index, array) => {
-                if(index > 0) {
-                    longitudeData[index] = this.state.results.places[index].longitude;
-                }
-            });
-        }
-        return longitudeData;
-    }
+    //
+    // buildLatitudeResults() {
+    //     let latitudeData = [];
+    //     if(this.state.results.places) {
+    //         this.state.results.places.map((key, index, array) => {
+    //             if(index > 0) {
+    //                 latitudeData[index] = this.state.results.places[index].latitude;
+    //             }
+    //         });
+    //     }
+    //     return latitudeData;
+    // }
+    //
+    // buildLongitudeResults() {
+    //     let longitudeData = [];
+    //     if(this.state.results.places) {
+    //         this.state.results.places.map((key, index, array) => {
+    //             if(index > 0) {
+    //                 longitudeData[index] = this.state.results.places[index].longitude;
+    //             }
+    //         });
+    //     }
+    //     return longitudeData;
+    // }
 
     //add method that sends to props
 
@@ -135,12 +112,13 @@ class Search extends Component{
     }
 
     render() {
-        let idData = this.buildIdResults();
+        //let idData = this.buildIdResults();
         let nameData = this.buildNameResults();
-        let latitudeData = this.buildLatitudeResults();
-        let longitudeData = this.buildLongitudeResults();
+        //let latitudeData = this.buildLatitudeResults();
+        //let longitudeData = this.buildLongitudeResults();
         //this.buildFilters();
-        console.log(this.state.filters);
+        //console.log(this.state.filters);
+
         let resultsNotEmpty = false;
         if(this.state.results.places) {
             resultsNotEmpty = true;
@@ -149,11 +127,11 @@ class Search extends Component{
         return(
             <Card>
                 <CardBody>
-                    <form onSubmit={this.handleSubmit}>
+                    <Form onSubmit={this.handleSubmit}>
                         <div> Search trip destinations: </div>
-                        <input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
+                        <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
 
-                        <div>Choose filters: </div>
+                        {/*<div>Choose filters: </div>*/}
                         {/*<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>*/}
                             {/*<DropdownToggle caret>*/}
                                 {/*Continents*/}
@@ -164,44 +142,43 @@ class Search extends Component{
                         {/*</Dropdown>*/}
 
 
-                        <button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</button>
-                    </form>
+                        <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
+                    </Form>
 
-                    <div>Data Received: </div><br />
                     <div>
                         {resultsNotEmpty ? (
-                            <table>
+                            <Table>
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    {/*<th>Id</th>*/}
                                     <th>Name</th>
-                                    <th>Latitude</th>
-                                    <th>Longitude</th>
+                                    {/*<th>Latitude</th>*/}
+                                    {/*<th>Longitude</th>*/}
                                     <th>Add</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {this.state.results.places.map((key,index,array)=> (
                                     <tr>
-                                        <td key={idData[index]}>
-                                            {idData[index]}
-                                        </td>
+                                        {/*<td key={idData[index]}>*/}
+                                            {/*{idData[index]}*/}
+                                        {/*</td>*/}
                                         <td key={nameData[index]}>
                                             {nameData[index]}
                                         </td>
-                                        <td key={latitudeData[index]}>
-                                            {latitudeData[index]}
-                                        </td>
-                                        <td key={longitudeData[index]}>
-                                            {longitudeData[index]}
-                                        </td>
+                                        {/*<td key={latitudeData[index]}>*/}
+                                            {/*{latitudeData[index]}*/}
+                                        {/*</td>*/}
+                                        {/*<td key={longitudeData[index]}>*/}
+                                            {/*{longitudeData[index]}*/}
+                                        {/*</td>*/}
                                         <td>
                                             <Button value={index} type="button" className="btn-outline-dark unit-button" onClick={this.updatePlace}>+</Button>
                                         </td>
                                     </tr>
                                 ))}
                                 </tbody>
-                            </table>
+                            </Table>
                         ) : (
                             <div></div>
                         )}
