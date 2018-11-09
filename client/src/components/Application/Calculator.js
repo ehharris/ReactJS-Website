@@ -49,7 +49,8 @@ class Calculator extends Component{
         <InputGroup key={type+3}>
           {this.state.gen2.map((type2) =>
             <Input key={type+type2} className="inputborder"
-              placeholder="Latitude" onChange={(event) => this.updateLatLong(type, type2, event.target.value)}/>)}
+              placeholder="Latitude" name={type}
+              onChange={(event) => this.updateLatLong(type, type2, event.target.value)}/>)}
         </InputGroup>
       </Form>);
     return(
