@@ -4,8 +4,7 @@ import {Form, FormGroup, Button, Input, Label, Table} from "reactstrap";
 class ItineraryTable extends Component {
     constructor(props) {
         super(props);
-        this.setOptionLatitude = this.setOptionLatitude.bind(this);
-        this.setOptionLongitude = this.setOptionLongitude.bind(this);
+        this.setOptionLatLong = this.setOptionLatLong.bind(this);
         this.reverseTrip = this.reverseTrip.bind(this);
         this.changeStart = this.changeStart.bind(this);
         this.removePlace = this.removePlace.bind(this);
@@ -44,12 +43,9 @@ class ItineraryTable extends Component {
         return total;
     }
 
-    setOptionLatitude() {
-        this.setState({optionLatitude: !this.state.optionLatitude});
-    }
 
-    setOptionLongitude() {
-        this.setState({optionLongitude: !this.state.optionLongitude});
+    setOptionLatLong(event) {
+        this.setState({[event]: !this.state[event]});
     }
 
     reverseTrip(event) {
@@ -83,7 +79,7 @@ class ItineraryTable extends Component {
         let data = this.buildDistance();
         let data2 = this.buildLegDistance();
         let total = this.calcTotal();
-
+        let testArr = ['optionLatitude','optionLongitude'];
         const latitudeStyle = this.state.optionLatitude ? {} : {display: 'none'};
         const longitudeStyle = this.state.optionLongitude ? {} : {display: 'none'};
 
@@ -134,16 +130,15 @@ class ItineraryTable extends Component {
                     </Table>
                     <div>Select additional options for itinerary: </div>
                     <Form>
-                        <FormGroup check inline>
-                            <Label check>
-                                <Input type="checkbox" onClick={this.setOptionLatitude}/> Latitude
-                            </Label>
+                      {testArr.map((value) =>
+                        <FormGroup check inline key={value+1}>
+                          <Label check key={value+2}>
+                            <Input type="checkbox" value={value} key={value+3}
+                                   onClick={(event) => this.setOptionLatLong(event.target.value)}/> {value.substr(6, value.length)}
+                          </Label>
                         </FormGroup>
-                        <FormGroup check inline>
-                            <Label check>
-                                <Input type="checkbox" onClick={this.setOptionLongitude}/> Longitude
-                            </Label>
-                        </FormGroup>
+                        )
+                      }
                     </Form>
                     <Button value="reverse" className="btn-outline-dark unit-button" onClick={this.reverseTrip}>Reverse Trip</Button>
                     <Label sm={{ size: 'auto', offset: 6 }} className="labelpop">

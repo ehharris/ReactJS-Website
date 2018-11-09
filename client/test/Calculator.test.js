@@ -16,7 +16,7 @@ function testInput() {
   ));
 
   let actual = [];
-  calculator.find('Input').map((element) => actual.push(element.prop('value')));
+  calculator.find('Input').map((element) => actual.push(element.prop('name')));
   expect(actual).toEqual(startProps.type);
 }
 
