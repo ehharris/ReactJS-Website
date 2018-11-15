@@ -1,9 +1,9 @@
-# Sprint 5 - *your team number* - *your team name*
+# Sprint 5 - t10 - Error 404: Team Name Not Found
 
 ## Goal
 
 ### Wrap It Up!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: Nick Kaliher
 
 ## Definition of Done
 
@@ -39,25 +39,43 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
+With this final sprint, we first hope to quickly finish the few epics that were leftover from sprint 4. We nearly completed sprint 4, so we should be left with a lot of time afterwards to focus our attention on delivering a complete and well-presented product by the end of this sprint. To accomplish this, we will collablorate with each other to finish epics in a timely manner, just as we did with the world map in sprint 4. Our main focuses will be the user interface, searching and adding places worldwide, the interactive map, and even shorter trips and trip planning times.
 
-*Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
+#### Diagrams
 
-Epics planned for this sprint.
+![Component Hierarchy](/team/Sprint4_Component_Hierarchy.png "Sprint 4 Component Hierarchy Sketch")
 
-* *## epic title: description*
-*
+##### -Component Hierarchy
+
+![Server Hierarchy](/team/Sprint4_Server_Hierarchy.png "Sprint 4 Server Hierarchy Sketch")
+
+##### -Server Hierarchy
+
+Our diagrams haven't changed since Sprint 4 because we expect the overall structure of the frontend and backend to remain relatively unchanged. As for the user interface, we are going to continue the same general structure for that as well, continuing where we left of with it in Sprint 4.
+
+##### Epics planned for this sprint:
+
+* User: I want to choose what information is displayed in the itinerary and map.
+* User: I want to view my trip in other tools.
+* User: I want to plan trips worldwide.
+* User: Make the system easier to use.
+* User: I want my options remembered so I don't have to fix them all the time.
+* User: I want to know who to thank for this application.
+* User: I want an interactive map.
+* User: I want trip planning to be fast.
+* User: I want the shortest trips possible.
 
 
 ## Metrics
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *total* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Epics | 9 | *total* |
+| Tasks | 15 | *total* | 
+| Story Points | 33 | *total* |
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+We are at a solid number of epics, tasks, and story points here for a start. We could definitely spread the work out more, but we won't really know until we start getting into these epics and tasks that we currently have to see what they really entail. This is how it usually goes for us, and it works out nicely in the end.
+
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
