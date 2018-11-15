@@ -39,7 +39,7 @@
 
 ## Plan
 
-With this final sprint, we first hope to quickly finish the few epics that were leftover from sprint 4. We nearly completed sprint 4, so we should be left with a lot of time afterwards to focus our attention on delivering a complete and well-presented product by the end of this sprint. To accomplish this, we will collablorate with each other to finish epics in a timely manner, just as we did with the world map in sprint 4. Our main focuses will be the user interface, seraching places worldwide, the interactive map, and even shorter trips and trip planning times.
+With this final sprint, we first hope to quickly finish the few epics that were leftover from sprint 4. We nearly completed sprint 4, so we should be left with a lot of time afterwards to focus our attention on delivering a complete and well-presented product by the end of this sprint. To accomplish this, we will collablorate with each other to finish epics in a timely manner, just as we did with the world map in sprint 4. Our main focuses will be the user interface, searching and adding places worldwide, the interactive map, and even shorter trips and trip planning times.
 
 #### Diagrams
 
