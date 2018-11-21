@@ -155,7 +155,7 @@ public class MapBuilder {
             this.map = line.toString();
 
         } catch (IOException e) {
-            //System.out.println("Error in MapBuilder : " + e);
+            System.out.println("Error in MapBuilder : " + e);
         }
     }
 }
