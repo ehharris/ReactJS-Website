@@ -32,7 +32,7 @@ class Options extends Component{
             className='btn-outline-dark unit-button'
             active={this.props.options.units === unit}
             value={unit}
-            onClick={(event) => {this.props.updateOptions('units', event.target.value); this.toggle(event.target.value)}}
+            onClick={(event) => {this.props.updateOptions('units', event.target.value); this.toggle(event.target.value); this.props.setCookie("units", event.target.value, 365)}}
           >
             {unit.charAt(0).toUpperCase() + unit.slice(1)}
           </Button>
@@ -47,7 +47,7 @@ class Options extends Component{
           {arr.map((value) =>
             <FormGroup key={value+1}>
               <Input key={value+2} name={value} placeholder={value.substr(4,value.length)}
-                     onChange={(event) => this.props.updateOptions(value, event.target.value)}
+                     onChange={(event) => {this.props.updateOptions(value, event.target.value); this.props.setCookie(value, event.target.value, 365)}}
               />
             </FormGroup>
           )}

@@ -24,7 +24,7 @@ class Optimization extends Component{
         className='btn-outline-dark unit-button'
         active={this.props.options.optimization === label}
         value={label}
-        onClick={(event) => {this.props.updateOptions('optimization', event.target.value)}}
+        onClick={(event) => {this.props.updateOptions('optimization', event.target.value); this.props.setCookie('optimization', event.target.value, 365)}}
       >
           {label.charAt(0).toUpperCase() + label.slice(1)}
       </Button>
