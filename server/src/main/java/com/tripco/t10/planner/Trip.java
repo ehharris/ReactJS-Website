@@ -50,7 +50,10 @@ public class Trip extends Vincenty {
         } else {
             this.options.optimization = "none";
         }
-        this.map = svg();
+        //if(!this.options.map.equals("kml")){
+            this.map = svg();
+            this.options.map = "svg";
+        //}
         this.distances = legDistances();
     }
 
@@ -150,7 +153,7 @@ public class Trip extends Vincenty {
 
     /**
      * Returns an SVG containing the background and the legs of the trip.
-     * @return
+     *
      */
     String svg() {
         MapBuilder map = new MapBuilder(this);
@@ -189,7 +192,6 @@ public class Trip extends Vincenty {
     }
 
     /**
-     *
      * HELPER METHODS FOR NEAREST NEIGHBOR AND 2-OPT
      *
      */
