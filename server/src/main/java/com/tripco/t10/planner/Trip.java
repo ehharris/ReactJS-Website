@@ -13,8 +13,8 @@ public class Trip extends Vincenty {
     public int version;
     public String type;
     public String title;
-    public ArrayList<Place> places;
     public Option options;
+    public ArrayList<Place> places;
     public ArrayList<Integer> distances;
     public String map;
 
