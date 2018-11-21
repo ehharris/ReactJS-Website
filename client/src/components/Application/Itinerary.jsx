@@ -48,7 +48,7 @@ class ItineraryTable extends Component {
         this.setState({[event]: !this.state[event]});
     }
 
-    reverseTrip(event) {
+    reverseTrip() {
         let data = this.props.trip;
         data.places = data.places.reverse();
         this.props.updateBasedOnResponse(data);
@@ -100,28 +100,28 @@ class ItineraryTable extends Component {
                         </thead>
                         <tbody>
                         {this.props.trip.places.map((key,index)=> (
-                            <tr key={key+data[index]+index+key.latitude}>
-                                <td key={'#' + index} width="60">
+                            <tr key={key+index+data[index]+key.latitude+key.longitude+1}>
+                                <td key={key+index+data[index]+key.latitude+key.longitude+2} width="60">
                                     {index + 1} </td>
-                                <td key={key.name}>
+                                <td key={key+index+data[index]+key.latitude+key.longitude+3}>
                                     {key.name}
                                 </td>
-                                <td key={data2[index]+index}>
+                                <td key={key+index+data[index]+key.latitude+key.longitude+4}>
                                     {data2[index]}
                                 </td>
-                                <td key={data[index]+index+1}>
+                                <td key={key+index+data[index]+key.latitude+key.longitude+5}>
                                     {data[index]}
                                 </td>
-                                <td key={key.latitude+index} style={latitudeStyle}>
+                                <td key={key+index+data[index]+key.latitude+key.longitude+6} style={latitudeStyle}>
                                     {key.latitude}
                                 </td>
-                                <td key={key.longitude+index} style={longitudeStyle}>
+                                <td key={key+index+data[index]+key.latitude+key.longitude+7} style={longitudeStyle}>
                                     {key.longitude}
                                 </td>
-                                <td key={index+1+key.latitude} width="125">
+                                <td key={key+index+data[index]+key.latitude+key.longitude+8} width="125">
                                     <Button className="itinButton" value="start" onClick={() => this.changeStart(index)}>Start Here</Button>
                                 </td>
-                                <td key={"remove"+index+key.latitude} width="60">
+                                <td key={key+index+data[index]+key.latitude+key.longitude+9} width="60">
                                     <Button className="itinButton" value="bye" onClick={() => this.removePlace(index)}>&times;</Button>
                                 </td>
                             </tr>
