@@ -91,8 +91,12 @@ public class Trip extends Vincenty {
 
             }
 
-            if(this.options.optimization.equals("shorter")){
+            if(this.options.optimization.equals("short")){
                 twoOpt(route,allDistances);
+            }
+
+            if(this.options.optimization.equals("shorter")){
+                testThreeOpt(route,allDistances);
             }
 
             currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
@@ -112,10 +116,10 @@ public class Trip extends Vincenty {
     }
 
     /**
-     * Helper method for 2opt.
+     * Helper method for 2opt and 3opt.
      */
     void twoOptReverse(int[] route, int i1, int k){
-        while(i1 < k){
+        while(i1 < k) {
             int temp = route[i1];
             route[i1] = route[k];
             route[k] = temp;
@@ -148,9 +152,63 @@ public class Trip extends Vincenty {
         }
     }
 
+    void testThreeOpt(int[] route, int[][] allDistances){
+        boolean improvement = true;
+
+        int n = places.size();
+        while(improvement){
+            improvement = false;
+            for (int i = 0; i < n - 2; i++) {
+                for (int j = i + 1; j < n - 1; j++) {
+                    for (int k = j + 1; k < n; k++) {
+
+                        //Case 0
+                        int currentDistance = case0(route, i, j, k, allDistances);
+
+                        //Case 1
+                        if (case1(route, i, j, k,allDistances) < currentDistance) {
+                            twoOptReverse(route, i+1, k);
+                            improvement = true;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Base Case for Distance.
+     */
+    int case0(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[j+1]] + allDistances[route[k]][route[k+1]]);
+    }
+
+    /**
+     * 2-opt Cases.
+     */
+
+    int case1(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[j]] + allDistances[route[i+1]][route[k+1]] );
+    }
+
+    int case2(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[j+1]] + allDistances[route[k]][route[k+1]]);
+    }
+
+    int case3(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[k]] + allDistances[route[j+1]][route[k+1]]);
+    }
+
+    /**
+     * 3-opt Cases.
+     */
+    int case4(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[k]] + allDistances[route[j+1]][route[k+1]]);
+    }
+
     /**
      * Returns an SVG containing the background and the legs of the trip.
-     * @return
      */
     String svg() {
         MapBuilder map = new MapBuilder(this);
@@ -255,5 +313,7 @@ public class Trip extends Vincenty {
 
 
 }
+
+
 
 
