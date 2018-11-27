@@ -1,10 +1,9 @@
 package com.tripco.t10.planner;
 
-import java.io.InputStreamReader;
-import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MapBuilder {
 
@@ -51,11 +50,31 @@ public class MapBuilder {
         }
     }
 
-    /** Creates the lines on the map.
+    /** Adds lines to array of lines.
+     *
+     * @param begLat Beginning Latitude
+     * @param begLong Beginning Longitude
+     * @param endLat Ending Latitude
+     * @param endLong Ending Longitude
+     * @param index Index of this.lines
+     */
+    private void makeAline(double begLat, double begLong, double endLat, double endLong, int index){
+        String str = ("<line x1='"
+                + Math.round(begLong)
+                + "' y1='"
+                + Math.round(begLat)
+                + "' x2='"
+                + Math.round(endLong)
+                + "' y2='"
+                + Math.round(endLat)
+                + "' style='stroke:black; stroke-width:1' />\n");
+        this.lines[index] = str;
+    }
+
+    /** Sets up the lines on the map.
      *
      */
     private void addLines() {
-
         //Multiple places
         if (this.size > 1) {
             int first;
@@ -78,16 +97,7 @@ public class MapBuilder {
                 double endLong = conLong(this.trip.places.get(last).getLongitude());
 
                 //Make a line
-                String str = ("<line x1='"
-                        + Math.round(begLong)
-                        + "' y1='"
-                        + Math.round(begLat)
-                        + "' x2='"
-                        + Math.round(endLong)
-                        + "' y2='"
-                        + Math.round(endLat)
-                        + "' style='stroke:black; stroke-width:1' />\n");
-                lines[index] = str;
+                makeAline(begLat,begLong,endLat,endLong,index);
 
                 //Add Circles
                 addCircle(begLat, begLong, index);
@@ -99,7 +109,6 @@ public class MapBuilder {
             double longitude = conLong(this.trip.places.get(0).getLongitude());
             addCircle(latitude, longitude, 0);
         }
-
     }
 
     /** Creates circles on the map.
