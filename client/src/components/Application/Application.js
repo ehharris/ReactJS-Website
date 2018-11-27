@@ -42,7 +42,6 @@ class Application extends Component {
         this.updateServer = this.updateServer.bind(this);
         this.updatePlaces = this.updatePlaces.bind(this);
         this.toggle = this.toggle.bind(this);
-        this.checkCookie()
     }
 
     componentWillMount() {
@@ -53,6 +52,26 @@ class Application extends Component {
                 })
             }
         );
+    }
+
+    componentDidMount(){
+      let units = this.getCookie("units");
+      let optimization = this.getCookie("optimization");
+      let unitName = this.getCookie("unitName");
+      let unitRadius = this.getCookie("unitRadius");
+
+      if (units !== "") {
+        this.updateOptions('units', units);
+      }
+      if (optimization !== "") {
+        this.updateOptions('optimization', optimization);
+      }
+      if (unitName !== "") {
+        this.updateOptions('unitName', unitName);
+      }
+      if (unitRadius !== "") {
+        this.updateOptions('unitRadius', unitRadius);
+      }
     }
   
     toggle(tab) {
@@ -120,18 +139,6 @@ class Application extends Component {
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
-    checkCookie() {
-      let user = this.getCookie("username");
-      if (user !== "") {
-        alert("Welcome again " + user);
-      } else {
-        user = prompt("Please enter your name:", "");
-        if (user !== "" && user != null) {
-          this.setCookie("username", user, 365);
-        }
-      }
-    }
-
     renderNav(){
         if(this.state.trip.places.length >= 2){
           let arr0 = ['Map','Itinerary']
@@ -183,9 +190,9 @@ class Application extends Component {
       return(
         <div>
           <Options options={this.state.trip.options} config={this.state.config}
-                   updateOptions={this.updateOptions}/>
+                   updateOptions={this.updateOptions} setCookie={this.setCookie}/>
           <Optimization updateOptions={this.updateOptions} config={this.state.config}
-                        options={this.state.trip.options}/>
+                        options={this.state.trip.options} setCookie={this.setCookie}/>
         </div>
       )
     }

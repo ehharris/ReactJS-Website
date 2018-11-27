@@ -13,8 +13,8 @@ public class Trip extends Vincenty {
     public int version;
     public String type;
     public String title;
-    public ArrayList<Place> places;
     public Option options;
+    public ArrayList<Place> places;
     public ArrayList<Integer> distances;
     public String map;
 
@@ -50,7 +50,10 @@ public class Trip extends Vincenty {
         } else {
             this.options.optimization = "none";
         }
-        this.map = svg();
+        //if(!this.options.map.equals("kml")){
+            this.map = svg();
+            this.options.map = "svg";
+        //}
         this.distances = legDistances();
     }
 
@@ -235,7 +238,6 @@ public class Trip extends Vincenty {
     }
 
     /**
-     *
      * HELPER METHODS FOR NEAREST NEIGHBOR AND 2-OPT
      *
      */
