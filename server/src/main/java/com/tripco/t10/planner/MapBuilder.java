@@ -1,7 +1,9 @@
 package com.tripco.t10.planner;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.InputStreamReader;
+import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 
 public class MapBuilder {
@@ -132,10 +134,8 @@ public class MapBuilder {
 
         //Write to map
         try {
-            File file = new File("./Resources/World_map_with_nations.svg");
-            FileInputStream in = new FileInputStream(file);
-            //svg = new Scanner(file).useDelimiter("<title>Map Layer</title>").next();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            InputStream svg = MapBuilder.class.getResourceAsStream("/World_map_with_nations.svg");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(svg));
             StringBuilder line = new StringBuilder();
             for (int i = 0; i < 421; i++) {
                 line.append(reader.readLine());
@@ -159,3 +159,5 @@ public class MapBuilder {
         }
     }
 }
+
+
