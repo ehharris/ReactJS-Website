@@ -180,6 +180,19 @@ public class Trip extends Vincenty {
                             improvement = true;
                         }
 
+                        //Case 3
+                        if(case3(route,i,j,k,allDistances)< currentDistance){
+                            twoOptReverse(route, j+1, k);
+                            improvement = true;
+                        }
+
+                        //Case 4
+                        if(case4(route,i,j,k,allDistances) < currentDistance){
+                            twoOptReverse(route, i+1,j);
+                            twoOptReverse(route, j+1, k);
+                            improvement = true;
+                        }
+
                     }
                 }
             }
@@ -203,6 +216,18 @@ public class Trip extends Vincenty {
 
     int case2(int[] route, int i, int j, int k, int[][] allDistances){
         return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[j+1]] + allDistances[route[k]][route[k+1]]);
+    }
+
+    int case3(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[k]] + allDistances[route[j+1]][route[k+1]]);
+    }
+
+    /**
+     * 3-opt Cases.
+     */
+    int case4(int[] route, int i, int j, int k, int[][] allDistances){
+        //System.out.println("In Case2");
+        return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[k]] + allDistances[route[j+1]][route[k+1]]);
     }
 
     /**
@@ -311,6 +336,8 @@ public class Trip extends Vincenty {
 
 
 }
+
+
 
 
 
