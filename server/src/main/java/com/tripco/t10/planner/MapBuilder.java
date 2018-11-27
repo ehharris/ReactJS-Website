@@ -105,7 +105,9 @@ public class MapBuilder {
         }
         //One place
         else if(this.size == 1){
-            addCircle(conLat(this.trip.places.get(0).getLatitude()), conLong(this.trip.places.get(0).getLongitude()), 0);
+            double latitude = conLat(this.trip.places.get(0).getLatitude());
+            double longitude = conLong(this.trip.places.get(0).getLongitude());
+            addCircle(latitude, longitude, 0);
         }
     }
 
