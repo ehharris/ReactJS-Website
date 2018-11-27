@@ -50,7 +50,7 @@ public class MapBuilder {
         }
     }
 
-    /** Adds lines to array of lines
+    /** Adds lines to array of lines.
      *
      * @param begLat Beginning Latitude
      * @param begLong Beginning Longitude
