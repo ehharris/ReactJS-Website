@@ -13,8 +13,8 @@ public class Trip extends Vincenty {
     public int version;
     public String type;
     public String title;
-    public Option options;
     public ArrayList<Place> places;
+    public Option options;
     public ArrayList<Integer> distances;
     public String map;
 
@@ -50,10 +50,7 @@ public class Trip extends Vincenty {
         } else {
             this.options.optimization = "none";
         }
-        //if(!this.options.map.equals("kml")){
-            this.map = svg();
-            this.options.map = "svg";
-        //}
+        this.map = svg();
         this.distances = legDistances();
     }
 
@@ -177,6 +174,12 @@ public class Trip extends Vincenty {
                             improvement = true;
                         }
 
+                        //Case 2
+                        if(case2(route,i,j,k,allDistances)< currentDistance){
+                            twoOptReverse(route, i+1, j);
+                            improvement = true;
+                        }
+
                     }
                 }
             }
@@ -196,6 +199,10 @@ public class Trip extends Vincenty {
 
     int case1(int[] route, int i, int j, int k, int[][] allDistances){
         return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[j]] + allDistances[route[i+1]][route[k+1]] );
+    }
+
+    int case2(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[j+1]] + allDistances[route[k]][route[k+1]]);
     }
 
     /**
@@ -238,6 +245,7 @@ public class Trip extends Vincenty {
     }
 
     /**
+     *
      * HELPER METHODS FOR NEAREST NEIGHBOR AND 2-OPT
      *
      */
@@ -303,6 +311,7 @@ public class Trip extends Vincenty {
 
 
 }
+
 
 
 
