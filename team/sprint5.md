@@ -84,9 +84,11 @@ We are at a solid number of epics, tasks, and story points here for a start. We 
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* | *none* | 
+| 11/14/18 | *none* | #354 #355 | *none* | 
+| 11/16/18 | #354 #355 | #358 | *none* | 
+| 11/26/18 | #354 #355 #358 | #368 #369 #370 #376 | *Unable to meet this week* |
+| 11/28/18 | #354 #355 #358 #368 #369 #370 #376 | #351 #349 | *Unable to meet this week* |
 
-*Add a new row for the scrum session after each lecture. *
 
 ## Review
 
