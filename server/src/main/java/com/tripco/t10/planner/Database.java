@@ -114,15 +114,17 @@ public class Database {
             }
 
             query += " ) ";
-            if(this.limit > 0) {
-                query += "LIMIT " + this.limit;
-            }
 //            query += "AND country.name IN ('" + filters[0].values[0] + "') LIMIT 100";
+        }
+
+        if(this.limit > 0) {
+            query += " LIMIT " + this.limit;
         }
 
         //query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
 //        System.out.println("Test Query: " + query);
 //        System.out.println("Test String: " + filters[0].name);
+        //System.out.println(query);
         return query;
     }
 
@@ -149,7 +151,7 @@ public class Database {
 
             while (rsQuery.next()) {
                 String id = rsQuery.getString("id");
-                String name = rsQuery.getString(2);
+                String name = rsQuery.getString("name");
                 double latitude = Double.parseDouble(rsQuery.getString("latitude"));
                 double longitude = Double.parseDouble(rsQuery.getString("longitude"));
                 Place place = new Place(id, name, latitude, longitude);

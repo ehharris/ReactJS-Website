@@ -52,7 +52,7 @@ public class TestDatabase {
                 "INNER JOIN region ON country.id = region.iso_country " +
                 "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
                 "WHERE (country.name LIKE '%denver%' OR region.name LIKE '%denver%' OR world_airports.name LIKE '%denver%'  OR world_airports.municipality LIKE '%denver%') " +
-                "AND ( country.name IN ('United States')  ) LIMIT 1";
+                "AND ( country.name IN ('United States')  )  LIMIT 1";
 
         String query = db.buildQuery();
         assertEquals(testQuery, query);
