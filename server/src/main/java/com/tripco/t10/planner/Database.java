@@ -109,7 +109,7 @@ public class Database {
                         }
 
                         if (j != (this.filters[i].values.length - 1) || (j == (this.filters[i].values.length - 1) && i != (this.filters.length - 1))) {
-                            query += "AND ";
+                            query += "OR ";
                         }
                     }
                 }
@@ -150,7 +150,7 @@ public class Database {
 
         String query = buildQuery() + addLimitToQuery();
         String allQueries = buildQuery();
-
+        //System.out.println(query);
         try {
             // create mysql database connection
             Class.forName(myDriver);
