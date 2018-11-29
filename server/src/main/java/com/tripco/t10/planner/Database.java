@@ -117,15 +117,23 @@ public class Database {
 //            query += "AND country.name IN ('" + filters[0].values[0] + "') LIMIT 100";
         }
 
-        if(this.limit > 0) {
-            query += " LIMIT " + this.limit;
-        }
-
         //query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
 //        System.out.println("Test Query: " + query);
 //        System.out.println("Test String: " + filters[0].name);
         //System.out.println(query);
         return query;
+    }
+
+    /** Adds limit attribute to end of query.
+     *
+     */
+    public String addLimitToQuery() {
+        if(this.limit > 0) {
+            return " LIMIT " + this.limit;
+        }
+        else {
+            return "";
+        }
     }
 
     /** Finds places from database depending on match value.
@@ -138,7 +146,7 @@ public class Database {
         String user = "cs314-db";
         String pass = "eiK5liet1uej";
 
-        String query = buildQuery();
+        String query = buildQuery() + addLimitToQuery();
 
         try {
             // create mysql database connection
