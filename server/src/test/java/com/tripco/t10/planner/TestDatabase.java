@@ -54,7 +54,7 @@ public class TestDatabase {
                 "WHERE (country.name LIKE '%denver%' OR region.name LIKE '%denver%' OR world_airports.name LIKE '%denver%'  OR world_airports.municipality LIKE '%denver%') " +
                 "AND ( country.name IN ('United States')  )  LIMIT 1";
 
-        String query = db.buildQuery();
+        String query = db.buildQuery() + " LIMIT 1";
         assertEquals(testQuery, query);
     }
 
@@ -66,5 +66,13 @@ public class TestDatabase {
         Place place = new Place("OCD4", "Kauffman Heliport", 40.1463012695, -104.887001038);
         places.add(place);
         assertEquals(db.getPlaces().indexOf(0), places.indexOf(0));
+    }
+
+    // tests addLimitToQuery()
+    @Test
+    public void testAddLimitToQuery() {
+        String limitQuery = db.addLimitToQuery();
+        String testQuery = " LIMIT 1";
+        assertEquals(limitQuery, testQuery);
     }
 }
