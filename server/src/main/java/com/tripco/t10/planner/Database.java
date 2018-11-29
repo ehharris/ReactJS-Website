@@ -25,7 +25,7 @@ public class Database {
         this.version = 4;
         this.type = "search";
         this.match = "";
-        this.filters = new Filters[0];
+        this.filters = null;
         this.limit = 0;
         this.found = 0;
         this.places = new ArrayList<Place>();
@@ -77,44 +77,46 @@ public class Database {
                 "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
                 "WHERE (country.name LIKE '%" + this.match + "%' OR region.name LIKE '%" + this.match + "%' OR world_airports.name LIKE '%" + this.match + "%'  OR world_airports.municipality LIKE '%" + this.match + "%') ";
 
-        if(filters.length > 0) {
-            query += "AND ( ";
+        if(this.filters != null ) {
+            if (this.filters.length > 0) {
+                query += "AND ( ";
 
-            for(int i = 0; i < filters.length; i++) {
-                for(int j = 0; j < filters[i].values.length; j++ ) {
-                    if(filters[i].name.equals("country")) {
-                        query += "country.name IN ('" + filters[i].values[j] + "') ";
-                    }
+                for (int i = 0; i < this.filters.length; i++) {
+                    for (int j = 0; j < this.filters[i].values.length; j++) {
+                        if (this.filters[i].name.equals("country")) {
+                            query += "country.name IN ('" + this.filters[i].values[j] + "') ";
+                        }
 
-                    if(filters[i].name.equals("world airport")) {
-                        query += "world_airports.name IN ('" + filters[i].values[j] + "') ";
-                    }
+                        if (this.filters[i].name.equals("world airport")) {
+                            query += "world_airports.name IN ('" + this.filters[i].values[j] + "') ";
+                        }
 
-                    if(filters[i].name.equals("type")) {
-                        query += "world_airports.type IN ('" + filters[i].values[j] + "') ";
-                    }
+                        if (this.filters[i].name.equals("type")) {
+                            query += "world_airports.type IN ('" + this.filters[i].values[j] + "') ";
+                        }
 
 
-                    if(filters[i].name.equals("municipality")) {
-                        query += "world_airports.municipality IN ('" + filters[i].values[j] + "') ";
-                    }
+                        if (this.filters[i].name.equals("municipality")) {
+                            query += "world_airports.municipality IN ('" + this.filters[i].values[j] + "') ";
+                        }
 
-                    if(filters[i].name.equals("region")) {
-                        query += "region.name IN ('" + filters[i].values[j] + "') ";
-                    }
+                        if (this.filters[i].name.equals("region")) {
+                            query += "region.name IN ('" + this.filters[i].values[j] + "') ";
+                        }
 
-                    if(filters[i].name.equals("continents")) {
-                        query += "continents.name IN ('" + filters[i].values[j] + "') ";
-                    }
+                        if (this.filters[i].name.equals("continents")) {
+                            query += "continents.name IN ('" + this.filters[i].values[j] + "') ";
+                        }
 
-                    if(j != ( filters[i].values.length - 1 ) || (j == (filters[i].values.length - 1) && i != (filters.length - 1))) {
-                        query += "AND ";
+                        if (j != (this.filters[i].values.length - 1) || (j == (this.filters[i].values.length - 1) && i != (this.filters.length - 1))) {
+                            query += "AND ";
+                        }
                     }
                 }
-            }
 
-            query += " ) ";
+                query += " ) ";
 //            query += "AND country.name IN ('" + filters[0].values[0] + "') LIMIT 100";
+            }
         }
 
         //query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
@@ -161,11 +163,6 @@ public class Database {
             ResultSet allRsQuery = allStQuery.executeQuery(allQueries);
 
             while (rsQuery.next()) {
-//                String id = rsQuery.getString("id");
-//                String name = rsQuery.getString("name");
-//                double latitude = Double.parseDouble(rsQuery.getString("latitude"));
-//                double longitude = Double.parseDouble(rsQuery.getString("longitude"));
-//                Place place = new Place(id, name, latitude, longitude);
                 this.places.add(new Place(rsQuery.getString("id"), rsQuery.getString("name"), rsQuery.getDouble("latitude"), rsQuery.getDouble("longitude")));
             }
             stQuery.close();
