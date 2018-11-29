@@ -147,6 +147,7 @@ public class Database {
         String pass = "eiK5liet1uej";
 
         String query = buildQuery() + addLimitToQuery();
+        String allQueries = buildQuery();
 
         try {
             // create mysql database connection
@@ -154,19 +155,25 @@ public class Database {
             Connection conn = DriverManager.getConnection(myUrl, user, pass);
             // create the java statement
             Statement stQuery = conn.createStatement();
+            Statement allStQuery = conn.createStatement();
             // execute the query, and get a java resultset
             ResultSet rsQuery = stQuery.executeQuery(query);
+            ResultSet allRsQuery = allStQuery.executeQuery(allQueries);
 
             while (rsQuery.next()) {
-                String id = rsQuery.getString("id");
-                String name = rsQuery.getString("name");
-                double latitude = Double.parseDouble(rsQuery.getString("latitude"));
-                double longitude = Double.parseDouble(rsQuery.getString("longitude"));
-                Place place = new Place(id, name, latitude, longitude);
-                this.places.add(place);
-                this.found += 1;
+//                String id = rsQuery.getString("id");
+//                String name = rsQuery.getString("name");
+//                double latitude = Double.parseDouble(rsQuery.getString("latitude"));
+//                double longitude = Double.parseDouble(rsQuery.getString("longitude"));
+//                Place place = new Place(id, name, latitude, longitude);
+                this.places.add(new Place(rsQuery.getString("id"), rsQuery.getString("name"), rsQuery.getDouble("latitude"), rsQuery.getDouble("longitude")));
             }
             stQuery.close();
+
+            while(allRsQuery.next()) {
+                this.found += 1;
+            }
+            allStQuery.close();
         }
         catch (Exception e) {
             System.err.println("Exception: " + e.getMessage());
