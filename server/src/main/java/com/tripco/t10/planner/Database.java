@@ -142,7 +142,8 @@ public class Database {
      *
      */
     public String addSortToQuery() {
-        return "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
+        return "ORDER BY world_airports.name ASC ";
+        //return "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name, world_airports.type ASC ";
     }
 
     /** Finds places from database depending on match value.
