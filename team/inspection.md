@@ -11,7 +11,7 @@
 | Name | Preparation Time |
 | ---- | ---- |
 | Antonio Segovia Maldonado | 1 hour |
-|  |  |
+| Tyler Dansby | 10 minutes |
 
 ### Problems found
 
@@ -23,4 +23,6 @@
 | Database.java:86-113 | Repeating Code | med | Eli | #396 |
 | Database.java:84 | Nested for-loop increases complexity | med | Eli | #400 |
 | Database.java:73 | Add externl methods for build query | low | Eli | #396 |
+| Trip.java:312 | Too many repeated methods with one calculation each, change to single method with mutiple calculations. |med | Nick| |
+| Itinerary.jsx:78 | Render method currently exceeds the allowed line count | hi | Tyler | |
  
