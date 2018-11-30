@@ -12,6 +12,7 @@
 | ---- | ---- |
 | Antonio Segovia Maldonado | 1 hour |
 | Tyler Dansby | 10 minutes |
+| Eli Harris | 15 minutes |
 
 ### Problems found
 
