@@ -138,6 +138,13 @@ public class Database {
         }
     }
 
+    /** Adds sorting to query.
+     *
+     */
+    public String addSortToQuery() {
+        return "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
+    }
+
     /** Finds places from database depending on match value.
      *
      */
@@ -148,7 +155,7 @@ public class Database {
         String user = "cs314-db";
         String pass = "eiK5liet1uej";
 
-        String query = buildQuery() + addLimitToQuery();
+        String query = buildQuery() + addSortToQuery() + addLimitToQuery();
         String allQueries = buildQuery();
         //System.out.println(query);
         try {
