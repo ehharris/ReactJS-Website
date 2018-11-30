@@ -1,9 +1,9 @@
-# Inspection - Team *T##* 
+# Inspection - Team *T10* 
  
 | Inspection | Details |
 | ----- | ----- |
-| Subject | *file and methods/line range to review for meeting* |
-| Meeting | *date, time, location* |
+| Subject | Database.java |
+| Meeting | 11/30, 10am, Lecture |
 | Checklist | *reference, URL, etc.* |
 
 ### Roles
