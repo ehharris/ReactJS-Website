@@ -2,8 +2,8 @@
  
 | Inspection | Details |
 | ----- | ----- |
-| Subject | Database.java Lines 0 - 200 and Search.java Lines 0 - 42|
-| Meeting | *date, time, location* |
+| Subject | Database.java |
+| Meeting | 11/30, 10am, Lecture |
 | Checklist | *reference, URL, etc.* |
 
 ### Roles
