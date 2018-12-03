@@ -193,6 +193,15 @@ public class Trip extends Vincenty {
                             improvement = true;
                         }
 
+                        //Case 5
+                        if(case5(route,i,j,k,allDistances) < currentDistance){
+                            currentDistance = case5(route, i, j, k,allDistances);
+                            twoOptReverse(route, j+1, k);
+                            swap(route, i+1, j, j+1, k);
+
+                            improvement = true;
+                        }
+
                     }
                 }
             }
@@ -229,6 +238,10 @@ public class Trip extends Vincenty {
      */
     int case4(int[] route, int i, int j, int k, int[][] allDistances){
         return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[k]] + allDistances[route[j+1]][route[k+1]]);
+    }
+
+    int case5(int[] route, int i, int j, int k, int[][] allDistances){
+        return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[i+1]] + allDistances[route[j]][route[k+1]]);
     }
 
     /**
