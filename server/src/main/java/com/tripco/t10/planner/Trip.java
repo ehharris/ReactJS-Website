@@ -168,31 +168,6 @@ public class Trip extends Vincenty {
                         //Case 0
                         int currentDistance = case0(route, i, j, k, allDistances);
 
-                        //Case 1
-                        if (case1(route, i, j, k,allDistances) < currentDistance) {
-                            twoOptReverse(route, i+1, k);
-                            improvement = true;
-                        }
-
-                        //Case 2
-                        if(case2(route,i,j,k,allDistances)< currentDistance){
-                            twoOptReverse(route, i+1, j);
-                            improvement = true;
-                        }
-
-                        //Case 3
-                        if(case3(route,i,j,k,allDistances)< currentDistance){
-                            twoOptReverse(route, j+1, k);
-                            improvement = true;
-                        }
-
-                        //Case 4
-                        if(case4(route,i,j,k,allDistances) < currentDistance){
-                            twoOptReverse(route, i+1,j);
-                            twoOptReverse(route, j+1, k);
-                            improvement = true;
-                        }
-
                         //Case 5
                         if(case5(route,i,j,k,allDistances) < currentDistance){
                             currentDistance = case5(route, i, j, k,allDistances);
@@ -203,7 +178,7 @@ public class Trip extends Vincenty {
                         }
 
                         //Case 6
-                        if(case6(route,i,j,k,allDistances) < currentDistance){
+                        else if(case6(route,i,j,k,allDistances) < currentDistance){
                             currentDistance = case6(route, i, j, k,allDistances);
                             twoOptReverse(route, i+1,j);
                             swap(route, i+1, j, j+1, k);
@@ -212,13 +187,37 @@ public class Trip extends Vincenty {
                         }
 
                         //Case 7
-                        if(case7(route,i,j,k,allDistances) < currentDistance){
+                        else if(case7(route,i,j,k,allDistances) < currentDistance){
                             currentDistance = case7(route, i, j, k,allDistances);
                             swap(route, i+1, j, j+1, k);
 
                             improvement = true;
                         }
 
+                        //Case 1
+                        else if (case1(route, i, j, k,allDistances) < currentDistance) {
+                            twoOptReverse(route, i+1, k);
+                            improvement = true;
+                        }
+
+                        //Case 2
+                        else if(case2(route,i,j,k,allDistances)< currentDistance){
+                            twoOptReverse(route, i+1, j);
+                            improvement = true;
+                        }
+
+                        //Case 3
+                        else if(case3(route,i,j,k,allDistances)< currentDistance){
+                            twoOptReverse(route, j+1, k);
+                            improvement = true;
+                        }
+
+                        //Case 4
+                        else if(case4(route,i,j,k,allDistances) < currentDistance){
+                            twoOptReverse(route, i+1,j);
+                            twoOptReverse(route, j+1, k);
+                            improvement = true;
+                        }
                     }
                 }
             }
