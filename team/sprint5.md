@@ -88,6 +88,9 @@ We are at a solid number of epics, tasks, and story points here for a start. We 
 | 11/16/18 | #354 #355 | #358 | *none* | 
 | 11/26/18 | #354 #355 #358 | #368 #369 #370 #376 | *Unable to meet this week* |
 | 11/28/18 | #354 #355 #358 #368 #369 #370 #376 | #351 #349 | *Unable to meet this week* |
+| 11/30/18 | Did on paper in class |
+| 12/3/18 | #354 #355 #358 #368 #369 #370 #376 #349 #414 #413 #412 #392 #383 #382 | #351 #267 | *none* |
+
 
 
 ## Review
