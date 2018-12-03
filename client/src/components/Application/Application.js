@@ -9,6 +9,8 @@ import Search from './Search';
 import Calculator from './Calculator';
 import Optimization from './Optimization';
 import Add from './Add';
+import Dev from './Dev';
+
 
 import { request } from '../../api/api';
 import { get_config } from '../../api/api';
@@ -21,7 +23,8 @@ class Application extends Component {
         super(props);
         this.state = {
             config: null,
-            activeTab: 'Map',
+            activeTab1: 'Map',
+            activeTab2: 'Settings',
             server: location.hostname,
             port: '31410',
             trip: {
@@ -74,12 +77,15 @@ class Application extends Component {
       }
     }
   
-    toggle(tab) {
-        if (this.state.activeTab !== tab) {
-            this.setState({
-                activeTab: tab
-            });
+    toggle(value, tab) {
+        if(value === '1'){
+          this.setState({activeTab1: tab});
         }
+        if(value === '2'){
+          this.setState({activeTab2: tab});
+        }
+        console.log(this.state.activeTab)
+        console.log(this.state)
     }
 
     updateTrip(field, value){
@@ -147,9 +153,9 @@ class Application extends Component {
                 <Nav tabs className="cooltabs">
                   {arr0.map((value) =>
                       <NavItem key={value+1}>
-                        <NavLink key={value+2} active={this.state.activeTab === value}
+                        <NavLink key={value+2} active={this.state.activeTab1 === value}
                           className="tabs"
-                          onClick={() => { this.toggle(value); }}>
+                          onClick={() => { this.toggle('1', value); }}>
                           {value}
                         </NavLink>
                       </NavItem>
@@ -165,7 +171,7 @@ class Application extends Component {
       if(this.state.trip.places.length >= 2) {
         return (
           <div>
-            <TabContent activeTab={this.state.activeTab}>
+            <TabContent activeTab={this.state.activeTab1}>
               <TabPane tabId="Map">
                 <Card>
                   <CardBody>
@@ -204,21 +210,45 @@ class Application extends Component {
                 {this.renderNav()}
                 {this.renderTabs()}
                 <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
-                <Row noGutters={true}>
-                    <Col>
-                        <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
-                        <Port updateServer={this.updateServer}/>
-                        <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
-                    </Col>
-                    <Col>
-                        <Card>
-                            <CardBody>
-                              {this.renderOptions()}
-                            </CardBody>
-                        </Card>
-                        <Calculator/>
-                    </Col>
-                </Row>
+
+                <Nav tabs className="cooltabs">
+                  <NavItem>
+                    <NavLink active={this.state.activeTab2 === 'Settings'}
+                             className="tabs"
+                             onClick={() => { this.toggle('2','Settings'); }}>
+                      Settings
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink active={this.state.activeTab2 === 'About'}
+                             className="tabs"
+                             onClick={() => { this.toggle('2','About'); }}>
+                      About
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+                <TabContent activeTab={this.state.activeTab2}>
+                  <TabPane tabId="Settings">
+                    <Row noGutters={true}>
+                        <Col>
+                            <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
+                            <Port updateServer={this.updateServer}/>
+                            <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
+                        </Col>
+                        <Col>
+                            <Card>
+                                <CardBody>
+                                  {this.renderOptions()}
+                                </CardBody>
+                            </Card>
+                            <Calculator/>
+                        </Col>
+                    </Row>
+                  </TabPane>
+                  <TabPane tabId="About">
+                    <Dev/>
+                  </TabPane>
+                </TabContent>
             </Container>
         )
     }
