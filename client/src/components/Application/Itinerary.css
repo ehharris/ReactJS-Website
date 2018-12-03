@@ -38,6 +38,13 @@ thead, tbody tr {
     height: 30px;
 }
 
+.headerText {
+    padding: 5px 10px;
+    font-size: 20pt;
+    font-weight: 100;
+    color: black;
+}
+
 .labelpop {
     background: lightgreen;
     border-radius: 5px;

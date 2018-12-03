@@ -19,32 +19,34 @@ class Dev extends Component{
 
   render() {
     return(
-      <CardGroup>
-        <Card body className="text-center" outline color="secondary">
-          <CardImg className={"avatarborder"} src={avatarAntonio}/>
-          <CardBody>
-            <CardTitle>Antonio Segovia Maldonado</CardTitle>
-          </CardBody>
-        </Card>
-        <Card body className="text-center" outline color="secondary">
-          <CardImg className={"avatarborder"} src={avatarEli}/>
-          <CardBody>
-            <CardTitle>Eli Harris</CardTitle>
-          </CardBody>
-        </Card>
-        <Card body className="text-center" outline color="secondary">
-          <CardImg className={"avatarborder"} src={avatarNick}/>
-          <CardBody>
-            <CardTitle>Nick Kaliher</CardTitle>
-          </CardBody>
-        </Card>
-        <Card body className="text-center" outline color="secondary">
-          <CardImg className={"avatarborder"} src={avatarTyler}/>
-          <CardBody>
-            <CardTitle>Tyler Dansby</CardTitle>
-          </CardBody>
-        </Card>
-      </CardGroup>
+      <Card body className="text-center" outline color="secondary">
+        <CardGroup>
+          <Card outline color="white">
+            <CardImg className={"avatarborder"} src={avatarAntonio}/>
+            <CardBody>
+              <CardTitle className={"headerText"}>Antonio Segovia Maldonado</CardTitle>
+            </CardBody>
+          </Card>
+          <Card outline color="white">
+            <CardImg className={"avatarborder"} src={avatarEli}/>
+            <CardBody>
+              <CardTitle className={"headerText"}>Eli Harris</CardTitle>
+            </CardBody>
+          </Card>
+          <Card outline color="white">
+            <CardImg className={"avatarborder"} src={avatarNick}/>
+            <CardBody>
+              <CardTitle className={"headerText"}>Nick Kaliher</CardTitle>
+            </CardBody>
+          </Card>
+          <Card outline color="white">
+            <CardImg className={"avatarborder"} src={avatarTyler}/>
+            <CardBody>
+              <CardTitle className={"headerText"}>Tyler Dansby</CardTitle>
+            </CardBody>
+          </Card>
+        </CardGroup>
+      </Card>
 
     )
   }

@@ -10,6 +10,7 @@ import Calculator from './Calculator';
 import Optimization from './Optimization';
 import Add from './Add';
 import Dev from './Dev';
+import Info from './Info';
 
 
 import { request } from '../../api/api';
@@ -205,7 +206,8 @@ class Application extends Component {
         if(!this.state.config) { return <div/> }
         return(
             <Container id="Application">
-
+              <Info/>
+              <hr />
               <Nav tabs className="cooltabs">
                 <NavItem>
                   <NavLink active={this.state.activeTab2 === 'Planner'}
@@ -222,9 +224,10 @@ class Application extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-
+              <hr />
               <TabContent activeTab={this.state.activeTab2}>
                 <TabPane tabId="Planner">
+                  <Card body outline color="secondary">
                 {this.renderNav()}
                 {this.renderTabs()}
                 <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
@@ -243,6 +246,7 @@ class Application extends Component {
                           <Calculator/>
                       </Col>
                   </Row>
+                  </Card>
                 </TabPane>
 
                 <TabPane tabId="About">
