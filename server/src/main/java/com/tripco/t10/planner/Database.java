@@ -5,7 +5,6 @@ import java.lang.String;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -83,29 +82,22 @@ public class Database {
 
                 for (int i = 0; i < this.filters.length; i++) {
                     for (int j = 0; j < this.filters[i].values.length; j++) {
-                        if (this.filters[i].name.equals("country")) {
-                            query += "country.name IN ('" + this.filters[i].values[j] + "') ";
-                        }
+                        String filterName = this.filters[i].name;
 
-                        if (this.filters[i].name.equals("world airport")) {
+                        if (filterName.equals("world airport")) {
                             query += "world_airports.name IN ('" + this.filters[i].values[j] + "') ";
                         }
 
-                        if (this.filters[i].name.equals("type")) {
+                        if (filterName.equals("type")) {
                             query += "world_airports.type IN ('" + this.filters[i].values[j] + "') ";
                         }
 
-
-                        if (this.filters[i].name.equals("municipality")) {
+                        else if (filterName.equals("municipality")) {
                             query += "world_airports.municipality IN ('" + this.filters[i].values[j] + "') ";
                         }
 
-                        if (this.filters[i].name.equals("region")) {
-                            query += "region.name IN ('" + this.filters[i].values[j] + "') ";
-                        }
-
-                        if (this.filters[i].name.equals("continents")) {
-                            query += "continents.name IN ('" + this.filters[i].values[j] + "') ";
+                        else if (filterName.equals("country") || filterName.equals("region") || filterName.equals("continents")) {
+                            query += filterName + ".name IN ('" + this.filters[i].values[j] + "') ";
                         }
 
                         if (j != (this.filters[i].values.length - 1) || (j == (this.filters[i].values.length - 1) && i != (this.filters.length - 1))) {
@@ -115,14 +107,8 @@ public class Database {
                 }
 
                 query += " ) ";
-//            query += "AND country.name IN ('" + filters[0].values[0] + "') LIMIT 100";
             }
         }
-
-        //query += "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC ";
-//        System.out.println("Test Query: " + query);
-//        System.out.println("Test String: " + filters[0].name);
-        //System.out.println(query);
         return query;
     }
 
