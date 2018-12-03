@@ -24,7 +24,7 @@ class Application extends Component {
         this.state = {
             config: null,
             activeTab1: 'Map',
-            activeTab2: 'Settings',
+            activeTab2: 'Planner',
             server: location.hostname,
             port: '31410',
             trip: {
@@ -76,7 +76,7 @@ class Application extends Component {
         this.updateOptions('unitRadius', unitRadius);
       }
     }
-  
+
     toggle(value, tab) {
         if(value === '1'){
           this.setState({activeTab1: tab});
@@ -84,8 +84,6 @@ class Application extends Component {
         if(value === '2'){
           this.setState({activeTab2: tab});
         }
-        console.log(this.state.activeTab)
-        console.log(this.state)
     }
 
     updateTrip(field, value){
@@ -207,48 +205,52 @@ class Application extends Component {
         if(!this.state.config) { return <div/> }
         return(
             <Container id="Application">
+
+              <Nav tabs className="cooltabs">
+                <NavItem>
+                  <NavLink active={this.state.activeTab2 === 'Planner'}
+                           className="tabs"
+                           onClick={() => { this.toggle('2','Planner'); }}>
+                    Trip Planner
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink active={this.state.activeTab2 === 'About'}
+                           className="tabs"
+                           onClick={() => { this.toggle('2','About'); }}>
+                    Meet the Developers
+                  </NavLink>
+                </NavItem>
+              </Nav>
+
+              <TabContent activeTab={this.state.activeTab2}>
+                <TabPane tabId="Planner">
                 {this.renderNav()}
                 {this.renderTabs()}
                 <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+                  <Row noGutters={true}>
+                      <Col>
+                          <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
+                          <Port updateServer={this.updateServer}/>
+                          <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
+                      </Col>
+                      <Col>
+                          <Card>
+                              <CardBody>
+                                {this.renderOptions()}
+                              </CardBody>
+                          </Card>
+                          <Calculator/>
+                      </Col>
+                  </Row>
+                </TabPane>
 
-                <Nav tabs className="cooltabs">
-                  <NavItem>
-                    <NavLink active={this.state.activeTab2 === 'Settings'}
-                             className="tabs"
-                             onClick={() => { this.toggle('2','Settings'); }}>
-                      Settings
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink active={this.state.activeTab2 === 'About'}
-                             className="tabs"
-                             onClick={() => { this.toggle('2','About'); }}>
-                      About
-                    </NavLink>
-                  </NavItem>
-                </Nav>
-                <TabContent activeTab={this.state.activeTab2}>
-                  <TabPane tabId="Settings">
-                    <Row noGutters={true}>
-                        <Col>
-                            <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
-                            <Port updateServer={this.updateServer}/>
-                            <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
-                        </Col>
-                        <Col>
-                            <Card>
-                                <CardBody>
-                                  {this.renderOptions()}
-                                </CardBody>
-                            </Card>
-                            <Calculator/>
-                        </Col>
-                    </Row>
-                  </TabPane>
-                  <TabPane tabId="About">
-                    <Dev/>
-                  </TabPane>
-                </TabContent>
+                <TabPane tabId="About">
+                  <Dev/>
+                </TabPane>
+
+              </TabContent>
+
             </Container>
         )
     }
