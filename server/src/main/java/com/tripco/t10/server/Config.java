@@ -18,7 +18,8 @@ public class Config {
   private List<Optimization> optimization = Arrays.asList(
       new Optimization("none","The trip is not optimized."),
       new Optimization("short","Nearest neighbor."),
-      new Optimization("shorter","2-opt."));
+      new Optimization("shorter","2-opt."),
+      new Optimization("shortest","3-opt."));
 
   private List<String> attributes = Arrays.asList("name", "id", "latitude","longitude");
 

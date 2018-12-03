@@ -6,7 +6,7 @@ import Application from '../src/components/Application/Application'
 
 
 const startProps = {
-    'config': { 'optimization': ['none', 'short', 'shorter'] },
+    'config': { 'optimization': ['none', 'short', 'shorter', 'shortest'] },
     'options': { 'optimization': 'none' }
 };
 
