@@ -11,7 +11,7 @@ class Optimization extends Component{
   constructor(props) {
     super(props);
     this.state = {
-        'optimization': ['none', 'short', 'shorter'],
+        'optimization': ['none', 'short', 'shorter', 'shortest'],
     };
   }
 

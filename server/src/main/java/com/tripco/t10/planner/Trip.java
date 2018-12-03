@@ -91,11 +91,11 @@ public class Trip extends Vincenty {
 
             }
 
-            if(this.options.optimization.equals("short")){
+            if(this.options.optimization.equals("shorter")){
                 twoOpt(route,allDistances);
             }
 
-            if(this.options.optimization.equals("shorter")){
+            if(this.options.optimization.equals("shortest")){
                 testThreeOpt(route,allDistances);
             }
 
@@ -199,6 +199,8 @@ public class Trip extends Vincenty {
         }
     }
 
+
+
     /**
      * Base Case for Distance.
      */
@@ -226,8 +228,120 @@ public class Trip extends Vincenty {
      * 3-opt Cases.
      */
     int case4(int[] route, int i, int j, int k, int[][] allDistances){
-        //System.out.println("In Case2");
         return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[k]] + allDistances[route[j+1]][route[k+1]]);
+    }
+
+    /**
+     * Swaps sets of numbers within an array.
+     */
+    void swap(int[] route, int i1, int i2, int j1, int j2){
+        int[] copyOfRoute = Arrays.copyOfRange(route, i1, j2+1);
+
+        int[] small;
+
+        if(i2-i1 > j2-j1){
+            small = Arrays.copyOfRange(route,j1,j2+1);
+
+            int direction = leftOrRight(copyOfRoute, small.length, j1, i1);
+
+            fillArray(copyOfRoute,route,i1,j2);
+
+            if(direction == 0){
+                fillShiftLeft(route, small, i2);
+            }else{
+                fillShiftRight(route,small, i1);
+            }
+
+        }else{
+            small = Arrays.copyOfRange(route,i1,i2+1);
+
+            int direction = leftOrRight(copyOfRoute, small.length, i1, j1);
+
+            fillArray(copyOfRoute,route,i1,j2);
+
+            if(direction == 0){
+                fillShiftLeft(route, small, j2);
+            }else{
+                fillShiftRight(route,small,j1);
+            }
+        }
+
+    }
+
+    /**
+     *
+     * 3-opt Swap Helper Methods
+     *
+     */
+
+    /**
+     * Shifts array right by given number.
+     */
+    void rightShift(int[] route, int numberOfShifts) {
+        for(int i = route.length - 1; i > -1;i--){
+            if ( i + numberOfShifts < route.length ){
+                route[i + numberOfShifts] = route[i];
+            }
+        }
+    }
+
+    /**
+     * Shifts array left by given number.
+     */
+    void leftShift(int[] route, int numberOfShifts) {
+        for(int i = 0; i < route.length;i++){
+            if (!(i+numberOfShifts > route.length - 1) ){
+                route[i] = route[i + numberOfShifts];
+            }
+        }
+    }
+
+    /**
+     * Determines which way to shift.
+     */
+    int leftOrRight(int[] route, int smallSize, int smallIndex, int bigIndex) {
+        if (smallIndex < bigIndex) {
+            leftShift(route, smallSize);
+            return 0;
+
+        } else {
+            rightShift(route, smallSize);
+            return 1;
+        }
+
+    }
+
+    /**
+     * Fills in duplicated numbers after a left shift.
+     */
+    void fillShiftLeft(int[] route, int[] small, int bigEndIndex) {
+        int counter = small.length - 1;
+        while(counter >= 0){
+            route[bigEndIndex] = small[counter];
+            counter--; bigEndIndex--;
+        }
+    }
+
+    /**
+     * Fills in duplicated numbers after a right shift.
+     */
+    void fillShiftRight(int[] route, int[] small, int bigStartIndex){
+        int counter = 0;
+        while(counter < small.length){
+            route[bigStartIndex] = small[counter];
+            counter++; bigStartIndex++;
+        }
+    }
+
+    /**
+     * Fills in array at certain indexes.
+     */
+    void fillArray(int[] oldRoute, int[] newRoute, int start, int finish){
+        int count = 0;
+        for(int i = start; i < finish + 1; i++){
+            newRoute[i] = oldRoute[count];
+            count++;
+        }
     }
 
     /**
