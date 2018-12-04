@@ -1,11 +1,12 @@
 
 import React, {Component} from 'react'
 import { CardImg, Card, CardGroup, CardBody, CardTitle, CardSubtitle, CardText} from 'reactstrap'
-import { ButtonGroup, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Modal, Button, ButtonGroup, ModalBody, ModalHeader, Col } from 'reactstrap'
 import avatarAntonio from './Resource/t10-Antonio.jpg';
 import avatarEli from './Resource/t10-Eli.jpg';
 import avatarNick from './Resource/t10-Nick.jpg';
 import avatarTyler from './Resource/t10-Tyler.jpg';
+import avatarDave from './Resource/Dave-Matthews.jpg';
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -15,6 +16,17 @@ import avatarTyler from './Resource/t10-Tyler.jpg';
 class Dev extends Component{
   constructor(props) {
     super(props);
+    this.state = {
+      modal: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
@@ -46,6 +58,17 @@ class Dev extends Component{
             </CardBody>
           </Card>
         </CardGroup>
+
+        <div>
+          <Col><Button className='btn-outline-dark unit-button' onClick={this.toggle}>Meet the Manager</Button></Col>
+        </div>
+
+        <Modal contentClassName={"modalT"} isOpen={this.state.modal} toggle={this.toggle}>
+          <ModalHeader toggle={this.toggle}>Dave Matthews</ModalHeader>
+          <ModalBody>
+            <img src={avatarDave} className={"avatarborder"} height={550} width={350}/>
+          </ModalBody>
+        </Modal>
       </Card>
 
     )

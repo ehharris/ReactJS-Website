@@ -19,12 +19,12 @@ thead, tbody tr {
 
 .server {
     border: 1px solid #343A40;
-    min-width: calc( 100% - 15em );
+    min-width: 49%;
 }
 
 .port {
     border: 1px solid #343A40;
-    max-width: calc( 100% - 20em );
+    min-width: 49%;
 }
 
 .labelport {
@@ -40,7 +40,7 @@ thead, tbody tr {
 
 .headerText {
     padding: 5px 10px;
-    font-size: 20pt;
+    font-size: 15pt;
     font-weight: 100;
     color: black;
 }
@@ -77,10 +77,9 @@ thead, tbody tr {
     text-align-all: center;
     color: white;
     background-color: #343A40;
-    min-width: 110px;
+    min-width: 100px;
     height: 30px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+    border-radius: 5px;
 }
 
 .itinButton {
@@ -94,7 +93,18 @@ thead, tbody tr {
     border-top-left-radius: 5px;
 }
 
+.darkButtonAlt {
+    color: white;
+    background-color: #343A40;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
 .tabs {
     cursor: pointer;
     font-size: 13pt;
+}
+
+.modalT {
+    align-items: center;
 }

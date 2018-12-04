@@ -91,22 +91,24 @@ public class MapBuilder {
                 }
 
                 //Convert Lat/Long to svg
-                double begLat = conLat(this.trip.places.get(first).getLatitude());
-                double begLong = conLong(this.trip.places.get(first).getLongitude());
-                double endLat = conLat(this.trip.places.get(last).getLatitude());
-                double endLong = conLong(this.trip.places.get(last).getLongitude());
+                double begLat = conLat(this.trip.places.get(first).latitude);
+                double begLong = conLong(this.trip.places.get(first).longitude);
+                double endLat = conLat(this.trip.places.get(last).latitude);
+                double endLong = conLong(this.trip.places.get(last).longitude);
 
                 //Make a line
                 makeAline(begLat,begLong,endLat,endLong,index);
 
                 //Add Circles
-                addCircle(begLat, begLong, index);
+                addCircle(begLat, begLong, first);
+                addCircle(endLat, endLong, last);
             }
         }
         //One place
         else if(this.size == 1){
-            double latitude = conLat(this.trip.places.get(0).getLatitude());
-            double longitude = conLong(this.trip.places.get(0).getLongitude());
+            System.out.println(this.trip.places.get(0).name);
+            double latitude = conLat(this.trip.places.get(0).latitude);
+            double longitude = conLong(this.trip.places.get(0).longitude);
             addCircle(latitude, longitude, 0);
         }
     }
@@ -155,6 +157,8 @@ public class MapBuilder {
             for(int i = 0; i < this.lines.length; i++) {
                 if (lines[i] != null) {
                     line.append(lines[i]);
+                    line.append(circles[i]);
+                } else if(this.size == 1) {
                     line.append(circles[i]);
                 }
             }
