@@ -56,6 +56,7 @@ class Calculator extends Component{
     return(
       <Card>
         <CardBody>
+          <p>Calculate the distance between two places.</p>
           {calculator}
           <Form inline>
             <Button onClick={this.calculate} type="button" className='btn-outline-dark unit-button'>

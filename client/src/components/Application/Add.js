@@ -70,7 +70,7 @@ class Add extends Component{
     return(
       <Card>
         <CardBody>
-        <p>Add a new place to your trip!</p>{forms}
+          {forms}
           <Form inline>
             <Button onClick={this.createPlace} type="button"
               className='btn-outline-dark unit-button'> Add </Button>

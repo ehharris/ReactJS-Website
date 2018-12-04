@@ -55,16 +55,13 @@ class File extends Component{
         return(
             <Card>
                 <CardBody>
-                    <p>Upload a file to start planning your trip!</p>
+                    <p>Upload a trip if you already have one.</p>
                     <ButtonToolbar>
                         <Input type="file" title="input" accept=".json" onChange={this.uploadFile} className="inputfile"/>
                     </ButtonToolbar>
                     &nbsp;
                     <ButtonToolbar>
                         <ButtonGroup>
-                            <Button onClick={this.plan} type="button" className='btn-outline-dark unit-button'>
-                                Plan
-                            </Button>
                             <Button onClick={this.save} type="button" className='btn-outline-dark unit-button'>
                                 Save
                             </Button>

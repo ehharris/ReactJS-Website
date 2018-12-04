@@ -1,5 +1,19 @@
 import React, {Component} from 'react';
-import { Container, Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabPane, TabContent} from 'reactstrap';
+import {
+  Label,
+  CardGroup,
+  Container,
+  Alert,
+  Card,
+  CardBody,
+  Nav,
+  NavItem,
+  NavLink,
+  TabPane,
+  TabContent,
+  ModalHeader,
+  ModalBody, Modal, Button
+} from 'reactstrap';
 import Options from './Options';
 import Map from './Map.jsx';
 import Port from './Port';
@@ -11,10 +25,12 @@ import Optimization from './Optimization';
 import Add from './Add';
 import Dev from './Dev';
 import Info from './Info';
+import Plan from './Plan';
 
 
 import { request } from '../../api/api';
 import { get_config } from '../../api/api';
+import avatarDave from "./Resource/Dave-Matthews.jpg";
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -26,6 +42,8 @@ class Application extends Component {
             config: null,
             activeTab1: 'Map',
             activeTab2: 'Planner',
+            modal1: false,
+            modal2: false,
             server: location.hostname,
             port: '31410',
             trip: {
@@ -45,7 +63,8 @@ class Application extends Component {
         this.updateOptions = this.updateOptions.bind(this);
         this.updateServer = this.updateServer.bind(this);
         this.updatePlaces = this.updatePlaces.bind(this);
-        this.toggle = this.toggle.bind(this);
+        this.toggleTab = this.toggleTab.bind(this);
+        this.toggleMod = this.toggleMod.bind(this);
     }
 
     componentWillMount() {
@@ -78,13 +97,22 @@ class Application extends Component {
       }
     }
 
-    toggle(value, tab) {
+    toggleTab(value, tab) {
         if(value === '1'){
           this.setState({activeTab1: tab});
         }
         if(value === '2'){
           this.setState({activeTab2: tab});
         }
+    }
+
+    toggleMod(value) {
+      if(value === '1'){
+        this.setState({modal1: !this.state.modal1});
+      }
+      if(value === '2'){
+        this.setState({modal2: !this.state.modal2});
+      }
     }
 
     updateTrip(field, value){
@@ -106,7 +134,7 @@ class Application extends Component {
 
     updatePlaces(places){
         this.setState({'places': places});
-        if (this.state.trip.places.length >= 2) {
+        if (this.state.trip.places.length >= 1) {
             this.updateBasedOnResponse(this.state.trip);
         }
     }
@@ -118,7 +146,6 @@ class Application extends Component {
         get_config(newPort, newHost).then((newConfig) => (
             this.setState({config: newConfig})
         ));
-
     }
 
     //Code for manipulating cookies taken from W3 Schools - https://www.w3schools.com/js/js_cookies.asp
@@ -145,7 +172,6 @@ class Application extends Component {
     }
 
     renderNav(){
-        if(this.state.trip.places.length >= 2){
           let arr0 = ['Map','Itinerary']
             return(
               <div>
@@ -154,7 +180,7 @@ class Application extends Component {
                       <NavItem key={value+1}>
                         <NavLink key={value+2} active={this.state.activeTab1 === value}
                           className="tabs"
-                          onClick={() => { this.toggle('1', value); }}>
+                          onClick={() => { this.toggleTab('1', value); }}>
                           {value}
                         </NavLink>
                       </NavItem>
@@ -163,89 +189,164 @@ class Application extends Component {
                 </Nav>
               </div>
             );
-        }
+    }
+
+    renderMap(){
+      if(this.state.trip.places.length >= 1){
+        return(
+          <Map trip={this.state.trip}/>
+        )
+      } else {
+        return(
+          <Alert color="info">Add at least one place to your trip to get a map.</Alert>
+        )
+      }
+    }
+
+    renderItinerary(){
+      if(this.state.trip.places.length >= 1){
+        return(
+          <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
+        )
+      } else {
+        return(
+          <Alert color="info">Add at least one place to your trip to get an itinerary.</Alert>
+        )
+      }
     }
 
     renderTabs(){
-      if(this.state.trip.places.length >= 2) {
         return (
           <div>
             <TabContent activeTab={this.state.activeTab1}>
               <TabPane tabId="Map">
+                <hr/>
                 <Card>
                   <CardBody>
-                    <Map trip={this.state.trip}/>
+                    {this.renderMap()}
                   </CardBody>
                 </Card>
               </TabPane>
               <TabPane tabId="Itinerary">
+                <hr/>
                 <Card>
                   <CardBody>
-                    <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
+                    {this.renderItinerary()}
                   </CardBody>
                 </Card>
               </TabPane>
             </TabContent>
           </div>
         )
-      }
     }
 
     renderOptions(){
       return(
-        <div>
-          <Options options={this.state.trip.options} config={this.state.config}
-                   updateOptions={this.updateOptions} setCookie={this.setCookie}/>
-          <Optimization updateOptions={this.updateOptions} config={this.state.config}
-                        options={this.state.trip.options} setCookie={this.setCookie}/>
-        </div>
+        <Card>
+          <CardBody>
+            <Options options={this.state.trip.options} config={this.state.config}
+                     updateOptions={this.updateOptions} setCookie={this.setCookie}/>
+            <Optimization updateOptions={this.updateOptions} config={this.state.config}
+                          options={this.state.trip.options} setCookie={this.setCookie}/>
+          </CardBody>
+        </Card>
+      )
+    }
+
+    renderAddAndSearch(){
+      return(
+        <Card>
+          <CardBody>
+            <p>Add additional places to your trip.</p>
+            &nbsp;
+            <Button className='btn-outline-dark unit-button' onClick={() => { this.toggleMod('1')}}>
+              Add your own place
+            </Button>
+            {' '}<Label> or </Label>{' '}
+            <Button className='btn-outline-dark unit-button' onClick={() => { this.toggleMod('2')}}>
+              Search worldwide for a place
+            </Button>
+          </CardBody>
+        </Card>
       )
     }
 
     render() {
+
+
         if(!this.state.config) { return <div/> }
         return(
             <Container id="Application">
+
               <Info/>
-              <hr />
+
+              <hr/>
+
               <Nav tabs className="cooltabs">
                 <NavItem>
                   <NavLink active={this.state.activeTab2 === 'Planner'}
                            className="tabs"
-                           onClick={() => { this.toggle('2','Planner'); }}>
+                           onClick={() => { this.toggleTab('2','Planner'); }}>
                     Trip Planner
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink active={this.state.activeTab2 === 'About'}
                            className="tabs"
-                           onClick={() => { this.toggle('2','About'); }}>
+                           onClick={() => { this.toggleTab('2','About'); }}>
                     Meet the Developers
                   </NavLink>
                 </NavItem>
               </Nav>
-              <hr />
+
+              <hr/>
+
               <TabContent activeTab={this.state.activeTab2}>
+
                 <TabPane tabId="Planner">
                   <Card body outline color="secondary">
-                {this.renderNav()}
-                {this.renderTabs()}
-                <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
-                  <Row noGutters={true}>
-                      <Col>
-                          <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
-                          <Port updateServer={this.updateServer}/>
-                          <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
-                      </Col>
-                      <Col>
-                          <Card>
-                              <CardBody>
-                                {this.renderOptions()}
-                              </CardBody>
-                          </Card>
-                          <Calculator/>
-                      </Col>
-                  </Row>
+
+                    <CardGroup>
+                        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+                        {this.renderAddAndSearch()}
+                    </CardGroup>
+
+                    <hr/>
+
+                    <Modal contentClassName={"modalT"} isOpen={this.state.modal1} toggle={() => {this.toggleMod('1')}}>
+                      <ModalHeader toggle={() => {this.toggleMod('1')}}>Add a new place to your trip!</ModalHeader>
+                      <ModalBody>
+                        <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
+                      </ModalBody>
+                    </Modal>
+
+                    <Modal contentClassName={"modalT"} isOpen={this.state.modal2} toggle={() => {this.toggleMod('2')}}>
+                      <ModalHeader toggle={() => {this.toggleMod('2')}}>Search worldwide for a new place!</ModalHeader>
+                      <ModalBody>
+                        <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
+                      </ModalBody>
+                    </Modal>
+
+
+
+                    <CardGroup>
+                      {this.renderOptions()}
+                      <Calculator/>
+                    </CardGroup>
+
+                    <hr/>
+
+                    <Port updateServer={this.updateServer}/>
+
+                    <hr/>
+
+                    <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+
+                    <hr/>
+
+                    {this.renderNav()}
+                    {this.renderTabs()}
+
                   </Card>
                 </TabPane>
 
