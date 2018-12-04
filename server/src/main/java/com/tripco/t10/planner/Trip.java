@@ -165,11 +165,21 @@ public class Trip extends Vincenty {
                 for (int j = i + 1; j < n - 1; j++) {
                     for (int k = j + 1; k < n; k++) {
 
+                        //Cases for distance call
+                        int[] case0 = {i,i+1,j,j+1,k,k+1};
+                        int[] case1 = {i,k,j+1,j,i+1,k+1};
+                        int[] case2 = {i,j,i+1,j+1,k,k+1};
+                        int[] case3 = {i,i+1,j,k,j+1,k+1};
+                        int[] case4 = {i,j,i+1,k,j+1,k+1};
+                        int[] case5 = {i,k,j+1,i+1,j,k+1};
+                        int[] case6 = {i,j+1,k,j,i+1,k+1};
+                        int[] case7 = {i,j+1,k,i+1,j,k+1};
+
                         //Case 0
-                        int currentDistance = cases(route, i, j, k, allDistances,0);
+                        int currentDistance = calcDistanceForCases(route, case0, allDistances);
 
                         //Case 5
-                        if(cases(route,i,j,k,allDistances,5) < currentDistance){
+                        if(calcDistanceForCases(route,case5,allDistances) < currentDistance){
                             twoOptReverse(route, j+1, k);
                             swap(route, i+1, j, j+1, k);
 
@@ -177,7 +187,7 @@ public class Trip extends Vincenty {
                         }
 
                         //Case 6
-                        else if(cases(route,i,j,k,allDistances,6) < currentDistance){
+                        else if(calcDistanceForCases(route,case6, allDistances) < currentDistance){
                             twoOptReverse(route, i+1,j);
                             swap(route, i+1, j, j+1, k);
 
@@ -185,32 +195,32 @@ public class Trip extends Vincenty {
                         }
 
                         //Case 7
-                        else if(cases(route,i,j,k,allDistances,7) < currentDistance){
+                        else if(calcDistanceForCases(route,case7,allDistances) < currentDistance){
                             swap(route, i+1, j, j+1, k);
 
                             improvement = true;
                         }
 
                         //Case 1
-                        else if (cases(route, i, j, k,allDistances,1) < currentDistance) {
+                        else if (calcDistanceForCases(route,case1, allDistances) < currentDistance) {
                             twoOptReverse(route, i+1, k);
                             improvement = true;
                         }
 
                         //Case 2
-                        else if(cases(route,i,j,k,allDistances,2)< currentDistance){
+                        else if(calcDistanceForCases(route,case2, allDistances)< currentDistance){
                             twoOptReverse(route, i+1, j);
                             improvement = true;
                         }
 
                         //Case 3
-                        else if(cases(route,i,j,k,allDistances,3)< currentDistance){
+                        else if(calcDistanceForCases(route,case3, allDistances)< currentDistance){
                             twoOptReverse(route, j+1, k);
                             improvement = true;
                         }
 
                         //Case 4
-                        else if(cases(route,i,j,k,allDistances,4) < currentDistance){
+                        else if(calcDistanceForCases(route,case4,allDistances) < currentDistance){
                             twoOptReverse(route, i+1,j);
                             twoOptReverse(route, j+1, k);
                             improvement = true;
@@ -224,26 +234,8 @@ public class Trip extends Vincenty {
     /**
      * Returns distances for given indices.
      */
-    int cases(int[] route, int i, int j, int k, int[][] allDistances, int c){
-        switch(c){
-            case 0:
-                return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[j+1]] + allDistances[route[k]][route[k+1]]);
-            case 1:
-                return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[j]] + allDistances[route[i+1]][route[k+1]] );
-            case 2:
-                return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[j+1]] + allDistances[route[k]][route[k+1]]);
-            case 3:
-                return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[k]] + allDistances[route[j+1]][route[k+1]]);
-            case 4:
-                return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[k]] + allDistances[route[j+1]][route[k+1]]);
-            case 5:
-                return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[i+1]] + allDistances[route[j]][route[k+1]]);
-            case 6:
-                return (allDistances[route[i]][route[j+1]] + allDistances[route[k]][route[j]] + allDistances[route[i+1]][route[k+1]]);
-            case 7:
-                return (allDistances[route[i]][route[j+1]] + allDistances[route[k]][route[i+1]] + allDistances[route[j]][route[k+1]]);
-        }
-        return -1;
+    int calcDistanceForCases(int[] route, int[] indices, int[][]allDistances){
+        return (allDistances[route[indices[0]]][route[indices[1]]] + allDistances[route[indices[2]]][route[indices[3]]] + allDistances[route[indices[4]]][route[indices[5]]]);
     }
 
     /**
