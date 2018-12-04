@@ -96,7 +96,7 @@ public class Trip extends Vincenty {
             }
 
             if(this.options.optimization.equals("shortest")){
-                testThreeOpt(route,allDistances);
+                threeOpt(route,allDistances);
             }
 
             currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
@@ -155,7 +155,7 @@ public class Trip extends Vincenty {
     /**
      * Algorithm for 3opt.
      */
-    void testThreeOpt(int[] route, int[][] allDistances){
+    void threeOpt(int[] route, int[][] allDistances){
         boolean improvement = true;
 
         int n = places.size();
@@ -166,11 +166,10 @@ public class Trip extends Vincenty {
                     for (int k = j + 1; k < n; k++) {
 
                         //Case 0
-                        int currentDistance = case0(route, i, j, k, allDistances);
+                        int currentDistance = cases(route, i, j, k, allDistances,0);
 
                         //Case 5
-                        if(case5(route,i,j,k,allDistances) < currentDistance){
-                            currentDistance = case5(route, i, j, k,allDistances);
+                        if(cases(route,i,j,k,allDistances,5) < currentDistance){
                             twoOptReverse(route, j+1, k);
                             swap(route, i+1, j, j+1, k);
 
@@ -178,8 +177,7 @@ public class Trip extends Vincenty {
                         }
 
                         //Case 6
-                        else if(case6(route,i,j,k,allDistances) < currentDistance){
-                            currentDistance = case6(route, i, j, k,allDistances);
+                        else if(cases(route,i,j,k,allDistances,6) < currentDistance){
                             twoOptReverse(route, i+1,j);
                             swap(route, i+1, j, j+1, k);
 
@@ -187,33 +185,32 @@ public class Trip extends Vincenty {
                         }
 
                         //Case 7
-                        else if(case7(route,i,j,k,allDistances) < currentDistance){
-                            currentDistance = case7(route, i, j, k,allDistances);
+                        else if(cases(route,i,j,k,allDistances,7) < currentDistance){
                             swap(route, i+1, j, j+1, k);
 
                             improvement = true;
                         }
 
                         //Case 1
-                        else if (case1(route, i, j, k,allDistances) < currentDistance) {
+                        else if (cases(route, i, j, k,allDistances,1) < currentDistance) {
                             twoOptReverse(route, i+1, k);
                             improvement = true;
                         }
 
                         //Case 2
-                        else if(case2(route,i,j,k,allDistances)< currentDistance){
+                        else if(cases(route,i,j,k,allDistances,2)< currentDistance){
                             twoOptReverse(route, i+1, j);
                             improvement = true;
                         }
 
                         //Case 3
-                        else if(case3(route,i,j,k,allDistances)< currentDistance){
+                        else if(cases(route,i,j,k,allDistances,3)< currentDistance){
                             twoOptReverse(route, j+1, k);
                             improvement = true;
                         }
 
                         //Case 4
-                        else if(case4(route,i,j,k,allDistances) < currentDistance){
+                        else if(cases(route,i,j,k,allDistances,4) < currentDistance){
                             twoOptReverse(route, i+1,j);
                             twoOptReverse(route, j+1, k);
                             improvement = true;
@@ -224,48 +221,29 @@ public class Trip extends Vincenty {
         }
     }
 
-
-
     /**
-     * Base Case for Distance.
+     * Returns distances for given indices.
      */
-    int case0(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[j+1]] + allDistances[route[k]][route[k+1]]);
-    }
-
-    /**
-     * 2-opt Cases.
-     */
-
-    int case1(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[j]] + allDistances[route[i+1]][route[k+1]] );
-    }
-
-    int case2(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[j+1]] + allDistances[route[k]][route[k+1]]);
-    }
-
-    int case3(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[k]] + allDistances[route[j+1]][route[k+1]]);
-    }
-
-    /**
-     * 3-opt Cases.
-     */
-    int case4(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[k]] + allDistances[route[j+1]][route[k+1]]);
-    }
-
-    int case5(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[i+1]] + allDistances[route[j]][route[k+1]]);
-    }
-
-    int case6(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[j+1]] + allDistances[route[k]][route[j]] + allDistances[route[i+1]][route[k+1]]);
-    }
-
-    int case7(int[] route, int i, int j, int k, int[][] allDistances){
-        return (allDistances[route[i]][route[j+1]] + allDistances[route[k]][route[i+1]] + allDistances[route[j]][route[k+1]]);
+    int cases(int[] route, int i, int j, int k, int[][] allDistances, int c){
+        switch(c){
+            case 0:
+                return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[j+1]] + allDistances[route[k]][route[k+1]]);
+            case 1:
+                return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[j]] + allDistances[route[i+1]][route[k+1]] );
+            case 2:
+                return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[j+1]] + allDistances[route[k]][route[k+1]]);
+            case 3:
+                return (allDistances[route[i]][route[i+1]] + allDistances[route[j]][route[k]] + allDistances[route[j+1]][route[k+1]]);
+            case 4:
+                return (allDistances[route[i]][route[j]] + allDistances[route[i+1]][route[k]] + allDistances[route[j+1]][route[k+1]]);
+            case 5:
+                return (allDistances[route[i]][route[k]] + allDistances[route[j+1]][route[i+1]] + allDistances[route[j]][route[k+1]]);
+            case 6:
+                return (allDistances[route[i]][route[j+1]] + allDistances[route[k]][route[j]] + allDistances[route[i+1]][route[k+1]]);
+            case 7:
+                return (allDistances[route[i]][route[j+1]] + allDistances[route[k]][route[i+1]] + allDistances[route[j]][route[k+1]]);
+        }
+        return -1;
     }
 
     /**
