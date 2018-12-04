@@ -113,7 +113,7 @@ class Search extends Component{
                         <div>Choose filters: </div>
                         <Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
                             <DropdownToggle caret>
-                                Continents
+                                Filters
                             </DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem>Item</DropdownItem>
