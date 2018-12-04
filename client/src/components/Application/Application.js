@@ -45,7 +45,7 @@ class Application extends Component {
             modal1: false,
             modal2: false,
             server: location.hostname,
-            port: '31410',
+            port: location.port,
             trip: {
                 type: "trip",
                 title: "",
