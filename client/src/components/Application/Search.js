@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody, Button, Dropdown, DropdownMenu, DropdownToggle, DropdownItem, Form, Input, Table } from 'reactstrap';
 import { request } from '../../api/api';
-import { get_config } from '../../api/api';
 
 /* Allows the user to search from database.
  * Allows the user to search from database used by the application via inputs.
@@ -53,6 +52,16 @@ class Search extends Component{
         }
         return nameData;
     }
+
+    buildFilterNames() {
+        let filterNames = [];
+        if(this.props.config.filters) {
+            this.props.config.filters.map((key, index) => {
+                filterNames[index] = this.props.config.filters[index].name;
+            });
+        }
+        return filterNames;
+    }
     //
     // buildLatitudeResults() {
     //     let latitudeData = [];
@@ -82,7 +91,6 @@ class Search extends Component{
     updatePlace(event) {
         let index = event.target.value;
         let place = this.state.results.places[index];
-        console.log(place);
 
         let places = this.props.places;
         places.push(place);
@@ -93,6 +101,7 @@ class Search extends Component{
     render() {
         //let idData = this.buildIdResults();
         let nameData = this.buildNameResults();
+        let filterNames = this.buildFilterNames();
         //let latitudeData = this.buildLatitudeResults();
         //let longitudeData = this.buildLongitudeResults();
         //this.buildFilters();
@@ -116,7 +125,9 @@ class Search extends Component{
                                 Filters
                             </DropdownToggle>
                             <DropdownMenu>
-                                <DropdownItem>Item</DropdownItem>
+                                {this.props.config.filters.map((key, index) => (
+                                    <DropdownItem key={'filter_name_' + index}>{filterNames[index]}</DropdownItem>
+                                ))}
                             </DropdownMenu>
                         </Dropdown>
 
