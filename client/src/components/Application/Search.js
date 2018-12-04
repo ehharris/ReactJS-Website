@@ -14,6 +14,7 @@ class Search extends Component{
         this.updatePlace = this.updatePlace.bind(this);
         //this.buildFilters = this.buildFilters.bind(this);
         // this.sendToParent = this.sendToParent.bind(this);
+        this.toggle = this.toggle.bind(this);
         this.state = {
             search: '',
             results: [],
@@ -23,8 +24,13 @@ class Search extends Component{
                 latitude: 0,
                 longitude: 0,
             },
-            filters: []
+            filters: [],
+            dropDownOpen: false
         };
+    }
+
+    toggle() {
+        this.setState({dropDownOpen: !this.state.dropDownOpen});
     }
 
     updateSearch(event) {
@@ -104,15 +110,15 @@ class Search extends Component{
                         <div> Search trip destinations: </div>
                         <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
 
-                        {/*<div>Choose filters: </div>*/}
-                        {/*<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>*/}
-                            {/*<DropdownToggle caret>*/}
-                                {/*Continents*/}
-                            {/*</DropdownToggle>*/}
-                            {/*<DropdownMenu>*/}
-                                {/*<DropdownItem>Item</DropdownItem>*/}
-                            {/*</DropdownMenu>*/}
-                        {/*</Dropdown>*/}
+                        <div>Choose filters: </div>
+                        <Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
+                            <DropdownToggle caret>
+                                Continents
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem>Item</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
 
 
                         <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
