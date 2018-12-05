@@ -57,77 +57,69 @@ public class TestTrip {
     assertEquals(trip.svg(), trip.map);
   }
 
-  @Test
-  public void testNearestNeighbor(){
-    ArrayList<Place> testShort = new ArrayList<>();
+//  @Test
+//  public void testNearestNeighbor(){
+//    ArrayList<Place> testShort = new ArrayList<>();
+//
+//    testShort.add(testFortCollins);
+//    testShort.add(testBoulder);
+//    testShort.add(testDenver);
+//
+//    boolean[] visited = new boolean[this.trip.places.size()];
+//    int[] tripIndices = new int[this.trip.places.size() + 1];
+//    trip.optimization(tripIndices,visited, trip.createAllDistancesArray());
+//
+//    if(trip.places.size() == testShort.size() && trip.places != null){
+//      for(Place place: trip.places){
+//        if(!testShort.contains(place)){
+//          assertFalse(false);
+//        }
+//      }
+//    }
+//
+//  }
 
-    testShort.add(testFortCollins);
-    testShort.add(testBoulder);
-    testShort.add(testDenver);
+//  @Test
+//  public void testTwoOpt(){
+//    ArrayList<Place> testShorter = new ArrayList<>();
+//
+//    testShorter.add(testFortCollins);
+//    testShorter.add(testBoulder);
+//    testShorter.add(testDenver);
+//
+//    int[] tripIndices = new int[this.trip.places.size() + 1];
+//    trip.twoOpt(tripIndices,trip.createAllDistancesArray());
+//
+//    if(trip.places.size() == testShorter.size() && trip.places != null){
+//      for(Place place: trip.places){
+//        if(!testShorter.contains(place)){
+//          assertFalse(false);
+//        }
+//      }
+//    }
+//  }
 
-    boolean[] visited = new boolean[this.trip.places.size()];
-    int[] tripIndices = new int[this.trip.places.size() + 1];
-    trip.optimization(tripIndices,visited, trip.createAllDistancesArray());
+//  @Test
+//  public void testTwoOptReverse(){
+//    int[] route = new int[]{1,2,3};
+//    int[] testRoute = new int[]{2,1,3};
+//
+//    trip.twoOptReverse(route,0,1);
+//    assertArrayEquals(route,testRoute);
+//
+//  }
 
-    if(trip.places.size() == testShort.size() && trip.places != null){
-      for(Place place: trip.places){
-        if(!testShort.contains(place)){
-          assertFalse(false);
-        }
-      }
-    }
+// w
 
-  }
-
-  @Test
-  public void testTwoOpt(){
-    ArrayList<Place> testShorter = new ArrayList<>();
-
-    testShorter.add(testFortCollins);
-    testShorter.add(testBoulder);
-    testShorter.add(testDenver);
-
-    int[] tripIndices = new int[this.trip.places.size() + 1];
-    trip.twoOpt(tripIndices,trip.createAllDistancesArray());
-
-    if(trip.places.size() == testShorter.size() && trip.places != null){
-      for(Place place: trip.places){
-        if(!testShorter.contains(place)){
-          assertFalse(false);
-        }
-      }
-    }
-  }
-
-  @Test
-  public void testTwoOptReverse(){
-    int[] route = new int[]{1,2,3};
-    int[] testRoute = new int[]{2,1,3};
-
-    trip.twoOptReverse(route,0,1);
-    assertArrayEquals(route,testRoute);
-
-  }
-
-  @Test
-  public void testCreateTripIndices(){
-    int[] tripIndices = new int[this.trip.places.size()+1];
-    trip.createTripIndices(tripIndices);
-
-    int[] testTripIndices = new int[]{0,1,2,3};
-    assertArrayEquals(tripIndices,testTripIndices);
-
-  }
-
-  @Test
-  public void testCreateVisited(){
-    boolean[] visited = new boolean[this.trip.places.size()];
-    trip.createVisited(visited);
-
-    boolean[] testVisited = new boolean[]{false,false,false};
-    assertArrayEquals(visited, testVisited);
-
-  }
+//  @Test
+//  public void testCreateVisited(){
+//    boolean[] visited = new boolean[this.trip.places.size()];
+//    trip.createVisited(visited);
+//
+//    boolean[] testVisited = new boolean[]{false,false,false};
+//    assertArrayEquals(visited, testVisited);
+//
+//  }
 
   @Test
   public void testCalcTripDistance(){
@@ -160,5 +152,6 @@ public class TestTrip {
 
   }
 }
+
 
 
