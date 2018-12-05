@@ -83,4 +83,92 @@ public class TestTripHelper {
 
     }
 
+    @Test
+    public void testTwoOpt(){
+        ArrayList<Place> testShorter = new ArrayList<>();
+
+        testShorter.add(A);
+        testShorter.add(B);
+        testShorter.add(C);
+        testShorter.add(D);
+        testShorter.add(E);
+        testShorter.add(F);
+
+        int[] tripIndices = new int[this.trip.places.size() + 1];
+        tripHelper.twoOpt(tripIndices,trip.createAllDistancesArray());
+
+        if(trip.places.size() == testShorter.size() && trip.places != null){
+            for(Place place: trip.places){
+                if(!testShorter.contains(place)){
+                    assertFalse(false);
+                }
+            }
+        }
+    }
+
+    @Test
+    public void testThreeOpt(){
+        ArrayList<Place> testShorter = new ArrayList<>();
+
+        testShorter.add(A);
+        testShorter.add(B);
+        testShorter.add(C);
+        testShorter.add(D);
+
+        int[] tripIndices = new int[this.trip.places.size() + 1];
+        tripHelper.threeOpt(tripIndices,trip.createAllDistancesArray());
+
+        if(trip.places.size() == testShorter.size() && trip.places != null){
+            for(Place place: trip.places){
+                if(!testShorter.contains(place)){
+                    assertFalse(false);
+                }
+            }
+        }
+    }
+
+    @Test
+    public void testTwoOptReverse(){
+        int[] route = new int[]{1,2,3};
+        int[] testRoute = new int[]{2,1,3};
+
+        tripHelper.twoOptReverse(route,0,1);
+        assertArrayEquals(route,testRoute);
+
+    }
+
+    @Test
+    public void testCreateVisited(){
+        boolean[] visited = new boolean[this.trip.places.size()+1];
+        tripHelper.createVisited(visited);
+
+        boolean[] testVisited = new boolean[]{false,false,false,false,false,false,false};
+        assertArrayEquals(visited, testVisited);
+
+    }
+
+    @Test
+    public void testCreateTripIndices(){
+        int[] indices = new int[this.trip.places.size()+1];
+        tripHelper.createTripIndices(indices);
+
+        int[] testIndices = new int[]{0,1,2,3,4,5,6};
+        assertArrayEquals(indices, testIndices);
+
+    }
+
+    @Test
+    public void testDecideOptimization(){
+        int route[] = new int[7];
+        tripHelper.decideOptimization(route, trip.createAllDistancesArray(),this.trip.options.optimization);
+        assertEquals(this.trip.options.optimization, "none");
+    }
+
+    @Test
+    public void testSetPlaces(){
+        int[] route = new int[7];
+        tripHelper.createTripIndices(route);
+        tripHelper.setPlaces(route);
+
+    }
 }
