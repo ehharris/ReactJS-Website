@@ -323,7 +323,7 @@ class Application extends Component {
                     <Modal contentClassName={"modalT"} isOpen={this.state.modal2} toggle={() => {this.toggleMod('2')}}>
                       <ModalHeader toggle={() => {this.toggleMod('2')}}>Search worldwide for a new place!</ModalHeader>
                       <ModalBody>
-                        <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} updatePlaces={this.updatePlaces}/>
+                        <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} config={this.state.config} updatePlaces={this.updatePlaces}/>
                       </ModalBody>
                     </Modal>
 

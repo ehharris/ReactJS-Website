@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody, Button, Dropdown, DropdownMenu, DropdownToggle, DropdownItem, Form, Input, Table } from 'reactstrap';
 import { request } from '../../api/api';
-import { get_config } from '../../api/api';
 
 /* Allows the user to search from database.
  * Allows the user to search from database used by the application via inputs.
@@ -14,6 +13,7 @@ class Search extends Component{
         this.updatePlace = this.updatePlace.bind(this);
         //this.buildFilters = this.buildFilters.bind(this);
         // this.sendToParent = this.sendToParent.bind(this);
+        this.toggle = this.toggle.bind(this);
         this.state = {
             search: '',
             results: [],
@@ -23,8 +23,13 @@ class Search extends Component{
                 latitude: 0,
                 longitude: 0,
             },
-            filters: []
+            filters: [],
+            dropDownOpen: false
         };
+    }
+
+    toggle() {
+        this.setState({dropDownOpen: !this.state.dropDownOpen});
     }
 
     updateSearch(event) {
@@ -46,6 +51,16 @@ class Search extends Component{
             });
         }
         return nameData;
+    }
+
+    buildFilterNames() {
+        let filterNames = [];
+        if(this.props.config.filters) {
+            this.props.config.filters.map((key, index) => {
+                filterNames[index] = this.props.config.filters[index].name;
+            });
+        }
+        return filterNames;
     }
     //
     // buildLatitudeResults() {
@@ -76,7 +91,6 @@ class Search extends Component{
     updatePlace(event) {
         let index = event.target.value;
         let place = this.state.results.places[index];
-        console.log(place);
 
         let places = this.props.places;
         places.push(place);
@@ -87,6 +101,7 @@ class Search extends Component{
     render() {
         //let idData = this.buildIdResults();
         let nameData = this.buildNameResults();
+        let filterNames = this.buildFilterNames();
         //let latitudeData = this.buildLatitudeResults();
         //let longitudeData = this.buildLongitudeResults();
         //this.buildFilters();
@@ -104,15 +119,17 @@ class Search extends Component{
                         <div> Search trip destinations: </div>
                         <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
 
-                        {/*<div>Choose filters: </div>*/}
-                        {/*<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>*/}
-                            {/*<DropdownToggle caret>*/}
-                                {/*Continents*/}
-                            {/*</DropdownToggle>*/}
-                            {/*<DropdownMenu>*/}
-                                {/*<DropdownItem>Item</DropdownItem>*/}
-                            {/*</DropdownMenu>*/}
-                        {/*</Dropdown>*/}
+                        <div>Choose filters: </div>
+                        <Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
+                            <DropdownToggle caret>
+                                Filters
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                {this.props.config.filters.map((key, index) => (
+                                    <DropdownItem key={'filter_name_' + index}>{filterNames[index]}</DropdownItem>
+                                ))}
+                            </DropdownMenu>
+                        </Dropdown>
 
 
                         <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
