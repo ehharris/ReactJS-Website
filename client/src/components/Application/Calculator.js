@@ -66,8 +66,7 @@ class Calculator extends Component{
                 {this.state.distance.distance} {this.state.distance.units}</Label></Fade>
           </Form>
         </CardBody>
-      </Card>
-    )
+      </Card>)
   }
 
 

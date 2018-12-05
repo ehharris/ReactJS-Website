@@ -29,51 +29,55 @@ class Dev extends Component{
     });
   }
 
-  render() {
+  getName(input){
+    let name = "";
+    if(input === avatarAntonio){
+      name = "Antonio Segovia Maldonado";
+    } else if(input === avatarEli){
+      name = "Eli Harris";
+    } else if(input === avatarNick){
+      name = "Nick Kaliher";
+    } else {
+      name = "Tyler Dansby";
+    }
+    return(name)
+  }
+
+  renderManager(){
     return(
-      <Card body className="text-center" outline color="secondary">
-        <CardGroup>
-          <Card outline color="white">
-            <CardImg className={"avatarborder"} src={avatarAntonio}/>
-            <CardBody>
-              <CardTitle className={"headerText"}>Antonio Segovia Maldonado</CardTitle>
-            </CardBody>
-          </Card>
-          <Card outline color="white">
-            <CardImg className={"avatarborder"} src={avatarEli}/>
-            <CardBody>
-              <CardTitle className={"headerText"}>Eli Harris</CardTitle>
-            </CardBody>
-          </Card>
-          <Card outline color="white">
-            <CardImg className={"avatarborder"} src={avatarNick}/>
-            <CardBody>
-              <CardTitle className={"headerText"}>Nick Kaliher</CardTitle>
-            </CardBody>
-          </Card>
-          <Card outline color="white">
-            <CardImg className={"avatarborder"} src={avatarTyler}/>
-            <CardBody>
-              <CardTitle className={"headerText"}>Tyler Dansby</CardTitle>
-            </CardBody>
-          </Card>
-        </CardGroup>
-
-        <hr/>
-
+      <div>
         <div>
           <Col><Button className='btn-outline-dark unit-button' onClick={this.toggle}>Meet the Manager</Button></Col>
         </div>
-
         <Modal contentClassName={"modalT"} isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Manager</ModalHeader>
+         <ModalHeader toggle={this.toggle}>Manager</ModalHeader>
           <ModalBody>
             <img src={avatarDave} className={"avatarborder"} height={480} width={280}/>
           </ModalBody>
           <ModalFooter>Dave Matthews</ModalFooter>
         </Modal>
-      </Card>
+      </div>
+    )
+  }
 
+  render() {
+    let fileArr = [avatarAntonio, avatarEli, avatarNick, avatarTyler];
+    const cardRend = fileArr.map((input) =>
+      <Card outline color="white">
+        <CardImg className={"avatarborder"} src={input}/>
+        <CardBody>
+          <CardTitle className={"headerText"}>{this.getName(input)}</CardTitle>
+        </CardBody>
+      </Card>
+    );
+    return(
+      <Card body className="text-center" outline color="secondary">
+        <CardGroup>
+          {cardRend}
+        </CardGroup>
+        <hr/>
+        {this.renderManager()}
+      </Card>
     )
   }
 }
