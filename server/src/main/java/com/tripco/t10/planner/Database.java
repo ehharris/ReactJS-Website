@@ -69,7 +69,7 @@ public class Database {
      *
      *
      */
-    public String getQuery(){
+    private String getQuery(){
         return "SELECT world_airports.id, "
                 + "world_airports.name, "
                 + "world_airports.latitude, "
