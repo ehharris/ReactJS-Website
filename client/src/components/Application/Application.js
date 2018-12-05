@@ -171,24 +171,68 @@ class Application extends Component {
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
-    renderNav(){
-          let arr0 = ['Map','Itinerary']
-            return(
-              <div>
-                <Nav tabs className="cooltabs">
-                  {arr0.map((value) =>
-                      <NavItem key={value+1}>
-                        <NavLink key={value+2} active={this.state.activeTab1 === value}
-                          className="tabs"
-                          onClick={() => { this.toggleTab('1', value); }}>
-                          {value}
-                        </NavLink>
-                      </NavItem>
-                    )
-                  }
-                </Nav>
-              </div>
-            );
+    renderNavMain(){
+      return(
+        <Nav tabs className="cooltabs">
+          <NavItem>
+            <NavLink active={this.state.activeTab2 === 'Planner'}
+                     className="tabs"
+                     onClick={() => { this.toggleTab('2','Planner'); }}>
+              Trip Planner
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink active={this.state.activeTab2 === 'About'}
+                     className="tabs"
+                     onClick={() => { this.toggleTab('2','About'); }}>
+              Meet the Developers
+            </NavLink>
+          </NavItem>
+        </Nav>
+      )
+    }
+
+    renderNavMapItin(){
+      let arr0 = ['Map','Itinerary']
+      return(
+          <Nav tabs className="cooltabs">
+            {arr0.map((value) =>
+                <NavItem key={value+1}>
+                  <NavLink key={value+2} active={this.state.activeTab1 === value}
+                    className="tabs"
+                    onClick={() => { this.toggleTab('1', value); }}>
+                    {value}
+                  </NavLink>
+                </NavItem>
+              )
+            }
+          </Nav>
+      );
+    }
+
+    renderTabs(){
+      return (
+        <div>
+          <TabContent activeTab={this.state.activeTab1}>
+            <TabPane tabId="Map">
+              <hr/>
+              <Card>
+                <CardBody>
+                  {this.renderMap()}
+                </CardBody>
+              </Card>
+            </TabPane>
+            <TabPane tabId="Itinerary">
+              <hr/>
+              <Card>
+                <CardBody>
+                  {this.renderItinerary()}
+                </CardBody>
+              </Card>
+            </TabPane>
+          </TabContent>
+        </div>
+      )
     }
 
     renderMap(){
@@ -213,31 +257,6 @@ class Application extends Component {
           <Alert color="info">Add at least one place to your trip to get an itinerary.</Alert>
         )
       }
-    }
-
-    renderTabs(){
-        return (
-          <div>
-            <TabContent activeTab={this.state.activeTab1}>
-              <TabPane tabId="Map">
-                <hr/>
-                <Card>
-                  <CardBody>
-                    {this.renderMap()}
-                  </CardBody>
-                </Card>
-              </TabPane>
-              <TabPane tabId="Itinerary">
-                <hr/>
-                <Card>
-                  <CardBody>
-                    {this.renderItinerary()}
-                  </CardBody>
-                </Card>
-              </TabPane>
-            </TabContent>
-          </div>
-        )
     }
 
     renderOptions(){
@@ -272,81 +291,36 @@ class Application extends Component {
     }
 
     render() {
-
-
         if(!this.state.config) { return <div/> }
         return(
             <Container id="Application">
-
               <Info/>
-
               <hr/>
-
-              <Nav tabs className="cooltabs">
-                <NavItem>
-                  <NavLink active={this.state.activeTab2 === 'Planner'}
-                           className="tabs"
-                           onClick={() => { this.toggleTab('2','Planner'); }}>
-                    Trip Planner
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink active={this.state.activeTab2 === 'About'}
-                           className="tabs"
-                           onClick={() => { this.toggleTab('2','About'); }}>
-                    Meet the Developers
-                  </NavLink>
-                </NavItem>
-              </Nav>
-
+              {this.renderNavMain()}
               <hr/>
-
               <TabContent activeTab={this.state.activeTab2}>
-
                 <TabPane tabId="Planner">
                   <Card body outline color="secondary">
-
                     <CardGroup>
                         <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
                         {this.renderAddAndSearch()}
                     </CardGroup>
-
                     <hr/>
-
-                    <Modal contentClassName={"modalT"} isOpen={this.state.modal1} toggle={() => {this.toggleMod('1')}}>
-                      <ModalHeader toggle={() => {this.toggleMod('1')}}>Add a new place to your trip!</ModalHeader>
-                      <ModalBody>
-                        <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}/>
-                      </ModalBody>
-                    </Modal>
-
-                    <Modal contentClassName={"modalT"} isOpen={this.state.modal2} toggle={() => {this.toggleMod('2')}}>
-                      <ModalHeader toggle={() => {this.toggleMod('2')}}>Search worldwide for a new place!</ModalHeader>
-                      <ModalBody>
-                        <Search server={this.state.server} port={this.state.port} places={this.state.trip.places} config={this.state.config} updatePlaces={this.updatePlaces}/>
-                      </ModalBody>
-                    </Modal>
-
-
+                    <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}
+                        toggleMod={this.toggleMod} modal1={this.state.modal1}/>
+                    <Search server={this.state.server} port={this.state.port} places={this.state.trip.places}
+                            config={this.state.config} updatePlaces={this.updatePlaces} toggleMod={this.toggleMod}
+                            modal2={this.state.modal2}/>
 
                     <CardGroup>
                       {this.renderOptions()}
                       <Calculator/>
                     </CardGroup>
-
                     <hr/>
-
                     <Port updateServer={this.updateServer}/>
-
-                    <hr/>
-
                     <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
-
-                    <hr/>
-
-                    {this.renderNav()}
+                    {this.renderNavMapItin()}
                     {this.renderTabs()}
-
                   </Card>
                 </TabPane>
 

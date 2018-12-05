@@ -6,7 +6,6 @@ class File extends Component{
     constructor(props) {
         super(props);
         this.uploadFile = this.uploadFile.bind(this);
-        this.plan = this.plan.bind(this);
         this.save = this.save.bind(this);
         this.state = {
             file: null,
@@ -27,12 +26,6 @@ class File extends Component{
             }.bind(this);
             reader.readAsText(file);
 
-        }
-    }
-
-    plan(){
-        if(this.props.trip.places.length >= 2){
-            this.props.updateBasedOnResponse(this.props.trip);
         }
     }
 
@@ -61,11 +54,9 @@ class File extends Component{
                     </ButtonToolbar>
                     &nbsp;
                     <ButtonToolbar>
-                        <ButtonGroup>
-                            <Button onClick={this.save} type="button" className='btn-outline-dark unit-button'>
-                                Save
-                            </Button>
-                        </ButtonGroup>
+                        <Button onClick={this.save} type="button" className='btn-outline-dark unit-button'>
+                            Save Trip
+                        </Button>
                     </ButtonToolbar>
                 </CardBody>
             </Card>

@@ -5,10 +5,10 @@ export default class Info extends Component {
 
   constructor(props) {
     super(props);
+    this.onDismiss = this.onDismiss.bind(this);
     this.state = {
       visible: true,
     }
-    this.onDismiss = this.onDismiss.bind(this);
   }
 
   onDismiss() {

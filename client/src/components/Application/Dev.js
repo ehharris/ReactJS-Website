@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react'
-import { CardImg, Card, CardGroup, CardBody, CardTitle, CardSubtitle, CardText} from 'reactstrap'
+import { CardImg, Card, CardGroup, CardBody, CardTitle, ModalFooter, CardText} from 'reactstrap'
 import { Modal, Button, ButtonGroup, ModalBody, ModalHeader, Col } from 'reactstrap'
 import avatarAntonio from './Resource/t10-Antonio.jpg';
 import avatarEli from './Resource/t10-Eli.jpg';
@@ -59,15 +59,18 @@ class Dev extends Component{
           </Card>
         </CardGroup>
 
+        <hr/>
+
         <div>
           <Col><Button className='btn-outline-dark unit-button' onClick={this.toggle}>Meet the Manager</Button></Col>
         </div>
 
         <Modal contentClassName={"modalT"} isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Dave Matthews</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Manager</ModalHeader>
           <ModalBody>
-            <img src={avatarDave} className={"avatarborder"} height={550} width={350}/>
+            <img src={avatarDave} className={"avatarborder"} height={480} width={280}/>
           </ModalBody>
+          <ModalFooter>Dave Matthews</ModalFooter>
         </Modal>
       </Card>
 

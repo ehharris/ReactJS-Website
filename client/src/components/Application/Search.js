@@ -1,5 +1,18 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody, Button, Dropdown, DropdownMenu, DropdownToggle, DropdownItem, Form, Input, Table } from 'reactstrap';
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Button,
+  Dropdown,
+  DropdownMenu,
+  DropdownToggle,
+  DropdownItem,
+  Form,
+  Input,
+  Table,
+  ModalHeader, ModalBody, Modal
+} from 'reactstrap';
 import { request } from '../../api/api';
 
 /* Allows the user to search from database.
@@ -11,8 +24,6 @@ class Search extends Component{
         this.updateSearch = this.updateSearch.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updatePlace = this.updatePlace.bind(this);
-        //this.buildFilters = this.buildFilters.bind(this);
-        // this.sendToParent = this.sendToParent.bind(this);
         this.toggle = this.toggle.bind(this);
         this.state = {
             search: '',
@@ -62,30 +73,6 @@ class Search extends Component{
         }
         return filterNames;
     }
-    //
-    // buildLatitudeResults() {
-    //     let latitudeData = [];
-    //     if(this.state.results.places) {
-    //         this.state.results.places.map((key, index, array) => {
-    //             if(index > 0) {
-    //                 latitudeData[index] = this.state.results.places[index].latitude;
-    //             }
-    //         });
-    //     }
-    //     return latitudeData;
-    // }
-    //
-    // buildLongitudeResults() {
-    //     let longitudeData = [];
-    //     if(this.state.results.places) {
-    //         this.state.results.places.map((key, index, array) => {
-    //             if(index > 0) {
-    //                 longitudeData[index] = this.state.results.places[index].longitude;
-    //             }
-    //         });
-    //     }
-    //     return longitudeData;
-    // }
 
     //add method that sends to parent
     updatePlace(event) {
@@ -95,87 +82,65 @@ class Search extends Component{
         let places = this.props.places;
         places.push(place);
         this.props.updatePlaces(places);
+    }
 
+    renderCard(){
+      let filterNames = this.buildFilterNames();
+      return(
+        <Card>
+          <CardBody>
+            <Form onSubmit={this.handleSubmit}>
+              <div> Search trip destinations: </div>
+              <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
+              <div>Choose filters: </div>
+              <Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
+                <DropdownToggle caret>Filters</DropdownToggle>
+                <DropdownMenu>
+                  {this.props.config.filters.map((key, index) => (
+                    <DropdownItem key={'filter_name_' + index}>{filterNames[index]}</DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+              <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
+            </Form>
+            {this.renderTable()}
+          </CardBody>
+        </Card>
+      )
+    }
+
+    renderTable(){
+      let nameData = this.buildNameResults();
+      if(this.state.results.places){
+        return(
+          <Table>
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Add</th>
+            </tr>
+            </thead>
+            <tbody>
+            {this.state.results.places.map((key,index)=> (
+              <tr>
+                <td key={nameData[index]}>{nameData[index]}</td>
+                <td><Button value={index} type="button" className="btn-outline-dark unit-button" onClick={this.updatePlace}>+</Button></td>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+        )
+      }
     }
 
     render() {
-        //let idData = this.buildIdResults();
-        let nameData = this.buildNameResults();
-        let filterNames = this.buildFilterNames();
-        //let latitudeData = this.buildLatitudeResults();
-        //let longitudeData = this.buildLongitudeResults();
-        //this.buildFilters();
-        //console.log(this.state.filters);
-
-        let resultsNotEmpty = false;
-        if(this.state.results.places) {
-            resultsNotEmpty = true;
-        }
-
         return(
-            <Card>
-                <CardBody>
-                    <Form onSubmit={this.handleSubmit}>
-                        <div> Search trip destinations: </div>
-                        <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
-
-                        <div>Choose filters: </div>
-                        <Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
-                            <DropdownToggle caret>
-                                Filters
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                {this.props.config.filters.map((key, index) => (
-                                    <DropdownItem key={'filter_name_' + index}>{filterNames[index]}</DropdownItem>
-                                ))}
-                            </DropdownMenu>
-                        </Dropdown>
-
-
-                        <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
-                    </Form>
-
-                    <div>
-                        {resultsNotEmpty ? (
-                            <Table>
-                                <thead>
-                                <tr>
-                                    {/*<th>Id</th>*/}
-                                    <th>Name</th>
-                                    {/*<th>Latitude</th>*/}
-                                    {/*<th>Longitude</th>*/}
-                                    <th>Add</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {this.state.results.places.map((key,index,array)=> (
-                                    <tr>
-                                        {/*<td key={idData[index]}>*/}
-                                            {/*{idData[index]}*/}
-                                        {/*</td>*/}
-                                        <td key={nameData[index]}>
-                                            {nameData[index]}
-                                        </td>
-                                        {/*<td key={latitudeData[index]}>*/}
-                                            {/*{latitudeData[index]}*/}
-                                        {/*</td>*/}
-                                        {/*<td key={longitudeData[index]}>*/}
-                                            {/*{longitudeData[index]}*/}
-                                        {/*</td>*/}
-                                        <td>
-                                            <Button value={index} type="button" className="btn-outline-dark unit-button" onClick={this.updatePlace}>+</Button>
-                                        </td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </Table>
-                        ) : (
-                            <div></div>
-                        )}
-
-                    </div>
-                </CardBody>
-            </Card>
+          <Modal contentClassName={"modalT"} isOpen={this.props.modal2} toggle={() => {this.props.toggleMod('2')}}>
+            <ModalHeader toggle={() => {this.props.toggleMod('2')}}>Search worldwide for a new place!</ModalHeader>
+            <ModalBody>
+              {this.renderCard()}
+            </ModalBody>
+          </Modal>
         )
     }
 }
