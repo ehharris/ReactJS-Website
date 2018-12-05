@@ -55,6 +55,30 @@ public class Trip extends Vincenty {
     }
 
     /**
+     * Calculates Nearest Neighbor.
+     */
+    void nearestNeighbor(int[] route, boolean[] visited, int[][] allDistances){
+        int routeCounter = 1;
+        while(routeCounter < places.size() ) {
+
+            int bestNextDistance = 2000000000;
+            int tempIndex = 0;
+
+            for(int i = routeCounter ; i < places.size(); i++) {
+                if (!visited[(route[i])] && allDistances[route[routeCounter-1]][route[i]] < bestNextDistance) {
+                    bestNextDistance = allDistances[route[routeCounter-1]][route[i]];
+                    tempIndex = i;
+                }
+
+            }
+
+            visited[route[tempIndex]] = true;
+            routeSwap(route, tempIndex,routeCounter);
+            routeCounter++;
+
+        }
+    }
+    /**
      * Method for all optimizations.
      */
     void optimization(int[] route, boolean[] visited, int[][] allDistances){
@@ -71,33 +95,9 @@ public class Trip extends Vincenty {
 
             visited[startCity] = true;
 
-            int routeCounter = 1;
-            while(routeCounter < places.size() ) {
+            nearestNeighbor(route,visited,allDistances);
 
-                int bestNextDistance = 2000000000;
-                int tempIndex = 0;
-
-                for(int i = routeCounter ; i < places.size(); i++) {
-                    if (!visited[(route[i])] && allDistances[route[routeCounter-1]][route[i]] < bestNextDistance) {
-                        bestNextDistance = allDistances[route[routeCounter-1]][route[i]];
-                        tempIndex = i;
-                    }
-
-                }
-
-                visited[route[tempIndex]] = true;
-                routeSwap(route, tempIndex,routeCounter);
-                routeCounter++;
-
-            }
-
-            if(this.options.optimization.equals("shorter")){
-                twoOpt(route,allDistances);
-            }
-
-            if(this.options.optimization.equals("shortest")){
-                threeOpt(route,allDistances);
-            }
+            decideOptimization(route, allDistances, this.options.optimization);
 
             currentTotalDistance[startCity] = calcTripDistance(route,allDistances);
 
@@ -105,16 +105,34 @@ public class Trip extends Vincenty {
                 currentBestRoute = route.clone();
                 overallBestRouteDistance = currentTotalDistance[startCity];
             }
-
         }
 
+        setPlaces(currentBestRoute);
+    }
+
+    /**
+     * Decide which optimization to run.
+     */
+    void decideOptimization(int[] route, int[][] allDistances, String optimization){
+        if(optimization.equals("shorter")){
+            twoOpt(route,allDistances);
+        }
+
+        if(optimization.equals("shortest")){
+            threeOpt(route,allDistances);
+        }
+    }
+
+    /**
+     * Sets the places array given a int array of indices.
+     */
+    void setPlaces(int[] currentBestRoute){
         ArrayList<Place> optimalNearestNeighbor = new ArrayList<>();
         for(int i = 0; i < places.size(); i++){
             optimalNearestNeighbor.add(places.get(currentBestRoute[i]));
         }
         Collections.copy(this.places, optimalNearestNeighbor);
     }
-
     /**
      * Helper method for 2opt and 3opt.
      */
