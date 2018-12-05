@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Input, Button, CardBody, Fade, Card, Form, Label} from 'reactstrap';
+import {Input, Button, CardBody, Fade, Card, Form, Label, ModalHeader, ModalBody, Modal, TabPane} from 'reactstrap';
 
 
 class Add extends Component{
@@ -56,6 +56,18 @@ class Add extends Component{
   }, 1500);
   }
 
+  renderForm(){
+    return(
+      <Form inline>
+        <Button onClick={this.createPlace} type="button"
+                className='btn-outline-dark unit-button'> Add </Button>
+        <Fade in={this.state.message}>
+          <Label className="labelpop">{this.state.place.name} was successfully added to your trip!
+          </Label>
+        </Fade>
+      </Form>
+    )
+  }
 
   render() {
     const forms = this.state.input.map((element) =>
@@ -63,25 +75,24 @@ class Add extends Component{
         <Label key={element+2} className="labelpre">
           {element.charAt(0).toUpperCase() + element.slice(1)}</Label>
         <Input className="inputborderadd" key={element+3}
-          value={this.state.place[element]}
-          onChange={(event) => this.update(element, event.target.value)}/>
-      </Form>
-  );
+               value={this.state.place[element]}
+               onChange={(event) => this.update(element, event.target.value)}/>
+      </Form>);
     return(
-      <Card>
-        <CardBody>
-          {forms}
-          <Form inline>
-            <Button onClick={this.createPlace} type="button"
-              className='btn-outline-dark unit-button'> Add </Button>
-            <Fade in={this.state.message}>
-              <Label className="labelpop">{this.state.place.name} was successfully added to your trip!
-              </Label>
-            </Fade>
-          </Form>
-      </CardBody>
-    </Card>
-  )
+      <Modal contentClassName={"modalT"} isOpen={this.props.modal1} toggle={() => {this.props.toggleMod('1')}}>
+        <div className="my-modal-window">
+          <ModalHeader toggle={() => {this.props.toggleMod('1')}}>Add a new place to your trip!</ModalHeader>
+          <ModalBody>
+            <Card>
+              <CardBody>
+                {forms}
+                {this.renderForm()}
+              </CardBody>
+            </Card>
+          </ModalBody>
+        </div>
+      </Modal>
+    )
   }
 }
 

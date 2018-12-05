@@ -39,11 +39,11 @@ class Port extends Component {
                     <Form inline xs="6" sm="6" md="6" lg="6">
                         <Input onChange={this.changeServer} name="Change Server" type="text" value={this.state.server} className="server"/>
                         <Label className="labelport">:</Label>
-                        <Input onChange={this.changePort} name="Change Port" type="text" value={this.state.port} className="port"/>
+                        <Input value={this.state.port} type="text" onChange={this.changePort} name="Change Port" className="port"/>
                     </Form>
-                    <Button onClick={this.update} type="button" className='btn-outline-dark unit-button'>
-                        Change Server and Port
-                    </Button>
+                  <Button onClick={this.update} type="button" className='btn-outline-dark unit-button'>
+                    Change Server and Port
+                  </Button>
                 </CardBody>
             </Card>
         )

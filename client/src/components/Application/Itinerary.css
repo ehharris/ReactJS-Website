@@ -46,10 +46,10 @@ thead, tbody tr {
 }
 
 .labelpop {
-    background: lightgreen;
+    background: #D1ECF1;
     border-radius: 5px;
-    text-shadow: 1px 1px limegreen;
-    border: 1px solid limegreen;
+    text-shadow: 1px 1px lightskyblue;
+    border: 1px solid lightskyblue;
     height: 42px;
     max-width: max-content;
     text-align-all: center;

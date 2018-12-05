@@ -11,6 +11,7 @@ import { ButtonGroup, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 class Options extends Component{
     constructor(props) {
         super(props);
+        this.renderUnits = this.renderUnits.bind(this);
         this.toggle = this.toggle.bind(this);
         this.state = { collapse: false };
     }
