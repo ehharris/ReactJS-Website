@@ -11,7 +11,7 @@ class Port extends Component {
         super(props);
         this.state = {
             server: location.hostname,
-            port: '31410'
+            port: location.port
         };
         this.update = this.update.bind(this);
         this.changeServer = this.changeServer.bind(this);
