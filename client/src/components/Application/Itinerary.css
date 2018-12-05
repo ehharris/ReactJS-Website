@@ -17,6 +17,63 @@ thead, tbody tr {
     table-layout:fixed;
 }
 
+/*Responsive table css help from https://css-tricks.com/responsive-data-tables/*/
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    /* Force table to not be like tables anymore */
+    Table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    .labelport {
+        display: none;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #343A40; }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        max-width: 70%;
+        font-size: 9pt;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        white-space: nowrap;
+    }
+
+    tbody {
+        height: 300px;
+    }
+
+    /*
+    Label the data
+    */
+    td:nth-of-type(1):before { content: "#"; padding-left: 102%; font-size: 7pt; }
+    td:nth-of-type(2):before { content: "Place"; padding-left: 102%; font-size: 7pt; }
+    td:nth-of-type(3):before { content: "Leg Distance"; padding-left: 102%; font-size: 7pt; }
+    td:nth-of-type(4):before { content: "Total Distance"; padding-left: 102%; font-size: 7pt; }
+    td:nth-of-type(5):before { content: "Latitude"; padding-left: 102%; font-size: 7pt; }
+    td:nth-of-type(6):before { content: "Longitude"; padding-left: 102%; font-size: 7pt; }
+    td:nth-of-type(7):before { content: "Set Start"; padding-left: 102%; font-size: 7pt; }
+    td:nth-of-type(8):before { content: "Remove"; padding-left: 102%; font-size: 7pt; }
+
+}
+
 .server {
     border: 1px solid #343A40;
     min-width: 49%;
