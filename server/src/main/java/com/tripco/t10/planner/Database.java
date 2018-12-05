@@ -33,7 +33,8 @@ public class Database {
     /** Constructor used for test cases.
      *
      */
-    public Database(int version, String type, String match, Filters[] filters, int limit, int found, ArrayList<Place> places) {
+    public Database(int version, String type, String match,
+                    Filters[] filters, int limit, int found, ArrayList<Place> places) {
         this.version = version;
         this.type = type;
         this.match = match;
@@ -64,51 +65,111 @@ public class Database {
         }
     }
 
+    /** Returns starting query for buildQuery().
+     *
+     *
+     */
+    private String getQuery() {
+        return "SELECT world_airports.id, "
+                + "world_airports.name, "
+                + "world_airports.latitude, "
+                + "world_airports.longitude, "
+                +  "world_airports.municipality, "
+                + "region.name, "
+                + "country.name, "
+                + "continents.name, "
+                + "world_airports.type "
+                + "FROM continents "
+                + "INNER JOIN country ON continents.id = country.continent "
+                + "INNER JOIN region ON country.id = region.iso_country "
+                + "INNER JOIN world_airports ON region.id = world_airports.iso_region "
+                + "WHERE (country.name LIKE '%"
+                + this.match
+                + "%' OR region.name LIKE '%"
+                + this.match
+                + "%' OR world_airports.name LIKE '%"
+                + this.match
+                + "%'  OR world_airports.municipality LIKE '%"
+                + this.match
+                + "%') ";
+    }
+
+    /** Function to search through filters.
+     *
+     * @param query initial query.
+     * @return fully formed query.
+     */
+    private String filterSearch(String query) {
+        query += "AND ( ";
+
+        for (int i = 0; i < this.filters.length; i++) {
+            query = filterSearchHelper(query, i);
+        }
+
+        query += " ) ";
+        return query;
+    }
+
+    /** Called by filterSearch to reduce complexity.
+     *
+     * @param query string.
+     * @param index of filter being searched.
+     * @return more complete query.
+     */
+    private String filterSearchHelper(String query, int index) {
+
+        for (int j = 0; j < this.filters[index].values.length; j++) {
+            String filterName = this.filters[index].name;
+            query = testFilter(query, filterName, index, j);
+            if (j != (this.filters[index].values.length - 1)
+                    || (j == (this.filters[index].values.length - 1)
+                    && index != (this.filters.length - 1))) {
+                query += "OR ";
+            }
+        }
+
+        return query;
+    }
+
+    /** Tests what kind of filter is produced in filterSearchHelper.
+     *
+     * @param query string.
+     * @param filterName filter being tested.
+     * @param index of filter being searched.
+     * @param index2 second index of filter searched.
+     * @return more complete query.
+     */
+    private String testFilter(String query, String filterName, int index, int index2) {
+        if (filterName.equals("world airport")) {
+            query += "world_airports.name IN ('"
+                    + this.filters[index].values[index2] + "') ";
+        }
+        if (filterName.equals("type") || filterName.equals("municipality")) {
+            query += "world_airports." + filterName
+                    + " IN ('" + this.filters[index].values[index2] + "') ";
+        }
+        else if (filterName.equals("country") || filterName.equals("region")
+                || filterName.equals("continents")) {
+            query += filterName + ".name IN ('" + this.filters[index].values[index2] + "') ";
+        }
+
+        return query;
+    }
+
     /** Builds the query for use in searchQuery().
+     *  Uses filterSearch -> filterSearchHelper -> testFilter.
      *
      */
     public String buildQuery() {
 
-        String query = "SELECT world_airports.id, world_airports.name, world_airports.latitude, world_airports.longitude, world_airports.municipality, region.name, country.name, continents.name, world_airports.type " +
-                "FROM continents " +
-                "INNER JOIN country ON continents.id = country.continent " +
-                "INNER JOIN region ON country.id = region.iso_country " +
-                "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
-                "WHERE (country.name LIKE '%" + this.match + "%' OR region.name LIKE '%" + this.match + "%' OR world_airports.name LIKE '%" + this.match + "%'  OR world_airports.municipality LIKE '%" + this.match + "%') ";
+        String query = getQuery();
 
         if(this.filters != null ) {
             if (this.filters.length > 0) {
-                query += "AND ( ";
-
-                for (int i = 0; i < this.filters.length; i++) {
-                    for (int j = 0; j < this.filters[i].values.length; j++) {
-                        String filterName = this.filters[i].name;
-
-                        if (filterName.equals("world airport")) {
-                            query += "world_airports.name IN ('" + this.filters[i].values[j] + "') ";
-                        }
-
-                        if (filterName.equals("type")) {
-                            query += "world_airports.type IN ('" + this.filters[i].values[j] + "') ";
-                        }
-
-                        else if (filterName.equals("municipality")) {
-                            query += "world_airports.municipality IN ('" + this.filters[i].values[j] + "') ";
-                        }
-
-                        else if (filterName.equals("country") || filterName.equals("region") || filterName.equals("continents")) {
-                            query += filterName + ".name IN ('" + this.filters[i].values[j] + "') ";
-                        }
-
-                        if (j != (this.filters[i].values.length - 1) || (j == (this.filters[i].values.length - 1) && i != (this.filters.length - 1))) {
-                            query += "OR ";
-                        }
-                    }
-                }
-
-                query += " ) ";
+                query = filterSearch(query);
             }
         }
+
         return query;
     }
 
@@ -129,7 +190,9 @@ public class Database {
      */
     public String addSortToQuery() {
         return "ORDER BY world_airports.name ASC ";
-        //return "ORDER BY continents.name, country.name, region.name, world_airports.municipality, world_airports.name, world_airports.type ASC ";
+        //return "ORDER BY continents.name,
+        // + country.name, region.name, world_airports.municipality,
+        // + world_airports.name, world_airports.type ASC ";
     }
 
     /** Finds places from database depending on match value.
@@ -141,10 +204,8 @@ public class Database {
         String myUrl = setMyUrl();
         String user = "cs314-db";
         String pass = "eiK5liet1uej";
-
         String query = buildQuery() + addSortToQuery() + addLimitToQuery();
         String allQueries = buildQuery();
-        //System.out.println(query);
         try {
             // create mysql database connection
             Class.forName(myDriver);
@@ -157,10 +218,10 @@ public class Database {
             ResultSet allRsQuery = allStQuery.executeQuery(allQueries);
 
             while (rsQuery.next()) {
-                this.places.add(new Place(rsQuery.getString("id"), rsQuery.getString("name"), rsQuery.getDouble("latitude"), rsQuery.getDouble("longitude")));
+                this.places.add(new Place(rsQuery.getString("id"), rsQuery.getString("name"),
+                        rsQuery.getDouble("latitude"), rsQuery.getDouble("longitude")));
             }
             stQuery.close();
-
             while(allRsQuery.next()) {
                 this.found += 1;
             }
