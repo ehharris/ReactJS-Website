@@ -200,7 +200,6 @@ public class Database {
      */
     public void searchQuery() {
         // db configuration information
-        String myDriver = "com.mysql.jdbc.Driver";
         String myUrl = setMyUrl();
         String user = "cs314-db";
         String pass = "eiK5liet1uej";
@@ -208,7 +207,7 @@ public class Database {
         String allQueries = buildQuery();
         try {
             // create mysql database connection
-            Class.forName(myDriver);
+            Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(myUrl, user, pass);
             // create the java statement
             Statement stQuery = conn.createStatement();
@@ -216,7 +215,6 @@ public class Database {
             // execute the query, and get a java resultset
             ResultSet rsQuery = stQuery.executeQuery(query);
             ResultSet allRsQuery = allStQuery.executeQuery(allQueries);
-
             while (rsQuery.next()) {
                 this.places.add(new Place(rsQuery.getString("id"), rsQuery.getString("name"),
                         rsQuery.getDouble("latitude"), rsQuery.getDouble("longitude")));
