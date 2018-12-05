@@ -55,6 +55,30 @@ public class Trip extends Vincenty {
     }
 
     /**
+     * Calculates Nearest Neighbor.
+     */
+    void nearestNeighbor(int[] route, boolean[] visited, int[][] allDistances){
+        int routeCounter = 1;
+        while(routeCounter < places.size() ) {
+
+            int bestNextDistance = 2000000000;
+            int tempIndex = 0;
+
+            for(int i = routeCounter ; i < places.size(); i++) {
+                if (!visited[(route[i])] && allDistances[route[routeCounter-1]][route[i]] < bestNextDistance) {
+                    bestNextDistance = allDistances[route[routeCounter-1]][route[i]];
+                    tempIndex = i;
+                }
+
+            }
+
+            visited[route[tempIndex]] = true;
+            routeSwap(route, tempIndex,routeCounter);
+            routeCounter++;
+
+        }
+    }
+    /**
      * Method for all optimizations.
      */
     void optimization(int[] route, boolean[] visited, int[][] allDistances){
@@ -71,25 +95,7 @@ public class Trip extends Vincenty {
 
             visited[startCity] = true;
 
-            int routeCounter = 1;
-            while(routeCounter < places.size() ) {
-
-                int bestNextDistance = 2000000000;
-                int tempIndex = 0;
-
-                for(int i = routeCounter ; i < places.size(); i++) {
-                    if (!visited[(route[i])] && allDistances[route[routeCounter-1]][route[i]] < bestNextDistance) {
-                        bestNextDistance = allDistances[route[routeCounter-1]][route[i]];
-                        tempIndex = i;
-                    }
-
-                }
-
-                visited[route[tempIndex]] = true;
-                routeSwap(route, tempIndex,routeCounter);
-                routeCounter++;
-
-            }
+            nearestNeighbor(route,visited,allDistances);
 
             if(this.options.optimization.equals("shorter")){
                 twoOpt(route,allDistances);
