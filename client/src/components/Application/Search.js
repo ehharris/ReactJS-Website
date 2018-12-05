@@ -133,10 +133,16 @@ class Search extends Component{
       }
     }
 
+    renderModHead(){
+      return(
+        <ModalHeader toggle={() => {this.props.toggleMod('2')}}>Search worldwide for a new place!</ModalHeader>
+      )
+    }
+
     render() {
         return(
-          <Modal contentClassName={"modalT"} isOpen={this.props.modal2} toggle={() => {this.props.toggleMod('2')}}>
-            <ModalHeader toggle={() => {this.props.toggleMod('2')}}>Search worldwide for a new place!</ModalHeader>
+          <Modal toggle={() => {this.props.toggleMod('2')}} isOpen={this.props.modal2} contentClassName={"modalT"}>
+            {this.renderModHead()}
             <ModalBody>
               {this.renderCard()}
             </ModalBody>
