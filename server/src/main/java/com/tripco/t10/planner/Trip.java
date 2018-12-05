@@ -66,7 +66,7 @@ public class Trip extends Vincenty {
             int bestNextDistance = 2000000000;
             int tempIndex = 0;
 
-            for(int i = routeCounter ; i < route.length-1; i++) {
+            for(int i = routeCounter ; i < route.length - 1; i++) {
                 if (!visited[(route[i])] && allDistances[route[routeCounter-1]][route[i]] < bestNextDistance) {
                     bestNextDistance = allDistances[route[routeCounter-1]][route[i]];
                     tempIndex = i;

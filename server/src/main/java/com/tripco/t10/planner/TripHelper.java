@@ -11,10 +11,8 @@ public class TripHelper extends Trip {
     Option options;
 
     public TripHelper(int[] route, boolean[] visited, int[][] allDistances,ArrayList<Place> places ,Option options){
-        this.route = route;
-        this.visited = visited;
-        this.allDistances = allDistances;
-        this.places = places;
+        this.route = route; this.visited = visited;
+        this.allDistances = allDistances; this.places = places;
         this.options = options;
 
     }
@@ -183,7 +181,7 @@ public class TripHelper extends Trip {
      * Creates an boolean visited array.
      */
     boolean[] createVisited(boolean[] visited) {
-        for(int i = 0; i < places.size();i++) {
+        for(int i = 0; i < route.length-1;i++) {
             visited[i] = false;
         }
         return visited;
@@ -193,7 +191,7 @@ public class TripHelper extends Trip {
      * Creates an default trip based on places.
      */
     int[] createTripIndices(int[] tripIndices) {
-        for (int i = 0; i < places.size() + 1; i++) {
+        for (int i = 0; i < route.length-1; i++) {
             tripIndices[i] = i;
         }
         return tripIndices;
@@ -207,7 +205,7 @@ public class TripHelper extends Trip {
         for(int i = 0; i < currentBestRoute.length -1; i++){
             optimalNearestNeighbor.add(places.get(currentBestRoute[i]));
         }
-        Collections.copy(this.places, optimalNearestNeighbor);
+        Collections.copy(places, optimalNearestNeighbor);
     }
 
 }
