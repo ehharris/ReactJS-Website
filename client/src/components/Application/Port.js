@@ -36,13 +36,14 @@ class Port extends Component {
         return(
             <Card>
                 <CardBody>
+                    <p>Choose your desired server configuration.</p>
                     <Form inline xs="6" sm="6" md="6" lg="6">
                         <Input onChange={this.changeServer} name="Change Server" type="text" value={this.state.server} className="server"/>
                         <Label className="labelport">:</Label>
                         <Input value={this.state.port} type="text" onChange={this.changePort} name="Change Port" className="port"/>
                     </Form>
                   <Button onClick={this.update} type="button" className='btn-outline-dark unit-button'>
-                    Change Server and Port
+                    Change Server
                   </Button>
                 </CardBody>
             </Card>

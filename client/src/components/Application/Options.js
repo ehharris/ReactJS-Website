@@ -61,9 +61,7 @@ class Options extends Component{
             <div>
                 <p>Select the options you wish to use.</p>
                 <p>Units</p>
-                  <ButtonGroup>
-                    {this.renderUnits()}
-                  </ButtonGroup>
+                {this.renderUnits()}
                 <p>{"\n"}</p>
                   <Collapse isOpen={this.state.collapse}>
                     {this.renderDefined()}

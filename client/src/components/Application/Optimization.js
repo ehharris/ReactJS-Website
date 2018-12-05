@@ -33,9 +33,7 @@ class Optimization extends Component{
     return(
         <div>
           <p>Optimization</p>
-          <ButtonGroup>
-            {optimizations}
-          </ButtonGroup>
+          {optimizations}
         </div>
     )
   }

@@ -54,7 +54,7 @@ class Navigation extends Component {
   collapsable(){
     let toggler = this.getToggler();
     const navItems = [
-      this.renderNavItem("", false, 0, "TripCo", "TripCo" )
+      this.renderNavItem("", false, 0, "Error 404: Team Name Not Found", "Error 404: Team Name Not Found" )
     ]
     return(
       <div>
