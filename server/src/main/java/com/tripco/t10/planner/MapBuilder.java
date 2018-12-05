@@ -106,7 +106,6 @@ public class MapBuilder {
         }
         //One place
         else if(this.size == 1){
-            System.out.println(this.trip.places.get(0).name);
             double latitude = conLat(this.trip.places.get(0).latitude);
             double longitude = conLong(this.trip.places.get(0).longitude);
             addCircle(latitude, longitude, 0);

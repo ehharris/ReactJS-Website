@@ -1,19 +1,6 @@
 import React, {Component} from 'react';
-import {
-  Label,
-  CardGroup,
-  Container,
-  Alert,
-  Card,
-  CardBody,
-  Nav,
-  NavItem,
-  NavLink,
-  TabPane,
-  TabContent,
-  ModalHeader,
-  ModalBody, Modal, Button
-} from 'reactstrap';
+import {Label, CardGroup, Container, Alert, Card, CardBody, Nav, NavItem, NavLink,
+  TabPane, TabContent, ModalHeader, ModalBody, Modal, Button} from 'reactstrap';
 import Options from './Options';
 import Map from './Map.jsx';
 import Port from './Port';
@@ -27,10 +14,8 @@ import Dev from './Dev';
 import Info from './Info';
 import Plan from './Plan';
 
-
 import { request } from '../../api/api';
 import { get_config } from '../../api/api';
-import avatarDave from "./Resource/Dave-Matthews.jpg";
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -39,7 +24,7 @@ class Application extends Component {
     constructor(props){
         super(props);
         this.state = {config: null,
-            activeTab1: 'Map', activeTab2: 'Planner',
+            activeTab1: 'Map', activeTab2: 'Trip Planner',
             modal1: false, modal2: false,
             server: location.hostname, port: location.port,
             trip: {
@@ -53,7 +38,6 @@ class Application extends Component {
                 map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
             }
         };
-        this.updateTrip = this.updateTrip.bind(this);
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
         this.updateServer = this.updateServer.bind(this);
@@ -110,12 +94,6 @@ class Application extends Component {
       }
     }
 
-    updateTrip(field, value){
-        let trip = this.state.trip;
-        trip[field] = value;
-        this.setState(trip);
-    }
-
     updateBasedOnResponse(value) {
         request(value, "plan", this.state.port, this.state.server)
             .then((resData) => this.setState({trip: resData}));
@@ -167,24 +145,21 @@ class Application extends Component {
     }
 
     renderNavMain(){
+      let arr0 = ['Trip Planner','Meet the Developers']
       return(
         <Nav tabs className="cooltabs">
-          <NavItem>
-            <NavLink active={this.state.activeTab2 === 'Planner'}
-                     className="tabs"
-                     onClick={() => { this.toggleTab('2','Planner'); }}>
-              Trip Planner
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink active={this.state.activeTab2 === 'About'}
-                     className="tabs"
-                     onClick={() => { this.toggleTab('2','About'); }}>
-              Meet the Developers
-            </NavLink>
-          </NavItem>
+          {arr0.map((value) =>
+            <NavItem key={value+1}>
+              <NavLink key={value+2} active={this.state.activeTab2 === value}
+                       className="tabs"
+                       onClick={() => { this.toggleTab('2', value); }}>
+                {value}
+              </NavLink>
+            </NavItem>
+          )
+          }
         </Nav>
-      )
+      );
     }
 
     renderNavMapItin(){
@@ -206,50 +181,37 @@ class Application extends Component {
     }
 
     renderTabs(){
+      let arrtest = ['Map', 'Itinerary']
+      const tab = arrtest.map((input) =>
+        <TabPane key={input+1} tabId={input}>
+          <Card key={input+2}>
+            <CardBody key={input+3}>
+              {this.renderMapOrItin(input)}
+            </CardBody>
+          </Card>
+        </TabPane>
+      );
       return (
-        <div>
-          <TabContent activeTab={this.state.activeTab1}>
-            <TabPane tabId="Map">
-              <hr/>
-              <Card>
-                <CardBody>
-                  {this.renderMap()}
-                </CardBody>
-              </Card>
-            </TabPane>
-            <TabPane tabId="Itinerary">
-              <hr/>
-              <Card>
-                <CardBody>
-                  {this.renderItinerary()}
-                </CardBody>
-              </Card>
-            </TabPane>
-          </TabContent>
-        </div>
+        <TabContent activeTab={this.state.activeTab1}>
+          {tab}
+        </TabContent>
       )
     }
 
-    renderMap(){
+    renderMapOrItin(input){
       if(this.state.trip.places.length >= 1){
-        return(
-          <Map trip={this.state.trip}/>
-        )
+        if(input === 'Map') {
+          return (
+            <Map trip={this.state.trip}/>
+          )
+        } else {
+          return(
+            <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
+          )
+        }
       } else {
         return(
-          <Alert color="info">Add at least one place to your trip to get a map.</Alert>
-        )
-      }
-    }
-
-    renderItinerary(){
-      if(this.state.trip.places.length >= 1){
-        return(
-          <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
-        )
-      } else {
-        return(
-          <Alert color="info">Add at least one place to your trip to get an itinerary.</Alert>
+          <Alert color="info">Add at least one place to your trip to get a map and itinerary.</Alert>
         )
       }
     }
@@ -287,7 +249,7 @@ class Application extends Component {
 
     renderPlannerTab(){
       return(
-        <TabPane tabId="Planner">
+        <TabPane tabId="Trip Planner">
           <Card body outline color="secondary">
             <CardGroup>
               <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
@@ -305,6 +267,7 @@ class Application extends Component {
             <Port updateServer={this.updateServer}/>
             <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
             {this.renderNavMapItin()}
+            <hr/>
             {this.renderTabs()}
           </Card>
         </TabPane>
@@ -321,7 +284,7 @@ class Application extends Component {
               <hr/>
               <TabContent activeTab={this.state.activeTab2}>
                 {this.renderPlannerTab()}
-                <TabPane tabId="About">
+                <TabPane tabId="Meet the Developers">
                   <Dev/>
                 </TabPane>
               </TabContent>
