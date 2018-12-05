@@ -246,31 +246,31 @@ public class Trip extends Vincenty {
 
         int[] small;
 
-        if(i2-i1 > j2-j1){
-            small = Arrays.copyOfRange(route,j1,j2+1);
+        int x1, x2, x3, x4;
 
-            int direction = leftOrRight(copyOfRoute, small.length, j1, i1);
+        if(i2-j1 > j2 -j1){
+            x1 = j1;
+            x2 = j2;
+            x3 = i1;
+            x4 = i2;
+        }
+        else{
+            x1 = i1;
+            x2 = i2;
+            x3 = j1;
+            x4 = j2;
+        }
 
-            fillArray(copyOfRoute,route,i1,j2);
+        small = Arrays.copyOfRange(route,x1,x2+1);
 
-            if(direction == 0){
-                fillShiftLeft(route, small, i2);
-            }else{
-                fillShiftRight(route,small, i1);
-            }
+        int direction = leftOrRight(copyOfRoute, small.length, x1, x3);
 
+        fillArray(copyOfRoute,route,i1,j2);
+
+        if(direction == 0){
+            fillShiftLeft(route, small, x4);
         }else{
-            small = Arrays.copyOfRange(route,i1,i2+1);
-
-            int direction = leftOrRight(copyOfRoute, small.length, i1, j1);
-
-            fillArray(copyOfRoute,route,i1,j2);
-
-            if(direction == 0){
-                fillShiftLeft(route, small, j2);
-            }else{
-                fillShiftRight(route,small,j1);
-            }
+            fillShiftRight(route,small, x1);
         }
 
     }
