@@ -69,7 +69,7 @@ public class Database {
      *
      *
      */
-    private String getQuery(){
+    private String getQuery() {
         return "SELECT world_airports.id, "
                 + "world_airports.name, "
                 + "world_airports.latitude, "
@@ -99,7 +99,7 @@ public class Database {
      * @param query initial query.
      * @return fully formed query.
      */
-    private String filterSearch (String query){
+    private String filterSearch(String query) {
         query += "AND ( ";
 
         for (int i = 0; i < this.filters.length; i++) {
@@ -116,11 +116,16 @@ public class Database {
      * @param index of filter being searched.
      * @return more complete query.
      */
-    private String filterSearchHelper (String query, int index){
+    private String filterSearchHelper(String query, int index) {
 
         for (int j = 0; j < this.filters[index].values.length; j++) {
             String filterName = this.filters[index].name;
             query = testFilter(query, filterName, index, j);
+            if (j != (this.filters[index].values.length - 1)
+                    || (j == (this.filters[index].values.length - 1)
+                    && index != (this.filters.length - 1))) {
+                query += "OR ";
+            }
         }
 
         return query;
@@ -131,31 +136,28 @@ public class Database {
      * @param query string.
      * @param filterName filter being tested.
      * @param index of filter being searched.
-     * @param j second index of filter searched.
+     * @param index2 second index of filter searched.
      * @return more complete query.
      */
-    private String testFilter (String query, String filterName, int index, int j){
+    private String testFilter(String query, String filterName, int index, int index2) {
         if (filterName.equals("world airport")) {
             query += "world_airports.name IN ('"
-                    + this.filters[index].values[j] + "') ";
+                    + this.filters[index].values[index2] + "') ";
         }
         if (filterName.equals("type") || filterName.equals("municipality")) {
             query += "world_airports." + filterName
-                    + " IN ('" + this.filters[index].values[j] + "') ";
+                    + " IN ('" + this.filters[index].values[index2] + "') ";
         }
         else if (filterName.equals("country") || filterName.equals("region")
                 || filterName.equals("continents")) {
-            query += filterName + ".name IN ('" + this.filters[index].values[j] + "') ";
+            query += filterName + ".name IN ('" + this.filters[index].values[index2] + "') ";
         }
-        if (j != (this.filters[index].values.length - 1)
-                || (j == (this.filters[index].values.length - 1)
-                && index != (this.filters.length - 1))) {
-            query += "OR ";
-        }
+
         return query;
     }
 
-    /** Builds the query for use in searchQuery(), uses filterSearch -> filterSearchHelper -> testFilter.
+    /** Builds the query for use in searchQuery().
+     *  Uses filterSearch -> filterSearchHelper -> testFilter.
      *
      */
     public String buildQuery() {
@@ -204,7 +206,6 @@ public class Database {
         String pass = "eiK5liet1uej";
         String query = buildQuery() + addSortToQuery() + addLimitToQuery();
         String allQueries = buildQuery();
-        //System.out.println(query);
         try {
             // create mysql database connection
             Class.forName(myDriver);
@@ -221,7 +222,6 @@ public class Database {
                         rsQuery.getDouble("latitude"), rsQuery.getDouble("longitude")));
             }
             stQuery.close();
-
             while(allRsQuery.next()) {
                 this.found += 1;
             }
