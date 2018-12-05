@@ -63,10 +63,10 @@ class Dev extends Component{
   render() {
     let fileArr = [avatarAntonio, avatarEli, avatarNick, avatarTyler];
     const cardRend = fileArr.map((input) =>
-      <Card outline color="white">
-        <CardImg className={"avatarborder"} src={input}/>
-        <CardBody>
-          <CardTitle className={"headerText"}>{this.getName(input)}</CardTitle>
+      <Card outline color="white" key={input}>
+        <CardImg className={"avatarborder"} src={input} key={input+1}/>
+        <CardBody key={input+2}>
+          <CardTitle className={"headerText"} key={input+3}>{this.getName(input)}</CardTitle>
         </CardBody>
       </Card>
     );
