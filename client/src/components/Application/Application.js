@@ -38,20 +38,15 @@ import avatarDave from "./Resource/Dave-Matthews.jpg";
 class Application extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            config: null,
-            activeTab1: 'Map',
-            activeTab2: 'Planner',
-            modal1: false,
-            modal2: false,
-            server: location.hostname,
-            port: location.port,
+        this.state = {config: null,
+            activeTab1: 'Map', activeTab2: 'Planner',
+            modal1: false, modal2: false,
+            server: location.hostname, port: location.port,
             trip: {
                 type: "trip",
                 title: "",
                 options : {
-                    units: "miles",
-                    optimization: "none"
+                    units: "miles", optimization: "none"
                 },
                 places: [],
                 distances: [],
@@ -290,6 +285,32 @@ class Application extends Component {
       )
     }
 
+    renderPlannerTab(){
+      return(
+        <TabPane tabId="Planner">
+          <Card body outline color="secondary">
+            <CardGroup>
+              <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+              {this.renderAddAndSearch()}
+            </CardGroup> <hr/>
+            <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}
+                 toggleMod={this.toggleMod} modal1={this.state.modal1}/>
+            <Search server={this.state.server} port={this.state.port} places={this.state.trip.places}
+                    config={this.state.config} updatePlaces={this.updatePlaces} toggleMod={this.toggleMod}
+                    modal2={this.state.modal2}/>
+            <CardGroup>
+              {this.renderOptions()}
+              <Calculator/>
+            </CardGroup> <hr/>
+            <Port updateServer={this.updateServer}/>
+            <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+            {this.renderNavMapItin()}
+            {this.renderTabs()}
+          </Card>
+        </TabPane>
+      )
+    }
+
     render() {
         if(!this.state.config) { return <div/> }
         return(
@@ -299,37 +320,11 @@ class Application extends Component {
               {this.renderNavMain()}
               <hr/>
               <TabContent activeTab={this.state.activeTab2}>
-                <TabPane tabId="Planner">
-                  <Card body outline color="secondary">
-                    <CardGroup>
-                        <File updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
-                        {this.renderAddAndSearch()}
-                    </CardGroup>
-                    <hr/>
-                    <Add updatePlaces={this.updatePlaces} places={this.state.trip.places}
-                        toggleMod={this.toggleMod} modal1={this.state.modal1}/>
-                    <Search server={this.state.server} port={this.state.port} places={this.state.trip.places}
-                            config={this.state.config} updatePlaces={this.updatePlaces} toggleMod={this.toggleMod}
-                            modal2={this.state.modal2}/>
-
-                    <CardGroup>
-                      {this.renderOptions()}
-                      <Calculator/>
-                    </CardGroup>
-                    <hr/>
-                    <Port updateServer={this.updateServer}/>
-                    <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
-                    {this.renderNavMapItin()}
-                    {this.renderTabs()}
-                  </Card>
-                </TabPane>
-
+                {this.renderPlannerTab()}
                 <TabPane tabId="About">
                   <Dev/>
                 </TabPane>
-
               </TabContent>
-
             </Container>
         )
     }
