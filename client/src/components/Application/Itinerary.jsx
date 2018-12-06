@@ -75,77 +75,77 @@ class ItineraryTable extends Component {
         }
     }
 
+    renderthead(){
+      const latitudeStyle = this.state.optionLatitude ? {} : {display: 'none'};
+      const longitudeStyle = this.state.optionLongitude ? {} : {display: 'none'};
+        return(
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Place</th>
+            <th>Leg Distance</th>
+            <th>Total Distance</th>
+            <th style={latitudeStyle}>Latitude</th>
+            <th style={longitudeStyle}>Longitude</th>
+            <th>Change Start</th>
+            <th></th>
+          </tr>
+          </thead>
+        )
+    }
+
+    rendertr() {
+      let data = this.buildDistance();
+      let data2 = this.buildLegDistance();
+      const latitudeStyle = this.state.optionLatitude ? {} : {display: 'none'};
+      const longitudeStyle = this.state.optionLongitude ? {} : {display: 'none'};
+      return (
+        <div>
+          {this.props.trip.places.map((key, index) => (
+            <tr key={key + index + data[index] + key.latitude + key.longitude + 1}>
+              <td key={data[index] + key + index + key.latitude + key.longitude + 2}>{index + 1} </td>
+              <td key={key + index + data[index] + key.latitude + key.longitude + 3}>{key.name}</td>
+              <td key={key.latitude + key.longitude + 4 + key + index + data[index]}>{data2[index]}</td>
+              <td key={5 + key.latitude + key + index + data[index] + key.longitude}>{data[index]}</td>
+              <td key={key.latitude + index + data[index] + 6 + key.longitude + key} style={latitudeStyle}>{key.latitude}</td>
+              <td key={key + index + key.longitude + 7 + data[index] + key.latitude} style={longitudeStyle}>{key.longitude}</td>
+              <td key={data[index] + index + key.longitude + 8 + key + key.latitude}>
+                <Button className="itinButton" value="start" onClick={() => this.changeStart(index)}>Start Here</Button></td>
+              <td key={key + 9 + index + data[index] + key.latitude + key.longitude}>
+                <Button className="itinButton" value="bye" onClick={() => this.removePlace(index)}>&times;</Button></td>
+            </tr>
+          ))}
+        </div>
+      );
+    }
+
+
     render() {
-        let data = this.buildDistance();
-        let data2 = this.buildLegDistance();
         let total = this.calcTotal();
         let testArr = ['optionLatitude','optionLongitude'];
-        const latitudeStyle = this.state.optionLatitude ? {} : {display: 'none'};
-        const longitudeStyle = this.state.optionLongitude ? {} : {display: 'none'};
-
         return (
             <div>
-                    <Table hover>
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Place</th>
-                            <th>Leg Distance</th>
-                            <th>Total Distance</th>
-                            <th style={latitudeStyle}>Latitude</th>
-                            <th style={longitudeStyle}>Longitude</th>
-                            <th>Change Start</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.props.trip.places.map((key,index)=> (
-                            <tr key={key+index+data[index]+key.latitude+key.longitude+1}>
-                                <td key={data[index]+key+index+key.latitude+key.longitude+2}>
-                                    {index + 1} </td>
-                                <td key={key+index+data[index]+key.latitude+key.longitude+3}>
-                                    {key.name}
-                                </td>
-                                <td key={key.latitude+key.longitude+4+key+index+data[index]}>
-                                    {data2[index]}
-                                </td>
-                                <td key={5+key.latitude+key+index+data[index]+key.longitude}>
-                                    {data[index]}
-                                </td>
-                                <td key={key.latitude+index+data[index]+6+key.longitude+key} style={latitudeStyle}>
-                                    {key.latitude}
-                                </td>
-                                <td key={key+index+key.longitude+7+data[index]+key.latitude} style={longitudeStyle}>
-                                    {key.longitude}
-                                </td>
-                                <td key={data[index]+index+key.longitude+8+key+key.latitude}>
-                                    <Button className="itinButton" value="start" onClick={() => this.changeStart(index)}>Start Here</Button>
-                                </td>
-                                <td key={key+9+index+data[index]+key.latitude+key.longitude}>
-                                    <Button className="itinButton" value="bye" onClick={() => this.removePlace(index)}>&times;</Button>
-                                </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </Table>
-                    <div>Select additional options for itinerary: </div>
-                    <Form>
-                      {testArr.map((value) =>
-                        <FormGroup check inline key={value+1}>
-                          <Label check key={value+2}>
-                            <Input type="checkbox" value={value} key={value+3}
-                                   onClick={(event) => this.setOptionLatLong(event.target.value)}/> {value.substr(6, value.length)}
-                          </Label>
-                        </FormGroup>
-                        )
-                      }
-                    </Form>
-                    <Button value="reverse" className="btn-outline-dark unit-button" onClick={this.reverseTrip}>Reverse Trip</Button>
-                    <Label sm={{ size: 'auto', offset: 6 }} className="labelpop">
-                        Total Round Trip Distance: {total}
+              <Table hover>
+                  {this.renderthead()}
+                  <tbody>
+                  {this.rendertr()}
+                  </tbody>
+              </Table>
+              <div>Select additional options for itinerary: </div>
+              <Form>
+                {testArr.map((value) =>
+                  <FormGroup check inline key={value+1}>
+                    <Label check key={value+2}>
+                      <Input type="checkbox" value={value} key={value+3}
+                             onClick={(event) => this.setOptionLatLong(event.target.value)}/> {value.substr(6, value.length)}
                     </Label>
-            </div>
-        )
+                  </FormGroup>)}
+              </Form>
+              <Button value="reverse" className="btn-outline-dark unit-button" onClick={this.reverseTrip}>Reverse Trip</Button>
+              <Label sm={{ size: 'auto', offset: 6 }} className="labelpop">
+                  Total Round Tri Distance: {total}
+              </Label>
+            </div>)
     }
 }
 export default ItineraryTable;
