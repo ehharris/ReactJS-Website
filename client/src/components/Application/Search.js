@@ -92,15 +92,15 @@ class Search extends Component{
             <Form onSubmit={this.handleSubmit}>
               <div> Search trip destinations: </div>
               <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
-              <div>Choose filters: </div>
-              <Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
-                <DropdownToggle caret>Filters</DropdownToggle>
-                <DropdownMenu>
-                  {this.props.config.filters.map((key, index) => (
-                    <DropdownItem key={'filter_name_' + index}>{filterNames[index]}</DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
+              {/*<div>Choose filters: </div>*/}
+              {/*<Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>*/}
+                {/*<DropdownToggle caret>Filters</DropdownToggle>*/}
+                {/*<DropdownMenu>*/}
+                  {/*{this.props.config.filters.map((key, index) => (*/}
+                    {/*<DropdownItem key={'filter_name_' + index}>{filterNames[index]}</DropdownItem>*/}
+                  {/*))}*/}
+                {/*</DropdownMenu>*/}
+              {/*</Dropdown>*/}
               <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
             </Form>
             {this.renderTable()}
