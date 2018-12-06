@@ -190,7 +190,7 @@ class Application extends Component {
           return(<ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>)
         }
       } else {
-        return(<Alert color="info">Add at least one place to your trip to get a map and itinerary.</Alert>)
+        return(<Alert className={"alertColorMap"}>Add at least one place to your trip to get a map and itinerary.</Alert>)
       }
     }
 
@@ -242,8 +242,8 @@ class Application extends Component {
               {this.renderOptions()}
               <Calculator/>
             </CardGroup> <hr/>
-            <Port updateServer={this.updateServer}/>
-            <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+            <Port updateServer={this.updateServer}/><hr/>
+            <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/><hr/>
             {this.renderNavMapItin()}
             <hr/>
             {this.renderTabs()}

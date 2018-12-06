@@ -124,7 +124,7 @@ public class Svg {
                 + Math.round(longitude)
                 + "' cy='"
                 + Math.round(latitude)
-                + "' r='3' fill='#32CD32' />\n");
+                + "' r='3' fill='#1E4D2B' />\n");
         this.circles[index] = circle;
     }
 

@@ -18,12 +18,10 @@ class Plan extends Component{
   render() {
 
     return(
-      <Card>
-        <CardBody>
-          <Button block onClick={this.plan} size="lg" type="button" className='darkButtonAlt'>
-            Plan
-          </Button>
-        </CardBody>
+      <Card body className={"planCard"}>
+        <Button block onClick={this.plan} size="lg" type="button" className='darkButtonAlt'>
+          Plan
+        </Button>
       </Card>
     )
 

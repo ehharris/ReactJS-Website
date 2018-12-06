@@ -18,16 +18,16 @@ export default class Info extends Component {
   render() {
     return (
       <div>
-        <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
+        <Alert className={"alertColor"} isOpen={this.state.visible} toggle={this.onDismiss}>
           <p className="lead">"Want to travel far and wide?"</p>
           <ol >
-            <li>
+            <li className="infopara">
               Choose options for trip planning, information to display about locations,
               and how the trip map and itinerary should be saved.</li>
-            <li>
+            <li className="infopara">
               Choose your destinations by loading existing sets of destinations or
               find more in an extensive database of locations worldwide.</li>
-            <li>
+            <li className="infopara">
               Plan the trip with the options you selected.
               Review and revise the trip origin and order.
               Save the trip map and itinerary for future reference.</li>
