@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react'
-import { CardImg, Card, CardGroup, CardBody, CardTitle, ModalFooter, CardText} from 'reactstrap'
-import { Modal, Button, ButtonGroup, ModalBody, ModalHeader, Col } from 'reactstrap'
+import { CardImg, Card, CardGroup, CardBody, CardTitle, ModalFooter} from 'reactstrap'
+import { Modal, Button, ModalBody, ModalHeader, Col } from 'reactstrap'
 import avatarAntonio from './Resource/t10-Antonio.jpg';
 import avatarEli from './Resource/t10-Eli.jpg';
 import avatarNick from './Resource/t10-Nick.jpg';

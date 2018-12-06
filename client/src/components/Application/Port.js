@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Input, InputGroup, Form, Label} from 'reactstrap'
-import { ButtonGroup, Button } from 'reactstrap'
+import {Card, CardBody, Input, Form, Label} from 'reactstrap'
+import { Button } from 'reactstrap'
 
 /* Allows the user to change the parameters for server
  * and port configuration and desired microservice.

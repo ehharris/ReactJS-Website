@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Input, Button, CardBody, Fade, Card, Form, Label, ModalHeader, ModalBody, Modal, TabPane} from 'reactstrap';
+import {Input, Button, CardBody, Fade, Card, Form, Label, ModalHeader, ModalBody, Modal} from 'reactstrap';
 
 
 class Add extends Component{

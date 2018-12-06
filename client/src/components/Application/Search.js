@@ -1,17 +1,6 @@
 import React, {Component} from 'react'
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Button,
-  Dropdown,
-  DropdownMenu,
-  DropdownToggle,
-  DropdownItem,
-  Form,
-  Input,
-  Table,
-  ModalHeader, ModalBody, Modal
+import {Card, CardBody, Button, InputGroup, DropdownMenu, DropdownToggle,
+  DropdownItem, Form, Input, Table, ModalHeader, ModalBody, Modal
 } from 'reactstrap';
 import { request } from '../../api/api';
 
@@ -49,14 +38,14 @@ class Search extends Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        request({ "version": 4, "type": "search", "match": this.state.search  }, "search", this.props.port, this.props.server).then((resData) => this.setState({results: resData}));
+        request({ "version": 4, "type": "search", "match": this.state.search}, "search", this.props.port, this.props.server).then((resData) => this.setState({results: resData}));
     }
 
     buildNameResults() {
         let nameData = [];
         if(this.state.results.places) {
-            this.state.results.places.map((key, index, array) => {
-                if (index > 0) {
+            this.state.results.places.map((key, index) => {
+                if (index >= 0) {
                     nameData[index] = this.state.results.places[index].name;
                 }
             });
@@ -89,19 +78,12 @@ class Search extends Component{
       return(
         <Card>
           <CardBody>
-            <Form onSubmit={this.handleSubmit}>
-              <div> Search trip destinations: </div>
-              <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
-              <div>Choose filters: </div>
-              <Dropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
-                <DropdownToggle caret>Filters</DropdownToggle>
-                <DropdownMenu>
-                  {this.props.config.filters.map((key, index) => (
-                    <DropdownItem key={'filter_name_' + index}>{filterNames[index]}</DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
-              <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
+            <p> Search trip destinations: </p>
+            <Form>
+              <InputGroup>
+                <Input name="Search Entry" type="text" value={this.state.search} onChange={this.updateSearch} />
+                <Button value="submit" className="btn-outline-dark unit-button" onClick={this.handleSubmit}>Submit</Button>
+              </InputGroup>
             </Form>
             {this.renderTable()}
           </CardBody>

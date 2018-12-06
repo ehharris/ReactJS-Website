@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Label, CardGroup, Container, Alert, Card, CardBody, Nav, NavItem, NavLink,
-  TabPane, TabContent, ModalHeader, ModalBody, Modal, Button} from 'reactstrap';
+  TabPane, TabContent, Button} from 'reactstrap';
 import Options from './Options';
 import Map from './Map.jsx';
 import Port from './Port';
@@ -47,13 +47,7 @@ class Application extends Component {
     }
 
     componentWillMount() {
-        get_config().then(
-            config => {
-                this.setState({
-                    config:config
-                })
-            }
-        );
+        get_config().then(config => {this.setState({config:config})});
     }
 
     componentDidMount(){
@@ -62,18 +56,10 @@ class Application extends Component {
       let unitName = this.getCookie("unitName");
       let unitRadius = this.getCookie("unitRadius");
 
-      if (units !== "") {
-        this.updateOptions('units', units);
-      }
-      if (optimization !== "") {
-        this.updateOptions('optimization', optimization);
-      }
-      if (unitName !== "") {
-        this.updateOptions('unitName', unitName);
-      }
-      if (unitRadius !== "") {
-        this.updateOptions('unitRadius', unitRadius);
-      }
+      if (units !== "") {this.updateOptions('units', units);}
+      if (optimization !== "") {this.updateOptions('optimization', optimization);}
+      if (unitName !== "") {this.updateOptions('unitName', unitName);}
+      if (unitRadius !== "") {this.updateOptions('unitRadius', unitRadius);}
     }
 
     toggleTab(value, tab) {
@@ -155,9 +141,7 @@ class Application extends Component {
                        onClick={() => { this.toggleTab('2', value); }}>
                 {value}
               </NavLink>
-            </NavItem>
-          )
-          }
+            </NavItem>)}
         </Nav>
       );
     }
@@ -201,18 +185,12 @@ class Application extends Component {
     renderMapOrItin(input){
       if(this.state.trip.places.length >= 1){
         if(input === 'Map') {
-          return (
-            <Map trip={this.state.trip}/>
-          )
+          return (<Map trip={this.state.trip}/>)
         } else {
-          return(
-            <ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
-          )
+          return(<ItineraryTable trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>)
         }
       } else {
-        return(
-          <Alert color="info">Add at least one place to your trip to get a map and itinerary.</Alert>
-        )
+        return(<Alert className={"alertColorMap"}>Add at least one place to your trip to get a map and itinerary.</Alert>)
       }
     }
 
@@ -264,8 +242,8 @@ class Application extends Component {
               {this.renderOptions()}
               <Calculator/>
             </CardGroup> <hr/>
-            <Port updateServer={this.updateServer}/>
-            <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/>
+            <Port updateServer={this.updateServer}/><hr/>
+            <Plan updateBasedOnResponse={this.updateBasedOnResponse} trip={this.state.trip}/><hr/>
             {this.renderNavMapItin()}
             <hr/>
             {this.renderTabs()}
