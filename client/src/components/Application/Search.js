@@ -1,17 +1,6 @@
 import React, {Component} from 'react'
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Button,
-  Dropdown,
-  DropdownMenu,
-  DropdownToggle,
-  DropdownItem,
-  Form,
-  Input,
-  Table,
-  ModalHeader, ModalBody, Modal
+import {Card, CardBody, Button, Dropdown, DropdownMenu, DropdownToggle,
+  DropdownItem, Form, Input, Table, ModalHeader, ModalBody, Modal
 } from 'reactstrap';
 import { request } from '../../api/api';
 

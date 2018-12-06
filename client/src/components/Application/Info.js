@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardHeader, CardBody, Alert} from 'reactstrap'
+import {Alert} from 'reactstrap'
 
 export default class Info extends Component {
 
