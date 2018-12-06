@@ -27,11 +27,6 @@ public class TestMapBuilder {
     }
 
     @Test
-    public void testEnd(){
-        assertEquals(mapBuilder.end(),"</svg>\n"+"</g>\n"+"</g>\n"+"</svg>");
-    }
-
-    @Test
     public void testMainConstructor(){
         ArrayList<Place> listOfPlaces = new ArrayList<>();
 
@@ -50,6 +45,28 @@ public class TestMapBuilder {
         trip = new Trip(2, "trip", "Test", listOfPlaces, testOption, distances, testMap);
 
         mapBuilder = new MapBuilder(trip);
+    }
+
+    @Test
+    public void testGetMap(){
+        ArrayList<Place> listOfPlaces = new ArrayList<>();
+
+        listOfPlaces.add(testDenver);
+        listOfPlaces.add(testBoulder);
+        listOfPlaces.add(testFortCollins);
+
+        Option testOption = new Option("user defined", 3959.0, "short", "miles", "unknown");
+
+        ArrayList<Integer> distances = new ArrayList<>();
+        distances.add(0);
+        distances.add(0);
+        distances.add(0);
+
+        String testMap = "none";
+        trip = new Trip(2, "trip", "Test", listOfPlaces, testOption, distances, testMap);
+
+        mapBuilder = new MapBuilder(trip);
+        assertEquals(mapBuilder.getMap(), "Unknown map type");
     }
 
 }
