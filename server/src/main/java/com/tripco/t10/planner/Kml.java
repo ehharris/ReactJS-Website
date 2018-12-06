@@ -10,4 +10,5 @@ public class Kml {
     public String kmlBuilder(){
         return "This will be a kml string";
     }
+
 }
