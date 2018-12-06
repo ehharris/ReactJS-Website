@@ -9,10 +9,13 @@ public class Distance extends Vincenty {
     private Place origin;
     private Place destination;
     private String units;
+    public String unitName;
+    public Double unitRadius;
     private int distance;
 
     //Used in Calculate.java for the distance TFFI.
     public int getDistance(){ return this.distance; }
+    public Double getUserUnit(){ return this.unitRadius; }
     public Place getOrigin() { return this.origin; }
     public Place getDestination() { return this.destination; }
     public String getUnits() { return this.units; }
