@@ -36,12 +36,12 @@ public class Database {
     public Database(int version, String type, String match,
                     Filters[] filters, int limit, int found, ArrayList<Place> places) {
         this.version = version;
-        this.type = type;
         this.match = match;
         this.filters = filters;
         this.limit = limit;
         this.found = found;
         this.places = places;
+        this.type = type;
     }
 
     /** Getter method used for test cases.
