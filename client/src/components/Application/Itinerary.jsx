@@ -143,7 +143,7 @@ class ItineraryTable extends Component {
               </Form>
               <Button value="reverse" className="btn-outline-dark unit-button" onClick={this.reverseTrip}>Reverse Trip</Button>
               <Label sm={{ size: 'auto', offset: 6 }} className="labelpop">
-                  Total Round Tri Distance: {total}
+                  Total Round Trip Distance: {total}
               </Label>
             </div>)
     }

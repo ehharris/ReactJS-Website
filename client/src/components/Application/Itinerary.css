@@ -1,5 +1,5 @@
 th {
-    background: #343A40;
+    background: #1E4D2B;
     color: white;
 }
 
@@ -103,10 +103,11 @@ only screen and (max-width: 760px),
 }
 
 .labelpop {
-    background: #D1ECF1;
+    background: #1E4D2B;
+    color: white;
     border-radius: 5px;
-    text-shadow: 1px 1px lightskyblue;
-    border: 1px solid lightskyblue;
+    text-shadow: 1px 1px #33844a;
+    border: 1px solid #33844a;
     height: 42px;
     max-width: max-content;
     text-align-all: center;
@@ -150,11 +151,39 @@ only screen and (max-width: 760px),
     border-top-left-radius: 5px;
 }
 
-.darkButtonAlt {
-    color: white;
+.planCard {
+    padding: 2px 2px;
     background-color: #343A40;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+}
+
+.darkButtonAlt {
+    color: #504d2b;
+    background-color: #C8C372;
+ }
+
+.darkButtonAlt:hover {
+    color: white;
+    background-color: #1E4D2B;
+}
+
+.alertColor{
+    background-color: #1E4D2B;
+    color: white;
+}
+
+.alertColorMap{
+    background-color: #1E4D2B;
+    color: white;
+    text-align: center;
+}
+
+.lead {
+    color: white;
+    text-align: center;
+}
+
+.infopara {
+    color: white;
 }
 
 .tabs {
