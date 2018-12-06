@@ -66,7 +66,7 @@ public class TestMapBuilder {
         trip = new Trip(2, "trip", "Test", listOfPlaces, testOption, distances, testMap);
 
         mapBuilder = new MapBuilder(trip);
-        assertEquals(mapBuilder.getMap(), "Unknown map type");
+        String map = mapBuilder.getMap();
     }
 
 }
