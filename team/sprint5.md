@@ -90,8 +90,7 @@ We are at a solid number of epics, tasks, and story points here for a start. We 
 | 11/28/18 | #354 #355 #358 #368 #369 #370 #376 | #351 #349 | *Unable to meet this week* |
 | 11/30/18 | Did on paper in class |
 | 12/3/18 | #354 #355 #358 #368 #369 #370 #376 #349 #414 #413 #412 #392 #383 #382 | #351 #267 | *none* |
-
-
+| 12/05/18 | Did on paper in class |
 
 ## Review
 
@@ -126,21 +125,20 @@ We are at a solid number of epics, tasks, and story points here for a start. We 
 *
 
 ## Retrospective
-
-*An introductory paragraph for your retrospective.*
+Although not much has changed in the process in which we develop our project, our progress on optimization and U.I. definetly showed. The understanding of our team as a whole and our capabilities greatly improved. We put a lot of effort this sprint into testing and Code Climate. Although certain areas of Github etiiquette and backlog prioriziation were lacking; the sprint really turned out well and provides the user with a adequate experience. 
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+In this sprint, we were unable to start as early as the previous sprints but the efforts put came to fuition towards the last two weeks. We lacked in certain Github areas but worked hard to complete the tasks at hand. Time managment for certain parts of the team improved as tasks were completed with good clean code and efficiency. We focused on testing more towards the end and the process of cleaning up the code. 
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+Throughout this sprint our team improved in communication, development aspects, and CodeClimate. This sprint we really came to an understanding of everyones skill sets and motivations. Our team now feels very knowledgable in the GitHub aspects of development. We were able to complete the highest level of optimization at reasonable run times and enhanced the optimization experience. Our test coverage may not of reached the best standard of 70% but we were able to get to a benchmark through more coverage on the client side. 
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+Even though there where improvements among team moral, there were still certain communication issues and other development aspects. While our teamwork generally improved there were still issues of prioritization among the team and we were unable to complete certain simple tasks due to this. We reached a certain level for testing but did not exceed in this asepct. There were some GitHub areas that could be improved; like backlog maintenence and prioritzation. 
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+A large area of improvement for our team would be test coverage and certain aspects of github etiquette. Our backlog organization was lacking and could have been followed better. Next sprint we will bring up our test coverage and follow a more procedural method with the backlog. Communicating throughout the sprint is critical and certain improvements on this aspect will need to be made for optimial time management and efficiency. 
