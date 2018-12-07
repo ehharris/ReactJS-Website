@@ -70,14 +70,13 @@ Our diagrams haven't changed since Sprint 4 because we expect the overall struct
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | 9 | *total* |
-| Tasks | 15 | *total* | 
-| Story Points | 33 | *total* |
+| Epics | 9 | 5 |
+| Tasks | 15 | 27 | 
+| Story Points | 33 | 44 |
 
 We are at a solid number of epics, tasks, and story points here for a start. We could definitely spread the work out more, but we won't really know until we start getting into these epics and tasks that we currently have to see what they really entail. This is how it usually goes for us, and it works out nicely in the end.
 
-
-*Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
+We managed to complete more than half of the epics that we had planned to finish. In terms of our story points and tasks, we nearly doubled both of those in the progress. Although this is apparently fairly normal among teams, it is still an indication of poor planning and shows that we could still improve in that aspect of scrum.
 
 
 ## Scrums
@@ -94,35 +93,44 @@ We are at a solid number of epics, tasks, and story points here for a start. We 
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+Overall, this sprint went as well as we could have hoped. We got a fair amount done and are pleased with the final state of our trip planning application. Of course improvements could still be made, but for the most part, our website is user friendly and does what it was set out to accomplish for anyone wishing to plan a trip.
 
 #### Completed Epics in Sprint Backlog 
 
-*Describe the solution based on the completed epics and list the epics below.*
+The final version of this sprint includes updates mainly regarding the user experience and optimization. These were heavily focused on due to the state that they were in prior to this sprint. We felt that we needed to improve these and get them to a level everyone was satisfied with.
 
-* *## epic title: comments*
-* 
+* User: I want the shortest trips possible.
+* User: I want to choose what information is displayed in the itinerary and map.
+* User: Make the system easier to use.
+* User: I want to know who to thank for this application.
+* User: I want my options remembered so I don't have to fix them all the time.
 
 #### Incomplete Epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
+We were unable to implement an interactive map, the ability to save KML, or the lines on the static map wrapping on to the opposite sides of the Earth. In addition to these, we weren't able to implement concurrency for optimization, or a client-side representation of the search filters.
 
-* *## epic title: explanation*
-*
+* User: I want to view my trip in other tools.: explanation
+* User: I want an interactive map.
+* User: I want to plan trips worldwide.
+* User: I want trip planning to be fast.
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+Our GitHub, CodeClimate, and test coverage were the best parts of this sprint for us. Once again we got better as a team and our communication was better than previous sprints. 
 
-* *something*
-*
+* Fixing CodeClimate issues
+* Test Coverage
+* Teamwork
+* Communication
+* GitHub usage
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+We didn't have many major issues in this sprint. It was mainly just minor things that just didn't make any sense to us as to how they wouldn't be working properly, which is why we were forced to go to office hours so much.
 
-* *something*
-*
+* Optimization implementation: Went to office hours as often as possible to get help in solving an issue with being off by about 0.006% on 3-opt as well as a similar issue with nearest neighbor. Changing control flow solved this issue.
+* Map not showing on Black Bottle: Also went to office hours for assistance.
+* Permentant interop with PROD due to hardcoded port and deployment on DEV:  Went to office hours to get assistance in figuring out the problem with this. 
 
 ## Retrospective
 Although not much has changed in the process in which we develop our project, our progress on optimization and U.I. definetly showed. The understanding of our team as a whole and our capabilities greatly improved. We put a lot of effort this sprint into testing and Code Climate. Although certain areas of Github etiiquette and backlog prioriziation were lacking; the sprint really turned out well and provides the user with a adequate experience. 
