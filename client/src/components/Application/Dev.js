@@ -62,11 +62,11 @@ class Dev extends Component{
 
   render() {
     let fileArr = [avatarAntonio, avatarEli, avatarNick, avatarTyler];
-    const cardRend = fileArr.map((input) =>
-      <Card outline color="white" key={input}>
-        <CardImg className={"avatarborder"} src={input} key={input+1}/>
-        <CardBody key={input+2}>
-          <CardTitle className={"headerText"} key={input+3}>{this.getName(input)}</CardTitle>
+    const cardRend = fileArr.map((input, test) =>
+      <Card outline color="white" key={input.length+test}>
+        <CardImg className={"avatarborder"} src={input} key={test+input.length+10}/>
+        <CardBody key={input.length+11+test}>
+          <CardTitle className={"headerText"} key={test+9+input.length}>{this.getName(input)}</CardTitle>
         </CardBody>
       </Card>
     );
