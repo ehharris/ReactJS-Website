@@ -1,6 +1,6 @@
 import './enzyme.config.js'
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import Application from '../src/components/Application/Application'
 
 const startProps1 = {
@@ -11,9 +11,9 @@ const startProps2 = {
 };
 
 /* Test example using a pre-defined function */
-function testInput() {
-  const app = shallow((
-    <Application place={startProps1.place} />
+function testNav() {
+  const app = mount((
+    <Application />
   ));
 
   let actual = [];
@@ -22,4 +22,18 @@ function testInput() {
   expect(actual).toEqual(startProps1.place);
 }
 
-test('Check to see if table gets made correctly (Function)', testInput);
+test('Check to see if table gets made correctly (Function)', testNav);
+
+/* Test example using a pre-defined function */
+function testNav() {
+  const app = mount((
+    <Application />
+  ));
+
+  let actual = [];
+  app.find('Container').map((element) => actual.push(element.prop('id')));
+
+  expect(actual).toEqual(startProps1.place);
+}
+
+test('Check to see if table gets made correctly (Function)', testNav);
