@@ -135,12 +135,12 @@ We are at a solid number of epics, tasks, and story points here for a start. We 
 
 #### What we did well
 
-In this project, we learned how to communicate as a team even through disagreements. This lead to a better understanding of who does what well and who has certain stregnths in certain areas compared to others. We were able to finish our optimization and produce a clean code. Although our test coverage wasn't the best it was still well within the range needed. 
+Throughout this sprint our team improved in communication, development aspects, and Code Climate. This sprint we really came to an understanding of everyones skill sets and motivations. Our team now feels very knowledgable in github aspects of development. We were able to complete the highest level of optimization at reasonable run times and enchanded the optimization experience. Our test coverage may not of reached the best standard of 70% but we were able to get to a benchmark through more coverage on the client side. 
 
 #### What we need to work on
 
-Even though there where improvements among team moral, there were still certain communication issues and other deveopment aspects. We reached a certain level for testing but did not exceed in this asepct. There were some github areas that could be improved; like backlog maintenence and prioritzation. 
+Even though there where improvements among team moral, there were still certain communication issues and other deveopment aspects. While our teamwork generally improved there were still issues of prioritization among the team and we were uinable to complete certain simple tasks due to this. We reached a certain level for testing but did not exceed in this asepct. There were some github areas that could be improved; like backlog maintenence and prioritzation. 
 
 #### What we will change next sprint 
 
-A large area of improvment for our team would be test coverage and certain aspects of github etiquette. Our backlog orginization was lacking and could of been followed better. Next sprint we will bring up our test coverage and follow a more procedural method with the backlog. 
+A large area of improvment for our team would be test coverage and certain aspects of github etiquette. Our backlog orginization was lacking and could of been followed better. Next sprint we will bring up our test coverage and follow a more procedural method with the backlog. Communicating thorughout the sprint is critical and certain improvements on this aspect will need to be made for optimial time use and efficiency. 
