@@ -130,19 +130,20 @@ class Application extends Component {
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
-    renderNavMain(){
-      let arr0 = ['Trip Planner','Meet the Developers']
+    renderNavMain(arrayInput){
       return(
-        <Nav tabs className="cooltabs">
-          {arr0.map((value) =>
-            <NavItem key={value+1}>
-              <NavLink key={value+2} active={this.state.activeTab2 === value}
-                       className="tabs"
-                       onClick={() => { this.toggleTab('2', value); }}>
-                {value}
-              </NavLink>
-            </NavItem>)}
-        </Nav>
+        <div>
+          <Nav tabs>
+            {arrayInput.map((value) =>
+              <NavItem key={value+30}>
+                <NavLink onClick={() => { this.toggleTab('2', value); }}
+                         active={this.state.activeTab2 === value}
+                         className="tabs" key={value+2}>
+                  {value}
+                </NavLink>
+              </NavItem>)}
+          </Nav>
+        </div>
       );
     }
 
@@ -258,7 +259,7 @@ class Application extends Component {
             <Container id="Application">
               <Info/>
               <hr/>
-              {this.renderNavMain()}
+              {this.renderNavMain(['Trip Planner','Meet the Developers'])}
               <hr/>
               <TabContent activeTab={this.state.activeTab2}>
                 {this.renderPlannerTab()}
