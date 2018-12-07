@@ -135,12 +135,12 @@ We are at a solid number of epics, tasks, and story points here for a start. We 
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+In this project, we learned how to communicate as a team even through disagreements. This lead to a better understanding of who does what well and who has certain stregnths in certain areas compared to others. We were able to finish our optimization and produce a clean code. Although our test coverage wasn't the best it was still well within the range needed. 
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+Even though there where improvements among team moral, there were still certain communication issues and other deveopment aspects. We reached a certain level for testing but did not exceed in this asepct. There were some github areas that could be improved; like backlog maintenence and prioritzation. 
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+A large area of improvment for our team would be test coverage and certain aspects of github etiquette. Our backlog orginization was lacking and could of been followed better. Next sprint we will bring up our test coverage and follow a more procedural method with the backlog. 
