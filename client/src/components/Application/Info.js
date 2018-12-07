@@ -22,11 +22,11 @@ export default class Info extends Component {
           <p className="lead">"Want to travel far and wide?"</p>
           <ol >
             <li className="infopara">
-              Choose options for trip planning, information to display about locations,
-              and how the trip map and itinerary should be saved.</li>
+              Choose your destinations by loading existing sets of destinations, adding destinations manually, or
+              searching on an extensive database of locations worldwide.</li>
             <li className="infopara">
-              Choose your destinations by loading existing sets of destinations or
-              find more in an extensive database of locations worldwide.</li>
+              Choose options for trip planning such as units and optimization,
+              test distances using the distance calculator, and change the server configuration.</li>
             <li className="infopara">
               Plan the trip with the options you selected.
               Review and revise the trip origin and order.
