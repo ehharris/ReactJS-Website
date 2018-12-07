@@ -10,7 +10,6 @@ public class Svg {
     private Trip trip;
     private String[] lines;
     private String[] circles;
-    private int size;
     public String map;
 
     /**
@@ -52,23 +51,52 @@ public class Svg {
     /**
      * Adds lines to array of lines.
      *
-     * @param begLat  Beginning Latitude
-     * @param begLong Beginning Longitude
-     * @param endLat  Ending Latitude
-     * @param endLong Ending Longitude
+     * @param latLongs  array of lats/longs
      * @param index   Index of this.lines
      */
-    private void makeAline(double begLat, double begLong, double endLat, double endLong, int index) {
+    private void makeAline(double[] latLongs, int index) {
         String str = ("<line x1='"
-                + Math.round(begLong)
+                + Math.round(latLongs[1])
                 + "' y1='"
-                + Math.round(begLat)
+                + Math.round(latLongs[0])
                 + "' x2='"
-                + Math.round(endLong)
+                + Math.round(latLongs[3])
                 + "' y2='"
-                + Math.round(endLat)
+                + Math.round(latLongs[2])
                 + "' style='stroke:black; stroke-width:1' />\n");
         this.lines[index] = str;
+    }
+
+    /**
+     * Used for multiple places.
+      */
+    private void multiPlaces(){
+        int first;
+        int last;
+        for (int index = 0; index < this.trip.places.size(); index++) {
+
+            //Makes trip "round trip"
+            if (index == (this.trip.places.size() - 1)) {
+                first = 0;
+                last = index;
+            } else {
+                first = index;
+                last = index + 1;
+            }
+            double[] latLongs = new double[4];
+            //Convert Lat/Long to svg
+            latLongs[0] = conLat(this.trip.places.get(first).latitude);
+            latLongs[1] = conLong(this.trip.places.get(first).longitude);
+            latLongs[2] = conLat(this.trip.places.get(last).latitude);
+            latLongs[3] = conLong(this.trip.places.get(last).longitude);
+
+            //Make a line
+            makeAline(latLongs, index);
+
+            //Add Circles
+            addCircle(latLongs[0], latLongs[1], first);
+            addCircle(latLongs[2], latLongs[3], last);
+        }
     }
 
     /**
@@ -76,36 +104,11 @@ public class Svg {
      */
     private void addLines() {
         //Multiple places
-        if (this.size > 1) {
-            int first;
-            int last;
-            for (int index = 0; index < this.size; index++) {
-
-                //Makes trip "round trip"
-                if (index == (this.size - 1)) {
-                    first = 0;
-                    last = index;
-                } else {
-                    first = index;
-                    last = index + 1;
-                }
-
-                //Convert Lat/Long to svg
-                double begLat = conLat(this.trip.places.get(first).latitude);
-                double begLong = conLong(this.trip.places.get(first).longitude);
-                double endLat = conLat(this.trip.places.get(last).latitude);
-                double endLong = conLong(this.trip.places.get(last).longitude);
-
-                //Make a line
-                makeAline(begLat, begLong, endLat, endLong, index);
-
-                //Add Circles
-                addCircle(begLat, begLong, first);
-                addCircle(endLat, endLong, last);
-            }
+        if (this.trip.places.size() > 1) {
+            multiPlaces();
         }
         //One place
-        else if (this.size == 1) {
+        else if (this.trip.places.size() == 1) {
             double latitude = conLat(this.trip.places.get(0).latitude);
             double longitude = conLong(this.trip.places.get(0).longitude);
             addCircle(latitude, longitude, 0);
@@ -128,6 +131,13 @@ public class Svg {
         this.circles[index] = circle;
     }
 
+    /**
+     * Gets map.
+     * @return InputStream of map.
+     */
+    private InputStream getMap(){
+        return Svg.class.getResourceAsStream("/World_map_with_nations.svg");
+    }
 
     /**
      * Draws on the map.
@@ -136,16 +146,15 @@ public class Svg {
      */
     public String svgBuilder() {
         //Instantiate Variables
-        this.size = trip.places.size();
-        this.lines = new String[this.size];
-        this.circles = new String[this.size];
+        this.lines = new String[this.trip.places.size()];
+        this.circles = new String[this.trip.places.size()];
 
         //Functions to create lines/circles
         addLines();
 
         //Write to map
-        try {
-            InputStream svg = Svg.class.getResourceAsStream("/World_map_with_nations.svg");
+        try{
+            InputStream svg = getMap();
             BufferedReader reader = new BufferedReader(new InputStreamReader(svg));
             StringBuilder line = new StringBuilder();
             for (int i = 0; i < 421; i++) {
@@ -158,7 +167,7 @@ public class Svg {
                 if (lines[i] != null) {
                     line.append(lines[i]);
                     line.append(circles[i]);
-                } else if (this.size == 1) {
+                } else if (this.trip.places.size() == 1) {
                     line.append(circles[i]);
                 }
             }
@@ -166,9 +175,8 @@ public class Svg {
             //Finish it up
             line.append(this.end());
             return line.toString();
-
         } catch (IOException e) {
-            System.out.println("Error in MapBuilder : " + e);
+            System.out.println("Error in SvgBuilder : " + e);
         }
         return "Error in Svg.java";
     }
